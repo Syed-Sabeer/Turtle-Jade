@@ -331,12 +331,22 @@ section{position:relative;}
   position:absolute;box-shadow:0 30px 60px -25px rgba(10,20,32,.45);
   display:flex;flex-direction:column;justify-content:flex-end;padding:1.3rem;
   color:var(--shell);transition:transform .5s var(--ease);
+  background-size:cover;background-position:center;
 }
 .hv-panel span{font-family:var(--font-mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;opacity:.85;}
 .hv-panel strong{font-family:var(--font-display);font-style:italic;font-size:1.2rem;margin-top:.2rem;}
-.hv-1{width:62%;height:78%;left:0;top:0;background:linear-gradient(155deg,var(--steel),var(--navy));z-index:2;transform:rotate(-3deg);}
-.hv-2{width:52%;height:56%;right:0;bottom:0;background:linear-gradient(155deg,var(--lagoon),var(--lagoon-deep));z-index:3;transform:rotate(4deg);}
-.hv-3{width:34%;height:34%;right:8%;top:6%;background:linear-gradient(155deg,var(--gold),var(--gold-dim));z-index:4;transform:rotate(-6deg);color:var(--ink);}
+.hv-1{
+  width:62%;height:78%;left:0;top:0;z-index:2;transform:rotate(-3deg);
+  background-image:linear-gradient(185deg, rgba(10,20,32,.05) 0%, rgba(10,20,32,.8) 100%), url('assets/collections/first-light.jpg');
+}
+.hv-2{
+  width:52%;height:56%;right:0;bottom:0;z-index:3;transform:rotate(4deg);
+  background-image:linear-gradient(185deg, rgba(10,20,32,.08) 0%, rgba(10,20,32,.82) 100%), url('assets/collections/home-waters.jpg');
+}
+.hv-3{
+  width:34%;height:34%;right:8%;top:6%;z-index:4;transform:rotate(-6deg);color:var(--shell);
+  background-image:linear-gradient(185deg, rgba(10,20,32,.1) 0%, rgba(10,20,32,.85) 100%), url('assets/products/aqua-mint.jpg');
+}
 .heritage-visual:hover .hv-1{transform:rotate(-5deg) translateY(-6px);}
 .heritage-visual:hover .hv-2{transform:rotate(6deg) translateY(6px);}
 .heritage-visual:hover .hv-3{transform:rotate(-3deg) translateY(-4px);}
@@ -391,6 +401,40 @@ section{position:relative;}
 .product-links a{font-family:var(--font-mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(247,237,208,.65);border-bottom:1px solid rgba(247,237,208,.3);padding-bottom:3px;transition:opacity .3s;}
 .product-links a:hover{opacity:.7;}
 
+/* ============ COLLECTIONS ============ */
+#collections{position:relative;overflow:hidden;}
+.collections-list{display:flex;flex-direction:column;gap:clamp(4rem,8vw,6.5rem);margin-top:1rem;position:relative;z-index:2;}
+.collection-row{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(2.4rem,5vw,5rem);align-items:center;}
+.collection-row .collection-media{order:1;}
+.collection-row .collection-copy{order:2;}
+.collection-row.flip .collection-media{order:2;}
+.collection-row.flip .collection-copy{order:1;}
+
+.collection-media{position:relative;aspect-ratio:4/3;border-radius:4px;overflow:hidden;box-shadow:0 44px 80px -35px rgba(0,0,0,.6);}
+.collection-media img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .7s var(--ease);}
+.collection-row:hover .collection-media img{transform:scale(1.045);}
+.collection-media-badge{
+  position:absolute;bottom:-18px;right:34px;width:96px;height:96px;border-radius:50%;
+  border:4px solid var(--navy);overflow:hidden;box-shadow:0 18px 34px -14px rgba(0,0,0,.55);
+  background:var(--paper);z-index:2;
+}
+.collection-row.flip .collection-media-badge{right:auto;left:34px;}
+.collection-media-badge img{width:100%;height:100%;object-fit:cover;display:block;}
+
+.collection-copy{position:relative;}
+.collection-index{
+  font-family:var(--font-mono);font-size:.8rem;letter-spacing:.14em;color:var(--gold-bright);
+  display:block;margin-bottom:.7rem;
+}
+.collection-copy h3{font-size:clamp(1.55rem,2.6vw,2.05rem);font-style:italic;color:var(--shell);margin-bottom:.5rem;}
+.collection-tagline{font-family:var(--font-display);font-style:italic;font-size:1.05rem;color:var(--lagoon);margin-bottom:1.2rem;}
+.collection-copy p.collection-body{opacity:.78;line-height:1.8;margin-bottom:1rem;max-width:460px;}
+.collection-palette{
+  display:inline-flex;align-items:center;gap:.6rem;margin-top:.5rem;
+  font-family:var(--font-mono);font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;color:rgba(247,237,208,.6);
+}
+.collection-palette i{width:10px;height:10px;border-radius:50%;border:1px solid rgba(247,237,208,.4);display:inline-block;}
+
 /* ============ LIFESTYLE ============ */
 .lifestyle-quote{max-width:760px;margin-bottom:3.2rem;}
 .lifestyle-quote p{font-family:var(--font-display);font-style:italic;font-size:clamp(1.4rem,2.6vw,2.05rem);line-height:1.45;color:var(--shell);}
@@ -412,27 +456,6 @@ section{position:relative;}
 .m2{background:linear-gradient(165deg,var(--steel),#0d1c2c);}
 .m3{background:linear-gradient(165deg,var(--lagoon-deep),#08161f);}
 .m4{background:linear-gradient(165deg,#3a4f2f,#12200f);}
-
-/* ============ PALETTE ============ */
-.palette-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:rgba(247,237,208,.14);border:1px solid rgba(247,237,208,.14);}
-.swatch{
-  aspect-ratio:3/4;position:relative;display:flex;flex-direction:column;justify-content:flex-end;padding:1.1rem .9rem;
-  overflow:hidden;transition:transform .4s var(--ease);
-}
-.swatch:hover{transform:translateY(-6px) scale(1.02);z-index:2;}
-.swatch::after{
-  content:'';position:absolute;inset:0;background:radial-gradient(circle at 70% 20%, rgba(255,255,255,.22), transparent 55%);
-  animation:sheen 6s ease-in-out infinite;
-}
-@keyframes sheen{0%,100%{opacity:.4;}50%{opacity:.85;}}
-.swatch .code{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.06em;position:relative;z-index:2;}
-.swatch .name{font-family:var(--font-display);font-style:italic;font-size:.95rem;margin-top:.25rem;position:relative;z-index:2;line-height:1.25;}
-.sw-black{background:#050505;color:var(--shell);}
-.sw-296{background:var(--navy);color:var(--shell);}
-.sw-534{background:var(--steel);color:var(--shell);}
-.sw-327{background:var(--lagoon-deep);color:var(--shell);}
-.sw-451{background:var(--gold);color:#241f0f;}
-.sw-7499{background:var(--shell);color:var(--navy);}
 
 /* ============ CRAFT ============ */
 .craft-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2.4rem;}
@@ -515,7 +538,11 @@ footer{background:var(--black);padding:5rem 0 2rem;color:rgba(247,237,208,.7);}
   .product-grid{grid-template-columns:repeat(3,1fr);}
   .craft-grid{grid-template-columns:repeat(2,1fr);gap:2.2rem;}
   .footer-grid{grid-template-columns:1fr 1fr;gap:2.4rem;}
-  .palette-grid{grid-template-columns:repeat(3,1fr);}
+  .collection-row{grid-template-columns:1fr;}
+  .collection-row .collection-media{order:1;}
+  .collection-row .collection-copy{order:2;margin-top:1.5rem;}
+  .collection-row.flip .collection-media{order:1;}
+  .collection-row.flip .collection-copy{order:2;}
 }
 @media (max-width:640px){
   .product-grid{grid-template-columns:repeat(2,1fr);}
@@ -523,7 +550,7 @@ footer{background:var(--black);padding:5rem 0 2rem;color:rgba(247,237,208,.7);}
   .product-card-add{white-space:nowrap;}
   .craft-grid{grid-template-columns:1fr;}
   .footer-grid{grid-template-columns:1fr;gap:2.2rem;}
-  .palette-grid{grid-template-columns:repeat(2,1fr);}
+  .collection-media-badge{width:76px;height:76px;bottom:-14px;}
   .hero-actions{flex-direction:column;align-items:stretch;}
   .hero-actions .btn{justify-content:center;}
   .footer-bottom{flex-direction:column;align-items:flex-start;}
@@ -735,9 +762,99 @@ footer{background:var(--black);padding:5rem 0 2rem;color:rgba(247,237,208,.7);}
     </div>
 
     <div class="product-links">
+      <a href="#collections">Explore the Collections</a>
       <a href="#">Size Guide</a>
       <a href="#">Care Guide</a>
       <a href="#">FAQ</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COLLECTIONS ============ -->
+<section class="section--darker section-pad" id="collections">
+  <canvas class="particle-canvas" id="collections-particles"></canvas>
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow"><span class="dot"></span>The Collections</span>
+      <h2>Five ways to go the distance.</h2>
+      <p>Each collection is a chapter of the same idea — pieces made for the long run, named for the moments and waters that shape a coastal life.</p>
+    </div>
+
+    <div class="collections-list">
+      <div class="collection-row reveal">
+        <div class="collection-media">
+          <img src="assets/collections/long-weekend.jpg" alt="Folded polo and journal on a sun-bleached dock chair at sunrise" loading="lazy" />
+          <div class="collection-media-badge"><img src="assets/products/sand.jpg" alt="Sand Long Run Polo" loading="lazy" /></div>
+        </div>
+        <div class="collection-copy">
+          <span class="collection-index">01 — Long Weekend</span>
+          <h3>The Long Weekend Collection</h3>
+          <p class="collection-tagline">Friday to Monday, made easy.</p>
+          <p class="collection-body">The Long Weekend is the stretch of days that feels like a small holiday — the kind where time slows down and the only agenda is the tide.</p>
+          <p class="collection-body">These pieces are built for that ease: considered enough for a dinner that runs late, relaxed enough for a morning that doesn't start in a hurry. Made to be reached for from Friday to Monday, and long after.</p>
+          <div class="collection-palette"><i style="background:#E6E0D4"></i>Palette — Sand</div>
+        </div>
+      </div>
+
+      <div class="collection-row flip reveal">
+        <div class="collection-media">
+          <img src="assets/collections/returning-tide.jpg" alt="Tide washing over dark sand at dusk" loading="lazy" />
+          <div class="collection-media-badge"><img src="assets/products/deep-navy.jpg" alt="Deep Navy Long Run Polo" loading="lazy" /></div>
+        </div>
+        <div class="collection-copy">
+          <span class="collection-index">02 — Returning Tide</span>
+          <h3>The Returning Tide Collection</h3>
+          <p class="collection-tagline">What goes out always comes back.</p>
+          <p class="collection-body">The tide always returns. So do the things worth keeping — the people, the places, the garments that earn their place over the years.</p>
+          <p class="collection-body">The Returning Tide is for the pieces that come back into rotation season after season, never falling out of favor. Quiet, dependable, and made to endure.</p>
+          <div class="collection-palette"><i style="background:#212634"></i>Palette — Deep Navy</div>
+        </div>
+      </div>
+
+      <div class="collection-row reveal">
+        <div class="collection-media">
+          <img src="assets/collections/first-light.jpg" alt="Dawn breaking over a calm, glassy ocean" loading="lazy" />
+          <div class="collection-media-badge"><img src="assets/collections/morning-tide-polo.jpg" alt="Morning Tide Long Run Polo" loading="lazy" /></div>
+        </div>
+        <div class="collection-copy">
+          <span class="collection-index">03 — First Light</span>
+          <h3>The First Light Collection</h3>
+          <p class="collection-tagline">For the early hours on the water.</p>
+          <p class="collection-body">First light is the quietest, most honest part of the day — when the water is still and the world hasn't yet caught up.</p>
+          <p class="collection-body">The First Light Collection is built for those early hours: light, breathable, and unfussy. Pieces that move with you from the first cast to the first coffee.</p>
+          <div class="collection-palette"><i style="background:#385B73"></i>Palette — Morning Tide</div>
+        </div>
+      </div>
+
+      <div class="collection-row flip reveal">
+        <div class="collection-media">
+          <img src="assets/collections/passage.jpg" alt="Boat wake cutting through open water at sunset" loading="lazy" />
+          <div class="collection-media-badge"><img src="assets/products/deep-navy.jpg" alt="Deep Navy Long Run Polo" loading="lazy" /></div>
+        </div>
+        <div class="collection-copy">
+          <span class="collection-index">04 — The Passage</span>
+          <h3>The Passage Collection</h3>
+          <p class="collection-tagline">For the journeys in between.</p>
+          <p class="collection-body">Every passage is the space between where you were and where you're going — the crossings, the flights, the long quiet stretches of open water.</p>
+          <p class="collection-body">The Passage Collection is made for the in-between: garments that travel well, wrinkle little, and look considered on either side of the journey.</p>
+          <div class="collection-palette"><i style="background:#212634"></i>Palette — Open Water</div>
+        </div>
+      </div>
+
+      <div class="collection-row reveal">
+        <div class="collection-media">
+          <img src="assets/collections/home-waters.jpg" alt="Calm sheltered bay at golden hour with a small wooden dock" loading="lazy" />
+          <div class="collection-media-badge"><img src="assets/products/deep-blue.jpg" alt="Deep Blue Long Run Polo" loading="lazy" /></div>
+        </div>
+        <div class="collection-copy">
+          <span class="collection-index">05 — Home Waters</span>
+          <h3>The Home Waters Collection</h3>
+          <p class="collection-tagline">The places we return to.</p>
+          <p class="collection-body">Home waters are the shores we know best — the familiar bays, the local docks, the coastline that feels like it belongs to us.</p>
+          <p class="collection-body">The Home Waters Collection honors the idea of return: pieces rooted in place, made for the days you spend closest to home and the people you share them with.</p>
+          <div class="collection-palette"><i style="background:#385B73"></i>Palette — Deep Blue</div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -757,25 +874,6 @@ footer{background:var(--black);padding:5rem 0 2rem;color:rgba(247,237,208,.7);}
       <div class="moment m2"><span class="m-label">The Course</span><span class="m-title">Ninth Hole</span></div>
       <div class="moment m3"><span class="m-label">Golden Hour</span><span class="m-title">Harbor Bar</span></div>
       <div class="moment m4"><span class="m-label">Late Night</span><span class="m-title">Sundeck Lounge</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ PALETTE ============ -->
-<section class="section--dark section-pad" id="palette">
-  <div class="container">
-    <div class="section-head reveal">
-      <span class="eyebrow"><span class="dot"></span>The Palette</span>
-      <h2>A house palette, drawn from the sea.</h2>
-      <p>Every stitch traces back to six colors — the exact shades we return to, season after season, matched and re-matched until they're right.</p>
-    </div>
-    <div class="palette-grid reveal">
-      <div class="swatch sw-black"><span class="code">BLACK</span><span class="name">Deep Current</span></div>
-      <div class="swatch sw-296"><span class="code">296&nbsp;C</span><span class="name">Midnight Reef</span></div>
-      <div class="swatch sw-534"><span class="code">534&nbsp;C</span><span class="name">Harbor Blue</span></div>
-      <div class="swatch sw-327"><span class="code">327&nbsp;C</span><span class="name">Tidepool Teal</span></div>
-      <div class="swatch sw-451"><span class="code">451&nbsp;C</span><span class="name">Driftwood Gold</span></div>
-      <div class="swatch sw-7499"><span class="code">7499&nbsp;C</span><span class="name">Sandbar Cream</span></div>
     </div>
   </div>
 </section>
@@ -853,10 +951,10 @@ footer{background:var(--black);padding:5rem 0 2rem;color:rgba(247,237,208,.7);}
         <h5>Shop</h5>
         <ul>
           <li><a href="#collection">The Long Run Polo</a></li>
-          <li><a href="#collection">Long Weekend</a></li>
-          <li><a href="#collection">Returning Tide</a></li>
-          <li><a href="#collection">First Light</a></li>
-          <li><a href="#collection">Home Waters</a></li>
+          <li><a href="#collections">Long Weekend</a></li>
+          <li><a href="#collections">Returning Tide</a></li>
+          <li><a href="#collections">First Light</a></li>
+          <li><a href="#collections">Home Waters</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -864,7 +962,7 @@ footer{background:var(--black);padding:5rem 0 2rem;color:rgba(247,237,208,.7);}
         <ul>
           <li><a href="#heritage">Heritage</a></li>
           <li><a href="#lifestyle">Lifestyle</a></li>
-          <li><a href="#palette">The Palette</a></li>
+          <li><a href="#collections">The Collections</a></li>
           <li><a href="#clubhouse">Clubhouse</a></li>
         </ul>
       </div>
@@ -1122,6 +1220,11 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('clubhouse-particles'),
     document.getElementById('clubhouse'),
     { colors: [0x0aa891, 0xb3a370, 0xf7edd0], count: 150, size: 2.1, opacity: 0.4 }
+  );
+  createParticleField(
+    document.getElementById('collections-particles'),
+    document.getElementById('collections'),
+    { colors: [0x0aa891, 0xb3a370, 0x24406b], count: 130, size: 2.1, opacity: 0.38 }
   );
 });
 </script>
