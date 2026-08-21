@@ -267,14 +267,15 @@ header.scrolled{
 .medallion-core{
   position:absolute;inset:38px;border-radius:50%;
   background:radial-gradient(circle at 32% 28%, #234067, #0e1c2c 72%);
-  box-shadow:inset 0 0 60px rgba(0,0,0,.55), 0 30px 60px -20px rgba(3,121,100,.45), 0 0 0 1px rgba(179,163,112,.35);
+  box-shadow:inset 0 0 60px rgba(0,0,0,.35), 0 30px 60px -20px rgba(3,121,100,.45), 0 0 0 1px rgba(179,163,112,.35);
   display:flex;align-items:center;justify-content:center;overflow:hidden;
 }
-.medallion-core img{width:78%;height:auto;filter:drop-shadow(0 10px 24px rgba(0,0,0,.5));}
+.medallion-core img{width:100%;height:100%;object-fit:cover;object-position:center 38%;transform:scale(1.02);}
 .medallion-core::after{
   content:'';position:absolute;inset:0;
-  background:radial-gradient(circle at 70% 75%, rgba(10,168,145,.25), transparent 55%);
-  mix-blend-mode:screen;
+  background:linear-gradient(145deg,rgba(247,237,208,.07),transparent 40%,rgba(3,121,100,.18));
+  box-shadow:inset 0 0 46px rgba(4,13,23,.32);
+  pointer-events:none;
 }
 .medallion-tag{
   position:absolute;bottom:6px;right:8px;
@@ -361,44 +362,68 @@ section{position:relative;scroll-margin-top:84px;}
 }
 
 /* ============ COLLECTION ============ */
-#collection{position:relative;overflow:hidden;}
+#collection{position:relative;overflow:hidden;isolation:isolate;}
+#collection::before{
+  content:'';position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(circle at 8% 18%,rgba(10,168,145,.12),transparent 30%),
+    radial-gradient(circle at 92% 74%,rgba(179,163,112,.09),transparent 28%),
+    linear-gradient(180deg,rgba(255,255,255,.018),transparent 22%);
+}
 .particle-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;opacity:.85;}
 
-.product-grid{position:relative;z-index:2;display:grid;grid-template-columns:repeat(5,1fr);gap:1.5rem;}
+.collection-intro{
+  position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,1.35fr) minmax(280px,.65fr);
+  gap:clamp(2rem,6vw,6rem);align-items:end;margin-bottom:clamp(2.7rem,5vw,4.5rem);
+}
+.collection-intro .section-head{margin-bottom:0;}
+.collection-intro .section-head p{max-width:680px;}
+.collection-proof{border-left:1px solid rgba(179,163,112,.3);padding:.25rem 0 .25rem 1.5rem;}
+.collection-proof-label{font-family:var(--font-mono);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-bright);margin-bottom:.85rem;}
+.collection-proof-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;}
+.collection-proof-grid strong{display:block;font-family:var(--font-display);font-size:1.3rem;font-weight:500;color:var(--shell);line-height:1;}
+.collection-proof-grid span{display:block;margin-top:.42rem;font-family:var(--font-mono);font-size:.56rem;line-height:1.35;letter-spacing:.04em;text-transform:uppercase;color:rgba(247,237,208,.48);}
+
+.product-grid{position:relative;z-index:2;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1rem;}
 .product-card{
-  position:relative;background:var(--navy-soft);
-  border:1px solid rgba(179,163,112,.2);border-radius:5px;overflow:hidden;
-  clip-path:polygon(18px 0,100% 0,100% calc(100% - 18px),calc(100% - 18px) 100%,0 100%,0 18px);
-  box-shadow:0 24px 46px -28px rgba(0,0,0,.55);
+  position:relative;background:var(--paper);color:var(--navy);
+  border:1px solid rgba(179,163,112,.28);border-radius:3px;overflow:hidden;
+  box-shadow:0 24px 46px -28px rgba(0,0,0,.7);
   transition:transform .35s var(--ease), box-shadow .4s var(--ease), border-color .35s var(--ease);
   transform-style:preserve-3d;
 }
-.product-card:hover{border-color:rgba(179,163,112,.45);box-shadow:0 36px 60px -28px rgba(3,121,100,.4);}
+.product-card:hover{border-color:rgba(217,201,141,.8);box-shadow:0 38px 70px -30px rgba(3,121,100,.55);}
 .product-card-photo{
-  position:relative;aspect-ratio:4/5;
-  background:linear-gradient(165deg, var(--paper) 0%, var(--paper-soft) 100%);
-  display:flex;align-items:center;justify-content:center;padding:1.15rem;
+  position:relative;aspect-ratio:1/1;overflow:hidden;
+  background:linear-gradient(150deg,#fffdf7 0%,var(--paper-soft) 100%);
+  display:flex;align-items:center;justify-content:center;padding:.7rem;
 }
-.product-card-photo img{width:100%;height:100%;object-fit:contain;display:block;transition:transform .5s var(--ease);}
-.product-card:hover .product-card-photo img{transform:scale(1.045);}
+.product-card-photo::after{content:'';position:absolute;inset:auto 1rem 0;height:1px;background:linear-gradient(90deg,transparent,rgba(17,31,46,.15),transparent);}
+.product-card-photo img{width:100%;height:100%;object-fit:contain;display:block;transition:transform .65s var(--ease);}
+.product-card:hover .product-card-photo img{transform:scale(1.055);}
 .product-card-badge{
   position:absolute;top:10px;left:10px;z-index:2;
-  font-family:var(--font-mono);font-size:.56rem;letter-spacing:.05em;text-transform:uppercase;
-  color:var(--shell);background:var(--navy);border:1px solid rgba(179,163,112,.4);padding:.3rem .55rem;border-radius:999px;
+  font-family:var(--font-mono);font-size:.5rem;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--shell);background:rgba(17,31,46,.94);border:1px solid rgba(179,163,112,.55);padding:.34rem .55rem;border-radius:999px;
 }
-.product-card-info{padding:1.15rem 1.2rem 1.35rem;}
-.product-card-name-row{display:flex;align-items:center;gap:.55rem;margin-bottom:.35rem;}
-.product-card-swatch{width:10px;height:10px;border-radius:50%;border:1px solid rgba(247,237,208,.4);flex:none;}
-.product-card-name{font-family:var(--font-display);font-style:italic;font-size:.96rem;color:var(--shell);}
-.product-card-sub{font-family:var(--font-mono);font-size:.62rem;letter-spacing:.03em;color:rgba(247,237,208,.55);margin-bottom:.95rem;line-height:1.5;}
-.product-card-row{display:flex;align-items:center;justify-content:space-between;gap:.6rem;}
-.product-card-price{font-family:var(--font-body);font-size:.92rem;color:var(--shell);font-weight:600;}
+.product-card-edition{position:absolute;top:13px;right:11px;z-index:2;font-family:var(--font-mono);font-size:.5rem;letter-spacing:.08em;color:rgba(17,31,46,.48);}
+.product-card-info{padding:1rem 1rem 1.05rem;}
+.product-card-name-row{display:flex;align-items:center;gap:.6rem;margin-bottom:.35rem;}
+.product-card-swatch{width:11px;height:11px;border-radius:50%;border:1px solid rgba(17,31,46,.2);box-shadow:0 0 0 3px rgba(17,31,46,.045);flex:none;}
+.product-card-name{font-family:var(--font-display);font-style:italic;font-size:.98rem;color:var(--navy);}
+.product-card-sub{font-family:var(--font-mono);font-size:.54rem;letter-spacing:.06em;text-transform:uppercase;color:rgba(17,31,46,.55);margin-bottom:.7rem;line-height:1.5;white-space:nowrap;}
+.product-card-meta{display:flex;align-items:center;gap:.4rem;padding-top:.6rem;border-top:1px solid rgba(17,31,46,.1);font-family:var(--font-mono);font-size:.48rem;letter-spacing:.025em;text-transform:uppercase;color:rgba(17,31,46,.5);white-space:nowrap;}
+.product-card-meta i{width:3px;height:3px;border-radius:50%;background:var(--lagoon);}
+.product-card-row{display:flex;align-items:center;justify-content:space-between;gap:.45rem;margin-top:.75rem;}
+.product-card-price{font-family:var(--font-display);font-size:1rem;color:var(--navy);font-weight:600;}
 .product-card-add{
-  font-family:var(--font-mono);font-size:.6rem;letter-spacing:.04em;text-transform:uppercase;
-  padding:.5rem .8rem;border-radius:999px;background:var(--shell);color:var(--navy);border:none;cursor:pointer;
-  transition:background .3s var(--ease), color .3s var(--ease);
+  display:inline-flex;align-items:center;gap:.5rem;font-family:var(--font-mono);font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;
+  padding:.5rem .65rem;border-radius:999px;background:var(--navy);color:var(--shell);border:1px solid var(--navy);cursor:pointer;
+  transition:background .3s var(--ease),color .3s var(--ease),transform .3s var(--ease),border-color .3s var(--ease);
 }
-.product-card-add:hover{background:var(--lagoon);color:var(--shell);}
+.product-card-add svg{width:12px;height:12px;transition:transform .3s var(--ease);}
+.product-card-add:hover{background:var(--lagoon-deep);border-color:var(--lagoon-deep);color:var(--shell);transform:translateY(-1px);}
+.product-card-add:hover svg{transform:translateX(2px);}
 
 .product-links{display:flex;flex-wrap:wrap;justify-content:center;gap:1.4rem 2.4rem;margin-top:3.2rem;padding-top:2.2rem;border-top:1px solid rgba(179,163,112,.18);position:relative;z-index:2;}
 .product-links a{font-family:var(--font-mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(247,237,208,.65);border-bottom:1px solid rgba(247,237,208,.3);padding-bottom:3px;transition:opacity .3s;}
@@ -590,6 +615,11 @@ footer{background:var(--black);padding:5rem 0 2rem;color:rgba(247,237,208,.7);}
 .chip-strip i{width:12px;height:12px;display:inline-block;border-radius:2px;border:1px solid rgba(247,237,208,.22);}
 
 /* ============ RESPONSIVE ============ */
+@media (max-width:1180px) and (min-width:981px){
+  .product-grid{grid-template-columns:repeat(6,minmax(0,1fr));gap:1.25rem;}
+  .product-card{grid-column:span 2;}
+  .product-card:nth-child(4){grid-column:2/span 2;}
+}
 @media (max-width:980px){
   .nav-links{display:none;}
   .nav-cta .btn-primary{display:none;}
@@ -598,7 +628,11 @@ footer{background:var(--black);padding:5rem 0 2rem;color:rgba(247,237,208,.7);}
   .medallion-stage{height:380px;order:-1;}
   .heritage-grid{grid-template-columns:1fr;}
   .heritage-visual{height:380px;margin-top:1rem;}
-  .product-grid{grid-template-columns:repeat(3,1fr);}
+  .collection-intro{grid-template-columns:1fr;gap:2rem;}
+  .collection-proof{max-width:520px;}
+  .product-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+  .product-card,.product-card:nth-child(4){grid-column:span 1;}
+  .product-card:last-child{grid-column:1/-1;width:calc(50% - .75rem);justify-self:center;}
   .craft-layout{grid-template-columns:1fr;}
   .craft-photo{order:-1;height:320px;}
   .footer-grid{grid-template-columns:1fr 1fr;gap:2.4rem;}
@@ -619,8 +653,12 @@ footer{background:var(--black);padding:5rem 0 2rem;color:rgba(247,237,208,.7);}
   .moments-row::-webkit-scrollbar{height:5px;}
   .moments-row::-webkit-scrollbar-thumb{background:rgba(179,163,112,.4);border-radius:4px;}
   .moment{flex:0 0 240px;scroll-snap-align:start;aspect-ratio:3/4;}
-  .product-grid{grid-template-columns:repeat(2,1fr);}
-  .product-card-row{flex-direction:column;align-items:flex-start;gap:.7rem;}
+  .collection-proof{padding-left:1rem;}
+  .collection-proof-grid{gap:.45rem;}
+  .collection-proof-grid strong{font-size:1.1rem;}
+  .product-grid{grid-template-columns:1fr;gap:1.15rem;}
+  .product-card,.product-card:nth-child(4),.product-card:last-child{grid-column:1;width:100%;}
+  .product-card-photo{aspect-ratio:4/3;}
   .product-card-add{white-space:nowrap;}
   .craft-grid{grid-template-columns:1fr;}
   .footer-grid{grid-template-columns:1fr;gap:2.2rem;}
@@ -700,9 +738,9 @@ footer{background:var(--black);padding:5rem 0 2rem;color:rgba(247,237,208,.7);}
         <div class="medallion" id="medallion">
           <div class="medallion-ring"></div>
           <div class="medallion-core">
-            <img src="assets/turtle-logo.png" alt="Turtles by Finley Jade turtle emblem" />
+            <img src="assets/hero-polo-editorial.jpg" alt="Deep Blue Long Run Polo with embroidered turtle crest at the coast" />
           </div>
-          <span class="medallion-tag">EST. FAMILY TRADITION</span>
+          <span class="medallion-tag">Signature Piqué · Deep Blue</span>
         </div>
       </div>
     </div>
@@ -756,80 +794,100 @@ footer{background:var(--black);padding:5rem 0 2rem;color:rgba(247,237,208,.7);}
 <section class="section--dark section-pad" id="collection">
   <canvas class="particle-canvas" id="collection-particles"></canvas>
   <div class="container">
-    <div class="section-head reveal">
-      <span class="eyebrow"><span class="dot"></span>The Long Run Collection</span>
-      <h2>Made to go the distance.</h2>
-      <p>One polo. Five colorways. Each piece individually numbered within a run of 200 — made once, never repeated, and built to be reached for year after year.</p>
+    <div class="collection-intro">
+      <div class="section-head reveal">
+        <span class="eyebrow"><span class="dot"></span>The Long Run Collection</span>
+        <h2>Made to go the distance.</h2>
+        <p>One polo. Five coastal colorways. Each piece is individually numbered, made once, and built to be reached for year after year.</p>
+      </div>
+      <div class="collection-proof reveal reveal-delay-1" aria-label="Collection details">
+        <p class="collection-proof-label">The details</p>
+        <div class="collection-proof-grid">
+          <div><strong>200</strong><span>Per colorway</span></div>
+          <div><strong>Piqué</strong><span>Double-knit weave</span></div>
+          <div><strong>5</strong><span>Coastal tones</span></div>
+        </div>
+      </div>
     </div>
 
     <div class="product-grid">
       <div class="product-card reveal">
         <div class="product-card-photo">
           <span class="product-card-badge">Limited — 200</span>
+          <span class="product-card-edition">01 / 05</span>
           <img src="assets/products/deep-blue.jpg" alt="Deep Blue Long Run Polo with embroidered sea turtle logo on left chest" loading="lazy" />
         </div>
         <div class="product-card-info">
           <div class="product-card-name-row"><span class="product-card-swatch" style="background:#385B73"></span><span class="product-card-name">The Long Run Polo</span></div>
           <p class="product-card-sub">Deep Blue &middot; Returning Tide</p>
+          <div class="product-card-meta"><span>Embroidered crest</span><i></i><span>Classic fit</span></div>
           <div class="product-card-row">
             <span class="product-card-price">$148</span>
-            <button class="product-card-add" data-name="The Long Run Polo" data-colorway="Deep Blue" data-price="$148">Add to Cart</button>
+            <button class="product-card-add" data-name="The Long Run Polo" data-colorway="Deep Blue" data-price="$148">Add to bag <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>
           </div>
         </div>
       </div>
       <div class="product-card reveal reveal-delay-1">
         <div class="product-card-photo">
           <span class="product-card-badge">Limited — 200</span>
+          <span class="product-card-edition">02 / 05</span>
           <img src="assets/products/sand.jpg" alt="Sand Long Run Polo with embroidered sea turtle logo on left chest" loading="lazy" />
         </div>
         <div class="product-card-info">
           <div class="product-card-name-row"><span class="product-card-swatch" style="background:#E6E0D4"></span><span class="product-card-name">The Long Run Polo</span></div>
           <p class="product-card-sub">Sand &middot; Long Weekend</p>
+          <div class="product-card-meta"><span>Embroidered crest</span><i></i><span>Classic fit</span></div>
           <div class="product-card-row">
             <span class="product-card-price">$148</span>
-            <button class="product-card-add" data-name="The Long Run Polo" data-colorway="Sand" data-price="$148">Add to Cart</button>
+            <button class="product-card-add" data-name="The Long Run Polo" data-colorway="Sand" data-price="$148">Add to bag <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>
           </div>
         </div>
       </div>
       <div class="product-card reveal reveal-delay-2">
         <div class="product-card-photo">
           <span class="product-card-badge">Limited — 200</span>
+          <span class="product-card-edition">03 / 05</span>
           <img src="assets/products/aqua-mint.jpg" alt="Aqua Mint Long Run Polo with embroidered sea turtle logo on left chest" loading="lazy" />
         </div>
         <div class="product-card-info">
           <div class="product-card-name-row"><span class="product-card-swatch" style="background:#5DBDB0"></span><span class="product-card-name">The Long Run Polo</span></div>
           <p class="product-card-sub">Aqua Mint &middot; Home Waters</p>
+          <div class="product-card-meta"><span>Embroidered crest</span><i></i><span>Classic fit</span></div>
           <div class="product-card-row">
             <span class="product-card-price">$148</span>
-            <button class="product-card-add" data-name="The Long Run Polo" data-colorway="Aqua Mint" data-price="$148">Add to Cart</button>
+            <button class="product-card-add" data-name="The Long Run Polo" data-colorway="Aqua Mint" data-price="$148">Add to bag <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>
           </div>
         </div>
       </div>
       <div class="product-card reveal reveal-delay-3">
         <div class="product-card-photo">
           <span class="product-card-badge">Limited — 200</span>
+          <span class="product-card-edition">04 / 05</span>
           <img src="assets/products/sea-blue.jpg" alt="Sea Blue Long Run Polo with embroidered sea turtle logo on left chest" loading="lazy" />
         </div>
         <div class="product-card-info">
           <div class="product-card-name-row"><span class="product-card-swatch" style="background:#99B2D8"></span><span class="product-card-name">The Long Run Polo</span></div>
           <p class="product-card-sub">Sea Blue &middot; First Light</p>
+          <div class="product-card-meta"><span>Embroidered crest</span><i></i><span>Classic fit</span></div>
           <div class="product-card-row">
             <span class="product-card-price">$148</span>
-            <button class="product-card-add" data-name="The Long Run Polo" data-colorway="Sea Blue" data-price="$148">Add to Cart</button>
+            <button class="product-card-add" data-name="The Long Run Polo" data-colorway="Sea Blue" data-price="$148">Add to bag <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>
           </div>
         </div>
       </div>
       <div class="product-card reveal">
         <div class="product-card-photo">
           <span class="product-card-badge">Limited — 200</span>
+          <span class="product-card-edition">05 / 05</span>
           <img src="assets/products/deep-navy.jpg" alt="Deep Navy Long Run Polo with embroidered sea turtle logo on left chest" loading="lazy" />
         </div>
         <div class="product-card-info">
           <div class="product-card-name-row"><span class="product-card-swatch" style="background:#212634"></span><span class="product-card-name">The Long Run Polo</span></div>
           <p class="product-card-sub">Deep Navy &middot; Deep Current</p>
+          <div class="product-card-meta"><span>Embroidered crest</span><i></i><span>Classic fit</span></div>
           <div class="product-card-row">
             <span class="product-card-price">$148</span>
-            <button class="product-card-add" data-name="The Long Run Polo" data-colorway="Deep Navy" data-price="$148">Add to Cart</button>
+            <button class="product-card-add" data-name="The Long Run Polo" data-colorway="Deep Navy" data-price="$148">Add to bag <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>
           </div>
         </div>
       </div>
