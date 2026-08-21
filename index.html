@@ -323,43 +323,67 @@ section{position:relative;scroll-margin-top:84px;}
 .section-head p{margin-top:1.1rem;font-size:1.05rem;line-height:1.7;opacity:.85;max-width:520px;}
 
 /* ============ HERITAGE ============ */
-.heritage-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
-.heritage-copy p{margin-bottom:1.3rem;line-height:1.85;font-size:1.02rem;opacity:.9;max-width:520px;}
-.heritage-copy .section-head{margin-bottom:1.8rem;}
-.heritage-marks{display:flex;flex-direction:column;gap:.9rem;margin:2rem 0 2.2rem;}
-.heritage-marks div{display:flex;align-items:baseline;gap:.9rem;font-family:var(--font-display);font-style:italic;font-size:1.05rem;color:var(--navy);}
-.heritage-marks div::before{content:'';width:26px;height:1px;background:var(--gold-dim);flex:none;transform:translateY(-4px);}
+#heritage{overflow:hidden;isolation:isolate;}
+#heritage::before{
+  content:'';position:absolute;width:560px;height:560px;right:-180px;top:-110px;border-radius:50%;z-index:-1;
+  background:radial-gradient(circle,rgba(10,168,145,.1),transparent 68%);pointer-events:none;
+}
+.heritage-grid{display:grid;grid-template-columns:minmax(0,.88fr) minmax(0,1.12fr);gap:clamp(3rem,7vw,7rem);align-items:center;}
+.heritage-copy p{margin-bottom:1.25rem;line-height:1.85;font-size:.98rem;opacity:.82;max-width:510px;}
+.heritage-copy .section-head{margin-bottom:1.7rem;}
+.heritage-statement{border-left:1px solid var(--gold);padding-left:1.2rem;color:var(--navy);font-family:var(--font-display);font-style:italic;font-size:1.08rem !important;opacity:1 !important;}
+.heritage-marks{counter-reset:heritage-mark;display:flex;flex-direction:column;margin:1.8rem 0 2.1rem;border-top:1px solid rgba(17,31,46,.12);max-width:510px;}
+.heritage-marks div{counter-increment:heritage-mark;display:grid;grid-template-columns:34px 1fr;align-items:center;gap:.8rem;padding:.7rem 0;border-bottom:1px solid rgba(17,31,46,.12);font-family:var(--font-body);font-size:.78rem;letter-spacing:.015em;color:var(--navy);}
+.heritage-marks div::before{content:'0' counter(heritage-mark);font-family:var(--font-mono);font-size:.56rem;letter-spacing:.08em;color:var(--lagoon-deep);}
+.heritage-cta{
+  padding:.48rem .5rem .48rem 1.35rem;background:var(--navy);border-color:var(--navy);color:var(--shell);
+  gap:1.15rem;box-shadow:0 14px 28px -18px rgba(10,20,32,.75);
+}
+.section--light .heritage-cta{background:var(--navy);border-color:var(--navy);color:var(--shell);}
+.heritage-cta svg{
+  width:34px;height:34px;padding:9px;border-radius:50%;background:var(--lagoon);color:var(--shell);stroke:currentColor;
+  box-shadow:0 8px 18px -8px rgba(10,168,145,.8);
+}
+.section--light .heritage-cta:hover{background:var(--navy-soft);border-color:var(--gold-dim);}
+.heritage-cta:hover svg{transform:translateX(0);background:var(--lagoon-deep);}
 
-.heritage-visual{position:relative;height:460px;}
+.heritage-visual{position:relative;height:520px;margin-bottom:2.8rem;}
+.heritage-visual::before{
+  content:'';position:absolute;inset:9% 7% 6% 8%;border:1px solid rgba(17,31,46,.13);z-index:0;transform:translate(18px,18px);
+}
 .hv-panel{
-  position:absolute;box-shadow:0 30px 60px -25px rgba(10,20,32,.45);
-  display:flex;flex-direction:column;justify-content:flex-end;padding:1.3rem;
+  position:absolute;box-shadow:0 30px 60px -25px rgba(10,20,32,.48);border:6px solid var(--paper);overflow:hidden;
+  display:flex;flex-direction:column;justify-content:flex-end;padding:1.15rem;
   color:var(--shell);transition:transform .5s var(--ease);
   background-size:cover;background-position:center;
 }
-.hv-panel span{font-family:var(--font-mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;opacity:.85;}
-.hv-panel strong{font-family:var(--font-display);font-style:italic;font-size:1.2rem;margin-top:.2rem;}
+.hv-panel::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 48%,rgba(5,14,24,.82));z-index:0;pointer-events:none;}
+.hv-panel span,.hv-panel strong{position:relative;z-index:1;}
+.hv-panel span{font-family:var(--font-mono);font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-bright);}
+.hv-panel span::before{content:'';display:inline-block;width:12px;height:1px;background:var(--lagoon);margin-right:.5rem;vertical-align:middle;}
+.hv-panel strong{font-family:var(--font-display);font-style:italic;font-size:1.05rem;margin-top:.25rem;}
 .hv-1{
-  width:62%;height:78%;left:0;top:0;z-index:2;transform:rotate(-3deg);
-  background-image:linear-gradient(185deg, rgba(10,20,32,.05) 0%, rgba(10,20,32,.8) 100%), url('assets/collections/first-light.jpg');
+  width:72%;height:88%;left:0;top:6%;z-index:1;
+  background-image:url('assets/collections/first-light.jpg');
 }
 .hv-2{
-  width:52%;height:56%;right:0;bottom:0;z-index:3;transform:rotate(4deg);
-  background-image:linear-gradient(185deg, rgba(10,20,32,.08) 0%, rgba(10,20,32,.82) 100%), url('assets/collections/home-waters.jpg');
+  width:48%;height:48%;right:0;bottom:0;z-index:3;
+  background-image:url('assets/collections/home-waters.jpg');
 }
 .hv-3{
-  width:34%;height:34%;right:8%;top:6%;z-index:4;transform:rotate(-6deg);color:var(--shell);
-  background-image:linear-gradient(185deg, rgba(10,20,32,.1) 0%, rgba(10,20,32,.85) 100%), url('assets/products/aqua-mint.jpg');
+  width:40%;height:35%;right:2%;top:0;z-index:2;color:var(--shell);
+  background-image:url('assets/products/aqua-mint.jpg');background-position:center 28%;
 }
-.heritage-visual:hover .hv-1{transform:rotate(-5deg) translateY(-6px);}
-.heritage-visual:hover .hv-2{transform:rotate(6deg) translateY(6px);}
-.heritage-visual:hover .hv-3{transform:rotate(-3deg) translateY(-4px);}
+.heritage-visual:hover .hv-1{transform:translate(-5px,-4px);}
+.heritage-visual:hover .hv-2{transform:translate(5px,5px);}
+.heritage-visual:hover .hv-3{transform:translate(4px,-5px);}
 .hv-badge{
-  position:absolute;left:-14px;bottom:-14px;width:112px;height:112px;border-radius:50%;
-  background:var(--paper);border:1px solid rgba(19,34,52,.15);display:flex;align-items:center;justify-content:center;
-  text-align:center;font-family:var(--font-mono);font-size:.56rem;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);
-  box-shadow:0 16px 30px -14px rgba(10,20,32,.35);z-index:5;padding:.6rem;line-height:1.5;
+  position:absolute;left:0;bottom:-2.35rem;z-index:5;display:flex;align-items:center;gap:.55rem;
+  background:transparent;border:0;border-radius:0;padding:.6rem 0;
+  font-family:var(--font-mono);font-size:.54rem;letter-spacing:.09em;text-transform:uppercase;color:var(--shell);
+  color:rgba(17,31,46,.62);box-shadow:none;line-height:1.4;
 }
+.hv-badge::before{content:'';width:26px;height:1px;background:var(--gold-dim);flex:none;}
 
 /* ============ COLLECTION ============ */
 #collection{position:relative;overflow:hidden;isolation:isolate;}
@@ -647,6 +671,15 @@ footer{background:var(--black);padding:5rem 0 2rem;color:rgba(247,237,208,.7);}
   .testimonial-grid{grid-template-columns:1fr;gap:2.6rem;}
 }
 @media (max-width:640px){
+  .heritage-visual{height:420px;margin-bottom:2.5rem;}
+  .hv-panel{border-width:4px;padding:.75rem;}
+  .hv-panel strong{font-size:.84rem;line-height:1.25;}
+  .hv-panel span{font-size:.5rem;}
+  .hv-1{width:78%;height:82%;}
+  .hv-1 strong{max-width:56%;}
+  .hv-2{width:52%;height:43%;bottom:7%;}
+  .hv-3{width:47%;height:34%;right:1%;}
+  .hv-badge{left:0;bottom:-2.15rem;font-size:.46rem;padding:.5rem 0;}
   .gallery-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:150px;}
   .gallery-tile.g-big,.gallery-tile.g-wide{grid-column:span 2;grid-row:span 1;}
   .moments-row{display:flex;grid-template-columns:none;overflow-x:auto;padding-bottom:.6rem;scroll-snap-type:x mandatory;}
@@ -771,13 +804,13 @@ footer{background:var(--black);padding:5rem 0 2rem;color:rgba(247,237,208,.7);}
         <h2>A house built on family tides.</h2>
       </div>
       <p>Turtles by Finley Jade began the way most good stories do — around a family table, sun-worn from a week at the shore, polos stiff with salt and easy afternoons. What started as an eye for the way light moves across water became a philosophy for how resort wear should feel: unhurried, considered, built for the years between vacations, not just the week of one.</p>
-      <p>Every piece we cut carries that same throughline — the palette of the tide, the ease of a long lunch, the quiet confidence of clothes that don't ask to be noticed until you're wearing them. This is resort wear as heirloom, not costume.</p>
+      <p class="heritage-statement">Every piece carries the palette of the tide and the quiet confidence of clothes made to become heirlooms, not costumes.</p>
       <div class="heritage-marks">
         <div>Three generations of shoreline mornings</div>
         <div>One palette, drawn from the sea</div>
         <div>Every polo, cut to outlast a season</div>
       </div>
-      <a href="#collection" class="btn btn-ghost">Explore What We Make
+      <a href="#collection" class="btn heritage-cta">Explore What We Make
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </a>
     </div>
@@ -785,7 +818,7 @@ footer{background:var(--black);padding:5rem 0 2rem;color:rgba(247,237,208,.7);}
       <div class="hv-panel hv-1"><span>Shoreline</span><strong>Dawn tide, family in tow</strong></div>
       <div class="hv-panel hv-2"><span>Clubhouse</span><strong>Terrace, golden hour</strong></div>
       <div class="hv-panel hv-3"><span>Atelier</span><strong>Cut &amp; stitched</strong></div>
-      <div class="hv-badge">Family Tradition · Ocean Palette</div>
+      <div class="hv-badge">House notes · Est. by the water</div>
     </div>
   </div>
 </section>
