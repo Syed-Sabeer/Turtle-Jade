@@ -26,6 +26,8 @@
   --shell:#f7edd0;
   --paper:#fbf6e8;
   --paper-soft:#f3ead2;
+  --sage-cream:#eef1e4;
+  --sage-cream-soft:#e6ecdc;
   --ink-text:#3a3428;
   --black:#050505;
 
@@ -68,7 +70,7 @@ button{font-family:inherit;cursor:pointer;}
   align-items:center;
   gap:.6em;
 }
-.section--light .eyebrow{color:var(--gold-dim);}
+.section--light .eyebrow,.section--sage .eyebrow{color:var(--gold-dim);}
 .eyebrow .dot{width:5px;height:5px;border-radius:50%;background:var(--lagoon);display:inline-block;}
 
 .facet{
@@ -102,8 +104,8 @@ button{font-family:inherit;cursor:pointer;}
   background:rgba(247,237,208,.03);
 }
 .btn-ghost:hover{border-color:var(--gold-bright);background:rgba(247,237,208,.08);}
-.section--light .btn-ghost{border-color:rgba(19,34,52,.28);color:var(--navy);background:rgba(19,34,52,.02);}
-.section--light .btn-ghost:hover{border-color:var(--gold-dim);background:rgba(19,34,52,.06);}
+.section--light .btn-ghost,.section--sage .btn-ghost{border-color:rgba(19,34,52,.28);color:var(--navy);background:rgba(19,34,52,.02);}
+.section--light .btn-ghost:hover,.section--sage .btn-ghost:hover{border-color:var(--gold-dim);background:rgba(19,34,52,.06);}
 .btn svg{width:14px;height:14px;transition:transform .3s var(--ease);}
 .btn:hover svg{transform:translateX(3px);}
 
@@ -307,15 +309,16 @@ header.scrolled{
 @keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
 
 /* ============ SECTION BASE ============ */
-section{position:relative;}
+section{position:relative;scroll-margin-top:84px;}
 .section--dark{background:var(--navy);color:var(--shell);}
 .section--darker{background:var(--ink);color:var(--shell);}
 .section--light{background:var(--paper);color:var(--ink-text);}
+.section--sage{background:linear-gradient(180deg, var(--sage-cream) 0%, var(--sage-cream-soft) 100%);color:var(--ink-text);}
 .section-pad{padding:var(--section-y) 0;}
 .section-head{max-width:640px;margin-bottom:3.4rem;}
 .section-head h2{font-size:clamp(2rem,3.6vw,3rem);margin-top:1rem;}
 .section--dark .section-head h2, .section--darker .section-head h2{color:var(--shell);}
-.section--light .section-head h2{color:var(--navy);}
+.section--light .section-head h2,.section--sage .section-head h2{color:var(--navy);}
 .section-head p{margin-top:1.1rem;font-size:1.05rem;line-height:1.7;opacity:.85;max-width:520px;}
 
 /* ============ HERITAGE ============ */
@@ -438,35 +441,95 @@ section{position:relative;}
 /* ============ LIFESTYLE ============ */
 .lifestyle-quote{max-width:760px;margin-bottom:3.2rem;}
 .lifestyle-quote p{font-family:var(--font-display);font-style:italic;font-size:clamp(1.4rem,2.6vw,2.05rem);line-height:1.45;color:var(--shell);}
-.moments-row{display:flex;gap:1.4rem;overflow-x:auto;padding-bottom:.6rem;scroll-snap-type:x mandatory;perspective:1400px;}
-.moments-row::-webkit-scrollbar{height:5px;}
-.moments-row::-webkit-scrollbar-thumb{background:rgba(179,163,112,.4);border-radius:4px;}
+.moments-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1.4rem;perspective:1400px;}
 .moment{
-  flex:0 0 260px;scroll-snap-align:start;height:340px;position:relative;overflow:hidden;
+  position:relative;overflow:hidden;border-radius:3px;aspect-ratio:3/4;
   display:flex;flex-direction:column;justify-content:flex-end;padding:1.4rem;
-  transition:transform .35s var(--ease);
+  transition:transform .35s var(--ease), box-shadow .4s var(--ease);
   transform-style:preserve-3d;
+  box-shadow:0 20px 40px -24px rgba(0,0,0,.5);
+}
+.moment:hover{box-shadow:0 30px 54px -22px rgba(0,0,0,.6);}
+.moment::before{
+  content:'';position:absolute;inset:0;background-size:cover;background-position:center;
+  transition:transform .7s var(--ease);z-index:0;
+}
+.moment:hover::before{transform:scale(1.07);}
+.moment::after{
+  content:'';position:absolute;inset:0;z-index:1;
+  background:linear-gradient(180deg, rgba(10,20,32,.05) 0%, rgba(10,20,32,.85) 100%);
 }
 .moment .m-label{font-family:var(--font-mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(247,237,208,.8);position:relative;z-index:2;}
 .moment .m-title{font-family:var(--font-display);font-style:italic;font-size:1.35rem;color:var(--shell);margin-top:.3rem;position:relative;z-index:2;}
-.m1{
-  background-image:linear-gradient(180deg, rgba(10,20,32,.12) 0%, rgba(10,20,32,.82) 100%), url('assets/hero-cove.jpg');
-  background-size:cover;background-position:center 35%;
-}
-.m2{background:linear-gradient(165deg,var(--steel),#0d1c2c);}
-.m3{background:linear-gradient(165deg,var(--lagoon-deep),#08161f);}
-.m4{background:linear-gradient(165deg,#3a4f2f,#12200f);}
+.m1::before{background-image:url('assets/hero-cove.jpg');background-position:center 35%;}
+.m2::before{background-image:url('assets/collections/long-weekend.jpg');}
+.m3::before{background-image:url('assets/collections/passage.jpg');}
+.m4::before{background-image:url('assets/collections/returning-tide.jpg');}
 
 /* ============ CRAFT ============ */
-.craft-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2.4rem;}
+.craft-layout{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2.5rem,5vw,5rem);align-items:center;}
+.craft-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2rem 1.8rem;}
 .craft-item{text-align:left;}
 .craft-badge{
-  width:56px;height:56px;border-radius:50%;background:var(--paper-soft);border:1px solid rgba(19,34,52,.15);
-  display:flex;align-items:center;justify-content:center;margin-bottom:1.2rem;
+  width:52px;height:52px;border-radius:50%;background:var(--paper-soft);border:1px solid rgba(19,34,52,.15);
+  display:flex;align-items:center;justify-content:center;margin-bottom:1.1rem;
 }
-.craft-badge svg{width:24px;height:24px;stroke:var(--gold-dim);}
-.craft-item h4{font-size:1.08rem;color:var(--navy);margin-bottom:.5rem;font-style:italic;}
-.craft-item p{font-size:.92rem;opacity:.8;line-height:1.6;}
+.craft-badge svg{width:22px;height:22px;stroke:var(--gold-dim);}
+.craft-item h4{font-size:1.02rem;color:var(--navy);margin-bottom:.4rem;font-style:italic;}
+.craft-item p{font-size:.88rem;opacity:.8;line-height:1.6;}
+.craft-photo{position:relative;aspect-ratio:4/5;border-radius:4px;overflow:hidden;box-shadow:0 44px 84px -36px rgba(10,20,32,.4);}
+.craft-photo img{width:100%;height:100%;object-fit:cover;display:block;}
+.craft-photo-badge{
+  position:absolute;bottom:18px;left:18px;background:rgba(251,246,232,.94);color:var(--navy);
+  font-family:var(--font-mono);font-size:.64rem;letter-spacing:.06em;text-transform:uppercase;
+  padding:.5rem .85rem;border-radius:999px;
+}
+
+/* ============ GALLERY ============ */
+#gallery{position:relative;overflow:hidden;}
+.gallery-grid{
+  position:relative;z-index:2;display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:200px;gap:1rem;
+}
+.gallery-tile{
+  position:relative;overflow:hidden;border-radius:3px;cursor:pointer;
+  box-shadow:0 20px 40px -26px rgba(0,0,0,.55);
+}
+.gallery-tile.g-big{grid-column:span 2;grid-row:span 2;}
+.gallery-tile.g-wide{grid-column:span 2;}
+.gallery-tile img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;
+  transition:transform .7s var(--ease);
+}
+.gallery-tile:hover img{transform:scale(1.06);}
+.gallery-tile::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg, rgba(10,20,32,.02) 40%, rgba(10,20,32,.88) 100%);
+  transition:opacity .35s var(--ease);
+}
+.gallery-caption{
+  position:absolute;left:0;right:0;bottom:0;padding:1rem 1.1rem;z-index:2;
+  transform:translateY(6px);opacity:.88;transition:transform .35s var(--ease), opacity .35s var(--ease);
+}
+.gallery-tile:hover .gallery-caption{transform:translateY(0);opacity:1;}
+.gallery-caption p{font-family:var(--font-display);font-style:italic;font-size:.92rem;color:var(--shell);line-height:1.3;margin-bottom:.35rem;}
+.gallery-caption .g-likes{
+  font-family:var(--font-mono);font-size:.62rem;letter-spacing:.05em;color:rgba(247,237,208,.6);
+  display:flex;align-items:center;gap:.4rem;
+}
+.gallery-caption .g-likes svg{width:11px;height:11px;stroke:var(--lagoon);fill:none;}
+.gallery-foot{text-align:center;margin-top:2.6rem;position:relative;z-index:2;}
+.gallery-foot p{font-family:var(--font-display);font-style:italic;font-size:1.05rem;color:rgba(247,237,208,.7);}
+
+/* ============ TESTIMONIALS ============ */
+.testimonial-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(2rem,4vw,3.5rem);}
+.testimonial-card{display:flex;flex-direction:column;}
+.testimonial-mark{width:34px;height:26px;margin-bottom:1.6rem;opacity:.35;transition:opacity .3s;}
+.testimonial-card:hover .testimonial-mark{opacity:.6;}
+.testimonial-mark svg{width:100%;height:100%;fill:var(--gold-dim);}
+.testimonial-quote{font-family:var(--font-display);font-style:italic;font-size:clamp(1.1rem,1.6vw,1.3rem);color:var(--navy);line-height:1.5;margin-bottom:1.8rem;flex:1;}
+.testimonial-rule{width:30px;height:1px;background:var(--gold-dim);margin-bottom:1.1rem;}
+.testimonial-name{font-family:var(--font-display);font-style:italic;font-size:.95rem;color:var(--navy);margin-bottom:.25rem;}
+.testimonial-location{font-family:var(--font-mono);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(19,34,52,.45);}
 
 /* ============ CLUBHOUSE ============ */
 .clubhouse{
@@ -536,15 +599,26 @@ footer{background:var(--black);padding:5rem 0 2rem;color:rgba(247,237,208,.7);}
   .heritage-grid{grid-template-columns:1fr;}
   .heritage-visual{height:380px;margin-top:1rem;}
   .product-grid{grid-template-columns:repeat(3,1fr);}
-  .craft-grid{grid-template-columns:repeat(2,1fr);gap:2.2rem;}
+  .craft-layout{grid-template-columns:1fr;}
+  .craft-photo{order:-1;height:320px;}
   .footer-grid{grid-template-columns:1fr 1fr;gap:2.4rem;}
   .collection-row{grid-template-columns:1fr;}
   .collection-row .collection-media{order:1;}
   .collection-row .collection-copy{order:2;margin-top:1.5rem;}
   .collection-row.flip .collection-media{order:1;}
   .collection-row.flip .collection-copy{order:2;}
+  .moments-row{grid-template-columns:repeat(2,1fr);}
+  .gallery-grid{grid-template-columns:repeat(3,1fr);grid-auto-rows:170px;}
+  .gallery-tile.g-big{grid-column:span 2;grid-row:span 2;}
+  .testimonial-grid{grid-template-columns:1fr;gap:2.6rem;}
 }
 @media (max-width:640px){
+  .gallery-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:150px;}
+  .gallery-tile.g-big,.gallery-tile.g-wide{grid-column:span 2;grid-row:span 1;}
+  .moments-row{display:flex;grid-template-columns:none;overflow-x:auto;padding-bottom:.6rem;scroll-snap-type:x mandatory;}
+  .moments-row::-webkit-scrollbar{height:5px;}
+  .moments-row::-webkit-scrollbar-thumb{background:rgba(179,163,112,.4);border-radius:4px;}
+  .moment{flex:0 0 240px;scroll-snap-align:start;aspect-ratio:3/4;}
   .product-grid{grid-template-columns:repeat(2,1fr);}
   .product-card-row{flex-direction:column;align-items:flex-start;gap:.7rem;}
   .product-card-add{white-space:nowrap;}
@@ -871,9 +945,9 @@ footer{background:var(--black);padding:5rem 0 2rem;color:rgba(247,237,208,.7);}
     </div>
     <div class="moments-row reveal reveal-delay-1">
       <div class="moment m1"><span class="m-label">05:40 AM</span><span class="m-title">Dawn Sail</span></div>
-      <div class="moment m2"><span class="m-label">The Course</span><span class="m-title">Ninth Hole</span></div>
-      <div class="moment m3"><span class="m-label">Golden Hour</span><span class="m-title">Harbor Bar</span></div>
-      <div class="moment m4"><span class="m-label">Late Night</span><span class="m-title">Sundeck Lounge</span></div>
+      <div class="moment m2"><span class="m-label">07:15 AM</span><span class="m-title">The Long Weekend</span></div>
+      <div class="moment m3"><span class="m-label">Golden Hour</span><span class="m-title">Open Water</span></div>
+      <div class="moment m4"><span class="m-label">Dusk</span><span class="m-title">Returning Tide</span></div>
     </div>
   </div>
 </section>
@@ -881,30 +955,138 @@ footer{background:var(--black);padding:5rem 0 2rem;color:rgba(247,237,208,.7);}
 <!-- ============ CRAFTSMANSHIP ============ -->
 <section class="section--light section-pad" id="craft">
   <div class="container">
-    <div class="section-head reveal">
-      <span class="eyebrow"><span class="dot"></span>Craftsmanship</span>
-      <h2>The details we don't compromise on.</h2>
+    <div class="craft-layout">
+      <div class="craft-copy">
+        <div class="section-head reveal" style="margin-bottom:2.2rem;">
+          <span class="eyebrow"><span class="dot"></span>Craftsmanship</span>
+          <h2>The details we don't compromise on.</h2>
+        </div>
+        <div class="craft-grid">
+          <div class="craft-item reveal">
+            <div class="craft-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="4" width="6" height="6"/><rect x="14" y="4" width="6" height="6"/><rect x="4" y="14" width="6" height="6"/><rect x="14" y="14" width="6" height="6"/></svg></div>
+            <h4>Piqué, Chosen With Intent</h4>
+            <p>A double-knit piqué that breathes like linen and holds its shape through salt, sun, and the hundredth wash.</p>
+          </div>
+          <div class="craft-item reveal reveal-delay-1">
+            <div class="craft-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12h16M8 6l-4 6 4 6M16 6l4 6-4 6"/></svg></div>
+            <h4>A Collar Built to Hold</h4>
+            <p>Fused interlining, rolled by hand and set with a double row of stitching — structure that lasts for years, not weeks.</p>
+          </div>
+          <div class="craft-item reveal reveal-delay-2">
+            <div class="craft-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="7"/><path d="M8 12c1.4-2 2.6-2 4 0s2.6 2 4 0"/></svg></div>
+            <h4>Embroidered, Never Printed</h4>
+            <p>Every turtle is laid down in dense, high-tension thread — a small detail, done slowly.</p>
+          </div>
+          <div class="craft-item reveal reveal-delay-3">
+            <div class="craft-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M11 4h6a2 2 0 012 2v6l-9 9-8-8 9-9z"/><circle cx="15.2" cy="8.2" r="1.1"/></svg></div>
+            <h4>Numbered, Then Closed</h4>
+            <p>Each polo is numbered within its run of 200. A garment with a serial, not a season.</p>
+          </div>
+        </div>
+      </div>
+      <div class="craft-photo reveal reveal-delay-2">
+        <img src="assets/gallery/at-the-helm.jpg" alt="Man at the helm of a sailboat at golden hour, wearing the Deep Blue Long Run Polo" loading="lazy" />
+        <span class="craft-photo-badge">Built to Endure</span>
+      </div>
     </div>
-    <div class="craft-grid">
-      <div class="craft-item reveal">
-        <div class="craft-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="4" width="6" height="6"/><rect x="14" y="4" width="6" height="6"/><rect x="4" y="14" width="6" height="6"/><rect x="14" y="14" width="6" height="6"/></svg></div>
-        <h4>Piqué, Chosen With Intent</h4>
-        <p>A double-knit piqué that breathes like linen and holds its shape through salt, sun, and the hundredth wash.</p>
+  </div>
+</section>
+
+<!-- ============ GALLERY ============ -->
+<section class="section--dark section-pad" id="gallery">
+  <canvas class="particle-canvas" id="gallery-particles"></canvas>
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow"><span class="dot"></span>From the Coast</span>
+      <h2>The long run, captured.</h2>
+      <p>New colorways, coastal days, and the moments worth keeping — the men who go the distance, wherever the tide takes them.</p>
+    </div>
+    <div class="gallery-grid reveal">
+      <div class="gallery-tile g-big">
+        <img src="assets/gallery/golden-hour.jpg" alt="Man walking the shoreline barefoot at golden hour in the Sand Long Run Polo" loading="lazy" />
+        <div class="gallery-caption">
+          <p>&ldquo;Golden hour, bare feet, and the long run ahead.&rdquo;</p>
+          <span class="g-likes"><svg viewBox="0 0 24 24" stroke-width="1.6"><path d="M12 20s-7-4.35-9.5-8.5C.5 8 2 4.5 5.5 4.5c2 0 3.5 1.2 4.5 2.7C11 5.7 12.5 4.5 14.5 4.5 18 4.5 19.5 8 19.5 11.5 17 15.65 12 20 12 20z"/></svg>1,284</span>
+        </div>
       </div>
-      <div class="craft-item reveal reveal-delay-1">
-        <div class="craft-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12h16M8 6l-4 6 4 6M16 6l4 6-4 6"/></svg></div>
-        <h4>A Collar Built to Hold</h4>
-        <p>Fused interlining, rolled by hand and set with a double row of stitching — structure that lasts for years, not weeks.</p>
+      <div class="gallery-tile">
+        <img src="assets/gallery/back-nine.jpg" alt="Man on a golf course at sunset wearing the Deep Blue Long Run Polo" loading="lazy" />
+        <div class="gallery-caption">
+          <p>&ldquo;Last light on the back nine.&rdquo;</p>
+          <span class="g-likes"><svg viewBox="0 0 24 24" stroke-width="1.6"><path d="M12 20s-7-4.35-9.5-8.5C.5 8 2 4.5 5.5 4.5c2 0 3.5 1.2 4.5 2.7C11 5.7 12.5 4.5 14.5 4.5 18 4.5 19.5 8 19.5 11.5 17 15.65 12 20 12 20z"/></svg>748</span>
+        </div>
       </div>
-      <div class="craft-item reveal reveal-delay-2">
-        <div class="craft-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="7"/><path d="M8 12c1.4-2 2.6-2 4 0s2.6 2 4 0"/></svg></div>
-        <h4>Embroidered, Never Printed</h4>
-        <p>Every turtle is laid down in dense, high-tension thread — a small detail, done slowly.</p>
+      <div class="gallery-tile">
+        <img src="assets/gallery/pool-sea.jpg" alt="Man sitting at an infinity pool edge overlooking the sea in the Aqua Mint Long Run Polo" loading="lazy" />
+        <div class="gallery-caption">
+          <p>&ldquo;Where the pool meets the sea.&rdquo;</p>
+          <span class="g-likes"><svg viewBox="0 0 24 24" stroke-width="1.6"><path d="M12 20s-7-4.35-9.5-8.5C.5 8 2 4.5 5.5 4.5c2 0 3.5 1.2 4.5 2.7C11 5.7 12.5 4.5 14.5 4.5 18 4.5 19.5 8 19.5 11.5 17 15.65 12 20 12 20z"/></svg>1,103</span>
+        </div>
       </div>
-      <div class="craft-item reveal reveal-delay-3">
-        <div class="craft-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M11 4h6a2 2 0 012 2v6l-9 9-8-8 9-9z"/><circle cx="15.2" cy="8.2" r="1.1"/></svg></div>
-        <h4>Numbered, Then Closed</h4>
-        <p>Each polo is numbered within its run of 200. A garment with a serial, not a season.</p>
+      <div class="gallery-tile g-wide">
+        <img src="assets/gallery/end-of-dock.jpg" alt="Man standing at the end of a dock at sunset in the Sand Long Run Polo" loading="lazy" />
+        <div class="gallery-caption">
+          <p>&ldquo;End of the dock, start of the evening.&rdquo;</p>
+          <span class="g-likes"><svg viewBox="0 0 24 24" stroke-width="1.6"><path d="M12 20s-7-4.35-9.5-8.5C.5 8 2 4.5 5.5 4.5c2 0 3.5 1.2 4.5 2.7C11 5.7 12.5 4.5 14.5 4.5 18 4.5 19.5 8 19.5 11.5 17 15.65 12 20 12 20z"/></svg>1,402</span>
+        </div>
+      </div>
+      <div class="gallery-tile">
+        <img src="assets/gallery/cliffs-edge.jpg" alt="Man standing at a cliff's edge at sunset in the White Long Run Polo" loading="lazy" />
+        <div class="gallery-caption">
+          <p>&ldquo;Cliff's edge, last light. Crisp white, wide open.&rdquo;</p>
+          <span class="g-likes"><svg viewBox="0 0 24 24" stroke-width="1.6"><path d="M12 20s-7-4.35-9.5-8.5C.5 8 2 4.5 5.5 4.5c2 0 3.5 1.2 4.5 2.7C11 5.7 12.5 4.5 14.5 4.5 18 4.5 19.5 8 19.5 11.5 17 15.65 12 20 12 20z"/></svg>1,178</span>
+        </div>
+      </div>
+      <div class="gallery-tile">
+        <img src="assets/gallery/twilight-toast.jpg" alt="Man raising a toast at an oceanside dinner in the Sand Long Run Polo" loading="lazy" />
+        <div class="gallery-caption">
+          <p>&ldquo;Twilight toast, salt air. Sand polo, string lights.&rdquo;</p>
+          <span class="g-likes"><svg viewBox="0 0 24 24" stroke-width="1.6"><path d="M12 20s-7-4.35-9.5-8.5C.5 8 2 4.5 5.5 4.5c2 0 3.5 1.2 4.5 2.7C11 5.7 12.5 4.5 14.5 4.5 18 4.5 19.5 8 19.5 11.5 17 15.65 12 20 12 20z"/></svg>1,021</span>
+        </div>
+      </div>
+      <div class="gallery-tile">
+        <img src="assets/gallery/salt-air.jpg" alt="Man leaning on a dune fence at sunset in the Sand Long Run Polo" loading="lazy" />
+        <div class="gallery-caption">
+          <p>&ldquo;Sand polo, last light, salt air.&rdquo;</p>
+          <span class="g-likes"><svg viewBox="0 0 24 24" stroke-width="1.6"><path d="M12 20s-7-4.35-9.5-8.5C.5 8 2 4.5 5.5 4.5c2 0 3.5 1.2 4.5 2.7C11 5.7 12.5 4.5 14.5 4.5 18 4.5 19.5 8 19.5 11.5 17 15.65 12 20 12 20z"/></svg>934</span>
+        </div>
+      </div>
+    </div>
+    <div class="gallery-foot reveal">
+      <p>As worn by the men who go the distance.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="section--sage section-pad" id="reviews">
+  <div class="container">
+    <div class="section-head reveal" style="margin:0 auto 3.6rem;text-align:center;">
+      <span class="eyebrow" style="justify-content:center;"><span class="dot"></span>From the Long Run</span>
+      <h2>Worn on every coast.</h2>
+      <p style="margin-left:auto;margin-right:auto;">The men who wear them, in their own words.</p>
+    </div>
+    <div class="testimonial-grid">
+      <div class="testimonial-card reveal">
+        <div class="testimonial-mark"><svg viewBox="0 0 120 100" xmlns="http://www.w3.org/2000/svg"><ellipse cx="60" cy="55" rx="30" ry="23"/><ellipse cx="60" cy="30" rx="13" ry="11"/><ellipse cx="28" cy="40" rx="9" ry="6" transform="rotate(-35 28 40)"/><ellipse cx="92" cy="40" rx="9" ry="6" transform="rotate(35 92 40)"/><ellipse cx="32" cy="72" rx="11" ry="5" transform="rotate(20 32 72)"/><ellipse cx="88" cy="72" rx="11" ry="5" transform="rotate(-20 88 72)"/><ellipse cx="48" cy="82" rx="8" ry="4" transform="rotate(15 48 82)"/><ellipse cx="72" cy="82" rx="8" ry="4" transform="rotate(-15 72 82)"/></svg></div>
+        <p class="testimonial-quote">&ldquo;The best polo I've owned. It moves with me from the boat to the clubhouse without missing a beat.&rdquo;</p>
+        <div class="testimonial-rule"></div>
+        <p class="testimonial-name">James Whitfield</p>
+        <p class="testimonial-location">Newport, Rhode Island</p>
+      </div>
+      <div class="testimonial-card reveal reveal-delay-1">
+        <div class="testimonial-mark"><svg viewBox="0 0 120 100" xmlns="http://www.w3.org/2000/svg"><ellipse cx="60" cy="55" rx="30" ry="23"/><ellipse cx="60" cy="30" rx="13" ry="11"/><ellipse cx="28" cy="40" rx="9" ry="6" transform="rotate(-35 28 40)"/><ellipse cx="92" cy="40" rx="9" ry="6" transform="rotate(35 92 40)"/><ellipse cx="32" cy="72" rx="11" ry="5" transform="rotate(20 32 72)"/><ellipse cx="88" cy="72" rx="11" ry="5" transform="rotate(-20 88 72)"/><ellipse cx="48" cy="82" rx="8" ry="4" transform="rotate(15 48 82)"/><ellipse cx="72" cy="82" rx="8" ry="4" transform="rotate(-15 72 82)"/></svg></div>
+        <p class="testimonial-quote">&ldquo;Three years in and it still looks like the day I bought it. That's the long run, exactly as promised.&rdquo;</p>
+        <div class="testimonial-rule"></div>
+        <p class="testimonial-name">Marcus Bell</p>
+        <p class="testimonial-location">Kiawah Island, South Carolina</p>
+      </div>
+      <div class="testimonial-card reveal reveal-delay-2">
+        <div class="testimonial-mark"><svg viewBox="0 0 120 100" xmlns="http://www.w3.org/2000/svg"><ellipse cx="60" cy="55" rx="30" ry="23"/><ellipse cx="60" cy="30" rx="13" ry="11"/><ellipse cx="28" cy="40" rx="9" ry="6" transform="rotate(-35 28 40)"/><ellipse cx="92" cy="40" rx="9" ry="6" transform="rotate(35 92 40)"/><ellipse cx="32" cy="72" rx="11" ry="5" transform="rotate(20 32 72)"/><ellipse cx="88" cy="72" rx="11" ry="5" transform="rotate(-20 88 72)"/><ellipse cx="48" cy="82" rx="8" ry="4" transform="rotate(15 48 82)"/><ellipse cx="72" cy="82" rx="8" ry="4" transform="rotate(-15 72 82)"/></svg></div>
+        <p class="testimonial-quote">&ldquo;I bought one for myself and ended up getting them for my brothers. The quality speaks for itself.&rdquo;</p>
+        <div class="testimonial-rule"></div>
+        <p class="testimonial-name">David Okonkwo</p>
+        <p class="testimonial-location">Mustique, St. Vincent</p>
       </div>
     </div>
   </div>
@@ -963,6 +1145,8 @@ footer{background:var(--black);padding:5rem 0 2rem;color:rgba(247,237,208,.7);}
           <li><a href="#heritage">Heritage</a></li>
           <li><a href="#lifestyle">Lifestyle</a></li>
           <li><a href="#collections">The Collections</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#reviews">Reviews</a></li>
           <li><a href="#clubhouse">Clubhouse</a></li>
         </ul>
       </div>
@@ -1225,6 +1409,11 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('collections-particles'),
     document.getElementById('collections'),
     { colors: [0x0aa891, 0xb3a370, 0x24406b], count: 130, size: 2.1, opacity: 0.38 }
+  );
+  createParticleField(
+    document.getElementById('gallery-particles'),
+    document.getElementById('gallery'),
+    { colors: [0x0aa891, 0xb3a370, 0xf7edd0, 0x24406b], count: 130, size: 2.1, opacity: 0.32 }
   );
 });
 </script>
