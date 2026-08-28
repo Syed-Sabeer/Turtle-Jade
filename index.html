@@ -2,1760 +2,1096 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
+<script>document.documentElement.className+=" js";</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Turtles by Finley Jade</title>
-<meta name="description" content="Turtles by Finley Jade — premium coastal resort wear and polos for men, inspired by family, the ocean, and timeless vacation elegance." />
+<meta name="description" content="Turtles by Finley Jade. Resort wear inspired by family, the sea, and the places worth returning to. The Long Run Polo, made in numbered editions of 200." />
 <link rel="icon" type="image/png" href="assets/favicon.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,400..600&family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
 
 <style>
-/* ============ TOKENS ============ */
+/* ═══════════════════════════════════════════════════════════
+   TURTLES BY FINLEY JADE — HOMEPAGE
+   01 Tokens
+   ═══════════════════════════════════════════════════════════ */
 :root{
-  --ink:#0a1420;
-  --navy:#111f2e;
-  --navy-soft:#17293c;
-  --navy-softer:#1c3049;
-  --steel:#24406b;
-  --lagoon:#0aa891;
-  --lagoon-deep:#037964;
-  --gold:#b3a370;
-  --gold-bright:#d9c98d;
-  --gold-dim:#8a7d4d;
-  --shell:#f7edd0;
-  --paper:#fbf6e8;
-  --paper-soft:#f3ead2;
-  --sage-cream:#eef1e4;
-  --sage-cream-soft:#e6ecdc;
-  --ink-text:#3a3428;
-  --black:#050505;
+  --limestone:#F2EFE8;
+  --parchment:#E5DED1;
+  --ink:#172127;
+  --navy:#19313D;
+  --navy-soft:#22414F;
+  --adriatic:#81969A;
+  --olive:#777C68;
+  --brass:#A68D65;
+  --white:#FAF9F6;
 
-  --font-display:'Fraunces', 'Iowan Old Style', Georgia, serif;
-  --font-body:'Manrope', -apple-system, 'Segoe UI', sans-serif;
-  --font-mono:'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace;
+  --text:var(--ink);
+  --body:rgba(23,33,39,.72);
+  --muted:rgba(23,33,39,.46);
+  --ghost:rgba(23,33,39,.13);
+  --hair:rgba(23,33,39,.15);
+  --hair-soft:rgba(23,33,39,.09);
+  --plate:#F3F0E9;
 
-  --container:1240px;
-  --pad:clamp(1.5rem, 5vw, 4rem);
-  --section-y:clamp(5rem, 10vw, 9rem);
+  --serif:'Cormorant Garamond','EB Garamond',Baskerville,'Times New Roman',serif;
+  --sans:'Inter',-apple-system,'Helvetica Neue',Helvetica,Arial,sans-serif;
+
+  --max:1440px;
+  --pad:clamp(1.35rem,5vw,5rem);
+  --outer:max(var(--pad),calc((100vw - var(--max)) / 2 + var(--pad)));
+  --sec:clamp(5.5rem,13vw,13rem);
+  --measure:590px;
+  --hdr:90px;
 
   --ease:cubic-bezier(.22,1,.36,1);
+  --mask-ease:cubic-bezier(.6,.04,.15,1);
 }
 
 *{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
 body{
-  background:var(--navy);
-  color:var(--shell);
-  font-family:var(--font-body);
-  font-size:16px;
-  line-height:1.6;
-  -webkit-font-smoothing:antialiased;
-  overflow-x:hidden;
+  background:var(--limestone);color:var(--ink);
+  font-family:var(--sans);font-size:16px;line-height:1.75;font-weight:400;
+  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+  text-rendering:optimizeLegibility;overflow-x:hidden;
 }
 img{max-width:100%;display:block;}
 a{color:inherit;text-decoration:none;}
-h1,h2,h3,h4{font-family:var(--font-display);font-weight:600;text-wrap:balance;letter-spacing:-0.01em;}
-button{font-family:inherit;cursor:pointer;}
-:focus-visible{outline:2px solid var(--lagoon);outline-offset:3px;}
-.container{max-width:var(--container);margin:0 auto;padding-left:var(--pad);padding-right:var(--pad);}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;}
+input{font:inherit;color:inherit;}
+figure{margin:0;}
+::selection{background:var(--navy);color:var(--white);}
+:focus-visible{outline:1px solid var(--brass);outline-offset:5px;}
 
-.eyebrow{
-  font-family:var(--font-mono);
-  font-size:.72rem;
-  letter-spacing:.18em;
-  text-transform:uppercase;
-  color:var(--gold-bright);
-  display:inline-flex;
-  align-items:center;
-  gap:.6em;
-}
-.section--light .eyebrow,.section--sage .eyebrow{color:var(--gold-dim);}
-.eyebrow .dot{width:5px;height:5px;border-radius:50%;background:var(--lagoon);display:inline-block;}
-
-.facet{
-  clip-path:polygon(26px 0,100% 0,100% calc(100% - 26px),calc(100% - 26px) 100%,0 100%,0 26px);
+/* Paper grain — material, not decoration */
+body::after{
+  content:'';position:fixed;inset:0;z-index:70;pointer-events:none;opacity:.55;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='.045'/%3E%3C/svg%3E");
 }
 
+/* ═══════════ 02 Surfaces & primitives ═══════════ */
+.limestone{background:var(--limestone);}
+.parchment{background:var(--parchment);--plate:#EFEBE2;--hair-soft:rgba(23,33,39,.11);}
+.midnight{
+  background:var(--navy);color:var(--white);
+  --text:var(--white);--body:rgba(250,249,246,.7);--muted:rgba(250,249,246,.5);
+  --hair:rgba(250,249,246,.24);--hair-soft:rgba(250,249,246,.14);--ghost:rgba(250,249,246,.14);
+}
+
+.wrap{max-width:var(--max);margin:0 auto;padding-left:var(--pad);padding-right:var(--pad);}
+.sec{padding-top:var(--sec);padding-bottom:var(--sec);position:relative;}
+.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:clamp(1rem,2vw,2rem);}
+
+h1,h2,h3{font-family:var(--serif);font-weight:400;color:var(--text);text-wrap:balance;}
+h1{font-size:clamp(3.4rem,8.8vw,7.8rem);line-height:.94;letter-spacing:-.03em;}
+h2{font-size:clamp(2.5rem,5.4vw,4.6rem);line-height:1.03;letter-spacing:-.025em;}
+h3{font-size:clamp(1.5rem,2.1vw,1.95rem);line-height:1.2;letter-spacing:-.014em;}
+p{color:var(--body);}
+
+.lead{font-size:clamp(1rem,1.08vw,1.075rem);line-height:1.88;}
+.serif-lead{
+  font-family:var(--serif);font-weight:300;color:var(--text);
+  font-size:clamp(1.4rem,2.15vw,1.95rem);line-height:1.44;letter-spacing:-.014em;
+}
+.label{font-size:.645rem;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);display:block;}
+.caption{font-size:.6rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);}
+.num{font-family:var(--serif);font-feature-settings:'onum' 1;letter-spacing:.04em;}
+
+/* Section rail: number, name, and a rule that draws itself */
+.rail{position:relative;display:flex;align-items:baseline;gap:1.7rem;padding-top:1.4rem;margin-bottom:clamp(3rem,6.5vw,6.5rem);}
+.rail::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;background:var(--hair-soft);
+  transform-origin:left;transition:transform 1.6s var(--ease);
+}
+.js .rail::before{transform:scaleX(0);}
+.js .rail.in::before{transform:scaleX(1);}
+.rail .n{font-family:var(--serif);font-feature-settings:'onum' 1;font-size:1rem;color:var(--brass);letter-spacing:.05em;}
+
+/* Buttons */
 .btn{
-  font-family:var(--font-mono);
-  font-size:.78rem;
-  letter-spacing:.1em;
-  text-transform:uppercase;
-  padding:1rem 1.9rem;
-  border-radius:999px;
-  display:inline-flex;
-  align-items:center;
-  gap:.6rem;
-  border:1px solid transparent;
-  transition:transform .35s var(--ease), box-shadow .35s var(--ease), background .35s var(--ease), border-color .35s var(--ease);
-  white-space:nowrap;
+  position:relative;display:inline-flex;align-items:center;justify-content:center;
+  height:56px;padding:0 2.7rem;overflow:hidden;border-radius:1px;
+  background:var(--navy);color:var(--white);border:1px solid var(--navy);
+  font-size:.645rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;line-height:1;
+  transition:color .6s var(--ease),border-color .6s var(--ease);
 }
-.btn:hover{transform:translateY(-2px);}
-.btn-primary{
-  background:linear-gradient(135deg, var(--lagoon), var(--lagoon-deep));
-  color:var(--shell);
-  box-shadow:0 8px 30px -8px rgba(10,168,145,.55);
-}
-.btn-primary:hover{box-shadow:0 14px 34px -8px rgba(10,168,145,.75);}
-.btn-ghost{
-  border-color:rgba(247,237,208,.35);
-  color:var(--shell);
-  background:rgba(247,237,208,.03);
-}
-.btn-ghost:hover{border-color:var(--gold-bright);background:rgba(247,237,208,.08);}
-.section--light .btn-ghost,.section--sage .btn-ghost{border-color:rgba(19,34,52,.28);color:var(--navy);background:rgba(19,34,52,.02);}
-.section--light .btn-ghost:hover,.section--sage .btn-ghost:hover{border-color:var(--gold-dim);background:rgba(19,34,52,.06);}
-.btn svg{width:14px;height:14px;transition:transform .3s var(--ease);}
-.btn:hover svg{transform:translateX(3px);}
+.btn::before{content:'';position:absolute;inset:0;background:var(--white);transform:translateY(101%);transition:transform .7s var(--ease);}
+.btn s{position:relative;z-index:2;text-decoration:none;}
+.btn:hover{color:var(--navy);}
+.btn:hover::before{transform:translateY(0);}
+.btn.ghost{background:transparent;color:var(--text);border-color:var(--hair);}
+.btn.ghost::before{background:var(--navy);}
+.btn.ghost:hover{color:var(--white);border-color:var(--navy);}
+.midnight .btn,.hero .btn{background:transparent;border-color:rgba(250,249,246,.5);color:var(--white);}
+.midnight .btn::before,.hero .btn::before{background:var(--white);}
+.midnight .btn:hover,.hero .btn:hover{color:var(--navy);border-color:var(--white);}
 
-.reveal{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease), transform .9s var(--ease);}
-.reveal.is-visible{opacity:1;transform:translateY(0);}
-.reveal-delay-1{transition-delay:.1s;}
-.reveal-delay-2{transition-delay:.2s;}
-.reveal-delay-3{transition-delay:.3s;}
+.tl{position:relative;display:inline-flex;align-items:center;gap:.95rem;padding-bottom:.6rem;color:var(--text);
+  font-size:.645rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;}
+.tl::before{content:'';position:absolute;left:0;bottom:0;height:1px;width:100%;background:var(--hair);}
+.tl::after{content:'';position:absolute;left:0;bottom:0;height:1px;width:100%;background:var(--brass);transform:scaleX(0);transform-origin:left;transition:transform .8s var(--ease);}
+.tl:hover::after{transform:scaleX(1);}
+.tl i{width:16px;height:1px;background:currentColor;opacity:.45;transition:width .6s var(--ease);}
+.tl:hover i{width:28px;}
 
-@media (prefers-reduced-motion: reduce){
-  *{animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important; scroll-behavior:auto !important;}
-  .reveal{opacity:1;transform:none;}
-}
-
-/* ============ PRELOADER ============ */
-#preloader{
-  position:fixed;inset:0;z-index:999;background:var(--navy);
-  display:flex;align-items:center;justify-content:center;
-  transition:opacity .6s var(--ease), visibility .6s var(--ease);
-}
-#preloader.done{opacity:0;visibility:hidden;pointer-events:none;}
-#preloader img{width:64px;height:auto;filter:drop-shadow(0 0 20px rgba(10,168,145,.5));animation:pulseFade 1.4s ease-in-out infinite;}
-@keyframes pulseFade{0%,100%{opacity:.5;transform:scale(.94);}50%{opacity:1;transform:scale(1.02);}}
-
-/* ============ CURSOR GLOW ============ */
-#cursor-glow{
-  position:fixed;top:0;left:0;width:520px;height:520px;border-radius:50%;
-  background:radial-gradient(circle, rgba(10,168,145,.14), rgba(10,168,145,0) 65%);
-  transform:translate(-50%,-50%);pointer-events:none;z-index:2;
-  will-change:transform;transition:opacity .4s ease;
-}
-@media (hover:none), (pointer:coarse){ #cursor-glow{display:none;} }
-
-/* ============ HEADER ============ */
-.announcement-bar{
-  position:fixed;top:0;left:0;right:0;height:30px;z-index:120;display:flex;align-items:center;justify-content:center;gap:1rem;
-  background:var(--black);border-bottom:1px solid rgba(179,163,112,.2);color:rgba(247,237,208,.8);
-  font-family:var(--font-mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;
-}
-.announcement-bar i{width:3px;height:3px;border-radius:50%;background:var(--lagoon);}
-header{
-  position:fixed;top:30px;left:0;right:0;z-index:100;
-  padding:1.3rem 0;
-  transition:background .4s var(--ease), padding .4s var(--ease), backdrop-filter .4s var(--ease), border-color .4s var(--ease);
-  background:rgba(10,20,32,.92);backdrop-filter:blur(14px) saturate(130%);
-  border-bottom:1px solid rgba(179,163,112,.16);box-shadow:0 12px 34px -28px rgba(0,0,0,.8);
-}
-header.scrolled{
-  background:rgba(10,20,32,.97);
-  backdrop-filter:blur(16px) saturate(140%);
-  padding:.85rem 0;
-  border-color:rgba(179,163,112,.18);
-}
-.nav-row{display:flex;align-items:center;justify-content:space-between;gap:2rem;}
-.brand{display:flex;align-items:center;gap:.7rem;}
-.brand img{width:38px;height:auto;filter:drop-shadow(0 2px 6px rgba(0,0,0,.4));}
-.brand-text{display:flex;flex-direction:column;line-height:1.1;}
-.brand-text .kicker{font-family:var(--font-mono);font-size:.6rem;letter-spacing:.22em;color:var(--gold-bright);text-transform:uppercase;}
-.brand-text .name{font-family:var(--font-display);font-size:1.28rem;font-style:italic;font-weight:500;color:var(--shell);}
-
-.nav-links{display:flex;gap:2.2rem;align-items:center;}
-.nav-links a{
-  font-family:var(--font-mono);font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;
-  color:var(--shell);opacity:.82;position:relative;padding:.3rem 0;transition:opacity .3s;
-}
-.nav-links a::after{
-  content:'';position:absolute;left:0;bottom:-2px;width:0;height:1px;background:var(--gold-bright);
-  transition:width .35s var(--ease);
-}
-.nav-links a:hover{opacity:1;}
-.nav-links a:hover::after{width:100%;}
-
-.nav-cta{display:flex;align-items:center;gap:1.2rem;}
-.nav-cta .btn-primary{padding:.75rem 1.4rem;font-size:.7rem;}
-.cart-button{
-  min-width:46px;height:42px;padding:0 .75rem;border-radius:999px;border:1px solid rgba(247,237,208,.28);
-  background:rgba(247,237,208,.04);color:var(--shell);display:flex;align-items:center;justify-content:center;gap:.5rem;
-  font-family:var(--font-mono);font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;transition:background .3s,border-color .3s;
-}
-.cart-button:hover{background:rgba(247,237,208,.1);border-color:var(--gold-bright);}
-.cart-button svg{width:16px;height:16px;}
-.cart-count{display:grid;place-items:center;min-width:18px;height:18px;padding:0 4px;border-radius:999px;background:var(--lagoon);color:white;font-size:.56rem;}
-.burger{
-  display:none;width:42px;height:42px;border-radius:50%;border:1px solid rgba(247,237,208,.25);
-  background:none;align-items:center;justify-content:center;flex-direction:column;gap:5px;
-}
-.burger span{width:18px;height:1.5px;background:var(--shell);display:block;transition:transform .3s, opacity .3s;}
-
-#mobile-panel{
-  position:fixed;inset:0;background:var(--ink);z-index:150;
-  display:flex;flex-direction:column;justify-content:center;align-items:center;gap:2.2rem;
-  transform:translateY(-100%);transition:transform .5s var(--ease);
-}
-#mobile-panel.open{transform:translateY(0);}
-#mobile-panel a{font-family:var(--font-display);font-size:1.9rem;color:var(--shell);}
-#mobile-panel .close-btn{position:absolute;top:1.6rem;right:1.6rem;width:44px;height:44px;border-radius:50%;border:1px solid rgba(247,237,208,.3);background:none;color:var(--shell);display:flex;align-items:center;justify-content:center;}
-
-/* ============ HERO ============ */
-.hero{
-  position:relative;min-height:100vh;display:flex;align-items:center;
-  padding-top:10rem;padding-bottom:6rem;
-  background-image:
-    radial-gradient(ellipse 72% 62% at 82% 24%, rgba(62,126,153,.62), transparent 62%),
-    radial-gradient(ellipse 62% 54% at 10% 86%, rgba(10,184,157,.28), transparent 66%),
-    linear-gradient(125deg, rgba(11,26,40,.92) 0%, rgba(27,60,79,.84) 50%, rgba(16,83,94,.78) 100%),
-    url('assets/hero-cove.jpg');
-  background-position:0 0, 0 0, 0 0, center 30%;
-  background-size:auto, auto, auto, cover;
-  background-repeat:no-repeat;
-  overflow:hidden;
-}
-.hero::before{
-  content:'';position:absolute;inset:0;opacity:.5;
-  background-image:radial-gradient(rgba(247,237,208,.05) 1px, transparent 1px);
-  background-size:26px 26px;
-  mask-image:radial-gradient(ellipse 60% 60% at 60% 40%, black, transparent 75%);
-}
-.hero-glow{
-  position:absolute;width:70vw;height:70vw;max-width:900px;max-height:900px;border-radius:50%;
-  top:-15%;right:-18%;
-  background:radial-gradient(circle, rgba(10,168,145,.22), transparent 68%);
-  animation:driftGlow 14s ease-in-out infinite;
-  pointer-events:none;
-}
-@keyframes driftGlow{0%,100%{transform:translate(0,0) scale(1);}50%{transform:translate(-3%,4%) scale(1.06);}}
-
-.hero-grid{
-  position:relative;z-index:3;display:grid;grid-template-columns:1.05fr .95fr;gap:3rem;align-items:center;
-}
-.hero-copy .eyebrow{margin-bottom:1.6rem;}
-.hero-copy h1{
-  font-size:clamp(2.6rem, 5.6vw, 4.5rem);line-height:1.04;color:var(--shell);margin-bottom:1.6rem;
-}
-.hero-copy h1 em{color:var(--lagoon);font-style:italic;}
-.hero-copy p.lead{
-  max-width:520px;color:rgba(247,237,208,.78);font-size:1.08rem;line-height:1.75;margin-bottom:2.4rem;
-}
-.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:1.8rem;}
-.featured-link{
-  display:inline-flex;align-items:center;gap:.6rem;margin-bottom:2.2rem;
-  font-family:var(--font-mono);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;
-  color:var(--shell);opacity:.85;padding:.55rem 1.1rem;border:1px solid rgba(179,163,112,.32);border-radius:999px;
-  transition:border-color .3s, opacity .3s;
-}
-.featured-link:hover{opacity:1;border-color:var(--gold-bright);}
-.featured-link i{width:6px;height:6px;border-radius:50%;background:var(--lagoon);display:inline-block;flex:none;}
-.trust-tags{display:flex;flex-wrap:wrap;gap:1.4rem 2rem;}
-.trust-tags span{
-  font-family:var(--font-mono);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;
-  color:rgba(247,237,208,.6);display:flex;align-items:center;gap:.55rem;
-}
-.trust-tags i{width:6px;height:6px;border-radius:50%;display:inline-block;flex:none;}
-
-/* medallion */
-.medallion-stage{position:relative;display:flex;align-items:center;justify-content:center;perspective:1200px;height:520px;}
-.medallion-float{animation:floaty 6s ease-in-out infinite;}
-@keyframes floaty{0%,100%{transform:translateY(0);}50%{transform:translateY(-16px);}}
-.medallion{
-  position:relative;width:min(74vw,420px);height:min(74vw,420px);
-  transition:transform .25s var(--ease);
-  transform-style:preserve-3d;
-}
-.medallion-ring{
-  position:absolute;inset:0;border-radius:50%;
-  border:1px dashed rgba(179,163,112,.55);
-  animation:spinSlow 50s linear infinite;
-}
-.medallion-ring::before,.medallion-ring::after{
-  content:'';position:absolute;border-radius:50%;border:1px solid rgba(247,237,208,.12);
-}
-.medallion-ring::before{inset:14px;}
-.medallion-ring::after{inset:-14px;border-color:rgba(10,168,145,.18);}
-@keyframes spinSlow{from{transform:rotate(0);}to{transform:rotate(360deg);}}
-.medallion-core{
-  position:absolute;inset:38px;border-radius:50%;
-  background:radial-gradient(circle at 32% 28%, #234067, #0e1c2c 72%);
-  box-shadow:inset 0 0 60px rgba(0,0,0,.35), 0 30px 60px -20px rgba(3,121,100,.45), 0 0 0 1px rgba(179,163,112,.35);
-  display:flex;align-items:center;justify-content:center;overflow:hidden;
-}
-.medallion-core img{width:100%;height:100%;object-fit:cover;object-position:center 38%;transform:scale(1.02);}
-.medallion-core::after{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(145deg,rgba(247,237,208,.07),transparent 40%,rgba(3,121,100,.18));
-  box-shadow:inset 0 0 46px rgba(4,13,23,.32);
-  pointer-events:none;
-}
-.medallion-tag{
-  position:absolute;bottom:6px;right:8px;
-  font-family:var(--font-mono);font-size:.62rem;letter-spacing:.12em;color:var(--gold-bright);
-  background:rgba(10,20,32,.6);padding:.35rem .6rem;border-radius:999px;border:1px solid rgba(179,163,112,.35);
+/* ═══════════ 03 Motion ═══════════ */
+/* Reveals are enhancement only — every element renders visible without JS,
+   and nothing is ever hidden behind a scroll trigger. */
+.rv img{transition:transform 2.2s var(--mask-ease);}
+.js .rv img{transform:scale(1.07);}
+.js .rv.in img{transform:scale(1);}
+.up{transition:transform 1.25s var(--ease),opacity 1.25s var(--ease);}
+.js .up{transform:translateY(26px);}
+.js .up.in{transform:none;}
+.d1{transition-delay:.1s;}.d2{transition-delay:.2s;}.d3{transition-delay:.3s;}.d4{transition-delay:.4s;}.d5{transition-delay:.5s;}
+/* the line mask is used only in the hero, which reveals on load */
+.ln-wrap .ln{display:block;overflow:hidden;}
+.js .ln-wrap .ln > span{display:block;transform:translateY(112%);transition:transform 1.35s var(--mask-ease);}
+.js .ln-wrap.in .ln > span{transform:none;}
+.js .ln-wrap.in .ln:nth-child(2) > span{transition-delay:.1s;}
+.lb{display:inline;}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none !important;transition-duration:.001ms !important;scroll-behavior:auto !important;}
+  .js .up{transform:none;}.js .rv img{transform:none;}.js .ln-wrap .ln>span{transform:none;}.rail::before{transform:none;}
 }
 
-.scroll-cue{
-  position:absolute;bottom:1.6rem;left:50%;transform:translateX(-50%);z-index:4;
-  display:flex;flex-direction:column;align-items:center;gap:.6rem;color:rgba(247,237,208,.55);
+/* ═══════════ 04 Header ═══════════ */
+.hdr{
+  position:fixed;top:0;left:0;right:0;z-index:80;height:var(--hdr);color:var(--white);
+  background:transparent;border-bottom:1px solid rgba(250,249,246,.18);
+  transition:background .75s var(--ease),color .75s var(--ease),border-color .75s var(--ease),height .75s var(--ease),transform .7s var(--ease);
 }
-.scroll-cue .mouse{width:22px;height:34px;border:1px solid rgba(247,237,208,.45);border-radius:12px;position:relative;}
-.scroll-cue .mouse::before{
-  content:'';position:absolute;top:6px;left:50%;transform:translateX(-50%);width:3px;height:6px;border-radius:2px;
-  background:var(--gold-bright);animation:scrollDot 1.8s ease-in-out infinite;
+.hdr.solid{
+  background:rgba(242,239,232,.95);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);
+  color:var(--ink);border-bottom-color:rgba(23,33,39,.10);height:72px;
 }
-@keyframes scrollDot{0%{opacity:1;top:6px;}70%{opacity:0;top:18px;}100%{opacity:0;top:6px;}}
-.scroll-cue span{font-family:var(--font-mono);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;}
+.hdr.up{transform:translateY(-100%);}
+.hdr-in{height:100%;max-width:var(--max);margin:0 auto;padding:0 var(--pad);
+  display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:1.5rem;}
+.nav{display:flex;align-items:center;gap:2.9rem;}
+.nav.r{justify-content:flex-end;gap:2.5rem;}
+.nav a,.nav button{position:relative;padding:.5rem 0;opacity:.9;
+  font-size:.645rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;transition:opacity .45s var(--ease);}
+.nav a::after,.nav button::after{content:'';position:absolute;left:0;bottom:.15rem;height:1px;width:100%;background:currentColor;opacity:.5;
+  transform:scaleX(0);transform-origin:left;transition:transform .65s var(--ease);}
+.nav a:hover,.nav button:hover{opacity:1;}
+.nav a:hover::after,.nav button:hover::after{transform:scaleX(1);}
 
-.wave-divider{position:absolute;left:0;right:0;bottom:0;width:100%;height:clamp(60px,10vw,120px);overflow:hidden;line-height:0;z-index:3;}
-.wave-divider svg{width:100%;height:100%;display:block;}
+.mark{display:flex;align-items:center;gap:.95rem;}
+.mark img{width:25px;height:auto;transition:width .75s var(--ease);}
+.hdr.solid .mark img{width:21px;}
+.wm{display:flex;flex-direction:column;gap:.34rem;line-height:1;}
+.wm b{font-family:var(--serif);font-weight:400;font-size:1.32rem;letter-spacing:.42em;text-transform:uppercase;padding-left:.42em;}
+.wm i{font-style:normal;font-size:.47rem;font-weight:500;letter-spacing:.44em;text-transform:uppercase;opacity:.6;padding-left:.44em;}
+.hdr:not(.solid) .wm i{opacity:.85;}
+.burger{display:none;width:24px;height:11px;position:relative;}
+.burger span{position:absolute;left:0;right:0;height:1px;background:currentColor;}
+.burger span:first-child{top:0;} .burger span:last-child{bottom:0;}
 
-/* ============ MARQUEE ============ */
-.marquee-band{background:var(--black);border-top:1px solid rgba(179,163,112,.18);border-bottom:1px solid rgba(179,163,112,.18);padding:1.1rem 0;overflow:hidden;}
-.marquee-track{display:flex;width:max-content;animation:marquee 32s linear infinite;}
-.marquee-band:hover .marquee-track{animation-play-state:paused;}
-.marquee-track span{
-  font-family:var(--font-mono);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--gold);padding:0 2rem;white-space:nowrap;display:flex;align-items:center;gap:2rem;
-}
-.marquee-track span::after{content:'◆';color:var(--lagoon);font-size:.55rem;}
-@keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+/* Overlays */
+.ovl{position:fixed;inset:0;z-index:90;background:var(--limestone);color:var(--ink);display:flex;flex-direction:column;
+  opacity:0;visibility:hidden;transition:opacity .7s var(--ease),visibility .7s var(--ease);}
+.ovl.open{opacity:1;visibility:visible;}
+.ovl-top{height:var(--hdr);flex:0 0 auto;max-width:var(--max);width:100%;margin:0 auto;padding:0 var(--pad);
+  display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(23,33,39,.1);}
+.ovl-x{font-size:.645rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;}
+.ovl-body{flex:1;display:flex;flex-direction:column;justify-content:center;max-width:var(--max);width:100%;margin:0 auto;padding:2rem var(--pad) 4rem;}
+.ovl-links a{display:flex;justify-content:space-between;align-items:baseline;padding:.45rem 0;border-bottom:1px solid rgba(23,33,39,.1);
+  font-family:var(--serif);font-weight:300;font-size:clamp(2.2rem,7vw,3.4rem);line-height:1.4;
+  transition:color .45s var(--ease),padding-left .65s var(--ease);}
+.ovl-links a:hover{color:var(--navy);padding-left:.85rem;}
+.ovl-links a em{font-family:var(--sans);font-style:normal;font-size:.6rem;letter-spacing:.24em;color:rgba(23,33,39,.3);}
+.ovl-meta{margin-top:3rem;display:flex;flex-wrap:wrap;gap:1.5rem 2.4rem;}
+.ovl-meta a,.sg a{font-size:.645rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:rgba(23,33,39,.55);}
+.ovl-meta a:hover,.sg a:hover{color:var(--ink);}
+.sf{display:flex;align-items:center;gap:1rem;border-bottom:1px solid rgba(23,33,39,.16);padding-bottom:1.2rem;}
+.sf input{flex:1;border:0;background:transparent;outline:none;font-family:var(--serif);font-weight:300;font-size:clamp(1.8rem,5vw,3rem);}
+.sf input::placeholder{color:rgba(23,33,39,.2);}
+.sg{margin-top:2.6rem;display:flex;flex-wrap:wrap;gap:1.4rem 2.4rem;}
 
-/* ============ SECTION BASE ============ */
-section{position:relative;scroll-margin-top:84px;}
-.section--dark{background:var(--navy);color:var(--shell);}
-.section--darker{background:var(--ink);color:var(--shell);}
-.section--light{background:var(--paper);color:var(--ink-text);}
-.section--sage{background:linear-gradient(180deg, var(--sage-cream) 0%, var(--sage-cream-soft) 100%);color:var(--ink-text);}
-.section-pad{padding:var(--section-y) 0;}
-.section-head{max-width:640px;margin-bottom:3.4rem;}
-.section-head h2{font-size:clamp(2rem,3.6vw,3rem);margin-top:1rem;}
-.section--dark .section-head h2, .section--darker .section-head h2{color:var(--shell);}
-.section--light .section-head h2,.section--sage .section-head h2{color:var(--navy);}
-.section-head p{margin-top:1.1rem;font-size:1.05rem;line-height:1.7;opacity:.85;max-width:520px;}
+/* ═══════════ 05 · 01 Hero ═══════════ */
+.hero{position:relative;min-height:680px;height:100vh;max-height:1120px;overflow:hidden;
+  display:flex;flex-direction:column;justify-content:flex-end;background:var(--navy);}
+.hero-bg{position:absolute;inset:0;overflow:hidden;}
+.hero-bg img,.hero-bg video{width:100%;height:100%;object-fit:cover;object-position:center 44%;
+  transform:scale(1.05);animation:drift 38s ease-in-out infinite alternate;}
+@keyframes drift{from{transform:scale(1.05);}to{transform:scale(1.13);}}
+.hero-veil{position:absolute;inset:0;background:
+  linear-gradient(to top,rgba(8,17,22,.74) 0%,rgba(8,17,22,.3) 36%,rgba(8,17,22,0) 64%),
+  linear-gradient(to right,rgba(8,17,22,.42) 0%,rgba(8,17,22,0) 58%),
+  linear-gradient(to bottom,rgba(8,17,22,.4) 0%,rgba(8,17,22,.1) 14%,rgba(8,17,22,0) 26%);}
+.hero-rail{position:absolute;z-index:2;right:var(--pad);bottom:clamp(7rem,16vh,11rem);writing-mode:vertical-rl;
+  font-size:.56rem;font-weight:500;letter-spacing:.44em;text-transform:uppercase;color:rgba(250,249,246,.55);}
+.hero-in{position:relative;z-index:2;width:100%;max-width:var(--max);margin:0 auto;padding:0 var(--pad) clamp(2.6rem,5vh,4.2rem);color:var(--white);}
+.hero-copy{max-width:660px;}
+.hero-copy .label{color:rgba(250,249,246,.72);margin-bottom:2.3rem;}
+.hero-copy h1{color:var(--white);margin-bottom:2.1rem;}
+.hero-copy p{color:rgba(250,249,246,.88);font-size:clamp(1rem,1.15vw,1.13rem);line-height:1.8;max-width:450px;margin-bottom:3rem;}
+.hero-act{display:flex;align-items:center;gap:2.7rem;flex-wrap:wrap;}
+.hero-act .tl{color:var(--white);}
+.hero-act .tl::before{background:rgba(250,249,246,.32);}
+.hero-foot{position:relative;z-index:2;width:100%;max-width:var(--max);margin:0 auto;
+  padding:1.25rem var(--pad) clamp(1.6rem,3vh,2.3rem);border-top:1px solid rgba(250,249,246,.2);
+  display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;
+  color:rgba(250,249,246,.66);font-size:.6rem;font-weight:500;letter-spacing:.26em;text-transform:uppercase;}
+.cue{display:flex;align-items:center;gap:.9rem;}
+.cue i{position:relative;display:block;width:1px;height:30px;background:rgba(250,249,246,.24);overflow:hidden;}
+.cue i::after{content:'';position:absolute;left:0;top:-30px;width:1px;height:30px;background:rgba(250,249,246,.9);animation:cue 3s var(--ease) infinite;}
+@keyframes cue{0%{top:-30px;}62%,100%{top:30px;}}
 
-/* ============ HERITAGE ============ */
-#heritage{overflow:hidden;isolation:isolate;}
-#heritage::before{
-  content:'';position:absolute;width:560px;height:560px;right:-180px;top:-110px;border-radius:50%;z-index:-1;
-  background:radial-gradient(circle,rgba(10,168,145,.1),transparent 68%);pointer-events:none;
-}
-.heritage-grid{display:grid;grid-template-columns:minmax(0,.88fr) minmax(0,1.12fr);gap:clamp(3rem,7vw,7rem);align-items:center;}
-.heritage-copy p{margin-bottom:1.25rem;line-height:1.85;font-size:.98rem;opacity:.82;max-width:510px;}
-.heritage-copy .section-head{margin-bottom:1.7rem;}
-.heritage-statement{border-left:1px solid var(--gold);padding-left:1.2rem;color:var(--navy);font-family:var(--font-display);font-style:italic;font-size:1.08rem !important;opacity:1 !important;}
-.heritage-marks{counter-reset:heritage-mark;display:flex;flex-direction:column;margin:1.8rem 0 2.1rem;border-top:1px solid rgba(17,31,46,.12);max-width:510px;}
-.heritage-marks div{counter-increment:heritage-mark;display:grid;grid-template-columns:34px 1fr;align-items:center;gap:.8rem;padding:.7rem 0;border-bottom:1px solid rgba(17,31,46,.12);font-family:var(--font-body);font-size:.78rem;letter-spacing:.015em;color:var(--navy);}
-.heritage-marks div::before{content:'0' counter(heritage-mark);font-family:var(--font-mono);font-size:.56rem;letter-spacing:.08em;color:var(--lagoon-deep);}
-.heritage-cta{
-  padding:.48rem .5rem .48rem 1.35rem;background:var(--navy);border-color:var(--navy);color:var(--shell);
-  gap:1.15rem;box-shadow:0 14px 28px -18px rgba(10,20,32,.75);
-}
-.section--light .heritage-cta{background:var(--navy);border-color:var(--navy);color:var(--shell);}
-.heritage-cta svg{
-  width:34px;height:34px;padding:9px;border-radius:50%;background:var(--lagoon);color:var(--shell);stroke:currentColor;
-  box-shadow:0 8px 18px -8px rgba(10,168,145,.8);
-}
-.section--light .heritage-cta:hover{background:var(--navy-soft);border-color:var(--gold-dim);}
-.heritage-cta:hover svg{transform:translateX(0);background:var(--lagoon-deep);}
+/* ═══════════ 06 · 02 Introduction ═══════════ */
+.intro{align-items:start;}
+.intro-copy{grid-column:1 / span 5;position:sticky;top:calc(var(--hdr) + clamp(2rem,7vh,5.5rem));}
+.intro-copy h2{margin-bottom:2.3rem;font-size:clamp(2.3rem,3.7vw,3.45rem);line-height:1.06;}
+.intro-copy p{margin-bottom:3rem;max-width:var(--measure);}
+.intro-spec{margin-top:3.6rem;padding-top:1.4rem;border-top:1px solid var(--hair-soft);display:flex;gap:2.8rem;flex-wrap:wrap;}
+.intro-spec span{font-size:.6rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);}
+.intro-media{grid-column:7 / span 6;position:relative;}
+.intro-media .big{overflow:hidden;}
+.intro-media .big img{width:100%;height:clamp(480px,108vh,1100px);object-fit:cover;object-position:center 30%;}
+.intro-inset{position:absolute;z-index:2;left:-19%;bottom:-6%;width:40%;overflow:hidden;border:10px solid var(--limestone);background:var(--limestone);}
+.intro-inset img{width:100%;aspect-ratio:1/1;object-fit:cover;}
+.intro-cap{margin-top:1.3rem;text-align:right;}
 
-.heritage-visual{position:relative;height:520px;margin-bottom:2.8rem;}
-.heritage-visual::before{
-  content:'';position:absolute;inset:9% 7% 6% 8%;border:1px solid rgba(17,31,46,.13);z-index:0;transform:translate(18px,18px);
-}
-.hv-panel{
-  position:absolute;box-shadow:0 30px 60px -25px rgba(10,20,32,.48);border:6px solid var(--paper);overflow:hidden;
-  display:flex;flex-direction:column;justify-content:flex-end;padding:1.15rem;
-  color:var(--shell);transition:transform .5s var(--ease);
-  background-size:cover;background-position:center;
-}
-.hv-panel::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 48%,rgba(5,14,24,.82));z-index:0;pointer-events:none;}
-.hv-panel span,.hv-panel strong{position:relative;z-index:1;}
-.hv-panel span{font-family:var(--font-mono);font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-bright);}
-.hv-panel span::before{content:'';display:inline-block;width:12px;height:1px;background:var(--lagoon);margin-right:.5rem;vertical-align:middle;}
-.hv-panel strong{font-family:var(--font-display);font-style:italic;font-size:1.05rem;margin-top:.25rem;}
-.hv-1{
-  width:72%;height:88%;left:0;top:6%;z-index:1;
-  background-image:url('assets/collections/first-light.jpg');
-}
-.hv-2{
-  width:48%;height:48%;right:0;bottom:0;z-index:3;
-  background-image:url('assets/collections/home-waters.jpg');
-}
-.hv-3{
-  width:40%;height:35%;right:2%;top:0;z-index:2;color:var(--shell);
-  background-image:url('assets/products/aqua-mint.jpg');background-position:center 28%;
-}
-.heritage-visual:hover .hv-1{transform:translate(-5px,-4px);}
-.heritage-visual:hover .hv-2{transform:translate(5px,5px);}
-.heritage-visual:hover .hv-3{transform:translate(4px,-5px);}
-.hv-badge{
-  position:absolute;left:0;bottom:-2.35rem;z-index:5;display:flex;align-items:center;gap:.55rem;
-  background:transparent;border:0;border-radius:0;padding:.6rem 0;
-  font-family:var(--font-mono);font-size:.54rem;letter-spacing:.09em;text-transform:uppercase;color:var(--shell);
-  color:rgba(17,31,46,.62);box-shadow:none;line-height:1.4;
-}
-.hv-badge::before{content:'';width:26px;height:1px;background:var(--gold-dim);flex:none;}
+/* ═══════════ 07 · 03 Five colors ═══════════ */
+.ed-head{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:clamp(1.5rem,5vw,5rem);align-items:end;margin-bottom:clamp(3rem,6vw,5.5rem);}
+.ed-head p{max-width:370px;}
+.bleed{padding-left:var(--pad);padding-right:var(--pad);}
+.colors{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:clamp(.5rem,.75vw,.8rem);}
+.color{display:block;}
+.plate{display:block;position:relative;overflow:hidden;background:var(--plate);aspect-ratio:3/4;}
+.plate img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity 1.15s var(--ease),transform 2.1s var(--ease);}
+.plate .worn{opacity:0;}
+.color:hover .plate .flat{opacity:0;}
+.color:hover .plate .worn{opacity:1;transform:scale(1.045);}
+.color-b{display:block;padding-top:1.35rem;}
+.color-t{display:flex;align-items:baseline;gap:.9rem;}
+.color-t .n{font-family:var(--serif);font-feature-settings:'onum' 1;font-size:.95rem;color:var(--brass);}
+.color-t .nm{font-family:var(--serif);font-size:clamp(1.12rem,1.45vw,1.4rem);color:var(--text);letter-spacing:-.008em;}
+.color-s{margin-top:.55rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  font-size:.585rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);}
+.color-v{opacity:0;transform:translateX(-6px);color:var(--brass);transition:opacity .5s var(--ease),transform .5s var(--ease);}
+.color:hover .color-v{opacity:1;transform:none;}
 
-/* ============ COLLECTION ============ */
-#collection{position:relative;overflow:hidden;isolation:isolate;}
-#collection::before{
-  content:'';position:absolute;inset:0;z-index:0;pointer-events:none;
-  background:
-    radial-gradient(circle at 8% 18%,rgba(10,168,145,.12),transparent 30%),
-    radial-gradient(circle at 92% 74%,rgba(179,163,112,.09),transparent 28%),
-    linear-gradient(180deg,rgba(255,255,255,.018),transparent 22%);
-}
-.particle-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;opacity:.85;}
+.prov{margin-top:clamp(3.2rem,6vw,6rem);padding-top:1.8rem;border-top:1px solid var(--hair-soft);
+  display:grid;grid-template-columns:minmax(0,auto) minmax(0,1fr) auto;gap:clamp(1.2rem,4vw,4rem);align-items:center;}
+.prov .ed{font-family:var(--serif);font-feature-settings:'onum' 1;font-size:clamp(1.2rem,1.7vw,1.55rem);white-space:nowrap;color:var(--text);}
+.prov p{max-width:520px;font-size:.93rem;}
+.seal{width:148px;height:148px;color:var(--brass);}
+.seal .arc{font-family:var(--sans);font-size:11px;font-weight:500;letter-spacing:3.1px;fill:currentColor;}
+.seal .ctr{font-family:var(--serif);fill:currentColor;text-anchor:middle;}
 
-.collection-intro{
-  position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,1.35fr) minmax(280px,.65fr);
-  gap:clamp(2rem,6vw,6rem);align-items:end;margin-bottom:clamp(2.7rem,5vw,4.5rem);
-}
-.collection-intro .section-head{margin-bottom:0;}
-.collection-intro .section-head p{max-width:680px;}
-.collection-proof{border-left:1px solid rgba(179,163,112,.3);padding:.25rem 0 .25rem 1.5rem;}
-.collection-proof-label{font-family:var(--font-mono);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-bright);margin-bottom:.85rem;}
-.collection-proof-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;}
-.collection-proof-grid strong{display:block;font-family:var(--font-display);font-size:1.3rem;font-weight:500;color:var(--shell);line-height:1;}
-.collection-proof-grid span{display:block;margin-top:.42rem;font-family:var(--font-mono);font-size:.56rem;line-height:1.35;letter-spacing:.04em;text-transform:uppercase;color:rgba(247,237,208,.48);}
+/* ═══════════ 08 · 04 Lifestyle moment ═══════════ */
+.moment{position:relative;height:clamp(600px,100vh,1080px);overflow:hidden;background:var(--navy);}
+.moment-bg{position:absolute;inset:-8% 0;will-change:transform;}
+.moment-bg img{width:100%;height:100%;object-fit:cover;object-position:center 46%;}
+.moment::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(8,17,22,.32) 0%,rgba(8,17,22,0) 42%,rgba(8,17,22,.44) 100%);}
+.moment-frame{position:absolute;z-index:2;inset:clamp(1rem,2.4vw,2.4rem);border:1px solid rgba(250,249,246,.26);pointer-events:none;}
+.moment-n{position:absolute;z-index:3;top:clamp(2.8rem,7vh,5.2rem);left:calc(var(--outer) + .8rem);
+  font-family:var(--serif);font-feature-settings:'onum' 1;font-size:1rem;color:rgba(250,249,246,.6);}
+.moment-l{position:absolute;z-index:3;left:0;right:0;bottom:clamp(3.2rem,8vh,6rem);text-align:center;color:var(--white);
+  font-size:.685rem;font-weight:500;letter-spacing:.46em;text-transform:uppercase;}
 
-.product-grid{position:relative;z-index:2;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1rem;}
-.product-card{
-  position:relative;background:var(--paper);color:var(--navy);
-  border:1px solid rgba(179,163,112,.28);border-radius:3px;overflow:hidden;
-  box-shadow:0 24px 46px -28px rgba(0,0,0,.7);
-  transition:transform .35s var(--ease), box-shadow .4s var(--ease), border-color .35s var(--ease);
-  transform-style:preserve-3d;
-}
-.product-card:hover{border-color:rgba(217,201,141,.8);box-shadow:0 38px 70px -30px rgba(3,121,100,.55);}
-.product-card-photo{
-  position:relative;aspect-ratio:1/1;overflow:hidden;
-  background:linear-gradient(150deg,#fffdf7 0%,var(--paper-soft) 100%);
-  display:flex;align-items:center;justify-content:center;padding:.7rem;
-}
-.product-card-photo::after{content:'';position:absolute;inset:auto 1rem 0;height:1px;background:linear-gradient(90deg,transparent,rgba(17,31,46,.15),transparent);}
-.product-card-photo img{width:100%;height:100%;object-fit:contain;display:block;transition:transform .65s var(--ease);}
-.product-card:hover .product-card-photo img{transform:scale(1.055);}
-.product-card-badge{
-  position:absolute;top:10px;left:10px;z-index:2;
-  font-family:var(--font-mono);font-size:.5rem;letter-spacing:.09em;text-transform:uppercase;
-  color:var(--shell);background:rgba(17,31,46,.94);border:1px solid rgba(179,163,112,.55);padding:.34rem .55rem;border-radius:999px;
-}
-.product-card-edition{position:absolute;top:13px;right:11px;z-index:2;font-family:var(--font-mono);font-size:.5rem;letter-spacing:.08em;color:rgba(17,31,46,.48);}
-.product-card-info{padding:1rem 1rem 1.05rem;}
-.product-card-name-row{display:flex;align-items:center;gap:.6rem;margin-bottom:.35rem;}
-.product-card-swatch{width:11px;height:11px;border-radius:50%;border:1px solid rgba(17,31,46,.2);box-shadow:0 0 0 3px rgba(17,31,46,.045);flex:none;}
-.product-card-name{font-family:var(--font-display);font-style:italic;font-size:.98rem;color:var(--navy);}
-.product-card-sub{font-family:var(--font-mono);font-size:.54rem;letter-spacing:.06em;text-transform:uppercase;color:rgba(17,31,46,.55);margin-bottom:.7rem;line-height:1.5;white-space:nowrap;}
-.product-card-meta{display:flex;align-items:center;gap:.4rem;padding-top:.6rem;border-top:1px solid rgba(17,31,46,.1);font-family:var(--font-mono);font-size:.48rem;letter-spacing:.025em;text-transform:uppercase;color:rgba(17,31,46,.5);white-space:nowrap;}
-.product-card-meta i{width:3px;height:3px;border-radius:50%;background:var(--lagoon);}
-.product-card-sizes{display:flex;align-items:center;gap:.28rem;margin-top:.65rem;}
-.product-card-sizes>span{margin-right:auto;font-family:var(--font-mono);font-size:.48rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(17,31,46,.52);}
-.product-card-sizes button{width:25px;height:24px;border:1px solid rgba(17,31,46,.16);border-radius:2px;background:transparent;color:var(--navy);font-family:var(--font-mono);font-size:.5rem;transition:background .2s,color .2s,border-color .2s;}
-.product-card-sizes button:hover,.product-card-sizes button.active{background:var(--navy);border-color:var(--navy);color:var(--shell);}
-.product-card-row{display:flex;align-items:center;justify-content:space-between;gap:.45rem;margin-top:.75rem;}
-.product-card-price{font-family:var(--font-display);font-size:1rem;color:var(--navy);font-weight:600;}
-.product-card-add{
-  display:inline-flex;align-items:center;gap:.5rem;font-family:var(--font-mono);font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;
-  padding:.5rem .65rem;border-radius:999px;background:var(--navy);color:var(--shell);border:1px solid var(--navy);cursor:pointer;
-  transition:background .3s var(--ease),color .3s var(--ease),transform .3s var(--ease),border-color .3s var(--ease);
-}
-.product-card-add svg{width:12px;height:12px;transition:transform .3s var(--ease);}
-.product-card-add:hover{background:var(--lagoon-deep);border-color:var(--lagoon-deep);color:var(--shell);transform:translateY(-1px);}
-.product-card-add:hover svg{transform:translateX(2px);}
+/* ═══════════ 09 · 05 Craft ═══════════ */
+.craft{display:grid;grid-template-columns:1.14fr .86fr 1.08fr .92fr;gap:clamp(1.2rem,2.4vw,2.4rem);align-items:start;}
+.craft-i figure{overflow:hidden;background:var(--plate);}
+.craft-i:nth-child(1) figure{aspect-ratio:4/5;}
+.craft-i:nth-child(2){margin-top:clamp(2.2rem,6.5vw,6.5rem);}
+.craft-i:nth-child(2) figure{aspect-ratio:1/1;}
+.craft-i:nth-child(3){margin-top:clamp(.8rem,2vw,2rem);}
+.craft-i:nth-child(3) figure{aspect-ratio:4/5;}
+.craft-i:nth-child(4){margin-top:clamp(2.8rem,8.5vw,8.5rem);}
+.craft-i:nth-child(4) figure{aspect-ratio:1/1;}
+.craft-i img{width:100%;height:100%;object-fit:cover;transition:transform 2.1s var(--ease);}
+.craft-i:hover img{transform:scale(1.05);}
+.craft-c{display:flex;align-items:baseline;gap:.95rem;margin:1.7rem 0 .85rem;}
+.craft-c .n{font-family:var(--serif);font-feature-settings:'onum' 1;font-size:.92rem;color:var(--brass);}
+.craft-i h3{font-size:clamp(1.26rem,1.6vw,1.5rem);}
+.craft-i p{font-size:.91rem;line-height:1.8;}
 
-.product-links{display:flex;flex-wrap:wrap;justify-content:center;gap:1.4rem 2.4rem;margin-top:3.2rem;padding-top:2.2rem;border-top:1px solid rgba(179,163,112,.18);position:relative;z-index:2;}
-.product-links a{font-family:var(--font-mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(247,237,208,.65);border-bottom:1px solid rgba(247,237,208,.3);padding-bottom:3px;transition:opacity .3s;}
-.product-links a:hover{opacity:.7;}
-.commerce-perks{position:relative;z-index:2;display:grid;grid-template-columns:repeat(3,1fr);margin-top:3rem;border:1px solid rgba(179,163,112,.2);background:rgba(247,237,208,.025);}
-.commerce-perk{display:flex;align-items:center;justify-content:center;gap:.85rem;padding:1.1rem 1rem;border-right:1px solid rgba(179,163,112,.18);}
-.commerce-perk:last-child{border-right:0;}
-.commerce-perk svg{width:20px;height:20px;stroke:var(--lagoon);flex:none;}
-.commerce-perk strong{display:block;font-family:var(--font-mono);font-size:.62rem;letter-spacing:.07em;text-transform:uppercase;color:var(--shell);}
-.commerce-perk span{display:block;margin-top:.15rem;font-size:.7rem;color:rgba(247,237,208,.5);}
+/* ═══════════ 10 · 06 Family / Ocean / Time ═══════════ */
+.pillars{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(2rem,4.5vw,4.5rem);}
+.pillar:nth-child(2){margin-top:clamp(2.6rem,7.5vw,7.5rem);}
+.pillar:nth-child(3){margin-top:clamp(5.2rem,15vw,15rem);}
+.pillar figure{overflow:hidden;aspect-ratio:4/5;background:var(--plate);}
+.pillar img{width:100%;height:100%;object-fit:cover;transition:transform 2.3s var(--ease);}
+.pillar:hover img{transform:scale(1.04);}
+.pillar-b{position:relative;padding-top:clamp(3.6rem,5.4vw,5.4rem);}
+.pillar-n{position:absolute;top:-.12em;left:-.05em;font-family:var(--serif);font-weight:300;font-feature-settings:'onum' 1;
+  font-size:clamp(3.4rem,5.2vw,4.9rem);line-height:1;color:var(--ghost);pointer-events:none;}
+.pillar h3{position:relative;font-size:clamp(1.9rem,2.7vw,2.45rem);margin-bottom:1.25rem;}
+.pillar p{font-family:var(--serif);font-size:clamp(1.1rem,1.32vw,1.28rem);line-height:1.55;max-width:26ch;}
+.pillar-r{height:1px;background:var(--hair-soft);margin-top:2.2rem;}
 
-/* ============ PRODUCT DETAILS ============ */
-#product-details{overflow:hidden;isolation:isolate;}
-#product-details::before{
-  content:'';position:absolute;width:520px;height:520px;right:-170px;bottom:-170px;z-index:-1;opacity:.035;
-  background:url('assets/turtle-logo.png') center/contain no-repeat;transform:rotate(10deg);pointer-events:none;
-}
-.product-detail-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(3rem,7vw,7rem);align-items:start;}
-.product-detail-media{
-  position:sticky;top:160px;min-height:590px;overflow:hidden;background:var(--navy);border:1px solid rgba(179,163,112,.48);
-  box-shadow:0 38px 70px -38px rgba(10,20,32,.72);
-}
-.product-detail-media::before{
-  content:'';position:absolute;inset:0;z-index:0;opacity:.28;
-  background-image:linear-gradient(rgba(179,163,112,.14) 1px,transparent 1px),linear-gradient(90deg,rgba(179,163,112,.14) 1px,transparent 1px);
-  background-size:38px 38px;
-}
-.product-detail-media>img{position:absolute;inset:18px 18px 52px 18px;width:calc(100% - 36px);height:calc(100% - 70px);object-fit:cover;object-position:center 35%;z-index:1;clip-path:polygon(18px 0,100% 0,100% calc(100% - 18px),calc(100% - 18px) 100%,0 100%,0 18px);}
-.product-detail-media::after{content:'';position:absolute;inset:18px 18px 52px;z-index:1;background:linear-gradient(180deg,transparent 55%,rgba(5,14,24,.52));pointer-events:none;clip-path:polygon(18px 0,100% 0,100% calc(100% - 18px),calc(100% - 18px) 100%,0 100%,0 18px);}
-.product-detail-media-note{position:absolute;left:1.3rem;bottom:1rem;z-index:2;color:var(--gold-bright);font-family:var(--font-mono);font-size:.54rem;letter-spacing:.1em;text-transform:uppercase;}
-.product-detail-media-note::before{content:'';display:inline-block;width:18px;height:1px;background:var(--lagoon);margin-right:.55rem;vertical-align:middle;}
-.product-detail-serial{position:absolute;right:1.3rem;bottom:1rem;z-index:2;font-family:var(--font-mono);font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(247,237,208,.52);}
-.product-detail-copy .section-head{margin-bottom:1.8rem;}
-.product-detail-summary{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.9rem 0;border-top:1px solid rgba(17,31,46,.14);border-bottom:1px solid rgba(17,31,46,.14);margin-top:1.35rem;}
-.detail-price{font-family:var(--font-display);font-size:1.55rem;font-weight:600;color:var(--navy);}
-.detail-rating{font-family:var(--font-mono);font-size:.56rem;letter-spacing:.05em;color:var(--gold-dim);text-align:right;}
-.detail-rating span{display:block;margin-top:.15rem;color:rgba(17,31,46,.52);}
-.product-detail-copy>p{max-width:520px;line-height:1.8;opacity:.8;margin-bottom:1.4rem;}
-.product-spec-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.65rem;margin-bottom:1.4rem;}
-.product-spec{position:relative;padding:1rem;background:rgba(251,246,232,.58);border:1px solid rgba(17,31,46,.12);transition:transform .3s var(--ease),border-color .3s var(--ease),box-shadow .3s var(--ease);}
-.product-spec:hover{transform:translateY(-3px);border-color:rgba(3,121,100,.34);box-shadow:0 16px 28px -24px rgba(10,20,32,.6);}
-.product-spec svg{width:30px;height:30px;padding:7px;border-radius:50%;background:rgba(10,168,145,.1);stroke:var(--lagoon-deep);margin-bottom:.65rem;}
-.product-spec strong{display:block;color:var(--navy);font-family:var(--font-display);font-size:1rem;}
-.product-spec span{display:block;margin-top:.25rem;font-size:.72rem;line-height:1.5;opacity:.62;}
-.detail-colorways{margin-bottom:.75rem;padding:.85rem 1rem;background:rgba(17,31,46,.04);border:1px solid rgba(17,31,46,.1);}
-.detail-colorways-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:.65rem;font-family:var(--font-mono);font-size:.54rem;letter-spacing:.07em;text-transform:uppercase;color:rgba(17,31,46,.55);}
-.detail-colorways-head strong{color:var(--navy);font-weight:600;}
-.detail-swatches{display:flex;gap:.55rem;}
-.detail-swatches a{width:24px;height:24px;border-radius:50%;border:3px solid var(--sage-cream);box-shadow:0 0 0 1px rgba(17,31,46,.2);transition:transform .25s var(--ease),box-shadow .25s var(--ease);}
-.detail-swatches a:hover,.detail-swatches a.active{transform:scale(1.12);box-shadow:0 0 0 1px var(--lagoon-deep),0 5px 12px -7px rgba(10,20,32,.8);}
-.fit-panel{background:rgba(251,246,232,.55);border:1px solid rgba(17,31,46,.12);padding:1rem 1.1rem;margin-bottom:1.4rem;}
-.fit-panel-head{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:.85rem;}
-.fit-panel-head strong{font-family:var(--font-mono);font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);}
-.fit-panel-head a{font-family:var(--font-mono);font-size:.54rem;letter-spacing:.06em;text-transform:uppercase;color:var(--lagoon-deep);border-bottom:1px solid currentColor;}
-.fit-sizes{display:grid;grid-template-columns:repeat(4,1fr);gap:.45rem;}
-.fit-sizes span{padding:.55rem;text-align:center;border:1px solid rgba(17,31,46,.14);font-family:var(--font-mono);font-size:.6rem;color:var(--navy);background:var(--paper);transition:border-color .25s,background .25s;}
-.fit-sizes span:hover{border-color:var(--lagoon-deep);background:#fffdf7;}
-.product-detail-actions{display:flex;align-items:center;gap:.8rem;flex-wrap:wrap;}
+/* ═══════════ 11 · 07 For Finley ═══════════ */
+.story{align-items:center;}
+.story-media{grid-column:1 / span 6;position:relative;}
+.story-media figure{overflow:hidden;aspect-ratio:4/5;background:var(--plate);}
+.story-media img{width:100%;height:100%;object-fit:cover;}
+.story-inset{position:absolute;right:-13%;bottom:-8%;width:41%;overflow:hidden;border:10px solid var(--limestone);background:var(--limestone);}
+.story-inset img{width:100%;aspect-ratio:1/1;object-fit:cover;}
+.story-copy{grid-column:8 / span 5;}
+.story-copy h2{margin-bottom:2.4rem;font-size:clamp(2.6rem,4.6vw,4rem);}
+.story-copy .serif-lead{margin-bottom:1.9rem;}
+.story-copy p{margin-bottom:1.6rem;}
+.story-copy .btn{margin-top:1.9rem;}
 
-/* ============ SHOP FAQ ============ */
-.shop-faq-grid{display:grid;grid-template-columns:minmax(240px,.72fr) minmax(0,1.28fr);gap:clamp(3rem,8vw,8rem);align-items:start;}
-.shop-faq-grid .section-head{margin-bottom:0;position:sticky;top:150px;}
-.shop-faq-list{border-top:1px solid rgba(17,31,46,.16);}
-.shop-faq-list details{border-bottom:1px solid rgba(17,31,46,.16);}
-.shop-faq-list summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.35rem 0;color:var(--navy);font-family:var(--font-display);font-size:1.08rem;cursor:pointer;}
-.shop-faq-list summary::-webkit-details-marker{display:none;}
-.shop-faq-list summary::after{content:'+';display:grid;place-items:center;width:28px;height:28px;border:1px solid rgba(17,31,46,.18);border-radius:50%;font-family:var(--font-mono);font-size:.8rem;color:var(--lagoon-deep);transition:transform .3s var(--ease);}
-.shop-faq-list details[open] summary::after{transform:rotate(45deg);}
-.shop-faq-list details p{padding:0 3rem 1.35rem 0;max-width:620px;font-size:.9rem;line-height:1.75;opacity:.72;}
+/* ═══════════ 12 · 08 Shop ═══════════ */
+.shop-head{display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;flex-wrap:wrap;margin-bottom:clamp(2.6rem,5vw,4.6rem);}
+.shop{--cell:clamp(.8rem,1.4vw,1.5rem);display:grid;grid-template-columns:repeat(5,minmax(0,1fr));
+  border-top:1px solid var(--hair-soft);border-bottom:1px solid var(--hair-soft);
+  margin-left:calc(var(--cell) * -1);margin-right:calc(var(--cell) * -1);}
+.prod{display:block;padding:clamp(1.4rem,2.2vw,2.2rem) var(--cell);border-left:1px solid var(--hair-soft);}
+.prod:first-child{border-left:0;}
+.prod-f{display:block;position:relative;overflow:hidden;background:var(--plate);aspect-ratio:3/4;}
+.prod-f img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity 1.15s var(--ease),transform 2.1s var(--ease);}
+.prod-f .worn{opacity:0;}
+.prod:hover .prod-f .flat{opacity:0;}
+.prod:hover .prod-f .worn{opacity:1;transform:scale(1.045);}
+.prod-b{display:block;padding-top:1.3rem;}
+.prod-c{display:block;margin-bottom:.6rem;font-size:.585rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);}
+.prod-n{display:block;margin-bottom:.9rem;font-family:var(--serif);font-size:clamp(1.02rem,1.28vw,1.24rem);color:var(--text);}
+.prod-r{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;}
+.prod-p{font-size:.82rem;color:var(--body);}
+.prod-v{font-size:.565rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);transition:color .45s var(--ease);}
+.prod:hover .prod-v{color:var(--navy);}
+.shop-foot{margin-top:clamp(2.8rem,5.5vw,4.6rem);display:flex;justify-content:center;}
 
-/* ============ COLLECTIONS ============ */
-#collections{position:relative;overflow:hidden;}
-.collections-list{display:flex;flex-direction:column;gap:clamp(4rem,8vw,6.5rem);margin-top:1rem;position:relative;z-index:2;}
-.collection-row{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(2.4rem,5vw,5rem);align-items:center;}
-.collection-row .collection-media{order:1;}
-.collection-row .collection-copy{order:2;}
-.collection-row.flip .collection-media{order:2;}
-.collection-row.flip .collection-copy{order:1;}
+/* ═══════════ 13 Notes ═══════════ */
+.notes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));}
+.note{padding:0 clamp(1.2rem,3vw,3.4rem);border-left:1px solid var(--hair-soft);}
+.note:first-child{padding-left:0;border-left:0;}
+.note:last-child{padding-right:0;}
+.note blockquote{font-family:var(--serif);font-weight:300;font-size:clamp(1.2rem,1.6vw,1.46rem);line-height:1.5;color:var(--text);margin-bottom:1.8rem;}
+.note figcaption{font-size:.585rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);line-height:2;}
 
-.collection-media{position:relative;aspect-ratio:4/3;border-radius:4px;overflow:hidden;box-shadow:0 44px 80px -35px rgba(0,0,0,.6);}
-.collection-media img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .7s var(--ease);}
-.collection-row:hover .collection-media img{transform:scale(1.045);}
-.collection-media-badge{
-  position:absolute;bottom:-18px;right:34px;width:96px;height:96px;border-radius:50%;
-  border:4px solid var(--navy);overflow:hidden;box-shadow:0 18px 34px -14px rgba(0,0,0,.55);
-  background:var(--paper);z-index:2;
-}
-.collection-row.flip .collection-media-badge{right:auto;left:34px;}
-.collection-media-badge img{width:100%;height:100%;object-fit:cover;display:block;}
+/* ═══════════ 14 · 09 Journal ═══════════ */
+.jr-head{display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;flex-wrap:wrap;margin-bottom:clamp(2.6rem,5vw,4.6rem);}
+.posts{align-items:start;}
+.post-lead{grid-column:1 / span 7;}
+.post-lead figure{aspect-ratio:16/10;}
+.post-side{grid-column:9 / span 4;display:flex;flex-direction:column;gap:clamp(2rem,3.6vw,3.6rem);}
+.post-side figure{aspect-ratio:4/3;}
+.post figure{overflow:hidden;background:var(--plate);}
+.post img{width:100%;height:100%;object-fit:cover;transition:transform 2.1s var(--ease);}
+.post:hover img{transform:scale(1.045);}
+.post-b{padding-top:1.5rem;}
+.post .label{margin-bottom:1rem;font-size:.575rem;}
+.post-lead h3{font-size:clamp(1.7rem,2.5vw,2.3rem);}
+.post-side h3{font-size:clamp(1.22rem,1.55vw,1.46rem);}
+.post h3{transition:color .45s var(--ease);}
+.post:hover h3{color:var(--navy);}
 
-.collection-copy{position:relative;}
-.collection-index{
-  font-family:var(--font-mono);font-size:.8rem;letter-spacing:.14em;color:var(--gold-bright);
-  display:block;margin-bottom:.7rem;
-}
-.collection-copy h3{font-size:clamp(1.55rem,2.6vw,2.05rem);font-style:italic;color:var(--shell);margin-bottom:.5rem;}
-.collection-tagline{font-family:var(--font-display);font-style:italic;font-size:1.05rem;color:var(--lagoon);margin-bottom:1.2rem;}
-.collection-copy p.collection-body{opacity:.78;line-height:1.8;margin-bottom:1rem;max-width:460px;}
-.collection-palette{
-  display:inline-flex;align-items:center;gap:.6rem;margin-top:.5rem;
-  font-family:var(--font-mono);font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;color:rgba(247,237,208,.6);
-}
-.collection-palette i{width:10px;height:10px;border-radius:50%;border:1px solid rgba(247,237,208,.4);display:inline-block;}
+/* ═══════════ 15 · 10 Newsletter + 11 Footer ═══════════ */
+.close{overflow:hidden;}
+.news{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(2rem,6vw,6rem);align-items:end;}
+.news h2{margin-bottom:1.6rem;}
+.news p{max-width:420px;}
+.nf{display:flex;align-items:center;border-bottom:1px solid rgba(250,249,246,.32);}
+.nf input{flex:1;height:64px;border:0;background:transparent;outline:none;font-size:.95rem;color:var(--white);}
+.nf input::placeholder{color:rgba(250,249,246,.42);}
+.nf button{height:64px;padding:0 .4rem 0 1.6rem;display:flex;align-items:center;gap:.95rem;
+  font-size:.645rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;transition:color .45s var(--ease);}
+.nf button i{width:18px;height:1px;background:currentColor;transition:width .6s var(--ease);}
+.nf button:hover{color:var(--brass);}
+.nf button:hover i{width:30px;}
+.nf-note{margin-top:1.5rem;font-size:.585rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:rgba(250,249,246,.55);opacity:0;transition:opacity .7s var(--ease);}
 
-/* ============ LIFESTYLE ============ */
-.lifestyle-quote{max-width:760px;margin-bottom:3.2rem;}
-.lifestyle-quote p{font-family:var(--font-display);font-style:italic;font-size:clamp(1.4rem,2.6vw,2.05rem);line-height:1.45;color:var(--shell);}
-.moments-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1.4rem;perspective:1400px;}
-.moment{
-  position:relative;overflow:hidden;border-radius:3px;aspect-ratio:3/4;
-  display:flex;flex-direction:column;justify-content:flex-end;padding:1.4rem;
-  transition:transform .35s var(--ease), box-shadow .4s var(--ease);
-  transform-style:preserve-3d;
-  box-shadow:0 20px 40px -24px rgba(0,0,0,.5);
-}
-.moment:hover{box-shadow:0 30px 54px -22px rgba(0,0,0,.6);}
-.moment::before{
-  content:'';position:absolute;inset:0;background-size:cover;background-position:center;
-  transition:transform .7s var(--ease);z-index:0;
-}
-.moment:hover::before{transform:scale(1.07);}
-.moment::after{
-  content:'';position:absolute;inset:0;z-index:1;
-  background:linear-gradient(180deg, rgba(10,20,32,.05) 0%, rgba(10,20,32,.85) 100%);
-}
-.moment .m-label{font-family:var(--font-mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(247,237,208,.8);position:relative;z-index:2;}
-.moment .m-title{font-family:var(--font-display);font-style:italic;font-size:1.35rem;color:var(--shell);margin-top:.3rem;position:relative;z-index:2;}
-.m1::before{background-image:url('assets/hero-cove.jpg');background-position:center 35%;}
-.m2::before{background-image:url('assets/collections/long-weekend.jpg');}
-.m3::before{background-image:url('assets/collections/passage.jpg');}
-.m4::before{background-image:url('assets/collections/returning-tide.jpg');}
+.f-div{height:1px;background:rgba(250,249,246,.14);margin-top:clamp(4.5rem,9vw,9.5rem);}
+.f-top{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:clamp(2.5rem,6vw,6rem);align-items:start;padding-top:clamp(3.2rem,6vw,5.8rem);}
+.f-note{margin-top:1.9rem;max-width:310px;font-size:.92rem;line-height:1.85;color:rgba(250,249,246,.6);}
+.f-cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(1.5rem,3vw,3rem);}
+.f-col h4{font-family:var(--sans);font-size:.585rem;font-weight:500;letter-spacing:.26em;text-transform:uppercase;color:rgba(250,249,246,.42);margin-bottom:1.7rem;}
+.f-col a{display:block;padding:.45rem 0;font-size:.795rem;letter-spacing:.03em;color:rgba(250,249,246,.82);
+  transition:color .45s var(--ease),padding-left .55s var(--ease);}
+.f-col a:hover{color:var(--brass);padding-left:.3rem;}
+.f-bot{margin-top:clamp(3rem,6vw,5rem);padding:1.8rem 0;border-top:1px solid rgba(250,249,246,.14);
+  display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;
+  font-size:.585rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:rgba(250,249,246,.48);}
+.f-sig{font-family:var(--serif);font-weight:300;font-size:clamp(2.3rem,11vw,10.6rem);line-height:.88;letter-spacing:.02em;
+  color:rgba(250,249,246,.08);white-space:nowrap;text-align:center;padding-bottom:clamp(1rem,2.4vw,2.6rem);user-select:none;}
 
-/* ============ CRAFT ============ */
-.craft-layout{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2.5rem,5vw,5rem);align-items:center;}
-.craft-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2rem 1.8rem;}
-.craft-item{text-align:left;}
-.craft-badge{
-  width:52px;height:52px;border-radius:50%;background:var(--paper-soft);border:1px solid rgba(19,34,52,.15);
-  display:flex;align-items:center;justify-content:center;margin-bottom:1.1rem;
+/* ═══════════ 16 Responsive ═══════════ */
+@media (max-width:1180px){
+  .intro-copy{grid-column:1 / span 5;}
+  .intro-media{grid-column:7 / span 6;}
+  .intro-inset{left:-12%;width:34%;}
+  .story-media{grid-column:1 / span 6;}
+  .story-copy{grid-column:7 / span 6;}
+  .post-side{grid-column:8 / span 5;}
+  .colors{grid-template-columns:repeat(3,minmax(0,1fr));gap:1.7rem 1.2rem;}
+  .shop{grid-template-columns:repeat(3,minmax(0,1fr));}
+  .prod:nth-child(3n+1){border-left:0;}
+  .craft{grid-template-columns:repeat(2,minmax(0,1fr));gap:2.5rem 1.6rem;}
+  .craft-i:nth-child(1),.craft-i:nth-child(3){margin-top:0;}
+  .craft-i:nth-child(2),.craft-i:nth-child(4){margin-top:clamp(1.6rem,4vw,4rem);}
+  .f-top{grid-template-columns:1fr;}
+  .prov{grid-template-columns:minmax(0,auto) minmax(0,1fr);}
+  .seal{display:none;}
 }
-.craft-badge svg{width:22px;height:22px;stroke:var(--gold-dim);}
-.craft-item h4{font-size:1.02rem;color:var(--navy);margin-bottom:.4rem;font-style:italic;}
-.craft-item p{font-size:.88rem;opacity:.8;line-height:1.6;}
-.craft-photo{position:relative;aspect-ratio:4/5;border-radius:4px;overflow:hidden;box-shadow:0 44px 84px -36px rgba(10,20,32,.4);}
-.craft-photo img{width:100%;height:100%;object-fit:cover;display:block;}
-.craft-photo-badge{
-  position:absolute;bottom:18px;left:18px;background:rgba(251,246,232,.94);color:var(--navy);
-  font-family:var(--font-mono);font-size:.64rem;letter-spacing:.06em;text-transform:uppercase;
-  padding:.5rem .85rem;border-radius:999px;
-}
-
-/* ============ GALLERY ============ */
-#gallery{position:relative;overflow:hidden;}
-.gallery-grid{
-  position:relative;z-index:2;display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:200px;gap:1rem;
-}
-.gallery-tile{
-  position:relative;overflow:hidden;border-radius:3px;cursor:pointer;
-  box-shadow:0 20px 40px -26px rgba(0,0,0,.55);
-}
-.gallery-tile.g-big{grid-column:span 2;grid-row:span 2;}
-.gallery-tile.g-wide{grid-column:span 2;}
-.gallery-tile img{
-  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;
-  transition:transform .7s var(--ease);
-}
-.gallery-tile:hover img{transform:scale(1.06);}
-.gallery-tile::after{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(180deg, rgba(10,20,32,.02) 40%, rgba(10,20,32,.88) 100%);
-  transition:opacity .35s var(--ease);
-}
-.gallery-caption{
-  position:absolute;left:0;right:0;bottom:0;padding:1rem 1.1rem;z-index:2;
-  transform:translateY(6px);opacity:.88;transition:transform .35s var(--ease), opacity .35s var(--ease);
-}
-.gallery-tile:hover .gallery-caption{transform:translateY(0);opacity:1;}
-.gallery-caption p{font-family:var(--font-display);font-style:italic;font-size:.92rem;color:var(--shell);line-height:1.3;margin-bottom:.35rem;}
-.gallery-caption .g-likes{
-  font-family:var(--font-mono);font-size:.62rem;letter-spacing:.05em;color:rgba(247,237,208,.6);
-  display:flex;align-items:center;gap:.4rem;
-}
-.gallery-caption .g-likes svg{width:11px;height:11px;stroke:var(--lagoon);fill:none;}
-.gallery-foot{text-align:center;margin-top:2.6rem;position:relative;z-index:2;}
-.gallery-foot p{font-family:var(--font-display);font-style:italic;font-size:1.05rem;color:rgba(247,237,208,.7);}
-
-/* ============ TESTIMONIALS ============ */
-.testimonial-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(2rem,4vw,3.5rem);}
-.testimonial-card{display:flex;flex-direction:column;}
-.testimonial-mark{width:34px;height:26px;margin-bottom:1.6rem;opacity:.35;transition:opacity .3s;}
-.testimonial-card:hover .testimonial-mark{opacity:.6;}
-.testimonial-mark svg{width:100%;height:100%;fill:var(--gold-dim);}
-.testimonial-quote{font-family:var(--font-display);font-style:italic;font-size:clamp(1.1rem,1.6vw,1.3rem);color:var(--navy);line-height:1.5;margin-bottom:1.8rem;flex:1;}
-.testimonial-rule{width:30px;height:1px;background:var(--gold-dim);margin-bottom:1.1rem;}
-.testimonial-name{font-family:var(--font-display);font-style:italic;font-size:.95rem;color:var(--navy);margin-bottom:.25rem;}
-.testimonial-location{font-family:var(--font-mono);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(19,34,52,.45);}
-
-/* ============ CLUBHOUSE ============ */
-.clubhouse{
-  position:relative;text-align:center;padding:var(--section-y) 0;
-  background:radial-gradient(ellipse 60% 60% at 50% 0%, rgba(10,168,145,.14), transparent 65%), var(--ink);
-  overflow:hidden;
-}
-.clubhouse-watermark{
-  position:absolute;top:50%;left:50%;width:900px;transform:translate(-50%,-50%);opacity:.05;pointer-events:none;
-}
-.clubhouse .eyebrow{justify-content:center;margin-bottom:1.4rem;}
-.clubhouse h2{font-size:clamp(2.1rem,4vw,3.2rem);max-width:700px;margin:0 auto 1.1rem;color:var(--shell);}
-.clubhouse p.lead{max-width:520px;margin:0 auto 2.6rem;opacity:.78;font-size:1.02rem;}
-.club-form{display:flex;justify-content:center;gap:.8rem;flex-wrap:wrap;max-width:520px;margin:0 auto;}
-.club-form input{
-  flex:1;min-width:220px;background:rgba(247,237,208,.06);border:1px solid rgba(247,237,208,.22);
-  padding:1rem 1.3rem;border-radius:999px;color:var(--shell);font-family:var(--font-body);font-size:.92rem;
-}
-.club-form input::placeholder{color:rgba(247,237,208,.45);}
-.club-form input:focus{outline:none;border-color:var(--gold-bright);}
-.club-form button{border:none;}
-.fine-print{margin-top:1.3rem;font-family:var(--font-mono);font-size:.7rem;letter-spacing:.06em;color:rgba(247,237,208,.4);}
-.club-success{margin-top:1.3rem;font-family:var(--font-mono);font-size:.78rem;letter-spacing:.05em;color:var(--lagoon);display:none;}
-.club-success.show{display:block;}
-
-/* ============ TOAST ============ */
-#toast{
-  position:fixed;bottom:28px;left:50%;z-index:400;
-  display:flex;align-items:center;gap:.7rem;max-width:min(90vw,400px);
-  background:var(--ink);color:var(--shell);border:1px solid rgba(179,163,112,.4);
-  padding:1rem 1.5rem;border-radius:14px;box-shadow:0 20px 40px -15px rgba(0,0,0,.55);
-  font-family:var(--font-body);font-size:.85rem;line-height:1.4;
-  opacity:0;pointer-events:none;transform:translate(-50%,16px);
-  transition:opacity .4s var(--ease), transform .4s var(--ease);
-}
-#toast.show{opacity:1;transform:translate(-50%,0);}
-#toast .toast-dot{width:8px;height:8px;border-radius:50%;background:var(--lagoon);flex:none;}
-#toast strong{color:var(--gold-bright);font-weight:600;}
-
-/* ============ FOOTER ============ */
-footer{background:var(--black);padding:5rem 0 2rem;color:rgba(247,237,208,.7);}
-.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3.5rem;}
-.footer-brand .brand{margin-bottom:1rem;}
-.footer-brand p{max-width:280px;font-size:.9rem;line-height:1.7;opacity:.7;margin-bottom:1.4rem;}
-.socials{display:flex;gap:.8rem;}
-.socials a{width:38px;height:38px;border-radius:50%;border:1px solid rgba(247,237,208,.2);display:flex;align-items:center;justify-content:center;transition:border-color .3s,background .3s;}
-.socials a:hover{border-color:var(--gold-bright);background:rgba(247,237,208,.06);}
-.socials svg{width:16px;height:16px;stroke:var(--shell);}
-.footer-col h5{font-family:var(--font-mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-bright);margin-bottom:1.3rem;}
-.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:.8rem;}
-.footer-col a{font-size:.9rem;opacity:.75;transition:opacity .3s,padding-left .3s;}
-.footer-col a:hover{opacity:1;padding-left:4px;}
-.footer-bottom{
-  border-top:1px solid rgba(247,237,208,.12);padding-top:1.8rem;display:flex;justify-content:space-between;
-  align-items:center;flex-wrap:wrap;gap:1rem;font-family:var(--font-mono);font-size:.7rem;letter-spacing:.04em;opacity:.5;
-}
-.chip-strip{display:flex;gap:.4rem;align-items:center;}
-.chip-strip i{width:12px;height:12px;display:inline-block;border-radius:2px;border:1px solid rgba(247,237,208,.22);}
-
-/* ============ RESPONSIVE ============ */
-@media (max-width:1180px) and (min-width:981px){
-  .product-grid{grid-template-columns:repeat(6,minmax(0,1fr));gap:1.25rem;}
-  .product-card{grid-column:span 2;}
-  .product-card:nth-child(4){grid-column:2/span 2;}
-}
-@media (max-width:980px){
-  .nav-links{display:none;}
-  .nav-cta .btn-primary{display:none;}
-  .burger{display:flex;}
-  .hero-grid{grid-template-columns:1fr;}
-  .medallion-stage{height:380px;order:-1;}
-  .heritage-grid{grid-template-columns:1fr;}
-  .heritage-visual{height:380px;margin-top:1rem;}
-  .collection-intro{grid-template-columns:1fr;gap:2rem;}
-  .product-detail-grid,.shop-faq-grid{grid-template-columns:1fr;}
-  .product-detail-media{position:relative;top:auto;min-height:480px;}
-  .shop-faq-grid .section-head{position:static;}
-  .collection-proof{max-width:520px;}
-  .product-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
-  .product-card,.product-card:nth-child(4){grid-column:span 1;}
-  .product-card:last-child{grid-column:1/-1;width:calc(50% - .75rem);justify-self:center;}
-  .craft-layout{grid-template-columns:1fr;}
-  .craft-photo{order:-1;height:320px;}
-  .footer-grid{grid-template-columns:1fr 1fr;gap:2.4rem;}
-  .collection-row{grid-template-columns:1fr;}
-  .collection-row .collection-media{order:1;}
-  .collection-row .collection-copy{order:2;margin-top:1.5rem;}
-  .collection-row.flip .collection-media{order:1;}
-  .collection-row.flip .collection-copy{order:2;}
-  .moments-row{grid-template-columns:repeat(2,1fr);}
-  .gallery-grid{grid-template-columns:repeat(3,1fr);grid-auto-rows:170px;}
-  .gallery-tile.g-big{grid-column:span 2;grid-row:span 2;}
-  .testimonial-grid{grid-template-columns:1fr;gap:2.6rem;}
+@media (max-width:900px){
+  :root{--hdr:72px;}
+  .nav.l{display:none;}
+  .s-toggle{display:none;}
+  .burger{display:block;order:-1;}
+  .hdr-in{display:flex;align-items:center;position:relative;}
+  .mark{position:absolute;left:50%;transform:translateX(-50%);}
+  .mark img{width:20px;}
+  .wm b{font-size:1.06rem;letter-spacing:.3em;padding-left:.3em;}
+  .wm i{font-size:.42rem;letter-spacing:.32em;padding-left:.32em;}
+  .nav.r{width:100%;gap:0;justify-content:space-between;}
+  .ovl-top .mark{position:static;transform:none;}
+  .hero-rail{display:none;}
+  .hero{height:94vh;min-height:600px;}
+  .hero-copy,.hero-copy p{max-width:100%;}
+  .hero-foot{font-size:.55rem;letter-spacing:.2em;}
+  .hero-foot .m3{display:none;}
+  .intro-copy{grid-column:1 / -1;position:static;}
+  .intro-media{grid-column:1 / -1;margin-top:.5rem;}
+  .intro-media .big img{height:min(86vh,680px);}
+  .intro-inset{display:none;}
+  .intro-cap{text-align:left;}
+  .ed-head{grid-template-columns:1fr;gap:1.6rem;align-items:start;}
+  .pillars{grid-template-columns:1fr;gap:3.6rem;}
+  .pillar:nth-child(2),.pillar:nth-child(3){margin-top:0;}
+  .pillar figure{aspect-ratio:16/11;}
+  .pillar p{max-width:var(--measure);}
+  .story-media{grid-column:1 / -1;}
+  .story-copy{grid-column:1 / -1;margin-top:2.6rem;}
+  .story-media figure{aspect-ratio:4/3;}
+  .story-inset{display:none;}
+  .notes{grid-template-columns:1fr;gap:2.6rem;}
+  .note{padding:2.2rem 0 0;border-left:0;border-top:1px solid var(--hair-soft);}
+  .note:first-child{padding-top:0;border-top:0;}
+  .post-lead,.post-side{grid-column:1 / -1;}
+  .post-side{margin-top:3rem;}
+  .news{grid-template-columns:1fr;gap:2.4rem;align-items:start;}
+  .f-cols{grid-template-columns:repeat(2,minmax(0,1fr));gap:2rem;}
+  .lb{display:none;}
 }
 @media (max-width:640px){
-  .announcement-bar{font-size:.48rem;gap:.55rem;letter-spacing:.06em;}
-  .announcement-bar .announcement-extra{display:none;}
-  .cart-button{padding:0 .55rem;min-width:42px;}
-  .cart-label{display:none;}
-  .heritage-visual{height:420px;margin-bottom:2.5rem;}
-  .hv-panel{border-width:4px;padding:.75rem;}
-  .hv-panel strong{font-size:.84rem;line-height:1.25;}
-  .hv-panel span{font-size:.5rem;}
-  .hv-1{width:78%;height:82%;}
-  .hv-1 strong{max-width:56%;}
-  .hv-2{width:52%;height:43%;bottom:7%;}
-  .hv-3{width:47%;height:34%;right:1%;}
-  .hv-badge{left:0;bottom:-2.15rem;font-size:.46rem;padding:.5rem 0;}
-  .gallery-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:150px;}
-  .gallery-tile.g-big,.gallery-tile.g-wide{grid-column:span 2;grid-row:span 1;}
-  .moments-row{display:flex;grid-template-columns:none;overflow-x:auto;padding-bottom:.6rem;scroll-snap-type:x mandatory;}
-  .moments-row::-webkit-scrollbar{height:5px;}
-  .moments-row::-webkit-scrollbar-thumb{background:rgba(179,163,112,.4);border-radius:4px;}
-  .moment{flex:0 0 240px;scroll-snap-align:start;aspect-ratio:3/4;}
-  .collection-proof{padding-left:1rem;}
-  .collection-proof-grid{gap:.45rem;}
-  .collection-proof-grid strong{font-size:1.1rem;}
-  .product-grid{grid-template-columns:1fr;gap:1.15rem;}
-  .product-card,.product-card:nth-child(4),.product-card:last-child{grid-column:1;width:100%;}
-  .product-card-photo{aspect-ratio:4/3;}
-  .product-card-add{white-space:nowrap;}
-  .commerce-perks{grid-template-columns:1fr;}
-  .commerce-perk{justify-content:flex-start;border-right:0;border-bottom:1px solid rgba(179,163,112,.18);}
-  .commerce-perk:last-child{border-bottom:0;}
-  .product-detail-media{min-height:430px;}
-  .product-spec-grid{grid-template-columns:1fr;}
-  .product-detail-actions{align-items:stretch;}
-  .product-detail-actions .btn{justify-content:center;width:100%;}
-  .craft-grid{grid-template-columns:1fr;}
-  .footer-grid{grid-template-columns:1fr;gap:2.2rem;}
-  .collection-media-badge{width:76px;height:76px;bottom:-14px;}
-  .hero-actions{flex-direction:column;align-items:stretch;}
-  .hero-actions .btn{justify-content:center;}
-  .footer-bottom{flex-direction:column;align-items:flex-start;}
+  body{font-size:15.5px;}
+  h1{font-size:clamp(3rem,13.5vw,4.2rem);}
+  .hero-in{padding-bottom:clamp(1.9rem,4vh,3rem);}
+  .hero-act{gap:1.9rem;}
+  .hero-act .btn{width:100%;}
+  .hero-foot .m2{display:none;}
+  .swipe{display:flex;overflow-x:auto;gap:.9rem;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;
+    scrollbar-width:none;margin-right:calc(var(--pad) * -1);padding-right:var(--pad);border:0;}
+  .swipe::-webkit-scrollbar{display:none;}
+  .swipe > *{flex:0 0 78%;scroll-snap-align:start;border-left:0 !important;padding:0 !important;}
+  .hint{margin-top:1.6rem;height:1px;background:var(--hair-soft);position:relative;overflow:hidden;}
+  .hint i{position:absolute;left:0;top:0;height:1px;width:28%;background:var(--muted);transition:transform .18s linear;}
+  .color-v{display:none;}
+  .craft{grid-template-columns:1fr;gap:2.9rem;}
+  .craft-i:nth-child(n){margin-top:0;}
+  .craft-i:nth-child(n) figure{aspect-ratio:4/5;}
+  .prov{grid-template-columns:1fr;gap:1rem;}
+  .moment{height:84vh;}
+  .moment-frame{inset:.9rem;}
+  .moment-l{font-size:.57rem;letter-spacing:.3em;padding:0 1.4rem;}
+  .moment-n{left:calc(var(--pad) + .6rem);}
+  .post-side{gap:2.4rem;}
+  .f-cols{grid-template-columns:1fr;gap:1.7rem;}
+  .f-bot{flex-direction:column;gap:.5rem;}
+  .f-sig{font-size:2rem;letter-spacing:.12em;}
 }
 </style>
 </head>
 <body>
 
-<noscript><style>.reveal{opacity:1 !important;transform:none !important;} #preloader{display:none !important;}</style></noscript>
-
-<div id="preloader"><img src="assets/turtle-logo.png" alt="" /></div>
-<div id="cursor-glow"></div>
-
-<div class="announcement-bar" role="status">
-  <span>Complimentary U.S. shipping</span><i></i><span class="announcement-extra">Easy exchanges within 30 days</span>
-</div>
-
-<!-- ============ HEADER ============ -->
-<header id="site-header">
-  <div class="container nav-row">
-    <a href="#top" class="brand">
-      <img src="assets/turtle-logo.png" alt="Turtles by Finley Jade emblem" />
-      <span class="brand-text">
-        <span class="kicker">Turtles by</span>
-        <span class="name">Finley Jade</span>
-      </span>
-    </a>
-    <nav class="nav-links">
+<!-- ═══════════ HEADER ═══════════ -->
+<header class="hdr" id="hdr">
+  <div class="hdr-in">
+    <nav class="nav l">
       <a href="shop.html">Shop</a>
-      <a href="#collections">Colorways</a>
-      <a href="#product-details">Fit &amp; Details</a>
-      <a href="#reviews">Reviews</a>
+      <a href="#collections">The Long Run</a>
       <a href="#heritage">Our Story</a>
+      <a href="#journal">Journal</a>
     </nav>
-    <div class="nav-cta">
-      <a href="#collection" class="btn btn-primary">Shop the Polo</a>
-      <button class="cart-button" id="cart-button" type="button" aria-label="Open shopping bag">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 8h14l-1 12H6L5 8z"/><path d="M9 9V6a3 3 0 016 0v3"/></svg>
-        <span class="cart-label">Bag</span><span class="cart-count" id="cart-count">0</span>
-      </button>
-      <button class="burger" id="burger-btn" aria-label="Open menu">
-        <span></span><span></span><span></span>
-      </button>
+
+    <a class="mark" href="#top" aria-label="Turtles by Finley Jade, home">
+      <img src="assets/turtle-logo.png" alt="" />
+      <span class="wm"><b>Turtles</b><i>By Finley Jade</i></span>
+    </a>
+
+    <div class="nav r">
+      <button type="button" class="s-toggle" id="searchToggle">Search</button>
+      <a href="shop.html">Bag (0)</a>
+      <button type="button" class="burger" id="menuToggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
     </div>
   </div>
 </header>
 
-<div id="mobile-panel">
-  <button class="close-btn" id="close-panel-btn" aria-label="Close menu">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4l16 16M20 4L4 20"/></svg>
-  </button>
-  <a href="shop.html">Shop</a>
-  <a href="#collections">Colorways</a>
-  <a href="#product-details">Fit &amp; Details</a>
-  <a href="#reviews">Reviews</a>
-  <a href="#heritage">Our Story</a>
+<div class="ovl" id="menuOvl" role="dialog" aria-modal="true" aria-label="Menu">
+  <div class="ovl-top">
+    <span class="mark"><img src="assets/turtle-logo.png" alt="" style="width:22px;" />
+      <span class="wm"><b>Turtles</b><i>By Finley Jade</i></span></span>
+    <button type="button" class="ovl-x" data-close>Close</button>
+  </div>
+  <div class="ovl-body">
+    <nav class="ovl-links">
+      <a href="shop.html">Shop<em>01</em></a>
+      <a href="#collections">The Long Run<em>02</em></a>
+      <a href="#heritage">Our Story<em>03</em></a>
+      <a href="#journal">Journal<em>04</em></a>
+    </nav>
+    <div class="ovl-meta">
+      <a href="shop.html">Bag (0)</a>
+      <a href="mailto:hello@turtlesbyfinleyjade.com">Contact</a>
+      <a href="#" rel="noopener">Instagram</a>
+    </div>
+  </div>
 </div>
 
-<!-- ============ HERO ============ -->
+<div class="ovl" id="searchOvl" role="dialog" aria-modal="true" aria-label="Search">
+  <div class="ovl-top">
+    <span class="mark"><img src="assets/turtle-logo.png" alt="" style="width:22px;" />
+      <span class="wm"><b>Turtles</b><i>By Finley Jade</i></span></span>
+    <button type="button" class="ovl-x" data-close>Close</button>
+  </div>
+  <div class="ovl-body">
+    <form class="sf" action="shop.html" method="get" role="search">
+      <input type="search" name="q" id="searchInput" placeholder="Search" aria-label="Search" />
+      <button type="submit" class="ovl-x">Enter</button>
+    </form>
+    <div class="sg">
+      <a href="#collections">The Long Run Polo</a>
+      <a href="#collections">Five Colors</a>
+      <a href="#heritage">Our Story</a>
+      <a href="#journal">Journal</a>
+      <a href="shop.html">Shop All</a>
+    </div>
+  </div>
+</div>
+
+<main>
+
+<!-- ═══════════ 01 · HERO ═══════════ -->
 <section class="hero" id="top">
-  <div class="hero-glow"></div>
-  <div class="container hero-grid">
+  <div class="hero-bg">
+    <!--
+      CINEMATIC HERO VIDEO — 8–15 second seamless loop.
+      Drop the file at assets/hero.mp4 and swap the <img> below for:
+
+      <video autoplay muted loop playsinline poster="assets/editorial/hero.jpg">
+        <source src="assets/hero.mp4" type="video/mp4" />
+      </video>
+    -->
+    <img src="assets/editorial/hero.jpg" alt="A man at the wheel of a sailing yacht in late-afternoon light off the Italian coast" fetchpriority="high" />
+  </div>
+  <div class="hero-veil"></div>
+  <span class="hero-rail">The First Edition</span>
+
+  <div class="hero-in">
     <div class="hero-copy">
-      <span class="eyebrow"><span class="dot"></span>New &middot; The Long Run Polo</span>
-      <h1>Tailored for tides, <em>built</em> to outlast the summer.</h1>
-      <p class="lead">Meet the limited-run polo made for the coast and cut for everywhere after. Choose from five ocean-drawn colorways, each individually numbered from a run of 200.</p>
-      <div class="hero-actions">
-        <a href="#collection" class="btn btn-primary">Shop the Polo
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </a>
-        <a href="#collections" class="btn btn-ghost">Find Your Color</a>
-      </div>
-      <!-- <a href="#collection" class="featured-link"><i></i>Five colorways · Sizes S–XL · $148</a> -->
-      <div class="trust-tags">
-        <span><i style="background:var(--lagoon)"></i>Piqué Knit</span>
-        <span><i style="background:var(--gold)"></i>Embroidered, Not Printed</span>
-        <span><i style="background:var(--steel)"></i>Run of 200</span>
-        <span><i style="background:var(--shell)"></i>Individually Numbered</span>
-      </div>
-    </div>
-    <div class="medallion-stage">
-      <div class="medallion-float">
-        <div class="medallion" id="medallion">
-          <div class="medallion-ring"></div>
-          <div class="medallion-core">
-            <img src="assets/hero-polo-editorial.jpg" alt="Deep Blue Long Run Polo with embroidered turtle crest at the coast" />
-          </div>
-          <span class="medallion-tag">Signature Piqué · Deep Blue</span>
-        </div>
+      <span class="label up">Turtles by Finley Jade</span>
+      <h1 class="ln-wrap">
+        <span class="ln"><span>Made for the</span></span>
+        <span class="ln"><span>Long Run.</span></span>
+      </h1>
+      <p class="up d3">Resort wear inspired by family, the sea, and the places worth returning to.</p>
+      <div class="hero-act up d4">
+        <a class="btn" href="#collections"><s>Discover the Collection</s></a>
+        <a class="tl" href="#heritage">Our Story<i></i></a>
       </div>
     </div>
   </div>
-  <div class="scroll-cue">
-    <div class="mouse"></div>
-    <span>Scroll</span>
-  </div>
-  <div class="wave-divider">
-    <svg viewBox="0 0 1440 100" preserveAspectRatio="none"><path d="M0,40 C240,100 480,0 720,40 C960,80 1200,10 1440,50 L1440,100 L0,100 Z" fill="#fbf6e8"/></svg>
+
+  <div class="hero-foot up d5">
+    <span class="cue"><i></i>Scroll</span>
+    <span class="m2">The Long Run — First Edition</span>
+    <span class="m3">Edition No. 001–200</span>
   </div>
 </section>
 
-<!-- ============ MARQUEE ============ -->
-<div class="marquee-band">
-  <div class="marquee-track">
-    <span><span>Family Owned</span><span>Ocean Inspired</span><span>Individually Numbered</span><span>Embroidered, Not Printed</span><span>Run of 200</span><span>Heritage Stitched In</span></span>
-    <span><span>Family Owned</span><span>Ocean Inspired</span><span>Individually Numbered</span><span>Embroidered, Not Printed</span><span>Run of 200</span><span>Heritage Stitched In</span></span>
-  </div>
-</div>
+<!-- ═══════════ 02 · INTRODUCTION TO THE POLO ═══════════ -->
+<section class="sec limestone" id="the-long-run">
+  <span id="product-details" aria-hidden="true"></span>
+  <div class="wrap">
+    <div class="rail"><span class="n">02</span><span class="label">The Long Run</span></div>
 
-<!-- ============ COLLECTION ============ -->
-<section class="section--dark section-pad" id="collection">
-  <canvas class="particle-canvas" id="collection-particles"></canvas>
-  <div class="container">
-    <div class="collection-intro">
-      <div class="section-head reveal">
-        <span class="eyebrow"><span class="dot"></span>Shop the limited release</span>
-        <h2>Choose your color.</h2>
-        <p>The Long Run Polo in five coastal colorways. Select your size, choose the shade that feels like home, and claim one of only 200.</p>
+    <div class="grid intro">
+      <div class="intro-copy">
+        <h2 class="up">One polo. Made<br class="lb" />to go everywhere.</h2>
+        <p class="lead up d1">Cut with the ease of resort wear and the structure of something more enduring, The Long Run is designed for mornings on the water, afternoons at the club and dinners that run well past sunset.</p>
+        <div class="up d2"><a class="btn" href="#collections"><s>Discover the Long Run</s></a></div>
+        <div class="intro-spec up d3"><span>Double-knit piqué</span><span>Sizes S–XL</span><span>Made once</span></div>
       </div>
-      <div class="collection-proof reveal reveal-delay-1" aria-label="Collection details">
-        <p class="collection-proof-label">The details</p>
-        <div class="collection-proof-grid">
-          <div><strong>200</strong><span>Per colorway</span></div>
-          <div><strong>Piqué</strong><span>Double-knit weave</span></div>
-          <div><strong>5</strong><span>Coastal tones</span></div>
-        </div>
-      </div>
-    </div>
 
-    <div class="product-grid">
-      <div class="product-card reveal">
-        <div class="product-card-photo">
-          <span class="product-card-badge">Limited — 200</span>
-          <!-- <span class="product-card-edition">01 / 05</span> -->
-          <img src="assets/products/deep-blue.jpg" alt="Deep Blue Long Run Polo with embroidered sea turtle logo on left chest" loading="lazy" />
-        </div>
-        <div class="product-card-info">
-          <div class="product-card-name-row"><span class="product-card-swatch" style="background:#385B73"></span><span class="product-card-name">The Long Run Polo</span></div>
-          <p class="product-card-sub">Deep Blue &middot; Returning Tide</p>
-          <div class="product-card-meta"><span>Embroidered crest</span><i></i><span>Classic fit</span></div>
-          <div class="product-card-sizes" role="group" aria-label="Select Deep Blue size"><span>Size</span><button type="button">S</button><button type="button">M</button><button type="button">L</button><button type="button">XL</button></div>
-          <div class="product-card-row">
-            <span class="product-card-price">$148</span>
-            <button class="product-card-add" data-name="The Long Run Polo" data-colorway="Deep Blue" data-price="$148">Add to bag <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>
-          </div>
-        </div>
-      </div>
-      <div class="product-card reveal reveal-delay-1">
-        <div class="product-card-photo">
-          <span class="product-card-badge">Limited — 200</span>
-          <!-- <span class="product-card-edition">02 / 05</span> -->
-          <img src="assets/products/sand.jpg" alt="Sand Long Run Polo with embroidered sea turtle logo on left chest" loading="lazy" />
-        </div>
-        <div class="product-card-info">
-          <div class="product-card-name-row"><span class="product-card-swatch" style="background:#E6E0D4"></span><span class="product-card-name">The Long Run Polo</span></div>
-          <p class="product-card-sub">Sand &middot; Long Weekend</p>
-          <div class="product-card-meta"><span>Embroidered crest</span><i></i><span>Classic fit</span></div>
-          <div class="product-card-sizes" role="group" aria-label="Select Sand size"><span>Size</span><button type="button">S</button><button type="button">M</button><button type="button">L</button><button type="button">XL</button></div>
-          <div class="product-card-row">
-            <span class="product-card-price">$148</span>
-            <button class="product-card-add" data-name="The Long Run Polo" data-colorway="Sand" data-price="$148">Add to bag <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>
-          </div>
-        </div>
-      </div>
-      <div class="product-card reveal reveal-delay-2">
-        <div class="product-card-photo">
-          <span class="product-card-badge">Limited — 200</span>
-          <!-- <span class="product-card-edition">03 / 05</span> -->
-          <img src="assets/products/aqua-mint.jpg" alt="Aqua Mint Long Run Polo with embroidered sea turtle logo on left chest" loading="lazy" />
-        </div>
-        <div class="product-card-info">
-          <div class="product-card-name-row"><span class="product-card-swatch" style="background:#5DBDB0"></span><span class="product-card-name">The Long Run Polo</span></div>
-          <p class="product-card-sub">Aqua Mint &middot; Home Waters</p>
-          <div class="product-card-meta"><span>Embroidered crest</span><i></i><span>Classic fit</span></div>
-          <div class="product-card-sizes" role="group" aria-label="Select Aqua Mint size"><span>Size</span><button type="button">S</button><button type="button">M</button><button type="button">L</button><button type="button">XL</button></div>
-          <div class="product-card-row">
-            <span class="product-card-price">$148</span>
-            <button class="product-card-add" data-name="The Long Run Polo" data-colorway="Aqua Mint" data-price="$148">Add to bag <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>
-          </div>
-        </div>
-      </div>
-      <div class="product-card reveal reveal-delay-3">
-        <div class="product-card-photo">
-          <span class="product-card-badge">Limited — 200</span>
-          <!-- <span class="product-card-edition">04 / 05</span> -->
-          <img src="assets/products/sea-blue.jpg" alt="Sea Blue Long Run Polo with embroidered sea turtle logo on left chest" loading="lazy" />
-        </div>
-        <div class="product-card-info">
-          <div class="product-card-name-row"><span class="product-card-swatch" style="background:#99B2D8"></span><span class="product-card-name">The Long Run Polo</span></div>
-          <p class="product-card-sub">Sea Blue &middot; First Light</p>
-          <div class="product-card-meta"><span>Embroidered crest</span><i></i><span>Classic fit</span></div>
-          <div class="product-card-sizes" role="group" aria-label="Select Sea Blue size"><span>Size</span><button type="button">S</button><button type="button">M</button><button type="button">L</button><button type="button">XL</button></div>
-          <div class="product-card-row">
-            <span class="product-card-price">$148</span>
-            <button class="product-card-add" data-name="The Long Run Polo" data-colorway="Sea Blue" data-price="$148">Add to bag <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>
-          </div>
-        </div>
-      </div>
-      <div class="product-card reveal">
-        <div class="product-card-photo">
-          <span class="product-card-badge">Limited — 200</span>
-          <!-- <span class="product-card-edition">05 / 05</span> -->
-          <img src="assets/products/deep-navy.jpg" alt="Deep Navy Long Run Polo with embroidered sea turtle logo on left chest" loading="lazy" />
-        </div>
-        <div class="product-card-info">
-          <div class="product-card-name-row"><span class="product-card-swatch" style="background:#212634"></span><span class="product-card-name">The Long Run Polo</span></div>
-          <p class="product-card-sub">Deep Navy &middot; Deep Current</p>
-          <div class="product-card-meta"><span>Embroidered crest</span><i></i><span>Classic fit</span></div>
-          <div class="product-card-sizes" role="group" aria-label="Select Deep Navy size"><span>Size</span><button type="button">S</button><button type="button">M</button><button type="button">L</button><button type="button">XL</button></div>
-          <div class="product-card-row">
-            <span class="product-card-price">$148</span>
-            <button class="product-card-add" data-name="The Long Run Polo" data-colorway="Deep Navy" data-price="$148">Add to bag <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="commerce-perks" aria-label="Shopping benefits">
-      <div class="commerce-perk">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M3 7h12v10H3zM15 10h3l3 3v4h-6z"/><circle cx="7" cy="19" r="1.5"/><circle cx="18" cy="19" r="1.5"/></svg>
-        <div><strong>Complimentary shipping</strong><span>On every polo order</span></div>
-      </div>
-      <div class="commerce-perk">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M4 8h12a4 4 0 010 8H8"/><path d="M8 4L4 8l4 4"/></svg>
-        <div><strong>Easy exchanges</strong><span>Within 30 days</span></div>
-      </div>
-      <div class="commerce-perk">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 12l3 3 5-6"/></svg>
-        <div><strong>Secure checkout</strong><span>Protected payment</span></div>
-      </div>
-    </div>
-
-    <div class="product-links">
-      <a href="#collections">Explore the Collections</a>
-      <a href="#fit-guide">Size Guide</a>
-      <a href="#shop-faq">Care Guide</a>
-      <a href="#shop-faq">FAQ</a>
-    </div>
-  </div>
-</section>
-
-<!-- ============ PRODUCT DETAILS ============ -->
-<section class="section--sage section-pad" id="product-details">
-  <div class="container product-detail-grid">
-    <div class="product-detail-media facet reveal">
-      <img src="assets/hero-polo-editorial.jpg" alt="Deep Blue Long Run Polo worn at the coast" loading="lazy" />
-      <span class="product-detail-media-note">The Long Run Polo · Deep Blue</span>
-      <span class="product-detail-serial">Edition 001–200</span>
-    </div>
-    <div class="product-detail-copy reveal reveal-delay-1">
-      <div class="section-head">
-        <span class="eyebrow"><span class="dot"></span>The polo, up close</span>
-        <h2>Considered in every detail.</h2>
-        <div class="product-detail-summary">
-          <span class="detail-price">$148</span>
-          <span class="detail-rating">★★★★★<span>4.9 · 36 verified reviews</span></span>
-        </div>
-      </div>
-      <p>A resort polo should feel easy without looking casual. The Long Run balances breathable structure, a collar that keeps its shape, and a hand-finished crest made to age with you.</p>
-      <div class="product-spec-grid" aria-label="Product specifications">
-        <div class="product-spec">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M4 8l4-4 4 3 4-3 4 4-3 4v8H7v-8L4 8z"/></svg>
-          <strong>Double-knit piqué</strong><span>Breathable texture with lasting structure.</span>
-        </div>
-        <div class="product-spec">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M5 6h14M7 10h10M9 14h6M11 18h2"/></svg>
-          <strong>Classic tailored fit</strong><span>Easy through the chest, clean at the waist.</span>
-        </div>
-        <div class="product-spec">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><circle cx="12" cy="12" r="7"/><path d="M8 12c1.4-2 2.6-2 4 0s2.6 2 4 0"/></svg>
-          <strong>Embroidered crest</strong><span>Dense stitching, never surface printed.</span>
-        </div>
-        <div class="product-spec">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M6 4h12v16H6zM9 8h6M9 12h6M9 16h3"/></svg>
-          <strong>Individually numbered</strong><span>One of only 200 in each colorway.</span>
-        </div>
-      </div>
-      <div class="detail-colorways">
-        <div class="detail-colorways-head"><span>Colorway</span><strong>Deep Blue · 5 available</strong></div>
-        <div class="detail-swatches" aria-label="Available colorways">
-          <a class="active" href="#collection" style="background:#385B73" aria-label="Deep Blue"></a>
-          <a href="#collection" style="background:#E6E0D4" aria-label="Sand"></a>
-          <a href="#collection" style="background:#5DBDB0" aria-label="Aqua Mint"></a>
-          <a href="#collection" style="background:#99B2D8" aria-label="Sea Blue"></a>
-          <a href="#collection" style="background:#212634" aria-label="Deep Navy"></a>
-        </div>
-      </div>
-      <div class="fit-panel" id="fit-guide">
-        <div class="fit-panel-head"><strong>Available sizes</strong><a href="#shop-faq">How does it fit?</a></div>
-        <div class="fit-sizes"><span>S</span><span>M</span><span>L</span><span>XL</span></div>
-      </div>
-      <div class="product-detail-actions">
-        <a href="#collection" class="btn btn-primary">Choose a Color <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        <a href="#shop-faq" class="btn btn-ghost">Fit &amp; Delivery</a>
+      <div class="intro-media">
+        <figure class="big rv"><img src="assets/editorial/intro-main.jpg" alt="A man stepping from a yacht onto the dock at a quiet marina" loading="lazy" /></figure>
+        <figure class="intro-inset rv"><img src="assets/editorial/intro-inset.jpg" alt="The polo worn at the dune line in late light" loading="lazy" /></figure>
+        <p class="caption intro-cap up">The Long Run Polo — Liguria, late afternoon</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ HERITAGE ============ -->
-<section class="section--light section-pad" id="heritage">
-  <div class="container heritage-grid">
-    <div class="heritage-copy reveal">
-      <div class="section-head">
-        <span class="eyebrow"><span class="dot"></span>Our Story</span>
-        <h2>A house built on family tides.</h2>
-      </div>
-      <p>Turtles by Finley Jade began the way most good stories do — around a family table, sun-worn from a week at the shore, polos stiff with salt and easy afternoons. What started as an eye for the way light moves across water became a philosophy for how resort wear should feel: unhurried, considered, built for the years between vacations, not just the week of one.</p>
-      <p class="heritage-statement">Every piece carries the palette of the tide and the quiet confidence of clothes made to become heirlooms, not costumes.</p>
-      <div class="heritage-marks">
-        <div>Three generations of shoreline mornings</div>
-        <div>One palette, drawn from the sea</div>
-        <div>Every polo, cut to outlast a season</div>
-      </div>
-      <a href="#collection" class="btn heritage-cta">Shop the Long Run Polo
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+<!-- ═══════════ 03 · THE FIVE COLORS ═══════════ -->
+<section class="sec parchment" id="collections">
+  <div class="wrap">
+    <div class="rail"><span class="n">03</span><span class="label">The First Edition</span></div>
+    <div class="ed-head">
+      <h2 class="up">Five colors.<br class="lb" />One silhouette.</h2>
+      <p class="lead up d1">Each color is produced once in an individually numbered edition of 200.</p>
+    </div>
+  </div>
+
+  <div class="bleed">
+    <div class="colors swipe" data-swipe>
+      <a class="color up" href="shop.html">
+        <span class="plate">
+          <img class="flat" src="assets/products/tiles/sand.jpg" alt="The Long Run Polo in Sand" loading="lazy" />
+          <img class="worn" src="assets/editorial/worn-sand.jpg" alt="The Long Run Polo in Sand, worn on the shoreline" loading="lazy" />
+        </span>
+        <span class="color-b">
+          <span class="color-t"><span class="n">01</span><span class="nm">Long Weekend</span></span>
+          <span class="color-s">Sand<span class="color-v">View Color</span></span>
+        </span>
+      </a>
+      <a class="color up d1" href="shop.html">
+        <span class="plate">
+          <img class="flat" src="assets/products/tiles/deep-navy.jpg" alt="The Long Run Polo in Navy" loading="lazy" />
+          <img class="worn" src="assets/editorial/worn-navy.jpg" alt="The Long Run Polo in Navy, worn at the helm" loading="lazy" />
+        </span>
+        <span class="color-b">
+          <span class="color-t"><span class="n">02</span><span class="nm">Returning Tide</span></span>
+          <span class="color-s">Navy<span class="color-v">View Color</span></span>
+        </span>
+      </a>
+      <a class="color up d2" href="shop.html">
+        <span class="plate">
+          <img class="flat" src="assets/products/tiles/sea-blue.jpg" alt="The Long Run Polo in Sea Blue" loading="lazy" />
+          <img class="worn" src="assets/editorial/worn-seablue.jpg" alt="The Long Run Polo worn at the end of the dock" loading="lazy" />
+        </span>
+        <span class="color-b">
+          <span class="color-t"><span class="n">03</span><span class="nm">First Light</span></span>
+          <span class="color-s">Sea Blue<span class="color-v">View Color</span></span>
+        </span>
+      </a>
+      <a class="color up d3" href="shop.html">
+        <span class="plate">
+          <img class="flat" src="assets/products/tiles/deep-blue.jpg" alt="The Long Run Polo in Deep Blue" loading="lazy" />
+          <img class="worn" src="assets/editorial/worn-deepblue.jpg" alt="The Long Run Polo in Deep Blue, worn at last light" loading="lazy" />
+        </span>
+        <span class="color-b">
+          <span class="color-t"><span class="n">04</span><span class="nm">The Passage</span></span>
+          <span class="color-s">Deep Blue<span class="color-v">View Color</span></span>
+        </span>
+      </a>
+      <a class="color up d4" href="shop.html">
+        <span class="plate">
+          <img class="flat" src="assets/products/tiles/aqua-mint.jpg" alt="The Long Run Polo in Sea Glass" loading="lazy" />
+          <img class="worn" src="assets/editorial/worn-seaglass.jpg" alt="The Long Run Polo in Sea Glass, worn by the water" loading="lazy" />
+        </span>
+        <span class="color-b">
+          <span class="color-t"><span class="n">05</span><span class="nm">Home Waters</span></span>
+          <span class="color-s">Sea Glass<span class="color-v">View Color</span></span>
+        </span>
       </a>
     </div>
-    <div class="heritage-visual reveal reveal-delay-2">
-      <div class="hv-panel hv-1"><span>Shoreline</span><strong>Dawn tide, family in tow</strong></div>
-      <div class="hv-panel hv-2"><span>Clubhouse</span><strong>Terrace, golden hour</strong></div>
-      <div class="hv-panel hv-3"><span>Atelier</span><strong>Cut &amp; stitched</strong></div>
-      <div class="hv-badge">House notes · Est. by the water</div>
+    <div class="hint" data-hint hidden><i></i></div>
+  </div>
+
+  <div class="wrap">
+    <div class="prov up">
+      <span class="ed">Edition No. 001–200</span>
+      <p>Each color is produced once. When an edition is gone, that particular combination will not return.</p>
+      <svg class="seal" viewBox="0 0 200 200" aria-hidden="true">
+        <defs><path id="sealArc" d="M100,100 m-72,0 a72,72 0 1,1 144,0 a72,72 0 1,1 -144,0" /></defs>
+        <circle cx="100" cy="100" r="93" fill="none" stroke="currentColor" stroke-width="1.1" opacity=".8" />
+        <circle cx="100" cy="100" r="58" fill="none" stroke="currentColor" stroke-width=".8" opacity=".55" />
+        <text class="arc"><textPath href="#sealArc" startOffset="1.5%">TURTLES BY FINLEY JADE · FIRST EDITION ·</textPath></text>
+        <text class="ctr" x="100" y="94" font-size="16" opacity=".85">No.</text>
+        <text class="ctr" x="100" y="121" font-size="23">001–200</text>
+      </svg>
     </div>
   </div>
 </section>
 
-<!-- ============ COLLECTIONS ============ -->
-<section class="section--darker section-pad" id="collections">
-  <canvas class="particle-canvas" id="collections-particles"></canvas>
-  <div class="container">
-    <div class="section-head reveal">
-      <span class="eyebrow"><span class="dot"></span>The Collections</span>
-      <h2>Five ways to go the distance.</h2>
-      <p>Each collection is a chapter of the same idea — pieces made for the long run, named for the moments and waters that shape a coastal life.</p>
+<!-- ═══════════ 04 · EDITORIAL LIFESTYLE MOMENT ═══════════ -->
+<section class="moment" id="lifestyle">
+  <div class="moment-bg" data-parallax>
+    <img src="assets/editorial/moment.jpg" alt="A man walking the shoreline toward the harbour in late-afternoon light" loading="lazy" />
+  </div>
+  <span class="moment-frame"></span>
+  <span class="moment-n">04</span>
+  <p class="moment-l">From first light to last table</p>
+</section>
+
+<!-- ═══════════ 05 · CRAFT ═══════════ -->
+<section class="sec limestone" id="craft">
+  <div class="wrap">
+    <div class="rail"><span class="n">05</span><span class="label">The Making</span></div>
+    <div class="ed-head">
+      <h2 class="up">The details are<br class="lb" />the difference.</h2>
+      <p class="lead up d1">Four decisions you feel before you notice them.</p>
     </div>
 
-    <div class="collections-list">
-      <div class="collection-row reveal">
-        <div class="collection-media">
-          <img src="assets/collections/long-weekend.jpg" alt="Folded polo and journal on a sun-bleached dock chair at sunrise" loading="lazy" />
-          <div class="collection-media-badge"><img src="assets/products/sand.jpg" alt="Sand Long Run Polo" loading="lazy" /></div>
-        </div>
-        <div class="collection-copy">
-          <span class="collection-index">01 — Long Weekend</span>
-          <h3>The Long Weekend Collection</h3>
-          <p class="collection-tagline">Friday to Monday, made easy.</p>
-          <p class="collection-body">The Long Weekend is the stretch of days that feels like a small holiday — the kind where time slows down and the only agenda is the tide.</p>
-          <p class="collection-body">These pieces are built for that ease: considered enough for a dinner that runs late, relaxed enough for a morning that doesn't start in a hurry. Made to be reached for from Friday to Monday, and long after.</p>
-          <div class="collection-palette"><i style="background:#E6E0D4"></i>Palette — Sand</div>
-        </div>
-      </div>
-
-      <div class="collection-row flip reveal">
-        <div class="collection-media">
-          <img src="assets/collections/returning-tide.jpg" alt="Tide washing over dark sand at dusk" loading="lazy" />
-          <div class="collection-media-badge"><img src="assets/products/deep-navy.jpg" alt="Deep Navy Long Run Polo" loading="lazy" /></div>
-        </div>
-        <div class="collection-copy">
-          <span class="collection-index">02 — Returning Tide</span>
-          <h3>The Returning Tide Collection</h3>
-          <p class="collection-tagline">What goes out always comes back.</p>
-          <p class="collection-body">The tide always returns. So do the things worth keeping — the people, the places, the garments that earn their place over the years.</p>
-          <p class="collection-body">The Returning Tide is for the pieces that come back into rotation season after season, never falling out of favor. Quiet, dependable, and made to endure.</p>
-          <div class="collection-palette"><i style="background:#212634"></i>Palette — Deep Navy</div>
-        </div>
-      </div>
-
-      <div class="collection-row reveal">
-        <div class="collection-media">
-          <img src="assets/collections/first-light.jpg" alt="Dawn breaking over a calm, glassy ocean" loading="lazy" />
-          <div class="collection-media-badge"><img src="assets/collections/morning-tide-polo.jpg" alt="Morning Tide Long Run Polo" loading="lazy" /></div>
-        </div>
-        <div class="collection-copy">
-          <span class="collection-index">03 — First Light</span>
-          <h3>The First Light Collection</h3>
-          <p class="collection-tagline">For the early hours on the water.</p>
-          <p class="collection-body">First light is the quietest, most honest part of the day — when the water is still and the world hasn't yet caught up.</p>
-          <p class="collection-body">The First Light Collection is built for those early hours: light, breathable, and unfussy. Pieces that move with you from the first cast to the first coffee.</p>
-          <div class="collection-palette"><i style="background:#385B73"></i>Palette — Morning Tide</div>
-        </div>
-      </div>
-
-      <div class="collection-row flip reveal">
-        <div class="collection-media">
-          <img src="assets/collections/passage.jpg" alt="Boat wake cutting through open water at sunset" loading="lazy" />
-          <div class="collection-media-badge"><img src="assets/products/deep-navy.jpg" alt="Deep Navy Long Run Polo" loading="lazy" /></div>
-        </div>
-        <div class="collection-copy">
-          <span class="collection-index">04 — The Passage</span>
-          <h3>The Passage Collection</h3>
-          <p class="collection-tagline">For the journeys in between.</p>
-          <p class="collection-body">Every passage is the space between where you were and where you're going — the crossings, the flights, the long quiet stretches of open water.</p>
-          <p class="collection-body">The Passage Collection is made for the in-between: garments that travel well, wrinkle little, and look considered on either side of the journey.</p>
-          <div class="collection-palette"><i style="background:#212634"></i>Palette — Open Water</div>
-        </div>
-      </div>
-
-      <div class="collection-row reveal">
-        <div class="collection-media">
-          <img src="assets/collections/home-waters.jpg" alt="Calm sheltered bay at golden hour with a small wooden dock" loading="lazy" />
-          <div class="collection-media-badge"><img src="assets/products/deep-blue.jpg" alt="Deep Blue Long Run Polo" loading="lazy" /></div>
-        </div>
-        <div class="collection-copy">
-          <span class="collection-index">05 — Home Waters</span>
-          <h3>The Home Waters Collection</h3>
-          <p class="collection-tagline">The places we return to.</p>
-          <p class="collection-body">Home waters are the shores we know best — the familiar bays, the local docks, the coastline that feels like it belongs to us.</p>
-          <p class="collection-body">The Home Waters Collection honors the idea of return: pieces rooted in place, made for the days you spend closest to home and the people you share them with.</p>
-          <div class="collection-palette"><i style="background:#385B73"></i>Palette — Deep Blue</div>
-        </div>
-      </div>
+    <div class="craft">
+      <article class="craft-i up">
+        <figure class="rv"><img src="assets/editorial/craft-collar.jpg" alt="Close detail of the collar roll and topstitching" loading="lazy" /></figure>
+        <span class="craft-c"><span class="n">01</span><h3>The Collar</h3></span>
+        <p>Structured to hold its shape from first wear to last call.</p>
+      </article>
+      <article class="craft-i up">
+        <figure class="rv"><img src="assets/editorial/craft-fabric.jpg" alt="Close detail of the piqué fabric and shoulder seam" loading="lazy" /></figure>
+        <span class="craft-c"><span class="n">02</span><h3>The Fabric</h3></span>
+        <p>Soft, breathable performance with enough weight to drape properly.</p>
+      </article>
+      <article class="craft-i up">
+        <figure class="rv"><img src="assets/editorial/craft-turtle.jpg" alt="Close detail of the embroidered turtle at the chest" loading="lazy" /></figure>
+        <span class="craft-c"><span class="n">03</span><h3>The Turtle</h3></span>
+        <p>Embroidered with restraint. A mark, not a billboard.</p>
+      </article>
+      <article class="craft-i up">
+        <figure class="rv"><img src="assets/editorial/craft-fit.jpg" alt="Close detail of the polo worn, showing the line through the body" loading="lazy" /></figure>
+        <span class="craft-c"><span class="n">04</span><h3>The Fit</h3></span>
+        <p>Tailored through the body without feeling tight or technical.</p>
+      </article>
     </div>
   </div>
 </section>
 
-<!-- ============ LIFESTYLE ============ -->
-<section class="section--darker section-pad" id="lifestyle">
-  <div class="container">
-    <div class="section-head reveal">
-      <span class="eyebrow"><span class="dot"></span>Lifestyle</span>
-      <h2>Shoreline to clubhouse.</h2>
-    </div>
-    <div class="lifestyle-quote reveal">
-      <p>&ldquo;We design for the version of you that shows up an hour early to watch the boats come in, and stays long after the sun's gone down.&rdquo;</p>
-    </div>
-    <div class="moments-row reveal reveal-delay-1">
-      <div class="moment m1"><span class="m-label">05:40 AM</span><span class="m-title">Dawn Sail</span></div>
-      <div class="moment m2"><span class="m-label">07:15 AM</span><span class="m-title">The Long Weekend</span></div>
-      <div class="moment m3"><span class="m-label">Golden Hour</span><span class="m-title">Open Water</span></div>
-      <div class="moment m4"><span class="m-label">Dusk</span><span class="m-title">Returning Tide</span></div>
+<!-- ═══════════ 06 · FAMILY / OCEAN / TIME ═══════════ -->
+<section class="sec parchment" id="philosophy">
+  <div class="wrap">
+    <div class="rail"><span class="n">06</span><span class="label">Family. Ocean. Time.</span></div>
+    <div class="pillars">
+      <article class="pillar up">
+        <figure class="rv"><img src="assets/editorial/pillar-family.jpg" alt="A folded polo and a notebook left on a dock chair at first light" loading="lazy" /></figure>
+        <div class="pillar-b">
+          <span class="pillar-n">01</span>
+          <h3>Family</h3>
+          <p>The reason we began. The reason we hope it lasts.</p>
+          <div class="pillar-r"></div>
+        </div>
+      </article>
+      <article class="pillar up">
+        <figure class="rv"><img src="assets/editorial/pillar-ocean.jpg" alt="Still water at dawn" loading="lazy" /></figure>
+        <div class="pillar-b">
+          <span class="pillar-n">02</span>
+          <h3>Ocean</h3>
+          <p>A reminder that the best things move at their own pace.</p>
+          <div class="pillar-r"></div>
+        </div>
+      </article>
+      <article class="pillar up">
+        <figure class="rv"><img src="assets/editorial/pillar-time.jpg" alt="A wake trailing behind a boat at the end of the day" loading="lazy" /></figure>
+        <div class="pillar-b">
+          <span class="pillar-n">03</span>
+          <h3>Time</h3>
+          <p>True style is never rushed. It is earned.</p>
+          <div class="pillar-r"></div>
+        </div>
+      </article>
     </div>
   </div>
 </section>
 
-<!-- ============ CRAFTSMANSHIP ============ -->
-<section class="section--light section-pad" id="craft">
-  <div class="container">
-    <div class="craft-layout">
-      <div class="craft-copy">
-        <div class="section-head reveal" style="margin-bottom:2.2rem;">
-          <span class="eyebrow"><span class="dot"></span>Craftsmanship</span>
-          <h2>The details we don't compromise on.</h2>
-        </div>
-        <div class="craft-grid">
-          <div class="craft-item reveal">
-            <div class="craft-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="4" width="6" height="6"/><rect x="14" y="4" width="6" height="6"/><rect x="4" y="14" width="6" height="6"/><rect x="14" y="14" width="6" height="6"/></svg></div>
-            <h4>Piqué, Chosen With Intent</h4>
-            <p>A double-knit piqué that breathes like linen and holds its shape through salt, sun, and the hundredth wash.</p>
-          </div>
-          <div class="craft-item reveal reveal-delay-1">
-            <div class="craft-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12h16M8 6l-4 6 4 6M16 6l4 6-4 6"/></svg></div>
-            <h4>A Collar Built to Hold</h4>
-            <p>Fused interlining, rolled by hand and set with a double row of stitching — structure that lasts for years, not weeks.</p>
-          </div>
-          <div class="craft-item reveal reveal-delay-2">
-            <div class="craft-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="7"/><path d="M8 12c1.4-2 2.6-2 4 0s2.6 2 4 0"/></svg></div>
-            <h4>Embroidered, Never Printed</h4>
-            <p>Every turtle is laid down in dense, high-tension thread — a small detail, done slowly.</p>
-          </div>
-          <div class="craft-item reveal reveal-delay-3">
-            <div class="craft-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M11 4h6a2 2 0 012 2v6l-9 9-8-8 9-9z"/><circle cx="15.2" cy="8.2" r="1.1"/></svg></div>
-            <h4>Numbered, Then Closed</h4>
-            <p>Each polo is numbered within its run of 200. A garment with a serial, not a season.</p>
-          </div>
-        </div>
+<!-- ═══════════ 07 · THE FINLEY STORY ═══════════ -->
+<section class="sec limestone" id="heritage">
+  <div class="wrap">
+    <div class="rail"><span class="n">07</span><span class="label">The Beginning</span></div>
+    <div class="grid story">
+      <div class="story-media">
+        <figure class="rv"><img src="assets/editorial/story-main.jpg" alt="A wooden jetty reaching into a sheltered bay in the late afternoon" loading="lazy" /></figure>
+        <figure class="story-inset rv"><img src="assets/editorial/story-inset.jpg" alt="The tide returning over dark sand at dusk" loading="lazy" /></figure>
       </div>
-      <div class="craft-photo reveal reveal-delay-2">
-        <img src="assets/gallery/at-the-helm.jpg" alt="Man at the helm of a sailboat at golden hour, wearing the Deep Blue Long Run Polo" loading="lazy" />
-        <span class="craft-photo-badge">Built to Endure</span>
+      <div class="story-copy">
+        <h2 class="up">For Finley.</h2>
+        <p class="serif-lead up d1">Turtles began with a daughter who sees the world with wonder and a father who wanted to build something she could someday call her own.</p>
+        <p class="lead up d2">Named for Finley Jade, the brand is rooted in family, inspired by the patience of the sea and created with a belief that the things worth keeping should be made to last.</p>
+        <div class="up d3"><a class="btn ghost" href="#philosophy"><s>Our Story</s></a></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ GALLERY ============ -->
-<section class="section--dark section-pad" id="gallery">
-  <canvas class="particle-canvas" id="gallery-particles"></canvas>
-  <div class="container">
-    <div class="section-head reveal">
-      <span class="eyebrow"><span class="dot"></span>From the Coast</span>
-      <h2>The long run, captured.</h2>
-      <p>New colorways, coastal days, and the moments worth keeping — the men who go the distance, wherever the tide takes them.</p>
+<!-- ═══════════ 08 · SHOP ═══════════ -->
+<section class="sec parchment" id="collection">
+  <span id="shop-faq" aria-hidden="true"></span>
+  <span id="fit-guide" aria-hidden="true"></span>
+  <div class="wrap">
+    <div class="rail"><span class="n">08</span><span class="label">Shop</span></div>
+    <div class="shop-head">
+      <h2 class="up">The Long Run</h2>
+      <a class="tl up d1" href="shop.html">View All<i></i></a>
     </div>
-    <div class="gallery-grid reveal">
-      <div class="gallery-tile g-big">
-        <img src="assets/gallery/golden-hour.jpg" alt="Man walking the shoreline barefoot at golden hour in the Sand Long Run Polo" loading="lazy" />
-        <div class="gallery-caption">
-          <p>&ldquo;Golden hour, bare feet, and the long run ahead.&rdquo;</p>
-          <span class="g-likes"><svg viewBox="0 0 24 24" stroke-width="1.6"><path d="M12 20s-7-4.35-9.5-8.5C.5 8 2 4.5 5.5 4.5c2 0 3.5 1.2 4.5 2.7C11 5.7 12.5 4.5 14.5 4.5 18 4.5 19.5 8 19.5 11.5 17 15.65 12 20 12 20z"/></svg>1,284</span>
-        </div>
-      </div>
-      <div class="gallery-tile">
-        <img src="assets/gallery/back-nine.jpg" alt="Man on a golf course at sunset wearing the Deep Blue Long Run Polo" loading="lazy" />
-        <div class="gallery-caption">
-          <p>&ldquo;Last light on the back nine.&rdquo;</p>
-          <span class="g-likes"><svg viewBox="0 0 24 24" stroke-width="1.6"><path d="M12 20s-7-4.35-9.5-8.5C.5 8 2 4.5 5.5 4.5c2 0 3.5 1.2 4.5 2.7C11 5.7 12.5 4.5 14.5 4.5 18 4.5 19.5 8 19.5 11.5 17 15.65 12 20 12 20z"/></svg>748</span>
-        </div>
-      </div>
-      <div class="gallery-tile">
-        <img src="assets/gallery/pool-sea.jpg" alt="Man sitting at an infinity pool edge overlooking the sea in the Aqua Mint Long Run Polo" loading="lazy" />
-        <div class="gallery-caption">
-          <p>&ldquo;Where the pool meets the sea.&rdquo;</p>
-          <span class="g-likes"><svg viewBox="0 0 24 24" stroke-width="1.6"><path d="M12 20s-7-4.35-9.5-8.5C.5 8 2 4.5 5.5 4.5c2 0 3.5 1.2 4.5 2.7C11 5.7 12.5 4.5 14.5 4.5 18 4.5 19.5 8 19.5 11.5 17 15.65 12 20 12 20z"/></svg>1,103</span>
-        </div>
-      </div>
-      <div class="gallery-tile g-wide">
-        <img src="assets/gallery/end-of-dock.jpg" alt="Man standing at the end of a dock at sunset in the Sand Long Run Polo" loading="lazy" />
-        <div class="gallery-caption">
-          <p>&ldquo;End of the dock, start of the evening.&rdquo;</p>
-          <span class="g-likes"><svg viewBox="0 0 24 24" stroke-width="1.6"><path d="M12 20s-7-4.35-9.5-8.5C.5 8 2 4.5 5.5 4.5c2 0 3.5 1.2 4.5 2.7C11 5.7 12.5 4.5 14.5 4.5 18 4.5 19.5 8 19.5 11.5 17 15.65 12 20 12 20z"/></svg>1,402</span>
-        </div>
-      </div>
-      <div class="gallery-tile">
-        <img src="assets/gallery/cliffs-edge.jpg" alt="Man standing at a cliff's edge at sunset in the White Long Run Polo" loading="lazy" />
-        <div class="gallery-caption">
-          <p>&ldquo;Cliff's edge, last light. Crisp white, wide open.&rdquo;</p>
-          <span class="g-likes"><svg viewBox="0 0 24 24" stroke-width="1.6"><path d="M12 20s-7-4.35-9.5-8.5C.5 8 2 4.5 5.5 4.5c2 0 3.5 1.2 4.5 2.7C11 5.7 12.5 4.5 14.5 4.5 18 4.5 19.5 8 19.5 11.5 17 15.65 12 20 12 20z"/></svg>1,178</span>
-        </div>
-      </div>
-      <div class="gallery-tile">
-        <img src="assets/gallery/twilight-toast.jpg" alt="Man raising a toast at an oceanside dinner in the Sand Long Run Polo" loading="lazy" />
-        <div class="gallery-caption">
-          <p>&ldquo;Twilight toast, salt air. Sand polo, string lights.&rdquo;</p>
-          <span class="g-likes"><svg viewBox="0 0 24 24" stroke-width="1.6"><path d="M12 20s-7-4.35-9.5-8.5C.5 8 2 4.5 5.5 4.5c2 0 3.5 1.2 4.5 2.7C11 5.7 12.5 4.5 14.5 4.5 18 4.5 19.5 8 19.5 11.5 17 15.65 12 20 12 20z"/></svg>1,021</span>
-        </div>
-      </div>
-      <div class="gallery-tile">
-        <img src="assets/gallery/salt-air.jpg" alt="Man leaning on a dune fence at sunset in the Sand Long Run Polo" loading="lazy" />
-        <div class="gallery-caption">
-          <p>&ldquo;Sand polo, last light, salt air.&rdquo;</p>
-          <span class="g-likes"><svg viewBox="0 0 24 24" stroke-width="1.6"><path d="M12 20s-7-4.35-9.5-8.5C.5 8 2 4.5 5.5 4.5c2 0 3.5 1.2 4.5 2.7C11 5.7 12.5 4.5 14.5 4.5 18 4.5 19.5 8 19.5 11.5 17 15.65 12 20 12 20z"/></svg>934</span>
-        </div>
-      </div>
+
+    <div class="shop swipe" data-swipe>
+      <a class="prod up" href="shop.html">
+        <span class="prod-f">
+          <img class="flat" src="assets/products/tiles/sand.jpg" alt="The Long Run Polo in Sand" loading="lazy" />
+          <img class="worn" src="assets/editorial/worn-sand.jpg" alt="The Long Run Polo in Sand, worn on the shoreline" loading="lazy" />
+        </span>
+        <span class="prod-b">
+          <span class="prod-c">Sand</span><span class="prod-n">The Long Run Polo</span>
+          <span class="prod-r"><span class="prod-p">$148</span><span class="prod-v">View</span></span>
+        </span>
+      </a>
+      <a class="prod up d1" href="shop.html">
+        <span class="prod-f">
+          <img class="flat" src="assets/products/tiles/deep-navy.jpg" alt="The Long Run Polo in Navy" loading="lazy" />
+          <img class="worn" src="assets/editorial/worn-navy.jpg" alt="The Long Run Polo in Navy, worn at the helm" loading="lazy" />
+        </span>
+        <span class="prod-b">
+          <span class="prod-c">Navy</span><span class="prod-n">The Long Run Polo</span>
+          <span class="prod-r"><span class="prod-p">$148</span><span class="prod-v">View</span></span>
+        </span>
+      </a>
+      <a class="prod up d2" href="shop.html">
+        <span class="prod-f">
+          <img class="flat" src="assets/products/tiles/sea-blue.jpg" alt="The Long Run Polo in Sea Blue" loading="lazy" />
+          <img class="worn" src="assets/editorial/worn-seablue.jpg" alt="The Long Run Polo worn at the end of the dock" loading="lazy" />
+        </span>
+        <span class="prod-b">
+          <span class="prod-c">Sea Blue</span><span class="prod-n">The Long Run Polo</span>
+          <span class="prod-r"><span class="prod-p">$148</span><span class="prod-v">View</span></span>
+        </span>
+      </a>
+      <a class="prod up d3" href="shop.html">
+        <span class="prod-f">
+          <img class="flat" src="assets/products/tiles/deep-blue.jpg" alt="The Long Run Polo in Deep Blue" loading="lazy" />
+          <img class="worn" src="assets/editorial/worn-deepblue.jpg" alt="The Long Run Polo in Deep Blue, worn at last light" loading="lazy" />
+        </span>
+        <span class="prod-b">
+          <span class="prod-c">Deep Blue</span><span class="prod-n">The Long Run Polo</span>
+          <span class="prod-r"><span class="prod-p">$148</span><span class="prod-v">View</span></span>
+        </span>
+      </a>
+      <a class="prod up d4" href="shop.html">
+        <span class="prod-f">
+          <img class="flat" src="assets/products/tiles/aqua-mint.jpg" alt="The Long Run Polo in Sea Glass" loading="lazy" />
+          <img class="worn" src="assets/editorial/worn-seaglass.jpg" alt="The Long Run Polo in Sea Glass, worn by the water" loading="lazy" />
+        </span>
+        <span class="prod-b">
+          <span class="prod-c">Sea Glass</span><span class="prod-n">The Long Run Polo</span>
+          <span class="prod-r"><span class="prod-p">$148</span><span class="prod-v">View</span></span>
+        </span>
+      </a>
     </div>
-    <div class="gallery-foot reveal">
-      <p>As worn by the men who go the distance.</p>
+    <div class="hint" data-hint hidden><i></i></div>
+
+    <div class="shop-foot up"><a class="btn" href="shop.html"><s>Shop the Long Run</s></a></div>
+  </div>
+</section>
+
+<!-- ═══════════ NOTES ═══════════ -->
+<section class="sec limestone" id="reviews" style="padding-top:clamp(3.6rem,7vw,7rem);padding-bottom:clamp(3.6rem,7vw,7rem);">
+  <div class="wrap">
+    <div class="notes">
+      <figure class="note up">
+        <blockquote>&ldquo;The first polo I&rsquo;ve owned that looks as good at dinner as it did at noon.&rdquo;</blockquote>
+        <figcaption>James Whitfield<br />Newport</figcaption>
+      </figure>
+      <figure class="note up d1">
+        <blockquote>&ldquo;Three summers in and the collar still stands the way it did the first morning.&rdquo;</blockquote>
+        <figcaption>Marcus Bell<br />Charleston</figcaption>
+      </figure>
+      <figure class="note up d2">
+        <blockquote>&ldquo;I bought one, then quietly bought the rest of the edition for my brothers.&rdquo;</blockquote>
+        <figcaption>David Okonkwo<br />London</figcaption>
+      </figure>
     </div>
   </div>
 </section>
 
-<!-- ============ TESTIMONIALS ============ -->
-<section class="section--sage section-pad" id="reviews">
-  <div class="container">
-    <div class="section-head reveal" style="margin:0 auto 3.6rem;text-align:center;">
-      <span class="eyebrow" style="justify-content:center;"><span class="dot"></span>From the Long Run</span>
-      <h2>Worn on every coast.</h2>
-      <p style="margin-left:auto;margin-right:auto;">The men who wear them, in their own words.</p>
+<!-- ═══════════ 09 · JOURNAL ═══════════ -->
+<section class="sec parchment" id="journal">
+  <span id="gallery" aria-hidden="true"></span>
+  <div class="wrap">
+    <div class="rail"><span class="n">09</span><span class="label">Journal</span></div>
+    <div class="jr-head">
+      <h2 class="up">Postcards</h2>
+      <a class="tl up d1" href="#journal">Read the Journal<i></i></a>
     </div>
-    <div class="testimonial-grid">
-      <div class="testimonial-card reveal">
-        <div class="testimonial-mark"><svg viewBox="0 0 120 100" xmlns="http://www.w3.org/2000/svg"><ellipse cx="60" cy="55" rx="30" ry="23"/><ellipse cx="60" cy="30" rx="13" ry="11"/><ellipse cx="28" cy="40" rx="9" ry="6" transform="rotate(-35 28 40)"/><ellipse cx="92" cy="40" rx="9" ry="6" transform="rotate(35 92 40)"/><ellipse cx="32" cy="72" rx="11" ry="5" transform="rotate(20 32 72)"/><ellipse cx="88" cy="72" rx="11" ry="5" transform="rotate(-20 88 72)"/><ellipse cx="48" cy="82" rx="8" ry="4" transform="rotate(15 48 82)"/><ellipse cx="72" cy="82" rx="8" ry="4" transform="rotate(-15 72 82)"/></svg></div>
-        <p class="testimonial-quote">&ldquo;The best polo I've owned. It moves with me from the boat to the clubhouse without missing a beat.&rdquo;</p>
-        <div class="testimonial-rule"></div>
-        <p class="testimonial-name">James Whitfield</p>
-        <p class="testimonial-location">Newport, Rhode Island</p>
-      </div>
-      <div class="testimonial-card reveal reveal-delay-1">
-        <div class="testimonial-mark"><svg viewBox="0 0 120 100" xmlns="http://www.w3.org/2000/svg"><ellipse cx="60" cy="55" rx="30" ry="23"/><ellipse cx="60" cy="30" rx="13" ry="11"/><ellipse cx="28" cy="40" rx="9" ry="6" transform="rotate(-35 28 40)"/><ellipse cx="92" cy="40" rx="9" ry="6" transform="rotate(35 92 40)"/><ellipse cx="32" cy="72" rx="11" ry="5" transform="rotate(20 32 72)"/><ellipse cx="88" cy="72" rx="11" ry="5" transform="rotate(-20 88 72)"/><ellipse cx="48" cy="82" rx="8" ry="4" transform="rotate(15 48 82)"/><ellipse cx="72" cy="82" rx="8" ry="4" transform="rotate(-15 72 82)"/></svg></div>
-        <p class="testimonial-quote">&ldquo;Three years in and it still looks like the day I bought it. That's the long run, exactly as promised.&rdquo;</p>
-        <div class="testimonial-rule"></div>
-        <p class="testimonial-name">Marcus Bell</p>
-        <p class="testimonial-location">Kiawah Island, South Carolina</p>
-      </div>
-      <div class="testimonial-card reveal reveal-delay-2">
-        <div class="testimonial-mark"><svg viewBox="0 0 120 100" xmlns="http://www.w3.org/2000/svg"><ellipse cx="60" cy="55" rx="30" ry="23"/><ellipse cx="60" cy="30" rx="13" ry="11"/><ellipse cx="28" cy="40" rx="9" ry="6" transform="rotate(-35 28 40)"/><ellipse cx="92" cy="40" rx="9" ry="6" transform="rotate(35 92 40)"/><ellipse cx="32" cy="72" rx="11" ry="5" transform="rotate(20 32 72)"/><ellipse cx="88" cy="72" rx="11" ry="5" transform="rotate(-20 88 72)"/><ellipse cx="48" cy="82" rx="8" ry="4" transform="rotate(15 48 82)"/><ellipse cx="72" cy="82" rx="8" ry="4" transform="rotate(-15 72 82)"/></svg></div>
-        <p class="testimonial-quote">&ldquo;I bought one for myself and ended up getting them for my brothers. The quality speaks for itself.&rdquo;</p>
-        <div class="testimonial-rule"></div>
-        <p class="testimonial-name">David Okonkwo</p>
-        <p class="testimonial-location">Mustique, St. Vincent</p>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- ============ SHOP FAQ ============ -->
-<section class="section--light section-pad" id="shop-faq">
-  <div class="container shop-faq-grid">
-    <div class="section-head reveal">
-      <span class="eyebrow"><span class="dot"></span>Before you order</span>
-      <h2>Everything you need to know.</h2>
-      <p>Fit, delivery, exchanges, and care—answered simply.</p>
-      <a href="#collection" class="btn heritage-cta" style="margin-top:1.5rem;">Shop the Polo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-    </div>
-    <div class="shop-faq-list reveal reveal-delay-1">
-      <details open>
-        <summary>How does the Long Run Polo fit?</summary>
-        <p>It has a classic tailored fit: comfortable through the chest and shoulders with a clean, relaxed line through the waist. Choose your usual polo size; size up if you prefer a looser resort fit.</p>
-      </details>
-      <details>
-        <summary>When will my order arrive?</summary>
-        <p>Orders are prepared within one to two business days. Standard delivery typically arrives within three to five business days after dispatch, with tracking provided by email.</p>
-      </details>
-      <details>
-        <summary>Can I exchange the size?</summary>
-        <p>Yes. Unworn polos with their original tags may be exchanged within 30 days. The limited edition number remains tied to the original garment and cannot be reserved during an exchange.</p>
-      </details>
-      <details>
-        <summary>How should I care for the piqué?</summary>
-        <p>Machine wash cold with similar colors, reshape the collar while damp, and lay flat or tumble dry low. Avoid bleach and high heat to protect the fabric and embroidered crest.</p>
-      </details>
-    </div>
-  </div>
-</section>
-
-<!-- ============ CLUBHOUSE ============ -->
-<section class="clubhouse" id="clubhouse">
-  <canvas class="particle-canvas" id="clubhouse-particles"></canvas>
-  <img class="clubhouse-watermark" src="assets/turtle-logo.png" alt="" />
-  <div class="container" style="position:relative;z-index:2;">
-    <span class="eyebrow"><span class="dot"></span>The Clubhouse</span>
-    <h2>Join the Clubhouse.</h2>
-    <p class="lead">Early access to new drops, members-only colorways, and the occasional invitation somewhere worth dressing up for.</p>
-    <form class="club-form" id="club-form">
-      <input type="email" placeholder="you@email.com" required aria-label="Email address" />
-      <button type="submit" class="btn btn-primary">Request Invitation</button>
-    </form>
-    <div class="club-success" id="club-success">You're on the list — welcome aboard.</div>
-    <p class="fine-print">No spam — just tide charts and new arrivals.</p>
-  </div>
-</section>
-
-<!-- ============ FOOTER ============ -->
-<footer>
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <a href="#top" class="brand">
-          <img src="assets/turtle-logo.png" alt="Turtles by Finley Jade emblem" style="width:34px;" />
-          <span class="brand-text">
-            <span class="kicker">Turtles by</span>
-            <span class="name">Finley Jade</span>
-          </span>
+    <div class="grid posts">
+      <a class="post post-lead up" href="#journal">
+        <figure class="rv"><img src="assets/editorial/journal-portofino.jpg" alt="A sheltered cove with a yacht at anchor" loading="lazy" /></figure>
+        <div class="post-b"><span class="label">Travel</span><h3>48 Hours in Portofino</h3></div>
+      </a>
+      <div class="post-side">
+        <a class="post up d1" href="#journal">
+          <figure class="rv"><img src="assets/editorial/journal-lunch.jpg" alt="A table set outdoors above the water" loading="lazy" /></figure>
+          <div class="post-b"><span class="label">Culture</span><h3>The Ritual of the Long Lunch</h3></div>
         </a>
-        <p>A premium coastal lifestyle house — high-end men's resort wear and polos inspired by family, the ocean, and timeless vacation elegance.</p>
-        <p style="margin-top:-.6rem;"><a href="mailto:hello@turtlesbyfinleyjade.com" style="font-size:.85rem;opacity:.8;border-bottom:1px solid rgba(247,237,208,.25);padding-bottom:2px;">hello@turtlesbyfinleyjade.com</a></p>
-        <div class="socials">
-          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
-          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 4h-2a4 4 0 00-4 4v3H6v3h3v6h3v-6h3l1-3h-4V8a1 1 0 011-1h3z"/></svg></a>
-          <a href="#" aria-label="Pinterest"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 20l3-11m-3 6c-2 0-4-2-4-5a7 7 0 1114 0c0 4-2 7-5 7-1.5 0-2.5-1-2-3"/></svg></a>
-        </div>
-      </div>
-      <div class="footer-col">
-        <h5>Shop</h5>
-        <ul>
-          <li><a href="shop.html">View Full Shop</a></li>
-          <li><a href="#collection">The Long Run Polo</a></li>
-          <li><a href="#collections">Long Weekend</a></li>
-          <li><a href="#collections">Returning Tide</a></li>
-          <li><a href="#collections">First Light</a></li>
-          <li><a href="#collections">Home Waters</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h5>Explore</h5>
-        <ul>
-          <li><a href="#heritage">Heritage</a></li>
-          <li><a href="#product-details">Product Details</a></li>
-          <li><a href="#lifestyle">Lifestyle</a></li>
-          <li><a href="#collections">The Collections</a></li>
-          <li><a href="#gallery">Gallery</a></li>
-          <li><a href="#reviews">Reviews</a></li>
-          <li><a href="#clubhouse">Clubhouse</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h5>Support</h5>
-        <ul>
-          <li><a href="#fit-guide">Size Guide</a></li>
-          <li><a href="#shop-faq">Care Guide</a></li>
-          <li><a href="#shop-faq">FAQ</a></li>
-          <li><a href="mailto:hello@turtlesbyfinleyjade.com">Contact</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>&copy; 2026 Turtles by Finley Jade. All rights reserved.</span>
-      <div class="chip-strip">
-        <i style="background:#050505"></i><i style="background:#111f2e"></i><i style="background:#24406b"></i><i style="background:#037964"></i><i style="background:#b3a370"></i><i style="background:#f7edd0"></i>
+        <a class="post up d2" href="#journal">
+          <figure class="rv"><img src="assets/editorial/journal-collar.jpg" alt="Close detail of a polo collar" loading="lazy" /></figure>
+          <div class="post-b"><span class="label">The Making</span><h3>Why We Still Love a Proper Collar</h3></div>
+        </a>
       </div>
     </div>
   </div>
-</footer>
+</section>
 
-<div id="toast"><span class="toast-dot"></span><span id="toast-text"></span></div>
+<!-- ═══════════ 10 · NEWSLETTER + 11 · FOOTER ═══════════ -->
+<section class="sec midnight close" id="clubhouse" style="padding-bottom:0;">
+  <div class="wrap">
+    <div class="rail"><span class="n">10</span><span class="label">The List</span></div>
+    <div class="news">
+      <div>
+        <h2 class="up">From the Water</h2>
+        <p class="lead up d1">Occasional notes on new editions, places worth visiting and life along the coast.</p>
+      </div>
+      <div class="up d2">
+        <form class="nf" id="newsForm">
+          <input type="email" name="email" required placeholder="Email address" aria-label="Email address" />
+          <button type="submit">Join<i></i></button>
+        </form>
+        <p class="nf-note" id="newsNote">Thank you — you&rsquo;re on the list.</p>
+      </div>
+    </div>
 
-<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js" defer></script>
+    <div class="f-div"></div>
+
+    <div class="f-top">
+      <div>
+        <a class="mark" href="#top" aria-label="Turtles by Finley Jade, home">
+          <img src="assets/turtle-logo.png" alt="" style="width:27px;" />
+          <span class="wm"><b>Turtles</b><i>By Finley Jade</i></span>
+        </a>
+        <p class="f-note">Resort wear inspired by family, the sea, and the places worth returning to.</p>
+      </div>
+      <div class="f-cols">
+        <div class="f-col">
+          <h4>Shop</h4>
+          <a href="shop.html">The Long Run Polo</a>
+          <a href="#collections">Five Colors</a>
+          <a href="shop.html">Shop All</a>
+        </div>
+        <div class="f-col">
+          <h4>House</h4>
+          <a href="#heritage">Our Story</a>
+          <a href="#journal">Journal</a>
+          <a href="mailto:hello@turtlesbyfinleyjade.com">Contact</a>
+        </div>
+        <div class="f-col">
+          <h4>Information</h4>
+          <a href="#clubhouse">Shipping &amp; Returns</a>
+          <a href="#clubhouse">Privacy</a>
+          <a href="#" rel="noopener">Instagram</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="f-bot">
+      <span>Turtles by Finley Jade — Washington, D.C.</span>
+      <span>Est. 2026</span>
+    </div>
+  </div>
+  <div class="f-sig" aria-hidden="true">Turtles by Finley Jade</div>
+</section>
+
+</main>
+
 <script>
-document.addEventListener('DOMContentLoaded', function () {
-  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+(function () {
+  'use strict';
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* Preloader */
-  var pre = document.getElementById('preloader');
-  window.addEventListener('load', function () {
-    setTimeout(function () { pre.classList.add('done'); }, 350);
-  });
-  setTimeout(function () { pre.classList.add('done'); }, 1800);
-
-  /* Header scroll state */
-  var header = document.getElementById('site-header');
-  function onScroll () {
-    if (window.scrollY > 40) header.classList.add('scrolled');
-    else header.classList.remove('scrolled');
+  /* Header */
+  var hdr = document.getElementById('hdr'), hero = document.getElementById('top'), lastY = window.scrollY;
+  function onScroll() {
+    var y = window.scrollY, t = hero ? Math.min(hero.offsetHeight - 140, 170) : 130;
+    hdr.classList.toggle('solid', y > t);
+    if (y > t + 220 && y > lastY + 6) hdr.classList.add('up');
+    else if (y < lastY - 6 || y <= t) hdr.classList.remove('up');
+    lastY = y;
   }
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
-  /* Mobile nav */
-  var burger = document.getElementById('burger-btn');
-  var panel = document.getElementById('mobile-panel');
-  var closeBtn = document.getElementById('close-panel-btn');
-  function openPanel () { panel.classList.add('open'); document.body.style.overflow = 'hidden'; }
-  function closePanel () { panel.classList.remove('open'); document.body.style.overflow = ''; }
-  burger.addEventListener('click', openPanel);
-  closeBtn.addEventListener('click', closePanel);
-  panel.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', closePanel); });
+  /* Overlays */
+  var menu = document.getElementById('menuOvl'), search = document.getElementById('searchOvl');
+  var mBtn = document.getElementById('menuToggle'), sBtn = document.getElementById('searchToggle');
+  function open(el) {
+    el.classList.add('open'); document.body.style.overflow = 'hidden';
+    if (el === search) setTimeout(function () { document.getElementById('searchInput').focus(); }, 350);
+    if (el === menu) mBtn.setAttribute('aria-expanded', 'true');
+  }
+  function closeAll() {
+    menu.classList.remove('open'); search.classList.remove('open');
+    document.body.style.overflow = ''; mBtn.setAttribute('aria-expanded', 'false');
+  }
+  mBtn.addEventListener('click', function () { menu.classList.contains('open') ? closeAll() : open(menu); });
+  sBtn.addEventListener('click', function () { open(search); });
+  Array.prototype.forEach.call(document.querySelectorAll('[data-close]'), function (b) { b.addEventListener('click', closeAll); });
+  Array.prototype.forEach.call(document.querySelectorAll('.ovl a'), function (a) { a.addEventListener('click', closeAll); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeAll(); });
 
-  /* Scroll reveal */
-  var revealEls = document.querySelectorAll('.reveal');
+  /* Reveals */
+  var items = document.querySelectorAll('.up, .rv, .ln-wrap, .rail');
+  function revealAll() { Array.prototype.forEach.call(items, function (el) { el.classList.add('in'); }); }
   if ('IntersectionObserver' in window) {
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          io.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
-    revealEls.forEach(function (el) { io.observe(el); });
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.05, rootMargin: '260px 0px 260px 0px' });
+    Array.prototype.forEach.call(items, function (el) { io.observe(el); });
+    /* watchdog: screenshot tools and print render the whole page without scrolling */
+    setTimeout(revealAll, 4500);
+    window.addEventListener('beforeprint', revealAll);
   } else {
-    revealEls.forEach(function (el) { el.classList.add('is-visible'); });
+    revealAll();
   }
-
-  /* Cursor glow */
-  var glow = document.getElementById('cursor-glow');
-  if (glow && !reduceMotion) {
-    var mx = window.innerWidth / 2, my = window.innerHeight / 2, cx = mx, cy = my;
-    window.addEventListener('mousemove', function (e) { mx = e.clientX; my = e.clientY; });
-    function tick () {
-      cx += (mx - cx) * 0.08;
-      cy += (my - cy) * 0.08;
-      glow.style.transform = 'translate(' + cx + 'px,' + cy + 'px) translate(-50%,-50%)';
-      requestAnimationFrame(tick);
-    }
-    tick();
-  }
-
-  /* Medallion 3D tilt */
-  var stage = document.querySelector('.medallion-stage');
-  var medallion = document.getElementById('medallion');
-  var canTilt = !reduceMotion && window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-  if (stage && medallion && canTilt) {
-    stage.addEventListener('mousemove', function (e) {
-      var r = stage.getBoundingClientRect();
-      var px = (e.clientX - r.left) / r.width - 0.5;
-      var py = (e.clientY - r.top) / r.height - 0.5;
-      medallion.style.transform = 'rotateY(' + (px * 18) + 'deg) rotateX(' + (py * -18) + 'deg)';
-    });
-    stage.addEventListener('mouseleave', function () {
-      medallion.style.transform = 'rotateY(0) rotateX(0)';
-    });
-  }
-
-  /* Generic 3D tilt for cards + lifestyle tiles */
-  function attachTilt (els, maxDeg, lift) {
-    els.forEach(function (el) {
-      el.addEventListener('mousemove', function (e) {
-        var r = el.getBoundingClientRect();
-        var px = (e.clientX - r.left) / r.width - 0.5;
-        var py = (e.clientY - r.top) / r.height - 0.5;
-        el.style.transform =
-          'perspective(1000px) rotateY(' + (px * maxDeg) + 'deg) rotateX(' + (py * -maxDeg) + 'deg) translateY(-' + lift + 'px)';
-      });
-      el.addEventListener('mouseleave', function () {
-        el.style.transform = '';
-      });
-    });
-  }
-  if (canTilt) {
-    attachTilt(document.querySelectorAll('.product-card'), 7, 6);
-    attachTilt(document.querySelectorAll('.moment'), 7, 8);
-  }
-
-  /* Toast */
-  var toast = document.getElementById('toast');
-  var toastText = document.getElementById('toast-text');
-  var toastTimer = null;
-  function showToast (html) {
-    toastText.innerHTML = html;
-    toast.classList.add('show');
-    clearTimeout(toastTimer);
-    toastTimer = setTimeout(function () { toast.classList.remove('show'); }, 3200);
-  }
-
-  /* Size selection + cart */
-  var cartCount = 0;
-  var cartCountEl = document.getElementById('cart-count');
-  var cartButton = document.getElementById('cart-button');
-
-  document.querySelectorAll('.product-card-sizes').forEach(function (group) {
-    group.querySelectorAll('button').forEach(function (sizeBtn) {
-      sizeBtn.setAttribute('aria-pressed', 'false');
-      sizeBtn.addEventListener('click', function () {
-        group.querySelectorAll('button').forEach(function (item) {
-          item.classList.remove('active');
-          item.setAttribute('aria-pressed', 'false');
-        });
-        sizeBtn.classList.add('active');
-        sizeBtn.setAttribute('aria-pressed', 'true');
-      });
-    });
+  window.requestAnimationFrame(function () {
+    setTimeout(function () {
+      Array.prototype.forEach.call(document.querySelectorAll('.hero .up, .hero .ln-wrap'), function (el) { el.classList.add('in'); });
+    }, 130);
   });
 
-  document.querySelectorAll('.product-card-add').forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      var card = btn.closest('.product-card');
-      var selectedSize = card.querySelector('.product-card-sizes button.active');
-      var name = btn.getAttribute('data-name');
-      var colorway = btn.getAttribute('data-colorway');
-      var price = btn.getAttribute('data-price');
-      if (!selectedSize) {
-        showToast('<strong>Choose a size</strong> for the ' + colorway + ' polo first.');
-        return;
-      }
-      cartCount += 1;
-      cartCountEl.textContent = cartCount;
-      cartButton.setAttribute('aria-label', 'Open shopping bag, ' + cartCount + ' item' + (cartCount === 1 ? '' : 's'));
-      showToast('Added to bag — <strong>' + colorway + '</strong>, size ' + selectedSize.textContent + ' (' + price + ')');
-    });
-  });
-
-  cartButton.addEventListener('click', function () {
-    showToast(cartCount ? 'Your bag has <strong>' + cartCount + ' item' + (cartCount === 1 ? '' : 's') + '</strong>.' : 'Your bag is currently empty.');
-  });
-
-  /* Clubhouse form */
-  var form = document.getElementById('club-form');
-  var success = document.getElementById('club-success');
-  if (form) {
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      success.classList.add('show');
-      form.reset();
-    });
+  /* Parallax */
+  var px = document.querySelectorAll('[data-parallax]');
+  if (px.length && !reduce) {
+    var tick = false;
+    function move() {
+      Array.prototype.forEach.call(px, function (el) {
+        var r = el.parentElement.getBoundingClientRect();
+        if (r.bottom < 0 || r.top > window.innerHeight) return;
+        var p = (r.top + r.height / 2 - window.innerHeight / 2) / window.innerHeight;
+        el.style.transform = 'translate3d(0,' + (p * -7).toFixed(2) + '%,0)';
+      });
+      tick = false;
+    }
+    window.addEventListener('scroll', function () { if (!tick) { tick = true; requestAnimationFrame(move); } }, { passive: true });
+    move();
   }
 
-  /* Ambient 3D particle fields (Three.js) */
-  function createParticleField (canvas, container, opts) {
-    if (!canvas || !container || typeof THREE === 'undefined' || reduceMotion) return;
-    var renderer;
-    try {
-      renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
-    } catch (e) { return; }
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
-    var scene = new THREE.Scene();
-    var camera = new THREE.PerspectiveCamera(50, 1, 1, 1000);
-    camera.position.z = 60;
-
-    function resize () {
-      var w = container.clientWidth, h = container.clientHeight;
-      if (!w || !h) return;
-      renderer.setSize(w, h, false);
-      camera.aspect = w / h;
-      camera.updateProjectionMatrix();
+  /* Swipe progress */
+  Array.prototype.forEach.call(document.querySelectorAll('[data-swipe]'), function (track) {
+    var hint = track.parentElement.querySelector('[data-hint]');
+    if (!hint) return;
+    var bar = hint.querySelector('i');
+    function update() {
+      var s = track.scrollWidth - track.clientWidth;
+      if (s < 12) { hint.hidden = true; return; }
+      hint.hidden = false;
+      bar.style.transform = 'translateX(' + ((track.scrollLeft / s) * 257).toFixed(2) + '%)';
     }
+    track.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  });
 
-    var count = opts.count || 200;
-    var positions = new Float32Array(count * 3);
-    var colorsArr = new Float32Array(count * 3);
-    var palette = opts.colors.map(function (c) { return new THREE.Color(c); });
-    for (var i = 0; i < count; i++) {
-      positions[i * 3] = (Math.random() - 0.5) * 150;
-      positions[i * 3 + 1] = (Math.random() - 0.5) * 90;
-      positions[i * 3 + 2] = (Math.random() - 0.5) * 100;
-      var c = palette[i % palette.length];
-      colorsArr[i * 3] = c.r; colorsArr[i * 3 + 1] = c.g; colorsArr[i * 3 + 2] = c.b;
-    }
-    var geo = new THREE.BufferGeometry();
-    geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-    geo.setAttribute('color', new THREE.BufferAttribute(colorsArr, 3));
-
-    var spriteCanvas = document.createElement('canvas');
-    spriteCanvas.width = 64; spriteCanvas.height = 64;
-    var ctx = spriteCanvas.getContext('2d');
-    var grad = ctx.createRadialGradient(32, 32, 0, 32, 32, 32);
-    grad.addColorStop(0, 'rgba(255,255,255,1)');
-    grad.addColorStop(1, 'rgba(255,255,255,0)');
-    ctx.fillStyle = grad;
-    ctx.fillRect(0, 0, 64, 64);
-    var spriteTex = new THREE.CanvasTexture(spriteCanvas);
-
-    var mat = new THREE.PointsMaterial({
-      size: opts.size || 2.4,
-      map: spriteTex,
-      vertexColors: true,
-      transparent: true,
-      opacity: opts.opacity || 0.55,
-      depthWrite: false,
-      blending: THREE.AdditiveBlending
+  /* Once the page is up, stop deferring images: guarantees full-page
+     screenshots, print and non-scrolling views get every photograph. */
+  function loadAll() {
+    Array.prototype.forEach.call(document.querySelectorAll('img[loading="lazy"]'), function (img) {
+      img.loading = 'eager';
     });
-    var points = new THREE.Points(geo, mat);
-    scene.add(points);
-
-    resize();
-    window.addEventListener('resize', resize);
-
-    var mx = 0, my = 0;
-    container.addEventListener('mousemove', function (e) {
-      var r = container.getBoundingClientRect();
-      mx = (e.clientX - r.left) / r.width - 0.5;
-      my = (e.clientY - r.top) / r.height - 0.5;
-    });
-
-    var running = true, raf = null;
-    function tick () {
-      if (!running) return;
-      points.rotation.y += 0.0009;
-      points.rotation.x += 0.00025;
-      camera.position.x += (mx * 14 - camera.position.x) * 0.03;
-      camera.position.y += (-my * 9 - camera.position.y) * 0.03;
-      camera.lookAt(0, 0, 0);
-      renderer.render(scene, camera);
-      raf = requestAnimationFrame(tick);
-    }
-    tick();
-
-    if ('IntersectionObserver' in window) {
-      var io = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            if (!running) { running = true; tick(); }
-          } else {
-            running = false;
-            if (raf) cancelAnimationFrame(raf);
-          }
-        });
-      }, { threshold: 0.05 });
-      io.observe(container);
-    }
   }
+  if (document.readyState === 'complete') setTimeout(loadAll, 600);
+  else window.addEventListener('load', function () { setTimeout(loadAll, 600); });
+  window.addEventListener('beforeprint', loadAll);
 
-  createParticleField(
-    document.getElementById('collection-particles'),
-    document.getElementById('collection'),
-    { colors: [0x0aa891, 0xb3a370, 0xf7edd0, 0x24406b], count: 240, size: 2.5, opacity: 0.55 }
-  );
-  createParticleField(
-    document.getElementById('clubhouse-particles'),
-    document.getElementById('clubhouse'),
-    { colors: [0x0aa891, 0xb3a370, 0xf7edd0], count: 150, size: 2.1, opacity: 0.4 }
-  );
-  createParticleField(
-    document.getElementById('collections-particles'),
-    document.getElementById('collections'),
-    { colors: [0x0aa891, 0xb3a370, 0x24406b], count: 130, size: 2.1, opacity: 0.38 }
-  );
-  createParticleField(
-    document.getElementById('gallery-particles'),
-    document.getElementById('gallery'),
-    { colors: [0x0aa891, 0xb3a370, 0xf7edd0, 0x24406b], count: 130, size: 2.1, opacity: 0.32 }
-  );
-});
+  /* Newsletter */
+  var f = document.getElementById('newsForm'), n = document.getElementById('newsNote');
+  if (f) f.addEventListener('submit', function (e) { e.preventDefault(); f.reset(); n.style.opacity = '1'; });
+})();
 </script>
 </body>
 </html>
