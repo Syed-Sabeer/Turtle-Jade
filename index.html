@@ -87,12 +87,12 @@ section[id],span[id]{scroll-margin-top:calc(var(--hdr) + 2rem);}
 .grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:clamp(1rem,2vw,2rem);}
 
 h1,h2,h3{font-family:var(--serif);font-weight:400;color:var(--text);text-wrap:balance;}
-h1{font-size:clamp(3.4rem,8.8vw,7.8rem);line-height:.94;letter-spacing:-.03em;}
+h1{font-size:clamp(3.4rem,8.8vw,8.8rem);line-height:.93;letter-spacing:-.032em;}
 h2{font-size:clamp(2.5rem,5.4vw,4.6rem);line-height:1.03;letter-spacing:-.025em;}
 h3{font-size:clamp(1.5rem,2.1vw,1.95rem);line-height:1.2;letter-spacing:-.014em;}
 p{color:var(--body);text-wrap:pretty;}
 
-.lead{font-size:clamp(1rem,1.08vw,1.075rem);line-height:1.88;}
+.lead{font-size:clamp(1.02rem,1.1vw,1.12rem);line-height:1.85;}
 .serif-lead{
   font-family:var(--serif);font-weight:300;color:var(--text);
   font-size:clamp(1.4rem,2.15vw,1.95rem);line-height:1.44;letter-spacing:-.014em;
@@ -378,7 +378,8 @@ p{color:var(--body);text-wrap:pretty;}
 /* ═══════════ 12 · 08 Shop ═══════════ */
 .shop-head{display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;flex-wrap:wrap;margin-bottom:clamp(2.2rem,3.6vw,3.6rem);}
 /* a campaign, not a product grid */
-.campaign{overflow:hidden;margin:0 0 clamp(2.2rem,4vw,4rem);}
+.campaign{position:relative;overflow:hidden;margin:0 0 clamp(2.2rem,4vw,4rem);}
+.campaign::after{content:'';position:absolute;inset:clamp(1rem,2.4vw,2.4rem);border:1px solid rgba(250,249,246,.26);pointer-events:none;}
 .campaign img{width:100%;height:clamp(400px,62vh,760px);object-fit:cover;object-position:center 38%;}
 .shop-line{display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;flex-wrap:wrap;
   padding-top:1.7rem;border-top:1px solid var(--hair-soft);}
@@ -386,6 +387,7 @@ p{color:var(--body);text-wrap:pretty;}
 .shop-spec{margin-top:.85rem;font-size:.6rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);}
 
 /* ═══════════ 13 Notes ═══════════ */
+.notes-rule{height:1px;background:var(--hair-soft);margin-bottom:clamp(2.6rem,4.4vw,4.4rem);}
 .notes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));}
 .note{padding:0 clamp(1.2rem,3vw,3.4rem);border-left:1px solid var(--hair-soft);}
 .note-mark{display:block;font-family:var(--serif);font-size:2.4rem;line-height:.6;color:var(--brass);opacity:.55;margin-bottom:1rem;}
@@ -439,7 +441,9 @@ p{color:var(--body);text-wrap:pretty;}
 .nf button:hover i{width:30px;}
 .nf-note{margin-top:1.5rem;font-size:.585rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:rgba(250,249,246,.55);opacity:0;transition:opacity .7s var(--ease);}
 
-.f-div{height:1px;background:rgba(250,249,246,.14);margin-top:clamp(3rem,5.4vw,5.4rem);}
+.f-div{display:flex;align-items:center;gap:1.4rem;margin-top:clamp(3rem,5.4vw,5.4rem);}
+.f-div::before,.f-div::after{content:'';flex:1;height:1px;background:rgba(250,249,246,.14);}
+.f-div i{display:block;width:6px;height:6px;background:var(--brass);transform:rotate(45deg);opacity:.85;}
 .f-top{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:clamp(2.5rem,6vw,6rem);align-items:start;padding-top:clamp(2.6rem,4.4vw,4.4rem);}
 .f-note{margin-top:1.9rem;max-width:310px;font-size:.92rem;line-height:1.85;color:rgba(250,249,246,.6);}
 .f-cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(1.5rem,3vw,3rem);}
@@ -789,7 +793,7 @@ p{color:var(--body);text-wrap:pretty;}
 </section>
 
 <!-- ═══════════ 05 · CRAFT ═══════════ -->
-<section class="sec limestone" id="craft">
+<section class="sec parchment" id="craft">
   <div class="wrap">
     <div class="rail"><span class="n">05</span><span class="label">The Making</span></div>
     <div class="ed-head">
@@ -912,6 +916,7 @@ p{color:var(--body);text-wrap:pretty;}
 <!-- ═══════════ NOTES ═══════════ -->
 <section class="sec limestone" id="reviews" style="padding-top:clamp(3rem,5vw,5rem);padding-bottom:clamp(3rem,5vw,5rem);">
   <div class="wrap">
+    <div class="notes-rule"></div>
     <div class="notes">
       <figure class="note up">
         <span class="note-mark">&ldquo;</span>
@@ -933,7 +938,7 @@ p{color:var(--body);text-wrap:pretty;}
 </section>
 
 <!-- ═══════════ 09 · JOURNAL ═══════════ -->
-<section class="sec parchment" id="journal">
+<section class="sec limestone" id="journal">
   <span id="gallery" aria-hidden="true"></span>
   <div class="wrap">
     <div class="rail"><span class="n">09</span><span class="label">Journal</span></div>
@@ -994,7 +999,7 @@ p{color:var(--body);text-wrap:pretty;}
       </div>
     </div>
 
-    <div class="f-div"></div>
+    <div class="f-div"><i></i></div>
 
     <div class="f-top">
       <div>
