@@ -4,10 +4,9 @@
 <meta charset="UTF-8" />
 <script>document.documentElement.className+=" js";</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Collections by Finley Jade</title>
-<meta name="description" content="Collections by Finley Jade. Resort wear inspired by family, the sea, and the places worth returning to. The Long Run Polo, made in numbered editions of 200." />
-<link rel="icon" type="image/png" href="assets/brand/favicon.png" />
-<link rel="preload" as="image" href="assets/editorial/hero.jpg" fetchpriority="high" />
+<title>Turtles by Finley Jade</title>
+<meta name="description" content="Turtles by Finley Jade. Resort wear inspired by family, the sea, and the places worth returning to. The Long Run Polo, made in numbered editions of 200." />
+<link rel="icon" type="image/png" href="assets/favicon.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -83,14 +82,13 @@ body::after{
 
 .wrap{max-width:var(--max);margin:0 auto;padding-left:var(--pad);padding-right:var(--pad);}
 .sec{padding-top:var(--sec);padding-bottom:var(--sec);position:relative;}
-section[id],span[id]{scroll-margin-top:calc(var(--hdr) + 2rem);}
 .grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:clamp(1rem,2vw,2rem);}
 
 h1,h2,h3{font-family:var(--serif);font-weight:400;color:var(--text);text-wrap:balance;}
 h1{font-size:clamp(3.4rem,8.8vw,7.8rem);line-height:.94;letter-spacing:-.03em;}
 h2{font-size:clamp(2.5rem,5.4vw,4.6rem);line-height:1.03;letter-spacing:-.025em;}
 h3{font-size:clamp(1.5rem,2.1vw,1.95rem);line-height:1.2;letter-spacing:-.014em;}
-p{color:var(--body);text-wrap:pretty;}
+p{color:var(--body);}
 
 .lead{font-size:clamp(1rem,1.08vw,1.075rem);line-height:1.88;}
 .serif-lead{
@@ -181,17 +179,13 @@ p{color:var(--body);text-wrap:pretty;}
 .nav a:hover,.nav button:hover{opacity:1;}
 .nav a:hover::after,.nav button:hover::after{transform:scaleX(1);}
 
-.mark{display:flex;align-items:center;gap:1rem;}
-.mark img{width:31px;height:auto;transition:width .75s var(--ease);}
-.hdr.solid .mark img{width:26px;}
-.wm{display:flex;flex-direction:column;align-items:center;gap:.42rem;line-height:1;}
-.wm i{font-style:normal;font-size:.455rem;font-weight:500;letter-spacing:.4em;text-transform:uppercase;
-  text-indent:.4em;opacity:.62;transition:color .7s var(--ease),opacity .7s var(--ease);}
-.wm b{font-family:var(--serif);font-weight:400;font-size:1.24rem;letter-spacing:.3em;text-transform:uppercase;text-indent:.3em;white-space:nowrap;}
-.wm i{white-space:nowrap;}
-.hdr:not(.solid) .wm i{opacity:.82;}
-.hdr.solid .wm i{color:var(--brass);opacity:1;}
-.ovl-top .wm i,.close .wm i{color:var(--brass);opacity:1;}
+.mark{display:flex;align-items:center;gap:.95rem;}
+.mark img{width:25px;height:auto;transition:width .75s var(--ease);}
+.hdr.solid .mark img{width:21px;}
+.wm{display:flex;flex-direction:column;gap:.34rem;line-height:1;}
+.wm b{font-family:var(--serif);font-weight:400;font-size:1.32rem;letter-spacing:.42em;text-transform:uppercase;padding-left:.42em;}
+.wm i{font-style:normal;font-size:.47rem;font-weight:500;letter-spacing:.44em;text-transform:uppercase;opacity:.6;padding-left:.44em;}
+.hdr:not(.solid) .wm i{opacity:.85;}
 .burger{display:none;width:24px;height:11px;position:relative;}
 .burger span{position:absolute;left:0;right:0;height:1px;background:currentColor;}
 .burger span:first-child{top:0;} .burger span:last-child{bottom:0;}
@@ -311,7 +305,7 @@ p{color:var(--body);text-wrap:pretty;}
 .prov .ed{font-family:var(--serif);font-feature-settings:'onum' 1;font-size:clamp(1.2rem,1.7vw,1.55rem);white-space:nowrap;color:var(--text);}
 .prov p{max-width:520px;font-size:.93rem;}
 .seal{width:148px;height:148px;color:var(--brass);}
-.seal .arc{font-family:var(--sans);font-size:10.4px;font-weight:500;letter-spacing:2.55px;fill:currentColor;}
+.seal .arc{font-family:var(--sans);font-size:11px;font-weight:500;letter-spacing:3.1px;fill:currentColor;}
 .seal .ctr{font-family:var(--serif);fill:currentColor;text-anchor:middle;}
 
 /* ═══════════ 08 · 04 Lifestyle moment ═══════════ */
@@ -337,12 +331,10 @@ p{color:var(--body);text-wrap:pretty;}
 .craft-i:nth-child(4) figure{aspect-ratio:1/1;}
 .craft-i img{width:100%;height:100%;object-fit:cover;transition:transform 2.1s var(--ease);}
 .craft-i:hover img{transform:scale(1.05);}
-.craft-i .body{margin-top:1.6rem;padding-top:1.3rem;border-top:1px solid var(--hair-soft);transition:border-color .7s var(--ease);}
-.craft-i:hover .body{border-top-color:var(--brass);}
-.craft-c{display:flex;align-items:baseline;gap:.95rem;margin:0 0 .8rem;}
+.craft-c{display:flex;align-items:baseline;gap:.95rem;margin:1.7rem 0 .85rem;}
 .craft-c .n{font-family:var(--serif);font-feature-settings:'onum' 1;font-size:.92rem;color:var(--brass);}
 .craft-i h3{font-size:clamp(1.26rem,1.6vw,1.5rem);}
-.craft-i p{font-size:.895rem;line-height:1.78;}
+.craft-i p{font-size:.91rem;line-height:1.8;}
 
 /* ═══════════ 10 · 06 Family / Ocean / Time ═══════════ */
 /* the three words align across the page and read as one line:
@@ -377,18 +369,28 @@ p{color:var(--body);text-wrap:pretty;}
 
 /* ═══════════ 12 · 08 Shop ═══════════ */
 .shop-head{display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;flex-wrap:wrap;margin-bottom:clamp(2.2rem,3.6vw,3.6rem);}
-/* a campaign, not a product grid */
-.campaign{overflow:hidden;margin:0 0 clamp(2.2rem,4vw,4rem);}
-.campaign img{width:100%;height:clamp(400px,62vh,760px);object-fit:cover;object-position:center 38%;}
-.shop-line{display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;flex-wrap:wrap;
-  padding-top:1.7rem;border-top:1px solid var(--hair-soft);}
-.shop-line .serif-lead{max-width:22ch;}
-.shop-spec{margin-top:.85rem;font-size:.6rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);}
+.shop{--cell:clamp(.8rem,1.4vw,1.5rem);display:grid;grid-template-columns:repeat(5,minmax(0,1fr));
+  border-top:1px solid var(--hair-soft);border-bottom:1px solid var(--hair-soft);
+  margin-left:calc(var(--cell) * -1);margin-right:calc(var(--cell) * -1);}
+.prod{display:block;padding:clamp(1.4rem,2.2vw,2.2rem) var(--cell);border-left:1px solid var(--hair-soft);}
+.prod:first-child{border-left:0;}
+.prod-f{display:block;position:relative;overflow:hidden;background:var(--plate);aspect-ratio:3/4;}
+.prod-f img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity 1.15s var(--ease),transform 2.1s var(--ease);}
+.prod-f .worn{opacity:0;}
+.prod:hover .prod-f .flat{opacity:0;}
+.prod:hover .prod-f .worn{opacity:1;transform:scale(1.045);}
+.prod-b{display:block;padding-top:1.3rem;}
+.prod-c{display:block;margin-bottom:.6rem;font-size:.585rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);}
+.prod-n{display:block;margin-bottom:.9rem;font-family:var(--serif);font-size:clamp(1.02rem,1.28vw,1.24rem);color:var(--text);}
+.prod-r{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;}
+.prod-p{font-size:.82rem;color:var(--body);}
+.prod-v{font-size:.565rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);transition:color .45s var(--ease);}
+.prod:hover .prod-v{color:var(--navy);}
+.shop-foot{margin-top:clamp(2.2rem,3.8vw,3.8rem);display:flex;justify-content:center;}
 
 /* ═══════════ 13 Notes ═══════════ */
 .notes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));}
 .note{padding:0 clamp(1.2rem,3vw,3.4rem);border-left:1px solid var(--hair-soft);}
-.note-mark{display:block;font-family:var(--serif);font-size:2.4rem;line-height:.6;color:var(--brass);opacity:.55;margin-bottom:1rem;}
 .note:first-child{padding-left:0;border-left:0;}
 .note:last-child{padding-right:0;}
 .note blockquote{font-family:var(--serif);font-weight:300;font-size:clamp(1.2rem,1.6vw,1.46rem);line-height:1.5;color:var(--text);margin-bottom:1.8rem;}
@@ -450,7 +452,7 @@ p{color:var(--body);text-wrap:pretty;}
 .f-bot{margin-top:clamp(2.4rem,4vw,4rem);padding:1.8rem 0;border-top:1px solid rgba(250,249,246,.14);
   display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;
   font-size:.585rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:rgba(250,249,246,.48);}
-.f-sig{font-family:var(--serif);font-weight:300;font-size:clamp(1.85rem,8.4vw,8.6rem);line-height:.88;letter-spacing:.02em;
+.f-sig{font-family:var(--serif);font-weight:300;font-size:clamp(2.3rem,11vw,10.6rem);line-height:.88;letter-spacing:.02em;
   color:rgba(250,249,246,.08);white-space:nowrap;text-align:center;padding-bottom:clamp(1rem,2.4vw,2.6rem);user-select:none;}
 
 /* ═══════════ 16 Responsive ═══════════ */
@@ -464,6 +466,8 @@ p{color:var(--body);text-wrap:pretty;}
   .story-copy{grid-column:7 / span 6;}
   .post-side{grid-column:8 / span 5;}
   .colors{grid-template-columns:repeat(3,minmax(0,1fr));gap:1.7rem 1.2rem;}
+  .shop{grid-template-columns:repeat(3,minmax(0,1fr));}
+  .prod:nth-child(3n+1){border-left:0;}
   .craft{grid-template-columns:repeat(2,minmax(0,1fr));gap:2.5rem 1.6rem;}
   .craft-i:nth-child(1),.craft-i:nth-child(3){margin-top:0;}
   .craft-i:nth-child(2),.craft-i:nth-child(4){margin-top:clamp(1.6rem,4vw,4rem);}
@@ -478,11 +482,9 @@ p{color:var(--body);text-wrap:pretty;}
   .burger{display:block;order:-1;}
   .hdr-in{display:flex;align-items:center;position:relative;}
   .mark{position:absolute;left:50%;transform:translateX(-50%);}
-  .mark{gap:.72rem;}
-  .mark img{width:24px;}
-  .wm{gap:.34rem;}
-  .wm b{font-size:.98rem;letter-spacing:.2em;text-indent:.2em;}
-  .wm i{font-size:.4rem;letter-spacing:.3em;text-indent:.3em;}
+  .mark img{width:20px;}
+  .wm b{font-size:1.06rem;letter-spacing:.3em;padding-left:.3em;}
+  .wm i{font-size:.42rem;letter-spacing:.32em;padding-left:.32em;}
   .nav.r{width:100%;gap:0;justify-content:space-between;}
   .ovl-top .mark{position:static;transform:none;}
   .hero-rail{display:none;}
@@ -542,7 +544,7 @@ p{color:var(--body);text-wrap:pretty;}
   .post-side{gap:2.4rem;}
   .f-cols{grid-template-columns:1fr;gap:1.7rem;}
   .f-bot{flex-direction:column;gap:.5rem;}
-  .f-sig{font-size:1.6rem;letter-spacing:.1em;}
+  .f-sig{font-size:2rem;letter-spacing:.12em;}
 }
 </style>
 </head>
@@ -558,9 +560,9 @@ p{color:var(--body);text-wrap:pretty;}
       <a href="#journal">Journal</a>
     </nav>
 
-    <a class="mark" href="#top" aria-label="Collections by Finley Jade, home">
-      <img src="assets/brand/mark.png" alt="" />
-      <span class="wm"><i>Collections by</i><b>Finley Jade</b></span>
+    <a class="mark" href="#top" aria-label="Turtles by Finley Jade, home">
+      <img src="assets/turtle-logo.png" alt="" />
+      <span class="wm"><b>Turtles</b><i>By Finley Jade</i></span>
     </a>
 
     <div class="nav r">
@@ -573,8 +575,8 @@ p{color:var(--body);text-wrap:pretty;}
 
 <div class="ovl" id="menuOvl" role="dialog" aria-modal="true" aria-label="Menu">
   <div class="ovl-top">
-    <span class="mark"><img src="assets/brand/mark.png" alt="" style="width:22px;" />
-      <span class="wm"><i>Collections by</i><b>Finley Jade</b></span></span>
+    <span class="mark"><img src="assets/turtle-logo.png" alt="" style="width:22px;" />
+      <span class="wm"><b>Turtles</b><i>By Finley Jade</i></span></span>
     <button type="button" class="ovl-x" data-close>Close</button>
   </div>
   <div class="ovl-body">
@@ -594,8 +596,8 @@ p{color:var(--body);text-wrap:pretty;}
 
 <div class="ovl" id="searchOvl" role="dialog" aria-modal="true" aria-label="Search">
   <div class="ovl-top">
-    <span class="mark"><img src="assets/brand/mark.png" alt="" style="width:22px;" />
-      <span class="wm"><i>Collections by</i><b>Finley Jade</b></span></span>
+    <span class="mark"><img src="assets/turtle-logo.png" alt="" style="width:22px;" />
+      <span class="wm"><b>Turtles</b><i>By Finley Jade</i></span></span>
     <button type="button" class="ovl-x" data-close>Close</button>
   </div>
   <div class="ovl-body">
@@ -633,7 +635,7 @@ p{color:var(--body);text-wrap:pretty;}
 
   <div class="hero-in">
     <div class="hero-copy">
-      <span class="label up">Collections by Finley Jade</span>
+      <span class="label up">Turtles by Finley Jade</span>
       <h1 class="ln-wrap">
         <span class="ln"><span>Made for the</span></span>
         <span class="ln"><span>Long Run.</span></span>
@@ -770,7 +772,7 @@ p{color:var(--body);text-wrap:pretty;}
         <defs><path id="sealArc" d="M100,100 m-72,0 a72,72 0 1,1 144,0 a72,72 0 1,1 -144,0" /></defs>
         <circle cx="100" cy="100" r="93" fill="none" stroke="currentColor" stroke-width="1.1" opacity=".8" />
         <circle cx="100" cy="100" r="58" fill="none" stroke="currentColor" stroke-width=".8" opacity=".55" />
-        <text class="arc"><textPath href="#sealArc" startOffset="1.5%">COLLECTIONS BY FINLEY JADE · FIRST EDITION ·</textPath></text>
+        <text class="arc"><textPath href="#sealArc" startOffset="1.5%">TURTLES BY FINLEY JADE · FIRST EDITION ·</textPath></text>
         <text class="ctr" x="100" y="94" font-size="16" opacity=".85">No.</text>
         <text class="ctr" x="100" y="121" font-size="23">001–200</text>
       </svg>
@@ -800,31 +802,23 @@ p{color:var(--body);text-wrap:pretty;}
     <div class="craft">
       <article class="craft-i up">
         <figure class="rv"><img src="assets/editorial/craft-collar.jpg" alt="Close detail of the collar roll and topstitching" loading="lazy" /></figure>
-        <div class="body">
-          <span class="craft-c"><span class="n">01</span><h3>The Collar</h3></span>
-          <p>Structured to hold its shape from first wear to last call.</p>
-        </div>
+        <span class="craft-c"><span class="n">01</span><h3>The Collar</h3></span>
+        <p>Structured to hold its shape from first wear to last call.</p>
       </article>
       <article class="craft-i up">
         <figure class="rv"><img src="assets/editorial/craft-fabric.jpg" alt="Close detail of the piqué fabric and shoulder seam" loading="lazy" /></figure>
-        <div class="body">
-          <span class="craft-c"><span class="n">02</span><h3>The Fabric</h3></span>
-          <p>Soft, breathable performance with enough weight to drape properly.</p>
-        </div>
+        <span class="craft-c"><span class="n">02</span><h3>The Fabric</h3></span>
+        <p>Soft, breathable performance with enough weight to drape properly.</p>
       </article>
       <article class="craft-i up">
         <figure class="rv"><img src="assets/editorial/craft-turtle.jpg" alt="Close detail of the embroidered turtle at the chest" loading="lazy" /></figure>
-        <div class="body">
-          <span class="craft-c"><span class="n">03</span><h3>The Turtle</h3></span>
-          <p>Embroidered with restraint. A mark, not a billboard.</p>
-        </div>
+        <span class="craft-c"><span class="n">03</span><h3>The Turtle</h3></span>
+        <p>Embroidered with restraint. A mark, not a billboard.</p>
       </article>
       <article class="craft-i up">
         <figure class="rv"><img src="assets/editorial/craft-fit.jpg" alt="Close detail of the polo worn, showing the line through the body" loading="lazy" /></figure>
-        <div class="body">
-          <span class="craft-c"><span class="n">04</span><h3>The Fit</h3></span>
-          <p>Tailored through the body without feeling tight or technical.</p>
-        </div>
+        <span class="craft-c"><span class="n">04</span><h3>The Fit</h3></span>
+        <p>Tailored through the body without feeling tight or technical.</p>
       </article>
     </div>
   </div>
@@ -874,38 +868,80 @@ p{color:var(--body);text-wrap:pretty;}
       </div>
       <div class="story-copy">
         <h2 class="up">For Finley.</h2>
-        <p class="serif-lead up d1">Finley Jade began with a daughter who sees the world with wonder and a father who wanted to build something she could someday call her own.</p>
-        <p class="lead up d2">Named for her, the house is rooted in family, inspired by the patience of the sea and created with a belief that the things worth keeping should be made to last.</p>
+        <p class="serif-lead up d1">Turtles began with a daughter who sees the world with wonder and a father who wanted to build something she could someday call her own.</p>
+        <p class="lead up d2">Named for Finley Jade, the brand is rooted in family, inspired by the patience of the sea and created with a belief that the things worth keeping should be made to last.</p>
         <div class="up d3"><a class="btn ghost" href="#philosophy"><s>Our Story</s></a></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════ 08 · THE COLLECTION ═══════════ -->
-<section class="sec limestone" id="collection">
+<!-- ═══════════ 08 · SHOP ═══════════ -->
+<section class="sec parchment" id="collection">
   <span id="shop-faq" aria-hidden="true"></span>
   <span id="fit-guide" aria-hidden="true"></span>
   <div class="wrap">
-    <div class="rail"><span class="n">08</span><span class="label">The Collection</span></div>
+    <div class="rail"><span class="n">08</span><span class="label">Shop</span></div>
     <div class="shop-head">
       <h2 class="up">The Long Run</h2>
       <a class="tl up d1" href="shop.html">View All<i></i></a>
     </div>
-  </div>
 
-  <figure class="campaign rv">
-    <img src="assets/editorial/shop-campaign.jpg" alt="The Long Run Polo worn at the cliff&rsquo;s edge at sunset" loading="lazy" />
-  </figure>
-
-  <div class="wrap">
-    <div class="shop-line up">
-      <div>
-        <p class="serif-lead">Made once, in five colours.</p>
-        <p class="shop-spec">The Long Run Polo &middot; Sizes S&ndash;XL &middot; $148</p>
-      </div>
-      <a class="btn" href="shop.html"><s>Shop the Long Run</s></a>
+    <div class="shop swipe" data-swipe>
+      <a class="prod up" href="shop.html">
+        <span class="prod-f">
+          <img class="flat" src="assets/products/tiles/sand.jpg" alt="The Long Run Polo in Sand" loading="lazy" />
+          <img class="worn" src="assets/editorial/worn-sand.jpg" alt="The Long Run Polo in Sand, worn on the shoreline" loading="lazy" />
+        </span>
+        <span class="prod-b">
+          <span class="prod-c">Sand</span><span class="prod-n">The Long Run Polo</span>
+          <span class="prod-r"><span class="prod-p">$148</span><span class="prod-v">View</span></span>
+        </span>
+      </a>
+      <a class="prod up d1" href="shop.html">
+        <span class="prod-f">
+          <img class="flat" src="assets/products/tiles/deep-navy.jpg" alt="The Long Run Polo in Navy" loading="lazy" />
+          <img class="worn" src="assets/editorial/worn-navy.jpg" alt="The Long Run Polo in Navy, worn at the helm" loading="lazy" />
+        </span>
+        <span class="prod-b">
+          <span class="prod-c">Navy</span><span class="prod-n">The Long Run Polo</span>
+          <span class="prod-r"><span class="prod-p">$148</span><span class="prod-v">View</span></span>
+        </span>
+      </a>
+      <a class="prod up d2" href="shop.html">
+        <span class="prod-f">
+          <img class="flat" src="assets/products/tiles/sea-blue.jpg" alt="The Long Run Polo in Sea Blue" loading="lazy" />
+          <img class="worn" src="assets/editorial/worn-seablue.jpg" alt="The Long Run Polo worn at the end of the dock" loading="lazy" />
+        </span>
+        <span class="prod-b">
+          <span class="prod-c">Sea Blue</span><span class="prod-n">The Long Run Polo</span>
+          <span class="prod-r"><span class="prod-p">$148</span><span class="prod-v">View</span></span>
+        </span>
+      </a>
+      <a class="prod up d3" href="shop.html">
+        <span class="prod-f">
+          <img class="flat" src="assets/products/tiles/deep-blue.jpg" alt="The Long Run Polo in Deep Blue" loading="lazy" />
+          <img class="worn" src="assets/editorial/worn-deepblue.jpg" alt="The Long Run Polo in Deep Blue, worn at last light" loading="lazy" />
+        </span>
+        <span class="prod-b">
+          <span class="prod-c">Deep Blue</span><span class="prod-n">The Long Run Polo</span>
+          <span class="prod-r"><span class="prod-p">$148</span><span class="prod-v">View</span></span>
+        </span>
+      </a>
+      <a class="prod up d4" href="shop.html">
+        <span class="prod-f">
+          <img class="flat" src="assets/products/tiles/aqua-mint.jpg" alt="The Long Run Polo in Sea Glass" loading="lazy" />
+          <img class="worn" src="assets/editorial/worn-seaglass.jpg" alt="The Long Run Polo in Sea Glass, worn by the water" loading="lazy" />
+        </span>
+        <span class="prod-b">
+          <span class="prod-c">Sea Glass</span><span class="prod-n">The Long Run Polo</span>
+          <span class="prod-r"><span class="prod-p">$148</span><span class="prod-v">View</span></span>
+        </span>
+      </a>
     </div>
+    <div class="hint" data-hint hidden><i></i></div>
+
+    <div class="shop-foot up"><a class="btn" href="shop.html"><s>Shop the Long Run</s></a></div>
   </div>
 </section>
 
@@ -914,18 +950,15 @@ p{color:var(--body);text-wrap:pretty;}
   <div class="wrap">
     <div class="notes">
       <figure class="note up">
-        <span class="note-mark">&ldquo;</span>
-        <blockquote>The first polo I&rsquo;ve owned that looks as good at dinner as it did at noon.</blockquote>
+        <blockquote>&ldquo;The first polo I&rsquo;ve owned that looks as good at dinner as it did at noon.&rdquo;</blockquote>
         <figcaption>James Whitfield<br />Newport</figcaption>
       </figure>
       <figure class="note up d1">
-        <span class="note-mark">&ldquo;</span>
-        <blockquote>Three summers in and the collar still stands the way it did the first morning.</blockquote>
+        <blockquote>&ldquo;Three summers in and the collar still stands the way it did the first morning.&rdquo;</blockquote>
         <figcaption>Marcus Bell<br />Charleston</figcaption>
       </figure>
       <figure class="note up d2">
-        <span class="note-mark">&ldquo;</span>
-        <blockquote>I bought one, then quietly bought the rest of the edition for my brothers.</blockquote>
+        <blockquote>&ldquo;I bought one, then quietly bought the rest of the edition for my brothers.&rdquo;</blockquote>
         <figcaption>David Okonkwo<br />London</figcaption>
       </figure>
     </div>
@@ -998,9 +1031,9 @@ p{color:var(--body);text-wrap:pretty;}
 
     <div class="f-top">
       <div>
-        <a class="mark" href="#top" aria-label="Collections by Finley Jade, home">
-          <img src="assets/brand/mark.png" alt="" style="width:27px;" />
-          <span class="wm"><i>Collections by</i><b>Finley Jade</b></span>
+        <a class="mark" href="#top" aria-label="Turtles by Finley Jade, home">
+          <img src="assets/turtle-logo.png" alt="" style="width:27px;" />
+          <span class="wm"><b>Turtles</b><i>By Finley Jade</i></span>
         </a>
         <p class="f-note">Resort wear inspired by family, the sea, and the places worth returning to.</p>
       </div>
@@ -1027,11 +1060,11 @@ p{color:var(--body);text-wrap:pretty;}
     </div>
 
     <div class="f-bot">
-      <span>Collections by Finley Jade — Washington, D.C.</span>
+      <span>Turtles by Finley Jade — Washington, D.C.</span>
       <span>Est. 2026</span>
     </div>
   </div>
-  <div class="f-sig" aria-hidden="true">Collections by Finley Jade</div>
+  <div class="f-sig" aria-hidden="true">Turtles by Finley Jade</div>
 </section>
 
 </main>
@@ -1091,7 +1124,7 @@ p{color:var(--body);text-wrap:pretty;}
     }, 130);
   });
 
-  /* Parallax */
+  /* Parallax */ The slice is nice mange lecture sandwich, share, panical shape, side, or so my room shake no matrix capital motivation motivation, half government, drunk same shame, half dossing half high pharmacy matrix, dollars consume ho, it's maybe shaker, side shake, maybe antipleve in my line, school meto cotton meal, he almost show, no battle, project shakes, project Upshor Awards, cat in touch with debowning, she may all the partner, maximum, Pakistan office, offshore development center, canary office head court of something portfully major, portfolio, carriers, job on the character, build, carier with debt, I softly purchase section software after web development, soft development, mobile branding, share, itmight flip speed on the stuff, as a garner bar never no campaign shows thought
   var px = document.querySelectorAll('[data-parallax]');
   if (px.length && !reduce) {
     var tick = false;
