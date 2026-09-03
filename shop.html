@@ -620,17 +620,18 @@ p{color:var(--body);text-wrap:pretty;}
 .fcount{font-size:.585rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);white-space:nowrap;}
 
 /* ═══════════ The shelf ═══════════ */
-.shelf{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:clamp(3.2rem,6vw,6.5rem) clamp(1.4rem,2.6vw,3rem);}
-.item{display:flex;flex-direction:column;transition:opacity .7s var(--ease);}
-/* The fifth look closes the page across the full measure. */
-.item:nth-child(5){grid-column:1 / -1;}
-.item:nth-child(5) .plate{aspect-ratio:16/10;}
-.item:nth-child(5) .item-b{max-width:44ch;}
+/* Six columns, each look spanning two: three a row, with the trailing pair
+   centred so five items do not leave an orphan. */
+.shelf{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));
+  gap:clamp(2.8rem,4.6vw,4.8rem) clamp(1.3rem,2.2vw,2.6rem);}
+.item{grid-column:span 2;display:flex;flex-direction:column;transition:opacity .7s var(--ease);}
+.item:nth-child(4){grid-column:2 / span 2;}
+.item:nth-child(5){grid-column:4 / span 2;}
 .item[hidden]{display:none;}
-/* Filtered down, the closing look is just another plate. */
-.shelf.filtered .item:nth-child(5){grid-column:auto;}
-.shelf.filtered .item:nth-child(5) .plate{aspect-ratio:5/7;}
+/* Filtering hides cards, so the centring offsets stand down. */
+.shelf.filtered .item,
+.shelf.filtered .item:nth-child(4),
+.shelf.filtered .item:nth-child(5){grid-column:span 2;}
 .item .plate{aspect-ratio:5/7;}
 /* .plate's flat/worn swap is written against .color on the homepage. */
 .item .plate:hover .flat{opacity:0;}
@@ -734,7 +735,8 @@ p{color:var(--body);text-wrap:pretty;}
 @media (max-width:900px){
   .ph-row{grid-template-columns:1fr;gap:1.8rem;align-items:start;}
   .ph-side{padding-bottom:0;}
-  .item:nth-child(5) .plate{aspect-ratio:4/3;}
+  .shelf{grid-template-columns:repeat(4,minmax(0,1fr));}
+  .item,.item:nth-child(4),.item:nth-child(5){grid-column:span 2;}
   .fit{grid-template-columns:1fr;gap:2.4rem;}
   .chap{grid-template-columns:1fr;gap:1.7rem;}
   .chap-media,.chap.rev .chap-media{grid-column:1 / -1;grid-row:1;}
@@ -743,8 +745,8 @@ p{color:var(--body);text-wrap:pretty;}
   .closer{grid-template-columns:1fr;gap:2rem;justify-items:start;}
 }
 @media (max-width:600px){
-  .shelf{grid-template-columns:1fr;gap:3.4rem;}
-  .item:nth-child(5) .plate{aspect-ratio:5/7;}
+  .shelf{grid-template-columns:1fr;gap:3.2rem;}
+  .item,.item:nth-child(4),.item:nth-child(5){grid-column:1 / -1;}
   .fbar-wrap{gap:1rem;}
   .fbar{gap:1rem;}
   .band img{height:clamp(240px,62vw,360px);}
@@ -834,7 +836,8 @@ p{color:var(--body);text-wrap:pretty;}
 .g-th:hover{opacity:.82;}
 .g-th.on{opacity:1;box-shadow:inset 0 0 0 1px var(--brass);}
 
-.g-stage{position:relative;overflow:hidden;background:var(--plate);aspect-ratio:4/5;
+/* 5/7 matches the product tiles exactly, so the primary frame never crops. */
+.g-stage{position:relative;overflow:hidden;background:var(--plate);aspect-ratio:5/7;
   box-shadow:inset 0 0 0 1px rgba(23,33,39,.07);}
 .g-stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
   opacity:0;transform:scale(1.02);
@@ -992,7 +995,7 @@ p{color:var(--body);text-wrap:pretty;}
       <a href="collections.html">The Collections</a>
       <a href="index.html#heritage">Our Story</a>
       <a href="index.html#journal">Journal</a>
-      <a href="shop.html">Shop All</a>
+      <a href="shop.html">The Edition</a>
     </div>
   </div>
 </div>
