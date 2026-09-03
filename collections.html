@@ -620,17 +620,17 @@ p{color:var(--body);text-wrap:pretty;}
 .fcount{font-size:.585rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);white-space:nowrap;}
 
 /* ═══════════ The shelf ═══════════ */
-.shelf{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));
-  gap:clamp(2.6rem,4.4vw,4.6rem) clamp(1.2rem,2vw,2.4rem);}
-.item{grid-column:span 2;display:flex;flex-direction:column;
-  transition:opacity .7s var(--ease);}
-.item:nth-child(4){grid-column:2 / span 2;}
-.item:nth-child(5){grid-column:4 / span 2;}
+.shelf{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:clamp(3.2rem,6vw,6.5rem) clamp(1.4rem,2.6vw,3rem);}
+.item{display:flex;flex-direction:column;transition:opacity .7s var(--ease);}
+/* The fifth look closes the page across the full measure. */
+.item:nth-child(5){grid-column:1 / -1;}
+.item:nth-child(5) .plate{aspect-ratio:16/10;}
+.item:nth-child(5) .item-b{max-width:44ch;}
 .item[hidden]{display:none;}
-/* Filtering breaks the centred trailing pair, so the offsets stand down. */
-.shelf.filtered .item,
-.shelf.filtered .item:nth-child(4),
-.shelf.filtered .item:nth-child(5){grid-column:span 2;}
+/* Filtered down, the closing look is just another plate. */
+.shelf.filtered .item:nth-child(5){grid-column:auto;}
+.shelf.filtered .item:nth-child(5) .plate{aspect-ratio:5/7;}
 .item .plate{aspect-ratio:5/7;}
 /* .plate's flat/worn swap is written against .color on the homepage. */
 .item .plate:hover .flat{opacity:0;}
@@ -734,8 +734,7 @@ p{color:var(--body);text-wrap:pretty;}
 @media (max-width:900px){
   .ph-row{grid-template-columns:1fr;gap:1.8rem;align-items:start;}
   .ph-side{padding-bottom:0;}
-  .shelf{grid-template-columns:repeat(4,minmax(0,1fr));}
-  .item,.item:nth-child(4),.item:nth-child(5){grid-column:span 2;}
+  .item:nth-child(5) .plate{aspect-ratio:4/3;}
   .fit{grid-template-columns:1fr;gap:2.4rem;}
   .chap{grid-template-columns:1fr;gap:1.7rem;}
   .chap-media,.chap.rev .chap-media{grid-column:1 / -1;grid-row:1;}
@@ -744,8 +743,8 @@ p{color:var(--body);text-wrap:pretty;}
   .closer{grid-template-columns:1fr;gap:2rem;justify-items:start;}
 }
 @media (max-width:600px){
-  .shelf{grid-template-columns:1fr;gap:3.2rem;}
-  .item,.item:nth-child(4),.item:nth-child(5){grid-column:1 / -1;}
+  .shelf{grid-template-columns:1fr;gap:3.4rem;}
+  .item:nth-child(5) .plate{aspect-ratio:5/7;}
   .fbar-wrap{gap:1rem;}
   .fbar{gap:1rem;}
   .band img{height:clamp(240px,62vw,360px);}
@@ -815,6 +814,120 @@ p{color:var(--body);text-wrap:pretty;}
   .chap-break{grid-template-columns:1fr;gap:1.2rem;justify-items:center;}
   .chap-break-l{width:56px;}
 }
+
+/* ═══════════════════════════════════════════════════════════
+   PRODUCT DETAIL
+   ═══════════════════════════════════════════════════════════ */
+.pdp{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);
+  gap:clamp(1.5rem,4vw,4.5rem);align-items:start;}
+
+/* Gallery: one stage, a rail of thumbs beside it. Every frame is in the DOM
+   and cross-fades, so switching views never shows a loading gap. */
+.pdp-gal{display:grid;grid-template-columns:auto minmax(0,1fr);
+  gap:clamp(.6rem,.9vw,1rem);align-items:start;}
+.g-rail{display:flex;flex-direction:column;gap:clamp(.45rem,.7vw,.7rem);}
+.g-th{position:relative;width:clamp(56px,5vw,76px);aspect-ratio:5/6;overflow:hidden;
+  background:var(--plate);opacity:.5;
+  box-shadow:inset 0 0 0 1px rgba(23,33,39,.09);
+  transition:opacity .55s var(--ease),box-shadow .45s var(--ease);}
+.g-th img{width:100%;height:100%;object-fit:cover;}
+.g-th:hover{opacity:.82;}
+.g-th.on{opacity:1;box-shadow:inset 0 0 0 1px var(--brass);}
+
+.g-stage{position:relative;overflow:hidden;background:var(--plate);aspect-ratio:4/5;
+  box-shadow:inset 0 0 0 1px rgba(23,33,39,.07);}
+.g-stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  opacity:0;transform:scale(1.02);
+  transition:opacity .75s var(--ease),transform 2.4s var(--ease);}
+.g-stage img.on{opacity:1;transform:none;}
+.g-stage:hover img.on{transform:scale(1.03);}
+.g-foot{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;
+  margin-top:.95rem;font-size:.545rem;font-weight:500;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--muted);}
+.g-foot b{font-family:var(--serif);font-feature-settings:'onum' 1;font-weight:400;
+  font-size:.9rem;letter-spacing:.06em;text-transform:none;color:var(--text);}
+.pdp-gal.swapping .g-stage img.on{opacity:.2;}
+
+/* ═══════════ Buy column ═══════════ */
+.buy{position:sticky;top:calc(var(--hdr) + clamp(1.4rem,3vh,2.6rem));}
+.buy h1{font-size:clamp(2.1rem,3.4vw,3.15rem);line-height:1.04;margin:.85rem 0 0;}
+.buy-coll{display:flex;align-items:baseline;gap:.8rem;}
+.buy-coll .n{font-family:var(--serif);font-feature-settings:'onum' 1;font-size:.95rem;color:var(--brass);}
+.buy-price{display:flex;align-items:baseline;gap:1.1rem;margin-top:1.1rem;
+  font-family:var(--serif);font-feature-settings:'onum' 1;font-size:1.45rem;color:var(--text);letter-spacing:.03em;}
+.buy-price s{text-decoration:none;font-family:var(--sans);font-size:.565rem;font-weight:500;
+  letter-spacing:.24em;text-transform:uppercase;color:var(--muted);}
+.buy-lede{margin-top:1.5rem;padding-bottom:1.8rem;border-bottom:1px solid var(--hair-soft);
+  font-size:.9rem;line-height:1.8;color:var(--whisper);max-width:46ch;}
+
+.opt{padding:1.7rem 0;border-bottom:1px solid var(--hair-soft);}
+.opt-h{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;margin-bottom:1.15rem;}
+.opt-h .label{font-size:.565rem;}
+.opt-h b{font-family:var(--serif);font-weight:400;font-size:1.06rem;color:var(--text);letter-spacing:-.006em;}
+.opt-h a{font-size:.545rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);
+  transition:color .45s var(--ease);}
+.opt-h a:hover{color:var(--brass);}
+
+.sw-row{display:flex;flex-wrap:wrap;gap:.75rem;}
+.sw{position:relative;width:38px;height:38px;border-radius:50%;
+  box-shadow:inset 0 0 0 1px rgba(23,33,39,.18);
+  transition:transform .45s var(--ease);}
+.sw::after{content:'';position:absolute;inset:-5px;border-radius:50%;
+  border:1px solid var(--brass);opacity:0;transform:scale(.86);
+  transition:opacity .45s var(--ease),transform .45s var(--ease);}
+.sw:hover{transform:scale(1.06);}
+.sw.on::after{opacity:1;transform:none;}
+
+.buy .sizes{margin:0;}
+.buy .sz{width:52px;height:44px;}
+.buy-cta{margin-top:1.9rem;}
+.buy-cta .btn{width:100%;}
+.buy-note{margin-top:1.1rem;display:flex;align-items:center;gap:.7rem;
+  font-size:.545rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);}
+.buy-note i{display:block;width:5px;height:5px;background:var(--brass);transform:rotate(45deg);}
+.buy-ed{margin-top:1.7rem;padding-top:1.4rem;border-top:1px solid var(--hair-soft);
+  display:flex;align-items:baseline;justify-content:space-between;gap:1rem;
+  font-size:.545rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);}
+.buy-ed b{font-family:var(--serif);font-feature-settings:'onum' 1;font-weight:400;
+  font-size:.95rem;letter-spacing:.05em;text-transform:none;color:var(--text);}
+.buy .faq{margin-top:1.9rem;border-top:0;}
+.buy .faq summary{font-size:1.02rem;padding:1.15rem 0;}
+.buy .faq details p{font-size:.845rem;padding-bottom:1.35rem;}
+
+/* ═══════════ Also in the edition ═══════════ */
+.also{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(1rem,1.6vw,1.8rem);}
+.also .plate{aspect-ratio:5/7;}
+.also .color-b{padding-top:1.1rem;}
+
+@media (max-width:1000px){
+  .pdp{grid-template-columns:1fr;gap:2.6rem;}
+  .buy{position:static;}
+  .pdp-gal{grid-template-columns:1fr;}
+  .g-rail{flex-direction:row;order:2;overflow-x:auto;scrollbar-width:none;}
+  .g-rail::-webkit-scrollbar{display:none;}
+  .g-th{flex:0 0 auto;width:64px;}
+  .also{grid-template-columns:repeat(2,minmax(0,1fr));gap:1.6rem 1.2rem;}
+}
+@media (max-width:560px){
+  .buy .sz{width:46px;}
+}
+
+/* ═══════════ House statement — service, not testimonials ═══════════ */
+.house{display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(2.4rem,4.4vw,4.4rem);
+  padding-top:clamp(2.6rem,4vw,4rem);border-top:1px solid var(--hair-soft);
+  text-align:center;justify-items:center;}
+.house-l{font-family:var(--serif);font-weight:300;color:var(--text);
+  font-size:clamp(1.5rem,2.9vw,2.5rem);line-height:1.34;letter-spacing:-.014em;max-width:24ch;}
+.house p{max-width:56ch;font-size:.92rem;line-height:1.85;}
+.house-svc{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:clamp(1.4rem,3vw,3.5rem);width:100%;
+  padding-top:clamp(2rem,3.4vw,3.4rem);border-top:1px solid var(--hair-soft);}
+.house-svc div{display:flex;flex-direction:column;gap:.7rem;align-items:center;}
+.house-svc dt{font-family:var(--serif);font-size:1.16rem;color:var(--text);letter-spacing:-.006em;}
+.house-svc dd{margin:0;font-size:.79rem;line-height:1.7;color:var(--muted);max-width:26ch;}
+@media (max-width:700px){
+  .house-svc{grid-template-columns:1fr;gap:1.8rem;}
+}
 </style>
 </head>
 <body class="inner">
@@ -875,7 +988,7 @@ p{color:var(--body);text-wrap:pretty;}
       <button type="submit" class="ovl-x">Enter</button>
     </form>
     <div class="sg">
-      <a href="shop.html">The Long Run Polo</a>
+      <a href="product.html">The Long Run Polo</a>
       <a href="collections.html">The Collections</a>
       <a href="index.html#heritage">Our Story</a>
       <a href="index.html#journal">Journal</a>
@@ -947,7 +1060,7 @@ p{color:var(--body);text-wrap:pretty;}
           <p class="lead up d2">The long weekend is the stretch of days that feels like a small holiday &mdash; the kind where time slows down and the only agenda is the tide.</p>
           <p class="lead up d2">These are pieces built for that ease: considered enough for a dinner that runs late, relaxed enough for a morning that doesn&rsquo;t start in a hurry. Made to be reached for from Friday to Monday, and long after.</p>
           <div class="chap-sw up d3"><i style="--c:#C9BC9E"></i>Sand</div>
-          <a class="tl up d3" href="shop.html#sand">Shop Sand<i></i></a>
+          <a class="tl up d3" href="product.html#sand">Discover Sand<i></i></a>
         </div>
       </article>
       <article class="chap rev" id="navy">
@@ -964,7 +1077,7 @@ p{color:var(--body);text-wrap:pretty;}
           <p class="lead up d2">The tide always returns. So do the things worth keeping &mdash; the people, the places, the garments that earn their place over the years.</p>
           <p class="lead up d2">The Returning Tide is for the pieces that come back into rotation season after season and never fall out of favour. Quiet, dependable, made to endure.</p>
           <div class="chap-sw up d3"><i style="--c:#252A3D"></i>Navy</div>
-          <a class="tl up d3" href="shop.html#navy">Shop Navy<i></i></a>
+          <a class="tl up d3" href="product.html#navy">Discover Navy<i></i></a>
         </div>
       </article>
       <article class="chap" id="sea-blue">
@@ -981,7 +1094,7 @@ p{color:var(--body);text-wrap:pretty;}
           <p class="lead up d2">First light is the quietest, most honest part of the day &mdash; when the water is still and the world hasn&rsquo;t caught up yet.</p>
           <p class="lead up d2">First Light is built for those hours: light, breathable and unfussy. Pieces that move with you from the first cast to the first coffee.</p>
           <div class="chap-sw up d3"><i style="--c:#8FA3C4"></i>Sea Blue</div>
-          <a class="tl up d3" href="shop.html#sea-blue">Shop Sea Blue<i></i></a>
+          <a class="tl up d3" href="product.html#sea-blue">Discover Sea Blue<i></i></a>
         </div>
       </article>
 
@@ -1004,7 +1117,7 @@ p{color:var(--body);text-wrap:pretty;}
           <p class="lead up d2">Every passage is the space between where you were and where you are going &mdash; the crossings, the flights, the long quiet stretches of open water.</p>
           <p class="lead up d2">The Passage is made for the in-between: garments that travel well, wrinkle little, and look considered on either side of the journey.</p>
           <div class="chap-sw up d3"><i style="--c:#375770"></i>Deep Blue</div>
-          <a class="tl up d3" href="shop.html#deep-blue">Shop Deep Blue<i></i></a>
+          <a class="tl up d3" href="product.html#deep-blue">Discover Deep Blue<i></i></a>
         </div>
       </article>
       <article class="chap" id="sea-glass">
@@ -1021,7 +1134,7 @@ p{color:var(--body);text-wrap:pretty;}
           <p class="lead up d2">Home waters are the shores you know best &mdash; the familiar bays, the local docks, the coastline that feels like it belongs to you.</p>
           <p class="lead up d2">Home Waters honours the idea of return: pieces rooted in place, made for the days spent closest to home and the people you share them with.</p>
           <div class="chap-sw up d3"><i style="--c:#5FC0B4"></i>Sea Glass</div>
-          <a class="tl up d3" href="shop.html#sea-glass">Shop Sea Glass<i></i></a>
+          <a class="tl up d3" href="product.html#sea-glass">Discover Sea Glass<i></i></a>
         </div>
       </article>
   </div>
@@ -1091,9 +1204,9 @@ p{color:var(--body);text-wrap:pretty;}
       <div class="f-cols">
         <div class="f-col">
           <h4>Shop</h4>
-          <a href="shop.html">The Long Run Polo</a>
+          <a href="product.html">The Long Run Polo</a>
           <a href="collections.html">The Collections</a>
-          <a href="shop.html">Shop All</a>
+          <a href="shop.html">The Edition</a>
         </div>
         <div class="f-col">
           <h4>House</h4>
