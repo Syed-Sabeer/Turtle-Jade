@@ -2,786 +2,1045 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
+<script>document.documentElement.className+=" js";</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Shop the Long Run Polo — Turtles by Finley Jade</title>
-<meta name="description" content="Shop the Long Run Polo from Turtles by Finley Jade — five coastal colorways, individually numbered, embroidered sea turtle crest. Free U.S. shipping." />
-<link rel="icon" type="image/png" href="assets/favicon.png" />
+<title>The Long Run Polo — Collections by Finley Jade</title>
+<meta name="description" content="The Long Run Polo in five signature colors. One silhouette, sizes S–XL, $148 — carrying a new limited-edition turtle each year." />
+<link rel="icon" type="image/png" href="assets/brand/favicon.png" />
+<link rel="preload" as="image" href="assets/editorial/shop-campaign.jpg" fetchpriority="high" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,400..600&family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet" />
 
 <style>
-/* ============ TOKENS ============ */
+/* ═══════════════════════════════════════════════════════════
+   TURTLES BY FINLEY JADE — HOMEPAGE
+   01 Tokens
+   ═══════════════════════════════════════════════════════════ */
 :root{
-  --ink:#0a1420;
-  --navy:#111f2e;
-  --navy-soft:#17293c;
-  --navy-softer:#1c3049;
-  --steel:#24406b;
-  --lagoon:#d9c98d;
-  --lagoon-deep:#8a7d4d;
-  --gold:#b3a370;
-  --gold-bright:#d9c98d;
-  --gold-dim:#8a7d4d;
-  --shell:#f7edd0;
-  --paper:#fbf6e8;
-  --paper-soft:#f3ead2;
-  --sage-cream:#eef1e4;
-  --sage-cream-soft:#e6ecdc;
-  --ink-text:#3a3428;
-  --black:#050505;
+  --limestone:#F2EFE8;
+  --parchment:#E5DED1;
+  --ink:#172127;
+  --navy:#19313D;
+  --navy-soft:#22414F;
+  --adriatic:#81969A;
+  --olive:#777C68;
+  --brass:#A68D65;
+  --white:#FAF9F6;
 
-  --font-display:'Fraunces', 'Iowan Old Style', Georgia, serif;
-  --font-body:'Manrope', -apple-system, 'Segoe UI', sans-serif;
-  --font-mono:'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace;
+  --text:var(--ink);
+  --body:rgba(23,33,39,.72);
+  --muted:rgba(23,33,39,.46);
+  --ghost:rgba(23,33,39,.13);
+  --hair:rgba(23,33,39,.15);
+  --hair-soft:rgba(23,33,39,.09);
+  --plate:#F3F0E9;
+  --whisper:#5F6364;
 
-  --container:1240px;
-  --pad:clamp(1.5rem, 5vw, 4rem);
-  --section-y:clamp(5rem, 10vw, 9rem);
+  --serif:'Cormorant Garamond','EB Garamond',Baskerville,'Times New Roman',serif;
+  --sans:'DM Sans',-apple-system,'Helvetica Neue',Helvetica,Arial,sans-serif;
+
+  --max:1440px;
+  --pad:clamp(1.35rem,5vw,5rem);
+  --outer:max(var(--pad),calc((100vw - var(--max)) / 2 + var(--pad)));
+  --sec:clamp(4.5rem,8.3vw,10rem);
+  --measure:590px;
+  --hdr:90px;
 
   --ease:cubic-bezier(.22,1,.36,1);
+  --mask-ease:cubic-bezier(.6,.04,.15,1);
 }
 
 *{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
 body{
-  background:var(--navy);
-  color:var(--shell);
-  font-family:var(--font-body);
-  font-size:16px;
-  line-height:1.6;
-  -webkit-font-smoothing:antialiased;
-  overflow-x:hidden;
+  background:var(--limestone);color:var(--ink);
+  font-family:var(--sans);font-size:16px;line-height:1.75;font-weight:400;
+  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+  text-rendering:optimizeLegibility;overflow-x:hidden;
 }
 img{max-width:100%;display:block;}
 a{color:inherit;text-decoration:none;}
-h1,h2,h3,h4{font-family:var(--font-display);font-weight:600;text-wrap:balance;letter-spacing:-0.01em;}
-button{font-family:inherit;cursor:pointer;}
-:focus-visible{outline:2px solid var(--lagoon-deep);outline-offset:3px;}
-.container{max-width:var(--container);margin:0 auto;padding-left:var(--pad);padding-right:var(--pad);}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;}
+input{font:inherit;color:inherit;}
+figure{margin:0;}
+::selection{background:var(--navy);color:var(--white);}
+:focus-visible{outline:1px solid var(--brass);outline-offset:5px;}
 
-.eyebrow{
-  font-family:var(--font-mono);
-  font-size:.72rem;
-  letter-spacing:.18em;
-  text-transform:uppercase;
-  color:var(--gold-bright);
-  display:inline-flex;
-  align-items:center;
-  gap:.6em;
-}
-.section--light .eyebrow,.section--sage .eyebrow{color:var(--gold-dim);}
-.eyebrow .dot{width:5px;height:5px;border-radius:50%;background:var(--lagoon);display:inline-block;}
-.section--light .eyebrow .dot,.section--sage .eyebrow .dot{background:var(--lagoon-deep);}
-
-.facet{
-  clip-path:polygon(26px 0,100% 0,100% calc(100% - 26px),calc(100% - 26px) 100%,0 100%,0 26px);
+/* Paper grain — material, not decoration */
+body::after{
+  content:'';position:fixed;inset:0;z-index:70;pointer-events:none;opacity:.55;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='.045'/%3E%3C/svg%3E");
 }
 
+/* ═══════════ 02 Surfaces & primitives ═══════════ */
+.limestone{background:var(--limestone);}
+.parchment{background:var(--parchment);--plate:#EFEBE2;--hair-soft:rgba(23,33,39,.11);}
+.midnight{
+  background:var(--navy);color:var(--white);
+  --text:var(--white);--body:rgba(250,249,246,.7);--muted:rgba(250,249,246,.5);
+  --hair:rgba(250,249,246,.24);--hair-soft:rgba(250,249,246,.14);--ghost:rgba(250,249,246,.14);
+}
+
+.wrap{max-width:var(--max);margin:0 auto;padding-left:var(--pad);padding-right:var(--pad);}
+.sec{padding-top:var(--sec);padding-bottom:var(--sec);position:relative;}
+section[id],span[id]{scroll-margin-top:calc(var(--hdr) + 2rem);}
+.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:clamp(1rem,2vw,2rem);}
+
+h1,h2,h3{font-family:var(--serif);font-weight:400;color:var(--text);text-wrap:balance;}
+h1{font-size:clamp(3.4rem,8.8vw,8.8rem);line-height:.93;letter-spacing:-.032em;}
+h2{font-size:clamp(2.5rem,5.4vw,4.6rem);line-height:1.03;letter-spacing:-.025em;}
+h3{font-size:clamp(1.5rem,2.1vw,1.95rem);line-height:1.2;letter-spacing:-.014em;}
+p{color:var(--body);text-wrap:pretty;}
+
+.lead{font-family:var(--sans);font-weight:400;color:var(--whisper);
+  font-size:clamp(.95rem,1.02vw,1.03rem);line-height:1.7;letter-spacing:0;}
+.serif-lead{
+  font-family:var(--serif);font-weight:300;color:var(--text);
+  font-size:clamp(1.4rem,2.15vw,1.95rem);line-height:1.44;letter-spacing:-.014em;
+}
+.label{font-size:.645rem;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);display:block;}
+.caption{font-size:.6rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);}
+.num{font-family:var(--serif);font-feature-settings:'onum' 1;letter-spacing:.04em;}
+
+/* Section rail: number, name, and a rule that draws itself */
+.rail{position:relative;display:flex;align-items:baseline;gap:1.7rem;padding-top:1.4rem;margin-bottom:clamp(2.2rem,4vw,4.25rem);}
+.rail::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;background:var(--hair-soft);
+  transform-origin:left;transition:transform 1.6s var(--ease);
+}
+.js .rail::before{transform:scaleX(0);}
+.js .rail.in::before{transform:scaleX(1);}
+.rail .n{font-family:var(--serif);font-feature-settings:'onum' 1;font-size:1rem;color:var(--brass);letter-spacing:.05em;}
+
+/* Buttons */
 .btn{
-  font-family:var(--font-mono);
-  font-size:.78rem;
-  letter-spacing:.1em;
-  text-transform:uppercase;
-  padding:1rem 1.9rem;
-  border-radius:999px;
-  display:inline-flex;
-  align-items:center;
-  gap:.6rem;
-  border:1px solid transparent;
-  transition:transform .35s var(--ease), box-shadow .35s var(--ease), background .35s var(--ease), border-color .35s var(--ease);
-  white-space:nowrap;
-  background:none;
+  position:relative;display:inline-flex;align-items:center;justify-content:center;
+  height:56px;padding:0 2.7rem;overflow:hidden;border-radius:1px;
+  background:var(--navy);color:var(--white);border:1px solid var(--navy);
+  font-size:.645rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;line-height:1;
+  transition:color .6s var(--ease),border-color .6s var(--ease);
 }
-.btn:hover{transform:translateY(-2px);}
-.btn-primary{
-  background:linear-gradient(135deg, var(--lagoon), var(--lagoon-deep));
-  color:var(--ink);
-  box-shadow:0 8px 30px -8px rgba(217,201,141,.55);
-}
-.btn-primary:hover{box-shadow:0 14px 34px -8px rgba(217,201,141,.75);}
-.btn-ghost{
-  border-color:rgba(247,237,208,.35);
-  color:var(--shell);
-  background:rgba(247,237,208,.03);
-}
-.btn-ghost:hover{border-color:var(--gold-bright);background:rgba(247,237,208,.08);}
-.section--light .btn-ghost,.section--sage .btn-ghost{border-color:rgba(19,34,52,.28);color:var(--navy);background:rgba(19,34,52,.02);}
-.section--light .btn-ghost:hover,.section--sage .btn-ghost:hover{border-color:var(--gold-dim);background:rgba(19,34,52,.06);}
-.btn svg{width:14px;height:14px;transition:transform .3s var(--ease);}
-.btn:hover svg{transform:translateX(3px);}
+.btn::before{content:'';position:absolute;inset:0;background:var(--white);transform:translateY(101%);transition:transform .7s var(--ease);}
+.btn s{position:relative;z-index:2;text-decoration:none;}
+.btn:hover{color:var(--navy);}
+.btn:hover::before{transform:translateY(0);}
+.btn.ghost{background:transparent;color:var(--text);border-color:var(--hair);}
+.btn.ghost::before{background:var(--navy);}
+.btn.ghost:hover{color:var(--white);border-color:var(--navy);}
+.midnight .btn,.hero .btn{background:transparent;border-color:rgba(250,249,246,.5);color:var(--white);}
+.midnight .btn::before,.hero .btn::before{background:var(--white);}
+.midnight .btn:hover,.hero .btn:hover{color:var(--navy);border-color:var(--white);}
 
-.reveal{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease), transform .9s var(--ease);}
-.reveal.is-visible{opacity:1;transform:translateY(0);}
-.reveal-delay-1{transition-delay:.1s;}
-.reveal-delay-2{transition-delay:.2s;}
-.reveal-delay-3{transition-delay:.3s;}
+.tl{position:relative;display:inline-flex;align-items:center;gap:.95rem;padding-bottom:.6rem;color:var(--text);
+  font-size:.645rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;}
+.tl::before{content:'';position:absolute;left:0;bottom:0;height:1px;width:100%;background:var(--hair);}
+.tl::after{content:'';position:absolute;left:0;bottom:0;height:1px;width:100%;background:var(--brass);transform:scaleX(0);transform-origin:left;transition:transform .8s var(--ease);}
+.tl:hover::after{transform:scaleX(1);}
+.tl i{width:16px;height:1px;background:currentColor;opacity:.45;transition:width .6s var(--ease);}
+.tl:hover i{width:28px;}
 
-@media (prefers-reduced-motion: reduce){
-  *{animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important; scroll-behavior:auto !important;}
-  .reveal{opacity:1;transform:none;}
+/* ═══════════ 03 Motion ═══════════ */
+/* Reveals are enhancement only — every element renders visible without JS,
+   and nothing is ever hidden behind a scroll trigger. */
+.rv img{transition:transform 2.2s var(--mask-ease);}
+.js .rv img{transform:scale(1.07);}
+.js .rv.in img{transform:scale(1);}
+.up{transition:transform 1.25s var(--ease),opacity 1.25s var(--ease);}
+.js .up{transform:translateY(26px);}
+.js .up.in{transform:none;}
+.d1{transition-delay:.1s;}.d2{transition-delay:.2s;}.d3{transition-delay:.3s;}.d4{transition-delay:.4s;}.d5{transition-delay:.5s;}
+/* the line mask is used only in the hero, which reveals on load */
+.ln-wrap .ln{display:block;overflow:hidden;}
+.js .ln-wrap .ln > span{display:block;transform:translateY(112%);transition:transform 1.35s var(--mask-ease);}
+.js .ln-wrap.in .ln > span{transform:none;}
+.js .ln-wrap.in .ln:nth-child(2) > span{transition-delay:.1s;}
+.lb{display:inline;}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none !important;transition-duration:.001ms !important;scroll-behavior:auto !important;}
+  .js .up{transform:none;}.js .rv img{transform:none;}.js .ln-wrap .ln>span{transform:none;}.rail::before{transform:none;}
 }
 
-/* ============ PRELOADER ============ */
-#preloader{
-  position:fixed;inset:0;z-index:999;background:var(--paper);
-  display:flex;align-items:center;justify-content:center;
-  transition:opacity .6s var(--ease), visibility .6s var(--ease);
+/* ═══════════ 04 Header ═══════════ */
+.hdr{
+  position:fixed;top:0;left:0;right:0;z-index:80;height:var(--hdr);color:var(--white);
+  background:transparent;border-bottom:1px solid rgba(250,249,246,.18);
+  transition:background .75s var(--ease),color .75s var(--ease),border-color .75s var(--ease),height .75s var(--ease),transform .7s var(--ease);
 }
-#preloader.done{opacity:0;visibility:hidden;pointer-events:none;}
-#preloader img{width:64px;height:auto;filter:drop-shadow(0 0 20px rgba(217,201,141,.5));animation:pulseFade 1.4s ease-in-out infinite;}
-@keyframes pulseFade{0%,100%{opacity:.5;transform:scale(.94);}50%{opacity:1;transform:scale(1.02);}}
+.hdr.solid{
+  background:rgba(242,239,232,.95);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);
+  color:var(--ink);border-bottom-color:rgba(23,33,39,.10);height:72px;
+}
+.hdr.up{transform:translateY(-100%);}
+.hdr-in{height:100%;max-width:var(--max);margin:0 auto;padding:0 var(--pad);
+  display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:1.5rem;}
+.nav{display:flex;align-items:center;gap:2.9rem;}
+.nav.r{justify-content:flex-end;gap:2.5rem;}
+.nav a,.nav button{position:relative;padding:.5rem 0;opacity:.9;
+  font-size:.645rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;transition:opacity .45s var(--ease);}
+.nav a::after,.nav button::after{content:'';position:absolute;left:0;bottom:.15rem;height:1px;width:100%;background:currentColor;opacity:.5;
+  transform:scaleX(0);transform-origin:left;transition:transform .65s var(--ease);}
+.nav a:hover,.nav button:hover{opacity:1;}
+.nav a:hover::after,.nav button:hover::after{transform:scaleX(1);}
 
-/* ============ CURSOR GLOW ============ */
-#cursor-glow{
-  position:fixed;top:0;left:0;width:520px;height:520px;border-radius:50%;
-  background:radial-gradient(circle, rgba(217,201,141,.14), rgba(217,201,141,0) 65%);
-  transform:translate(-50%,-50%);pointer-events:none;z-index:2;
-  will-change:transform;transition:opacity .4s ease;
-}
-@media (hover:none), (pointer:coarse){ #cursor-glow{display:none;} }
+.mark{display:flex;align-items:center;gap:1rem;}
+.mark img{width:31px;height:auto;transition:width .75s var(--ease);}
+.hdr.solid .mark img{width:26px;}
+.wm{display:flex;flex-direction:column;align-items:center;gap:.42rem;line-height:1;}
+.wm i{font-style:normal;font-size:.455rem;font-weight:500;letter-spacing:.4em;text-transform:uppercase;
+  text-indent:.4em;opacity:.62;transition:color .7s var(--ease),opacity .7s var(--ease);}
+.wm b{font-family:var(--serif);font-weight:400;font-size:1.24rem;letter-spacing:.3em;text-transform:uppercase;text-indent:.3em;white-space:nowrap;}
+.wm i{white-space:nowrap;}
+.hdr:not(.solid) .wm i{opacity:.82;}
+.hdr.solid .wm i{color:var(--brass);opacity:1;}
+.ovl-top .wm i,.close .wm i{color:var(--brass);opacity:1;}
+.burger{display:none;width:24px;height:11px;position:relative;}
+.burger span{position:absolute;left:0;right:0;height:1px;background:currentColor;}
+.burger span:first-child{top:0;} .burger span:last-child{bottom:0;}
 
-/* ============ HEADER ============ */
-.announcement-bar{
-  position:fixed;top:0;left:0;right:0;height:30px;z-index:120;display:flex;align-items:center;justify-content:center;gap:1rem;
-  background:var(--navy);border-bottom:1px solid rgba(179,163,112,.2);color:rgba(247,237,208,.8);
-  font-family:var(--font-mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;
-}
-.announcement-bar i{width:3px;height:3px;border-radius:50%;background:var(--lagoon);}
-header{
-  position:fixed;top:30px;left:0;right:0;z-index:100;
-  padding:1.3rem 0;
-  transition:background .4s var(--ease), padding .4s var(--ease), backdrop-filter .4s var(--ease), border-color .4s var(--ease);
-  background:rgba(251,246,232,.9);backdrop-filter:blur(14px) saturate(130%);
-  border-bottom:1px solid rgba(179,163,112,.22);box-shadow:0 12px 34px -28px rgba(17,31,46,.22);
-}
-header.scrolled{
-  background:rgba(251,246,232,.97);
-  backdrop-filter:blur(16px) saturate(140%);
-  padding:.85rem 0;
-  border-color:rgba(179,163,112,.28);
-}
-.nav-row{display:flex;align-items:center;justify-content:space-between;gap:2rem;}
-.brand{display:flex;align-items:center;gap:.7rem;}
-.brand img{width:38px;height:auto;filter:drop-shadow(0 2px 6px rgba(17,31,46,.22));}
-.brand-text{display:flex;flex-direction:column;line-height:1.1;}
-.brand-text .kicker{font-family:var(--font-mono);font-size:.6rem;letter-spacing:.22em;color:var(--gold-dim);text-transform:uppercase;}
-.brand-text .name{font-family:var(--font-display);font-size:1.28rem;font-style:italic;font-weight:500;color:var(--navy);}
+/* Overlays */
+.ovl{position:fixed;inset:0;z-index:90;background:var(--limestone);color:var(--ink);display:flex;flex-direction:column;
+  opacity:0;visibility:hidden;transition:opacity .7s var(--ease),visibility .7s var(--ease);}
+.ovl.open{opacity:1;visibility:visible;}
+.ovl-top{height:var(--hdr);flex:0 0 auto;max-width:var(--max);width:100%;margin:0 auto;padding:0 var(--pad);
+  display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(23,33,39,.1);}
+.ovl-x{font-size:.645rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;}
+.ovl-body{flex:1;display:flex;flex-direction:column;justify-content:center;max-width:var(--max);width:100%;margin:0 auto;padding:2rem var(--pad) 4rem;}
+.ovl-links a{display:flex;justify-content:space-between;align-items:baseline;padding:.45rem 0;border-bottom:1px solid rgba(23,33,39,.1);
+  font-family:var(--serif);font-weight:300;font-size:clamp(2.2rem,7vw,3.4rem);line-height:1.4;
+  transition:color .45s var(--ease),padding-left .65s var(--ease);}
+.ovl-links a:hover{color:var(--navy);padding-left:.85rem;}
+.ovl-links a em{font-family:var(--sans);font-style:normal;font-size:.6rem;letter-spacing:.24em;color:rgba(23,33,39,.3);}
+.ovl-meta{margin-top:3rem;display:flex;flex-wrap:wrap;gap:1.5rem 2.4rem;}
+.ovl-meta a,.sg a{font-size:.645rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:rgba(23,33,39,.55);}
+.ovl-meta a:hover,.sg a:hover{color:var(--ink);}
+.sf{display:flex;align-items:center;gap:1rem;border-bottom:1px solid rgba(23,33,39,.16);padding-bottom:1.2rem;}
+.sf input{flex:1;border:0;background:transparent;outline:none;font-family:var(--serif);font-weight:300;font-size:clamp(1.8rem,5vw,3rem);}
+.sf input::placeholder{color:rgba(23,33,39,.2);}
+.sg{margin-top:2.6rem;display:flex;flex-wrap:wrap;gap:1.4rem 2.4rem;}
 
-.nav-links{display:flex;gap:2.2rem;align-items:center;}
-.nav-links a{
-  font-family:var(--font-mono);font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;
-  color:var(--navy);opacity:.78;position:relative;padding:.3rem 0;transition:opacity .3s;
-}
-.nav-links a::after{
-  content:'';position:absolute;left:0;bottom:-2px;width:0;height:1px;background:var(--gold-dim);
-  transition:width .35s var(--ease);
-}
-.nav-links a:hover{opacity:1;}
-.nav-links a:hover::after{width:100%;}
-.nav-links a.is-current{opacity:1;}
-.nav-links a.is-current::after{width:100%;background:var(--lagoon-deep);}
+/* ═══════════ 05 · 01 Hero ═══════════ */
+.hero{position:relative;min-height:680px;height:100vh;max-height:1120px;overflow:hidden;
+  display:flex;flex-direction:column;justify-content:flex-end;background:var(--navy);}
+.hero-bg{position:absolute;inset:0;overflow:hidden;}
+.hero-bg img,.hero-bg video{width:100%;height:100%;object-fit:cover;object-position:center 44%;
+  transform:scale(1.05);animation:drift 38s ease-in-out infinite alternate;}
+@keyframes drift{from{transform:scale(1.05);}to{transform:scale(1.13);}}
+.hero-veil{position:absolute;inset:0;background:
+  linear-gradient(to top,rgba(8,17,22,.74) 0%,rgba(8,17,22,.3) 36%,rgba(8,17,22,0) 64%),
+  linear-gradient(to right,rgba(8,17,22,.42) 0%,rgba(8,17,22,0) 58%),
+  linear-gradient(to bottom,rgba(8,17,22,.4) 0%,rgba(8,17,22,.1) 14%,rgba(8,17,22,0) 26%);}
+.hero-rail{position:absolute;z-index:2;right:var(--pad);bottom:clamp(7rem,16vh,11rem);writing-mode:vertical-rl;
+  font-size:.56rem;font-weight:500;letter-spacing:.44em;text-transform:uppercase;color:rgba(250,249,246,.55);}
+.hero-in{position:relative;z-index:2;width:100%;max-width:var(--max);margin:0 auto;padding:0 var(--pad) clamp(2.6rem,5vh,4.2rem);color:var(--white);}
+.hero-copy{max-width:660px;}
+.hero-copy .label{color:rgba(250,249,246,.72);margin-bottom:2.3rem;}
+.hero-copy h1{color:var(--white);margin-bottom:2.1rem;}
+.hero-copy p{color:rgba(250,249,246,.88);font-size:clamp(1rem,1.15vw,1.13rem);line-height:1.8;max-width:450px;margin-bottom:3rem;}
+.hero-act{display:flex;align-items:center;gap:2.7rem;flex-wrap:wrap;}
+.hero-act .tl{color:var(--white);}
+.hero-act .tl::before{background:rgba(250,249,246,.32);}
+.hero-foot{position:relative;z-index:2;width:100%;max-width:var(--max);margin:0 auto;
+  padding:1.25rem var(--pad) clamp(1.6rem,3vh,2.3rem);border-top:1px solid rgba(250,249,246,.2);
+  display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;
+  color:rgba(250,249,246,.66);font-size:.6rem;font-weight:500;letter-spacing:.26em;text-transform:uppercase;}
+.cue{display:flex;align-items:center;gap:.9rem;}
+.cue i{position:relative;display:block;width:1px;height:30px;background:rgba(250,249,246,.24);overflow:hidden;}
+.cue i::after{content:'';position:absolute;left:0;top:-30px;width:1px;height:30px;background:rgba(250,249,246,.9);animation:cue 3s var(--ease) infinite;}
+@keyframes cue{0%{top:-30px;}62%,100%{top:30px;}}
 
-.nav-cta{display:flex;align-items:center;gap:1.2rem;}
-.nav-cta .btn-primary{padding:.75rem 1.4rem;font-size:.7rem;}
-.cart-button{
-  min-width:46px;height:42px;padding:0 .75rem;border-radius:999px;border:1px solid rgba(17,31,46,.18);
-  background:rgba(17,31,46,.03);color:var(--navy);display:flex;align-items:center;justify-content:center;gap:.5rem;
-  font-family:var(--font-mono);font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;transition:background .3s,border-color .3s;
-}
-.cart-button:hover{background:rgba(17,31,46,.07);border-color:var(--gold-dim);}
-.cart-button svg{width:16px;height:16px;}
-.cart-count{display:grid;place-items:center;min-width:18px;height:18px;padding:0 4px;border-radius:999px;background:var(--lagoon);color:var(--ink);font-size:.56rem;}
-.burger{
-  display:none;width:42px;height:42px;border-radius:50%;border:1px solid rgba(17,31,46,.16);
-  background:none;align-items:center;justify-content:center;flex-direction:column;gap:5px;
-}
-.burger span{width:18px;height:1.5px;background:var(--navy);display:block;transition:transform .3s, opacity .3s;}
+/* ═══════════ 06 · 02 Introduction ═══════════ */
+.intro{align-items:start;}
+.intro-copy{grid-column:1 / span 5;position:sticky;top:calc(var(--hdr) + clamp(2rem,6vh,4.5rem));}
+.intro-copy h2{margin-bottom:1.9rem;font-size:clamp(2.4rem,4vw,3.8rem);line-height:1.04;}
+.intro-copy .lead{margin-bottom:2.3rem;}
+/* specification list — gives the column structure instead of three floating words */
+.spec{margin-top:2.9rem;border-top:1px solid var(--hair-soft);}
+.spec-row{display:grid;grid-template-columns:auto minmax(0,1fr);gap:1.15rem;
+  padding:1.2rem 0;border-bottom:1px solid var(--hair-soft);
+  transition:border-color .6s var(--ease);}
+.spec-row:hover{border-bottom-color:var(--brass);}
+.spec-row .n{transition:color .6s var(--ease);}
+.spec-row:hover .n{color:var(--ink);}
+.spec-row .n{font-family:var(--serif);font-feature-settings:'onum' 1;font-size:.9rem;color:var(--brass);line-height:1.85;}
+.spec dt{font-family:var(--serif);font-size:1.19rem;line-height:1.45;color:var(--text);letter-spacing:-.006em;}
+.spec dd{margin:.28rem 0 0;font-size:.835rem;line-height:1.7;color:var(--body);}
 
-#mobile-panel{
-  position:fixed;inset:0;background:var(--paper);z-index:150;
-  display:flex;flex-direction:column;justify-content:center;align-items:center;gap:2.2rem;
-  transform:translateY(-100%);transition:transform .5s var(--ease);
-}
-#mobile-panel.open{transform:translateY(0);}
-#mobile-panel a{font-family:var(--font-display);font-size:1.9rem;color:var(--navy);}
-#mobile-panel .close-btn{position:absolute;top:1.6rem;right:1.6rem;width:44px;height:44px;border-radius:50%;border:1px solid rgba(17,31,46,.2);background:none;color:var(--navy);display:flex;align-items:center;justify-content:center;}
+/* the photograph runs to the edge of the screen, like a spread */
+.intro-media{grid-column:7 / span 6;position:relative;margin-right:calc(var(--outer) * -1);}
+.intro-media .big{overflow:hidden;}
+.intro-media .big img{width:100%;height:clamp(470px,94vh,980px);object-fit:cover;object-position:center 30%;}
+.intro-rail{position:absolute;z-index:2;left:-2.15rem;top:.2rem;bottom:.2rem;
+  display:flex;flex-direction:column;justify-content:space-between;align-items:center;
+  font-size:.575rem;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);}
+.intro-rail b{writing-mode:vertical-rl;font-weight:500;}
+.intro-rail em{writing-mode:vertical-rl;font-family:var(--serif);font-feature-settings:'onum' 1;
+  font-style:normal;font-size:.8rem;letter-spacing:.18em;text-transform:none;color:var(--brass);}
+.intro-inset{position:absolute;z-index:2;left:-9%;bottom:-8%;width:27%;
+  overflow:hidden;border:11px solid var(--limestone);background:var(--limestone);}
+.intro-inset img{width:100%;aspect-ratio:1/1;object-fit:cover;transition:transform 2s var(--ease);}
+.intro-inset:hover img{transform:scale(1.05);}
+.intro-cap{display:none;margin-top:1.2rem;}
 
-/* ============ SECTION BASE ============ */
-section{position:relative;scroll-margin-top:84px;}
-.section--dark{background:var(--navy);color:var(--shell);}
-.section--darker{background:var(--ink);color:var(--shell);}
-.section--light{background:var(--paper);color:var(--ink-text);}
-.section--sage{background:linear-gradient(180deg, var(--sage-cream) 0%, var(--sage-cream-soft) 100%);color:var(--ink-text);}
-.section-pad{padding:var(--section-y) 0;}
-.section-head{max-width:640px;margin-bottom:3.4rem;}
-.section-head h2{font-size:clamp(2rem,3.6vw,3rem);margin-top:1rem;}
-.section--dark .section-head h2, .section--darker .section-head h2{color:var(--shell);}
-.section--light .section-head h2,.section--sage .section-head h2{color:var(--navy);}
-.section-head p{margin-top:1.1rem;font-size:1.05rem;line-height:1.7;opacity:.85;max-width:520px;}
+/* ═══════════ 07 · 03 Five colors ═══════════ */
+.ed-head{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:clamp(1.5rem,4vw,4rem);align-items:end;margin-bottom:clamp(2.4rem,4.4vw,4.25rem);}
+.ed-head p{max-width:370px;}
+.bleed{padding-left:var(--pad);padding-right:var(--pad);}
+/* five plates mounted as one strip — a colour card, not five product tiles */
+.colors{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:clamp(4px,.45vw,8px);}
+.color{display:block;}
+.plate{display:block;position:relative;overflow:hidden;background:#F3F0E9;aspect-ratio:5/7;
+  box-shadow:inset 0 0 0 1px rgba(23,33,39,.07);}
+.plate img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity 1.15s var(--ease),transform 2.2s var(--ease);}
+.plate .worn{opacity:0;}
+.color:hover .plate .flat{opacity:0;}
+.color:hover .plate .worn{opacity:1;transform:scale(1.05);}
+.color-b{display:block;padding-top:1.3rem;}
+.color-t{display:flex;align-items:baseline;gap:.85rem;}
+.color-t .n{font-family:var(--serif);font-feature-settings:'onum' 1;font-size:.95rem;color:var(--brass);}
+.color-t .nm{font-family:var(--serif);font-size:clamp(1.12rem,1.45vw,1.42rem);color:var(--text);letter-spacing:-.008em;}
+/* a hairline in the colour of the cloth, drawn out on hover */
+.color-rule{display:block;height:1px;width:34px;background:var(--c,var(--brass));
+  margin:.9rem 0 .75rem;transition:width .9s var(--ease);}
+.color:hover .color-rule{width:100%;}
+.color-s{display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  font-size:.585rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);}
+.color-v{opacity:0;transform:translateX(-6px);color:var(--brass);transition:opacity .5s var(--ease),transform .5s var(--ease);}
+.color:hover .color-v{opacity:1;transform:none;}
 
-/* ============ SHOP HEADER (breadcrumb) ============ */
-.shop-header{
-  position:relative;padding:10.5rem 0 3.5rem;
-  background:linear-gradient(175deg, var(--ink) 0%, var(--navy) 130%);
-  border-bottom:1px solid rgba(179,163,112,.16);overflow:hidden;
-}
-.shop-header::before{
-  content:'';position:absolute;inset:0;opacity:.3;pointer-events:none;
-  background-image:radial-gradient(rgba(247,237,208,.06) 1px, transparent 1px);
-  background-size:24px 24px;
-  mask-image:radial-gradient(ellipse 50% 100% at 0% 0%, black, transparent 78%);
-}
-.shop-header::after{
-  content:'';position:absolute;width:380px;height:380px;right:-140px;top:-190px;border-radius:50%;pointer-events:none;
-  background:radial-gradient(circle, rgba(217,201,141,.18), transparent 68%);
-}
-.breadcrumb{
-  position:relative;z-index:2;display:flex;align-items:center;gap:.75rem;margin-bottom:1.15rem;
-  font-family:var(--font-mono);font-size:.58rem;letter-spacing:.09em;text-transform:uppercase;color:rgba(247,237,208,.48);
-}
-.breadcrumb::before{content:'';width:24px;height:1px;background:linear-gradient(90deg,var(--lagoon),var(--gold));flex:none;}
-.breadcrumb ol{list-style:none;display:flex;align-items:center;gap:.65rem;min-width:0;}
-.breadcrumb li{display:flex;align-items:center;white-space:nowrap;}
-.breadcrumb li+li::before{content:'›';margin-right:.65rem;color:rgba(217,201,141,.5);font-size:.75rem;line-height:1;}
-.breadcrumb a{color:rgba(247,237,208,.64);transition:color .25s;}
-.breadcrumb a:hover{color:var(--shell);}
-.breadcrumb [aria-current="page"]{color:var(--gold-bright);}
-.shop-header-row{
-  position:relative;z-index:2;display:flex;align-items:flex-end;justify-content:space-between;gap:1.6rem;flex-wrap:wrap;
-}
-.shop-header-row h1{
-  position:relative;font-size:clamp(1.65rem,2.8vw,2.15rem);color:var(--shell);padding-bottom:.85rem;
-}
-.shop-header-row h1::after{
-  content:'';position:absolute;left:0;bottom:0;width:44px;height:2px;border-radius:2px;
-  background:linear-gradient(90deg,var(--lagoon),var(--gold-bright));
-}
-.shop-header-badge{
-  display:inline-flex;align-items:center;gap:.5rem;margin-bottom:.1rem;
-  font-family:var(--font-mono);font-size:.66rem;letter-spacing:.06em;text-transform:uppercase;color:var(--gold-bright);
-  border:1px solid rgba(179,163,112,.35);background:rgba(247,237,208,.04);padding:.55rem 1rem;border-radius:999px;white-space:nowrap;
-}
-.shop-header-badge i{width:5px;height:5px;border-radius:50%;background:var(--lagoon);display:inline-block;flex:none;}
+.prov{margin-top:clamp(2.6rem,4.4vw,4.4rem);padding-top:clamp(2rem,3vw,2.8rem);border-top:1px solid var(--hair-soft);
+  display:grid;grid-template-columns:minmax(0,1fr) auto;gap:clamp(1.8rem,5vw,5rem);align-items:center;}
+.prov .ed{display:block;margin-top:1rem;text-align:center;font-family:var(--serif);font-feature-settings:'onum' 1;
+  font-size:.95rem;letter-spacing:.06em;white-space:nowrap;color:var(--muted);}
+.prov-copy{max-width:610px;}
+.prov-lead{font-family:var(--serif);font-weight:300;color:var(--text);
+  font-size:clamp(1.28rem,1.95vw,1.72rem);line-height:1.44;letter-spacing:-.014em;margin-bottom:1.15rem;}
+.prov p{font-size:.93rem;line-height:1.75;}
+.prov-close{margin-top:1.35rem;font-family:var(--serif);font-size:clamp(1.05rem,1.4vw,1.24rem);
+  line-height:1.5;color:var(--text);}
+.prov-close em{display:block;font-style:italic;color:var(--brass);}
+.prov-seal{flex:0 0 auto;}
+.seal{width:148px;height:148px;color:var(--brass);}
+.seal .arc{font-family:var(--sans);font-size:10.4px;font-weight:500;letter-spacing:2.55px;fill:currentColor;}
+.seal .ctr{font-family:var(--serif);fill:currentColor;text-anchor:middle;}
 
-/* ============ SHOP TOOLBAR ============ */
-.shop-toolbar{position:relative;z-index:6;margin-top:-2.9rem;}
-.shop-toolbar-card{
-  position:relative;background:var(--paper);border:1px solid rgba(179,163,112,.3);border-radius:18px;overflow:hidden;
-  box-shadow:0 34px 64px -30px rgba(0,0,0,.55);
-  padding:1.6rem 1.8rem;color:var(--ink-text);
-}
-.shop-toolbar-card::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:3px;
-  background:linear-gradient(90deg,var(--lagoon),var(--gold-bright),var(--lagoon-deep));
-}
-.shop-toolbar-row{display:flex;align-items:center;justify-content:space-between;gap:1.6rem;flex-wrap:wrap;}
-.filter-group{display:flex;align-items:center;gap:1.2rem;min-width:0;flex:1 1 440px;}
-.filter-group-label{
-  display:flex;align-items:center;gap:.5rem;flex:none;
-  font-family:var(--font-mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-dim);
-  white-space:nowrap;padding-right:1.1rem;border-right:1px solid rgba(19,34,52,.12);
-}
-.filter-group-label svg{width:14px;height:14px;stroke:var(--gold-dim);}
-.filter-pills-scroll{flex:1 1 0;width:0;overflow-x:auto;min-width:0;scrollbar-width:none;-ms-overflow-style:none;}
-.filter-pills-scroll::-webkit-scrollbar{display:none;}
-.filter-pills{display:flex;gap:.6rem;padding:.25rem .1rem;}
-.filter-pill{
-  position:relative;display:inline-flex;align-items:center;gap:.6rem;padding:.55rem 1.1rem .55rem .65rem;border-radius:999px;
-  border:1px solid rgba(19,34,52,.14);background:#fffdf8;color:var(--navy);white-space:nowrap;
-  font-family:var(--font-mono);font-size:.65rem;letter-spacing:.04em;text-transform:uppercase;
-  transition:border-color .3s var(--ease),background .3s var(--ease),color .3s var(--ease),transform .3s var(--ease),box-shadow .3s var(--ease);
-}
-.filter-pill i{width:15px;height:15px;border-radius:50%;flex:none;display:inline-block;box-shadow:0 0 0 1px rgba(19,34,52,.18), inset 0 0 0 1.5px rgba(255,255,255,.6);}
-.filter-pill:hover{border-color:var(--gold-dim);transform:translateY(-2px);box-shadow:0 12px 20px -12px rgba(19,34,52,.4);}
-.filter-pill.active{background:var(--navy);border-color:var(--navy);color:var(--shell);box-shadow:0 14px 24px -12px rgba(17,31,46,.6);}
-.filter-pill.active i{box-shadow:0 0 0 2px var(--navy), 0 0 0 3.5px var(--gold-bright);}
-.toolbar-divider{width:1px;align-self:stretch;background:rgba(19,34,52,.12);flex:none;}
-.toolbar-right{display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap;flex:none;}
-.result-count{
-  display:inline-flex;align-items:center;gap:.45rem;padding:.48rem .9rem;border-radius:999px;white-space:nowrap;
-  background:rgba(217,201,141,.09);border:1px solid rgba(217,201,141,.16);color:var(--lagoon-deep);
-  font-family:var(--font-mono);font-size:.64rem;letter-spacing:.04em;text-transform:uppercase;
-}
-.result-count svg{width:11px;height:11px;stroke:currentColor;flex:none;}
-.reset-filter{
-  display:none;align-items:center;gap:.35rem;
-  font-family:var(--font-mono);font-size:.62rem;letter-spacing:.05em;text-transform:uppercase;color:var(--gold-dim);
-  white-space:nowrap;transition:color .3s,opacity .3s;
-}
-.reset-filter svg{width:11px;height:11px;stroke:currentColor;}
-.reset-filter.show{display:inline-flex;}
-.reset-filter:hover{color:var(--lagoon-deep);}
-.sort-wrap{position:relative;display:flex;align-items:center;gap:.6rem;flex:none;padding-left:1.2rem;border-left:1px solid rgba(19,34,52,.12);}
-.sort-wrap label{
-  display:flex;align-items:center;gap:.4rem;
-  font-family:var(--font-mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-dim);white-space:nowrap;
-}
-.sort-wrap label svg{width:12px;height:12px;stroke:var(--gold-dim);}
-.sort-select{
-  appearance:none;-webkit-appearance:none;background:#fffdf8;border:1px solid rgba(19,34,52,.16);
-  border-radius:999px;padding:.5rem 2.2rem .5rem 1.1rem;color:var(--navy);font-family:var(--font-mono);font-size:.65rem;
-  letter-spacing:.04em;text-transform:uppercase;cursor:pointer;transition:border-color .3s,box-shadow .3s;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2324406b' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
-  background-repeat:no-repeat;background-position:right .8rem center;background-size:13px;
-}
-.sort-select:hover{border-color:var(--gold-dim);box-shadow:0 8px 16px -12px rgba(19,34,52,.4);}
-.sort-select:focus-visible{outline:2px solid var(--lagoon-deep);outline-offset:2px;}
+/* ═══════════ 08 · 04 Lifestyle moment ═══════════ */
+.moment{position:relative;height:clamp(600px,100vh,1080px);overflow:hidden;background:var(--navy);}
+.moment-bg{position:absolute;inset:-8% 0;will-change:transform;}
+.moment-bg img{width:100%;height:100%;object-fit:cover;object-position:center 46%;}
+.moment::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(8,17,22,.32) 0%,rgba(8,17,22,0) 42%,rgba(8,17,22,.44) 100%);}
+.moment-frame{position:absolute;z-index:2;inset:clamp(1rem,2.4vw,2.4rem);border:1px solid rgba(250,249,246,.26);pointer-events:none;}
+.moment-n{position:absolute;z-index:3;top:clamp(2.8rem,7vh,5.2rem);left:calc(var(--outer) + .8rem);
+  font-family:var(--serif);font-feature-settings:'onum' 1;font-size:1rem;color:rgba(250,249,246,.6);}
+.moment-l{position:absolute;z-index:3;left:0;right:0;bottom:clamp(3.2rem,8vh,6rem);text-align:center;color:var(--white);
+  font-size:.685rem;font-weight:500;letter-spacing:.46em;text-transform:uppercase;}
 
-/* ============ PRODUCT GRID (shared with homepage) ============ */
-#products{position:relative;overflow:hidden;isolation:isolate;}
-#products::before{
-  content:'';position:absolute;inset:0;z-index:0;pointer-events:none;
-  background:
-    radial-gradient(circle at 8% 18%,rgba(217,201,141,.12),transparent 30%),
-    radial-gradient(circle at 92% 74%,rgba(179,163,112,.09),transparent 28%),
-    linear-gradient(180deg,rgba(255,255,255,.018),transparent 22%);
-}
-.particle-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;opacity:.85;}
-.product-grid{position:relative;z-index:2;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.3rem;}
-.product-card{
-  position:relative;background:var(--paper);color:var(--navy);
-  border:1px solid rgba(179,163,112,.28);border-radius:3px;overflow:hidden;
-  box-shadow:0 24px 46px -28px rgba(17,31,46,.28);
-  transition:transform .35s var(--ease), box-shadow .4s var(--ease), border-color .35s var(--ease), opacity .3s var(--ease);
-  transform-style:preserve-3d;
-}
-.product-card:hover{border-color:rgba(217,201,141,.8);box-shadow:0 38px 70px -30px rgba(138,125,77,.4);}
-.product-card-photo{
-  position:relative;aspect-ratio:4/3;overflow:hidden;
-  background:linear-gradient(150deg,#fffdf7 0%,var(--paper-soft) 100%);
-  display:flex;align-items:center;justify-content:center;padding:1rem;
-}
-.product-card-photo::after{content:'';position:absolute;inset:auto 1rem 0;height:1px;background:linear-gradient(90deg,transparent,rgba(17,31,46,.15),transparent);}
-.product-card-photo img{width:100%;height:100%;object-fit:contain;display:block;transition:transform .65s var(--ease);}
-.product-card:hover .product-card-photo img{transform:scale(1.055);}
-.product-card-badge{
-  position:absolute;top:10px;left:10px;z-index:2;
-  font-family:var(--font-mono);font-size:.5rem;letter-spacing:.09em;text-transform:uppercase;
-  color:var(--shell);background:rgba(17,31,46,.94);border:1px solid rgba(179,163,112,.55);padding:.34rem .55rem;border-radius:999px;
-}
-.product-card-info{padding:1.2rem 1.25rem 1.35rem;}
-.product-card-name-row{display:flex;align-items:center;gap:.6rem;margin-bottom:.35rem;}
-.product-card-swatch{width:11px;height:11px;border-radius:50%;border:1px solid rgba(17,31,46,.2);box-shadow:0 0 0 3px rgba(17,31,46,.045);flex:none;}
-.product-card-name{font-family:var(--font-display);font-style:italic;font-size:1.05rem;color:var(--navy);}
-.product-card-sub{font-family:var(--font-mono);font-size:.56rem;letter-spacing:.06em;text-transform:uppercase;color:rgba(17,31,46,.55);margin-bottom:.8rem;line-height:1.5;}
-.product-card-meta{display:flex;align-items:center;gap:.4rem;padding-top:.7rem;border-top:1px solid rgba(17,31,46,.1);font-family:var(--font-mono);font-size:.5rem;letter-spacing:.025em;text-transform:uppercase;color:rgba(17,31,46,.5);flex-wrap:wrap;}
-.product-card-meta i{width:3px;height:3px;border-radius:50%;background:var(--lagoon);}
-.product-card-sizes{display:flex;align-items:center;gap:.32rem;margin-top:.75rem;}
-.product-card-sizes>span{margin-right:auto;font-family:var(--font-mono);font-size:.5rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(17,31,46,.52);}
-.product-card-sizes button{width:27px;height:26px;border:1px solid rgba(17,31,46,.16);border-radius:2px;background:transparent;color:var(--navy);font-family:var(--font-mono);font-size:.52rem;transition:background .2s,color .2s,border-color .2s;}
-.product-card-sizes button:hover,.product-card-sizes button.active{background:var(--navy);border-color:var(--navy);color:var(--shell);}
-.product-card-sizes button:disabled{opacity:.35;cursor:not-allowed;}
-.product-card-row{display:flex;align-items:center;justify-content:space-between;gap:.5rem;margin-top:.9rem;}
-.product-card-price{font-family:var(--font-display);font-size:1.08rem;color:var(--navy);font-weight:600;}
-.product-card-add{
-  display:inline-flex;align-items:center;gap:.5rem;font-family:var(--font-mono);font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;
-  padding:.55rem .75rem;border-radius:999px;background:var(--navy);color:var(--shell);border:1px solid var(--navy);cursor:pointer;
-  transition:background .3s var(--ease),color .3s var(--ease),transform .3s var(--ease),border-color .3s var(--ease);
-}
-.product-card-add svg{width:12px;height:12px;transition:transform .3s var(--ease);}
-.product-card-add:hover{background:var(--lagoon-deep);border-color:var(--lagoon-deep);color:var(--shell);transform:translateY(-1px);}
-.product-card-add:hover svg{transform:translateX(2px);}
+/* ═══════════ 09 · 05 Craft ═══════════ */
+.craft{display:grid;grid-template-columns:1.14fr .86fr 1.08fr .92fr;gap:clamp(1.2rem,2.4vw,2.4rem);align-items:start;}
+.craft-i figure{overflow:hidden;background:var(--plate);}
+.craft-i:nth-child(1) figure{aspect-ratio:4/5;}
+.craft-i:nth-child(2){margin-top:clamp(1.6rem,3.4vw,3.4rem);}
+.craft-i:nth-child(2) figure{aspect-ratio:1/1;}
+.craft-i:nth-child(3){margin-top:clamp(.5rem,1.2vw,1.2rem);}
+.craft-i:nth-child(3) figure{aspect-ratio:4/5;}
+.craft-i:nth-child(4){margin-top:clamp(2rem,4.6vw,4.6rem);}
+.craft-i:nth-child(4) figure{aspect-ratio:1/1;}
+.craft-i img{width:100%;height:100%;object-fit:cover;transition:transform 2.1s var(--ease);}
+.craft-i:hover img{transform:scale(1.05);}
+.craft-i .body{margin-top:1.6rem;padding-top:1.3rem;border-top:1px solid var(--hair-soft);transition:border-color .7s var(--ease);}
+.craft-i:hover .body{border-top-color:var(--brass);}
+.craft-c{display:flex;align-items:baseline;gap:.95rem;margin:0 0 .8rem;}
+.craft-c .n{font-family:var(--serif);font-feature-settings:'onum' 1;font-size:.92rem;color:var(--brass);}
+.craft-i h3{font-size:clamp(1.26rem,1.6vw,1.5rem);}
+.craft-i p{font-size:.895rem;line-height:1.78;}
 
-/* coming soon variant */
-.product-card.is-soon{border-style:dashed;}
-.product-card.is-soon .product-card-photo img{filter:grayscale(.7) brightness(.75);transition:filter .5s var(--ease), transform .65s var(--ease);}
-.product-card.is-soon:hover .product-card-photo img{filter:grayscale(.35) brightness(.9);}
-.product-card.is-soon .product-card-badge{background:rgba(179,163,112,.92);color:var(--ink);}
-.product-card.is-soon .product-card-add{background:transparent;border-color:var(--navy);color:var(--navy);}
-.product-card.is-soon .product-card-add:hover{background:var(--navy);color:var(--shell);}
+/* ═══════════ 10 · 06 Family / Ocean / Time ═══════════ */
+/* the three words align across the page and read as one line:
+   Family. Ocean. Time. — the images below them carry the rhythm */
+.pillars{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(2rem,4.5vw,4.5rem);align-items:start;}
+#philosophy .rail{margin-bottom:clamp(3.2rem,5.6vw,5.6rem);}
+.pillar{display:flex;flex-direction:column;}
+.pillar-head{padding-top:1.35rem;border-top:1px solid var(--hair-soft);}
+.pillar-head .n{display:block;margin-bottom:1.15rem;font-family:var(--serif);
+  font-feature-settings:'onum' 1;font-size:.95rem;letter-spacing:.05em;color:var(--brass);}
+.pillar h3{font-size:clamp(2.3rem,3.5vw,3.5rem);line-height:.98;letter-spacing:-.022em;margin-bottom:1.7rem;}
+.pillar figure{overflow:hidden;aspect-ratio:3/4;background:var(--plate);}
+.pillar:nth-child(2) figure{margin-top:clamp(1.4rem,3vw,3rem);}
+.pillar:nth-child(3) figure{margin-top:clamp(2.8rem,6vw,6rem);}
+.pillar img{width:100%;height:100%;object-fit:cover;transition:transform 2.3s var(--ease);}
+.pillar:hover img{transform:scale(1.04);}
+.pillar p{font-family:var(--serif);font-size:clamp(1.1rem,1.36vw,1.34rem);line-height:1.55;
+  margin-top:1.75rem;max-width:26ch;}
 
-.commerce-perks{position:relative;z-index:2;display:grid;grid-template-columns:repeat(3,1fr);margin-top:3.2rem;border:1px solid rgba(179,163,112,.28);background:rgba(17,31,46,.02);}
-.commerce-perk{display:flex;align-items:center;justify-content:center;gap:.85rem;padding:1.1rem 1rem;border-right:1px solid rgba(179,163,112,.2);}
-.commerce-perk:last-child{border-right:0;}
-.commerce-perk svg{width:20px;height:20px;stroke:var(--lagoon-deep);flex:none;}
-.commerce-perk strong{display:block;font-family:var(--font-mono);font-size:.62rem;letter-spacing:.07em;text-transform:uppercase;color:var(--navy);}
-.commerce-perk span{display:block;margin-top:.15rem;font-size:.7rem;color:rgba(17,31,46,.5);}
+/* ═══════════ 11 · 07 For Finley ═══════════ */
+.story{align-items:center;}
+.story-media{grid-column:1 / span 6;position:relative;}
+.story-media figure{overflow:hidden;aspect-ratio:4/5;background:var(--plate);}
+.story-media img{width:100%;height:100%;object-fit:cover;}
+.story-inset{position:absolute;right:-13%;bottom:-8%;width:41%;overflow:hidden;border:10px solid var(--limestone);background:var(--limestone);}
+.story-inset img{width:100%;aspect-ratio:1/1;object-fit:cover;}
+.story-copy{grid-column:8 / span 5;}
+.story-copy h2{margin-bottom:2rem;font-size:clamp(2.6rem,4.6vw,4rem);}
+.story-copy .serif-lead{margin-bottom:1.9rem;}
+.story-copy p{margin-bottom:1.6rem;}
+.story-copy .btn{margin-top:1.5rem;}
 
-/* ============ FIT & SIZING ============ */
-.fit-layout{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(2.5rem,6vw,5.5rem);align-items:start;}
-.fit-copy p{line-height:1.85;opacity:.82;margin-bottom:1.2rem;max-width:460px;}
-.fit-panel{background:rgba(251,246,232,.55);border:1px solid rgba(17,31,46,.12);padding:1.1rem 1.2rem;margin-top:1.6rem;}
-.fit-panel-head{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:.9rem;}
-.fit-panel-head strong{font-family:var(--font-mono);font-size:.64rem;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);}
-.fit-panel-head a{font-family:var(--font-mono);font-size:.56rem;letter-spacing:.06em;text-transform:uppercase;color:var(--lagoon-deep);border-bottom:1px solid currentColor;}
-.fit-sizes{display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem;}
-.fit-sizes span{padding:.6rem;text-align:center;border:1px solid rgba(17,31,46,.14);font-family:var(--font-mono);font-size:.62rem;color:var(--navy);background:var(--paper);transition:border-color .25s,background .25s;}
-.fit-sizes span:hover{border-color:var(--lagoon-deep);background:#fffdf7;}
-.size-chart-wrap{overflow-x:auto;border:1px solid rgba(17,31,46,.14);background:rgba(251,246,232,.55);}
-table.size-chart{width:100%;border-collapse:collapse;min-width:460px;}
-table.size-chart caption{
-  text-align:left;padding:1rem 1.2rem 0;font-family:var(--font-mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-dim);
-}
-table.size-chart th,table.size-chart td{padding:.85rem 1.2rem;text-align:left;font-size:.85rem;}
-table.size-chart thead th{
-  font-family:var(--font-mono);font-size:.62rem;letter-spacing:.07em;text-transform:uppercase;color:var(--navy);
-  border-bottom:1px solid rgba(17,31,46,.18);
-}
-table.size-chart tbody td{border-bottom:1px solid rgba(17,31,46,.1);color:var(--ink-text);}
-table.size-chart tbody tr:last-child td{border-bottom:0;}
-table.size-chart tbody th{
-  font-family:var(--font-display);font-style:italic;font-size:1rem;color:var(--navy);border-bottom:1px solid rgba(17,31,46,.1);font-weight:600;
-}
-.size-chart-note{margin-top:1rem;font-size:.78rem;opacity:.6;line-height:1.6;max-width:460px;}
+/* ═══════════ 12 · 08 Shop ═══════════ */
+.shop-head{display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;flex-wrap:wrap;margin-bottom:clamp(2.2rem,3.6vw,3.6rem);}
+/* a campaign, not a product grid */
+.campaign{position:relative;overflow:hidden;margin:0 0 clamp(2.2rem,4vw,4rem);}
+.campaign::after{content:'';position:absolute;inset:clamp(1rem,2.4vw,2.4rem);border:1px solid rgba(250,249,246,.26);pointer-events:none;}
+.campaign img{width:100%;height:clamp(400px,62vh,760px);object-fit:cover;object-position:center 38%;}
+.shop-line{display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;flex-wrap:wrap;
+  padding-top:1.7rem;border-top:1px solid var(--hair-soft);}
+.shop-line .serif-lead{max-width:22ch;}
+.shop-spec{margin-top:.85rem;font-size:.6rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);}
 
-/* ============ SHOP FAQ ============ */
-.shop-faq-grid{display:grid;grid-template-columns:minmax(240px,.72fr) minmax(0,1.28fr);gap:clamp(3rem,8vw,8rem);align-items:start;}
-.shop-faq-grid .section-head{margin-bottom:0;position:sticky;top:150px;}
-.shop-faq-list{border-top:1px solid rgba(17,31,46,.16);}
-.shop-faq-list details{border-bottom:1px solid rgba(17,31,46,.16);}
-.shop-faq-list summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.35rem 0;color:var(--navy);font-family:var(--font-display);font-size:1.08rem;cursor:pointer;}
-.shop-faq-list summary::-webkit-details-marker{display:none;}
-.shop-faq-list summary::after{content:'+';display:grid;place-items:center;width:28px;height:28px;border:1px solid rgba(17,31,46,.18);border-radius:50%;font-family:var(--font-mono);font-size:.8rem;color:var(--lagoon-deep);transition:transform .3s var(--ease);flex:none;}
-.shop-faq-list details[open] summary::after{transform:rotate(45deg);}
-.shop-faq-list details p{padding:0 3rem 1.35rem 0;max-width:620px;font-size:.9rem;line-height:1.75;opacity:.72;}
+/* ═══════════ 13 Notes ═══════════ */
+.intro-jump{display:inline-block;margin-top:1.9rem;}
+.detail{margin-top:clamp(3.2rem,5.4vw,5.4rem);padding-top:clamp(2.4rem,3.6vw,3.4rem);border-top:1px solid var(--hair-soft);}
+.detail-head{display:flex;align-items:baseline;justify-content:space-between;gap:2rem;flex-wrap:wrap;margin-bottom:.6rem;}
+.detail-note{font-size:.9rem;line-height:1.75;color:var(--body);max-width:38ch;}
+.detail-cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 clamp(2rem,4vw,4.5rem);}
+.detail-cols .spec{margin-top:1.6rem;}
+@media (max-width:820px){.detail-cols{grid-template-columns:1fr;gap:0;}
+  .detail-cols .spec:last-child{margin-top:0;border-top:0;}}
+.notes-rule{height:1px;background:var(--hair-soft);margin-bottom:clamp(2.6rem,4.4vw,4.4rem);}
+.notes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));}
+.note{padding:0 clamp(1.2rem,3vw,3.4rem);border-left:1px solid var(--hair-soft);}
+.note-mark{display:block;font-family:var(--serif);font-size:2.4rem;line-height:.6;color:var(--brass);opacity:.55;margin-bottom:1rem;}
+.note:first-child{padding-left:0;border-left:0;}
+.note:last-child{padding-right:0;}
+.note blockquote{font-family:var(--serif);font-weight:300;font-size:clamp(1.2rem,1.6vw,1.46rem);line-height:1.5;color:var(--text);margin-bottom:1.8rem;}
+.note figcaption{font-size:.585rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);line-height:2;}
 
-/* ============ EXPLORE MORE ============ */
-.explore-links{display:flex;flex-wrap:wrap;justify-content:center;gap:1.4rem 2.4rem;position:relative;z-index:2;}
-.explore-links a{font-family:var(--font-mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(247,237,208,.65);border-bottom:1px solid rgba(247,237,208,.3);padding-bottom:3px;transition:opacity .3s;}
-.explore-links a:hover{opacity:.7;}
+/* ═══════════ 14 · 09 Journal ═══════════ */
+.jr-head{display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;flex-wrap:wrap;margin-bottom:clamp(2.2rem,3.6vw,3.6rem);}
+.posts{align-items:stretch;}
+.post-lead{grid-column:1 / span 7;display:flex;flex-direction:column;}
+.post-lead figure{flex:1 1 auto;min-height:clamp(320px,42vw,640px);}
+.post-side{grid-column:9 / span 4;display:flex;flex-direction:column;gap:clamp(1.6rem,2.8vw,2.8rem);}
+.post-side figure{aspect-ratio:4/3;}
+.post figure{overflow:hidden;background:var(--plate);}
+.post img{width:100%;height:100%;object-fit:cover;transition:transform 2.1s var(--ease);}
+.post:hover img{transform:scale(1.045);}
+.post-b{margin-top:1.5rem;padding-top:1.35rem;border-top:1px solid var(--hair-soft);
+  transition:border-color .7s var(--ease);}
+.post:hover .post-b{border-top-color:var(--brass);}
+.post-meta{display:flex;align-items:baseline;gap:.9rem;margin-bottom:1rem;}
+.post-meta .n{font-family:var(--serif);font-feature-settings:'onum' 1;font-size:.9rem;color:var(--brass);}
+.post .label{font-size:.575rem;}
+.post-lead h3{font-size:clamp(1.7rem,2.5vw,2.3rem);}
+.post-side h3{font-size:clamp(1.22rem,1.55vw,1.46rem);}
+.post h3{transition:color .45s var(--ease);}
+.post:hover h3{color:var(--navy);}
+.post-stand{margin-top:.9rem;font-size:.875rem;line-height:1.75;max-width:44ch;}
+.post-lead .post-stand{font-size:.92rem;max-width:56ch;}
+.post-side .post-stand{font-size:.82rem;line-height:1.7;}
+.post-read{display:inline-flex;align-items:center;gap:.75rem;margin-top:1.35rem;
+  font-size:.565rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);
+  transition:color .5s var(--ease);}
+.post-read i{width:16px;height:1px;background:currentColor;transition:width .6s var(--ease);}
+.post:hover .post-read{color:var(--navy);}
+.post:hover .post-read i{width:30px;}
 
-/* ============ CLUBHOUSE ============ */
-.clubhouse{
-  position:relative;text-align:center;padding:var(--section-y) 0;
-  background:radial-gradient(ellipse 60% 60% at 50% 0%, rgba(217,201,141,.14), transparent 65%), var(--ink);
-  overflow:hidden;
-}
-.clubhouse-watermark{
-  position:absolute;top:50%;left:50%;width:900px;transform:translate(-50%,-50%);opacity:.05;pointer-events:none;
-}
-.clubhouse .eyebrow{justify-content:center;margin-bottom:1.4rem;}
-.clubhouse h2{font-size:clamp(2.1rem,4vw,3.2rem);max-width:700px;margin:0 auto 1.1rem;color:var(--shell);}
-.clubhouse p.lead{max-width:520px;margin:0 auto 2.6rem;opacity:.78;font-size:1.02rem;}
-.club-form{display:flex;justify-content:center;gap:.8rem;flex-wrap:wrap;max-width:520px;margin:0 auto;}
-.club-form input{
-  flex:1;min-width:220px;background:rgba(247,237,208,.06);border:1px solid rgba(247,237,208,.22);
-  padding:1rem 1.3rem;border-radius:999px;color:var(--shell);font-family:var(--font-body);font-size:.92rem;
-}
-.club-form input::placeholder{color:rgba(247,237,208,.45);}
-.club-form input:focus{outline:none;border-color:var(--gold-bright);}
-.club-form button{border:none;}
-.fine-print{margin-top:1.3rem;font-family:var(--font-mono);font-size:.7rem;letter-spacing:.06em;color:rgba(247,237,208,.4);}
-.club-success{margin-top:1.3rem;font-family:var(--font-mono);font-size:.78rem;letter-spacing:.05em;color:var(--lagoon);display:none;}
-.club-success.show{display:block;}
+/* ═══════════ 15 · 10 Newsletter + 11 Footer ═══════════ */
+.close{overflow:hidden;}
+.news{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(2rem,6vw,6rem);align-items:end;}
+.news h2{margin-bottom:1.6rem;}
+.news p{max-width:420px;}
+.nf{display:flex;align-items:center;border-bottom:1px solid rgba(250,249,246,.32);}
+.nf input{flex:1;height:64px;border:0;background:transparent;outline:none;font-size:.95rem;color:var(--white);}
+.nf input::placeholder{color:rgba(250,249,246,.42);}
+.nf button{height:64px;padding:0 .4rem 0 1.6rem;display:flex;align-items:center;gap:.95rem;
+  font-size:.645rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;transition:color .45s var(--ease);}
+.nf button i{width:18px;height:1px;background:currentColor;transition:width .6s var(--ease);}
+.nf button:hover{color:var(--brass);}
+.nf button:hover i{width:30px;}
+.nf-note{margin-top:1.5rem;font-size:.585rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:rgba(250,249,246,.55);opacity:0;transition:opacity .7s var(--ease);}
 
-/* ============ TOAST ============ */
-#toast{
-  position:fixed;bottom:28px;left:50%;z-index:400;
-  display:flex;align-items:center;gap:.7rem;max-width:min(90vw,400px);
-  background:var(--ink);color:var(--shell);border:1px solid rgba(179,163,112,.4);
-  padding:1rem 1.5rem;border-radius:14px;box-shadow:0 20px 40px -15px rgba(0,0,0,.55);
-  font-family:var(--font-body);font-size:.85rem;line-height:1.4;
-  opacity:0;pointer-events:none;transform:translate(-50%,16px);
-  transition:opacity .4s var(--ease), transform .4s var(--ease);
-}
-#toast.show{opacity:1;transform:translate(-50%,0);}
-#toast .toast-dot{width:8px;height:8px;border-radius:50%;background:var(--lagoon);flex:none;}
-#toast strong{color:var(--gold-bright);font-weight:600;}
+.f-div{display:flex;align-items:center;gap:1.4rem;margin-top:clamp(3rem,5.4vw,5.4rem);}
+.f-div::before,.f-div::after{content:'';flex:1;height:1px;background:rgba(250,249,246,.14);}
+.f-div i{display:block;width:6px;height:6px;background:var(--brass);transform:rotate(45deg);opacity:.85;}
+.f-top{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:clamp(2.5rem,6vw,6rem);align-items:start;padding-top:clamp(2.6rem,4.4vw,4.4rem);}
+.f-note{margin-top:1.9rem;max-width:310px;font-size:.92rem;line-height:1.85;color:rgba(250,249,246,.6);}
+.f-cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(1.5rem,3vw,3rem);}
+.f-col h4{font-family:var(--sans);font-size:.585rem;font-weight:500;letter-spacing:.26em;text-transform:uppercase;color:rgba(250,249,246,.42);margin-bottom:1.7rem;}
+.f-col a{display:block;padding:.45rem 0;font-size:.795rem;letter-spacing:.03em;color:rgba(250,249,246,.82);
+  transition:color .45s var(--ease),padding-left .55s var(--ease);}
+.f-col a:hover{color:var(--brass);padding-left:.3rem;}
+.f-bot{margin-top:clamp(2.4rem,4vw,4rem);padding:1.8rem 0;border-top:1px solid rgba(250,249,246,.14);
+  display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;
+  font-size:.585rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:rgba(250,249,246,.48);}
+.f-sig{font-family:var(--serif);font-weight:300;font-size:clamp(1.85rem,8.4vw,8.6rem);line-height:.88;letter-spacing:.02em;
+  color:rgba(250,249,246,.08);white-space:nowrap;text-align:center;padding-bottom:clamp(1rem,2.4vw,2.6rem);user-select:none;}
 
-/* ============ FOOTER ============ */
-footer{background:var(--black);padding:5rem 0 2rem;color:rgba(247,237,208,.7);}
-.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3.5rem;}
-.footer-brand .brand{margin-bottom:1rem;}
-.footer-brand p{max-width:280px;font-size:.9rem;line-height:1.7;opacity:.7;margin-bottom:1.4rem;}
-.socials{display:flex;gap:.8rem;}
-.socials a{width:38px;height:38px;border-radius:50%;border:1px solid rgba(247,237,208,.2);display:flex;align-items:center;justify-content:center;transition:border-color .3s,background .3s;}
-.socials a:hover{border-color:var(--gold-bright);background:rgba(247,237,208,.06);}
-.socials svg{width:16px;height:16px;stroke:var(--shell);}
-.footer-col h5{font-family:var(--font-mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-bright);margin-bottom:1.3rem;}
-.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:.8rem;}
-.footer-col a{font-size:.9rem;opacity:.75;transition:opacity .3s,padding-left .3s;}
-.footer-col a:hover{opacity:1;padding-left:4px;}
-.footer-bottom{
-  border-top:1px solid rgba(247,237,208,.12);padding-top:1.8rem;display:flex;justify-content:space-between;
-  align-items:center;flex-wrap:wrap;gap:1rem;font-family:var(--font-mono);font-size:.7rem;letter-spacing:.04em;opacity:.5;
+/* ═══════════ 16 Responsive ═══════════ */
+@media (max-width:1180px){
+  .intro-copy{grid-column:1 / span 5;}
+  .intro-media{grid-column:7 / span 6;}
+  .intro-rail{display:none;}
+  .intro-inset{width:29%;}
+  .intro-inset{width:27%;}
+  .story-media{grid-column:1 / span 6;}
+  .story-copy{grid-column:7 / span 6;}
+  .post-side{grid-column:8 / span 5;}
+  .colors{grid-template-columns:repeat(3,minmax(0,1fr));gap:1.7rem 1.2rem;}
+  .craft{grid-template-columns:repeat(2,minmax(0,1fr));gap:2.5rem 1.6rem;}
+  .craft-i:nth-child(1),.craft-i:nth-child(3){margin-top:0;}
+  .craft-i:nth-child(2),.craft-i:nth-child(4){margin-top:clamp(1.6rem,4vw,4rem);}
+  .f-top{grid-template-columns:1fr;}
+  .prov{gap:clamp(1.5rem,3.5vw,3rem);}
+  .seal{display:none;}
 }
-.chip-strip{display:flex;gap:.4rem;align-items:center;}
-.chip-strip i{width:12px;height:12px;display:inline-block;border-radius:2px;border:1px solid rgba(247,237,208,.22);}
-
-/* ============ RESPONSIVE ============ */
-@media (max-width:980px){
-  .nav-links{display:none;}
-  .nav-cta .btn-primary{display:none;}
-  .burger{display:flex;}
-  .product-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
-  .fit-layout{grid-template-columns:1fr;}
-  .shop-faq-grid{grid-template-columns:1fr;}
-  .shop-faq-grid .section-head{position:static;}
-  .footer-grid{grid-template-columns:1fr 1fr;gap:2.4rem;}
-  .shop-toolbar-row{flex-direction:column;align-items:stretch;}
-  .filter-group{flex:1 1 auto;}
-  .filter-group-label{border-right:0;padding-right:0;}
-  .toolbar-divider{display:none;}
-  .toolbar-right{width:100%;justify-content:space-between;}
-  .sort-wrap{border-left:0;padding-left:0;}
+@media (max-width:900px){
+  :root{--hdr:72px;}
+  .nav.l{display:none;}
+  .s-toggle{display:none;}
+  .burger{display:block;order:-1;}
+  .hdr-in{display:flex;align-items:center;position:relative;}
+  .mark{position:absolute;left:50%;transform:translateX(-50%);}
+  .mark{gap:.72rem;}
+  .mark img{width:24px;}
+  .wm{gap:.34rem;}
+  .wm b{font-size:.98rem;letter-spacing:.2em;text-indent:.2em;}
+  .wm i{font-size:.4rem;letter-spacing:.3em;text-indent:.3em;}
+  .nav.r{width:100%;gap:0;justify-content:space-between;}
+  .ovl-top .mark{position:static;transform:none;}
+  .hero-rail{display:none;}
+  .hero{height:94vh;min-height:600px;}
+  .hero-copy,.hero-copy p{max-width:100%;}
+  .hero-foot{font-size:.55rem;letter-spacing:.2em;}
+  .hero-foot .m3{display:none;}
+  .intro-copy{grid-column:1 / -1;position:static;}
+  .intro-media{grid-column:1 / -1;margin-top:1.6rem;margin-right:0;}
+  .intro-media .big img{height:min(86vh,660px);}
+  .intro-rail{display:none;}
+  .intro-inset{left:auto;right:0;bottom:-7%;width:34%;border-width:9px;}
+  .intro-cap{display:block;margin-top:1.1rem;padding-right:38%;}
+  .spec{margin-top:2.4rem;}
+  .ed-head{grid-template-columns:1fr;gap:1.6rem;align-items:start;}
+  .pillars{grid-template-columns:1fr;gap:3.4rem;}
+  .pillar:nth-child(2) figure,.pillar:nth-child(3) figure{margin-top:0;}
+  .pillar figure{aspect-ratio:16/11;}
+  .pillar h3{font-size:clamp(2.2rem,9vw,2.9rem);}
+  .pillar p{max-width:var(--measure);}
+  .story-media{grid-column:1 / -1;}
+  .story-copy{grid-column:1 / -1;margin-top:2.6rem;}
+  .story-media figure{aspect-ratio:4/3;}
+  .story-inset{display:none;}
+  .notes{grid-template-columns:1fr;gap:2.6rem;}
+  .note{padding:2.2rem 0 0;border-left:0;border-top:1px solid var(--hair-soft);}
+  .note:first-child{padding-top:0;border-top:0;}
+  .post-lead,.post-side{grid-column:1 / -1;}
+  .post-lead figure{aspect-ratio:4/3;min-height:0;}
+  .post-side{margin-top:3rem;}
+  .news{grid-template-columns:1fr;gap:2.4rem;align-items:start;}
+  .f-cols{grid-template-columns:repeat(2,minmax(0,1fr));gap:2rem;}
+  .lb{display:none;}
 }
 @media (max-width:640px){
-  .announcement-bar{font-size:.48rem;gap:.55rem;letter-spacing:.06em;}
-  .announcement-bar .announcement-extra{display:none;}
-  .cart-button{padding:0 .55rem;min-width:42px;}
-  .cart-label{display:none;}
-  .product-grid{grid-template-columns:1fr;gap:1.15rem;}
-  .commerce-perks{grid-template-columns:1fr;}
-  .commerce-perk{justify-content:flex-start;border-right:0;border-bottom:1px solid rgba(179,163,112,.18);}
-  .commerce-perk:last-child{border-bottom:0;}
-  .fit-sizes{grid-template-columns:repeat(2,1fr);}
-  .footer-grid{grid-template-columns:1fr;gap:2.2rem;}
-  .footer-bottom{flex-direction:column;align-items:flex-start;}
-  .shop-toolbar-card{padding:1.3rem 1.2rem;border-radius:14px;}
-  .filter-pills{gap:.4rem;}
-  .sort-wrap{width:100%;justify-content:space-between;}
-  .sort-select{flex:1;}
+  body{font-size:15.5px;}
+  h1{font-size:clamp(3rem,13.5vw,4.2rem);}
+  .hero-in{padding-bottom:clamp(1.9rem,4vh,3rem);}
+  .hero-act{gap:1.9rem;}
+  .hero-act .btn{width:100%;}
+  .hero-foot .m2{display:none;}
+  .swipe{display:flex;overflow-x:auto;gap:.9rem;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;
+    scrollbar-width:none;margin-right:calc(var(--pad) * -1);padding-right:var(--pad);border:0;}
+  .swipe::-webkit-scrollbar{display:none;}
+  .swipe > *{flex:0 0 78%;scroll-snap-align:start;border-left:0 !important;padding:0 !important;}
+  .hint{margin-top:1.6rem;height:1px;background:var(--hair-soft);position:relative;overflow:hidden;}
+  .hint i{position:absolute;left:0;top:0;height:1px;width:28%;background:var(--muted);transition:transform .18s linear;}
+  .color-v{display:none;}
+  .craft{grid-template-columns:1fr;gap:2.9rem;}
+  .craft-i:nth-child(n){margin-top:0;}
+  .craft-i:nth-child(n) figure{aspect-ratio:4/5;}
+  .prov{grid-template-columns:1fr;gap:2rem;justify-items:start;}
+  .prov-seal{align-self:start;}
+  .moment{height:84vh;}
+  .moment-frame{inset:.9rem;}
+  .moment-l{font-size:.57rem;letter-spacing:.3em;padding:0 1.4rem;}
+  .moment-n{left:calc(var(--pad) + .6rem);}
+  .post-side{gap:2.4rem;}
+  .f-cols{grid-template-columns:1fr;gap:1.7rem;}
+  .f-bot{flex-direction:column;gap:.5rem;}
+  .f-sig{font-size:1.6rem;letter-spacing:.1em;}
+}
+
+/* ═══════════════════════════════════════════════════════════
+   INNER PAGES — page head, shelf, chapters
+   ═══════════════════════════════════════════════════════════ */
+
+/* The homepage header floats white over the hero. Inner pages have no hero,
+   so it is solid from the first pixel; scrolling only shrinks it. */
+.inner .hdr{
+  background:rgba(242,239,232,.95);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);
+  color:var(--ink);border-bottom-color:rgba(23,33,39,.10);
+}
+.inner .hdr .mark img{width:27px;}
+.inner .hdr.solid .mark img{width:26px;}
+.inner .hdr .wm i{color:var(--brass);opacity:1;}
+
+/* ═══════════ Page head ═══════════ */
+.ph{padding-top:calc(var(--hdr) + clamp(2.8rem,6vw,5.4rem));padding-bottom:clamp(2rem,3.6vw,3.6rem);}
+.crumb{display:flex;align-items:center;gap:.9rem;margin-bottom:clamp(1.7rem,3vw,2.8rem);
+  font-size:.585rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);}
+.crumb a{transition:color .45s var(--ease);}
+.crumb a:hover{color:var(--brass);}
+.crumb i{display:block;width:15px;height:1px;background:currentColor;opacity:.45;}
+.crumb span[aria-current]{color:var(--text);}
+.ph-row{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr);gap:clamp(1.5rem,4vw,4rem);align-items:end;}
+.ph h1{font-size:clamp(2.8rem,6.4vw,6rem);}
+.ph-side{padding-bottom:.6rem;}
+.ph-side .lead{margin-bottom:1.5rem;}
+.ph-facts{display:flex;flex-wrap:wrap;gap:.6rem 1.4rem;
+  font-size:.585rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);}
+.ph-facts b{font-family:var(--serif);font-feature-settings:'onum' 1;font-weight:400;
+  font-size:.95rem;letter-spacing:.05em;text-transform:none;color:var(--text);}
+
+/* ═══════════ Full-bleed campaign band ═══════════ */
+.band{overflow:hidden;background:var(--plate);}
+.band img{width:100%;height:clamp(300px,46vw,620px);object-fit:cover;object-position:center 38%;}
+
+/* ═══════════ Colorway filter — a rail, not a toolbar ═══════════ */
+.fbar-wrap{display:flex;align-items:baseline;justify-content:space-between;gap:1.5rem 2.5rem;flex-wrap:wrap;
+  padding-bottom:1.3rem;border-bottom:1px solid var(--hair-soft);margin-bottom:clamp(2.4rem,4vw,4rem);}
+.fbar{display:flex;align-items:center;gap:clamp(1.1rem,2vw,2.2rem);flex-wrap:wrap;}
+.fb{position:relative;display:inline-flex;align-items:center;gap:.6rem;padding:.2rem 0 .55rem;
+  font-size:.6rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);
+  transition:color .5s var(--ease);}
+.fb i{display:block;width:9px;height:9px;border-radius:50%;background:var(--c,var(--brass));
+  box-shadow:inset 0 0 0 1px rgba(23,33,39,.16);}
+.fb::after{content:'';position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--brass);
+  transform:scaleX(0);transform-origin:left;transition:transform .7s var(--ease);}
+.fb:hover{color:var(--text);}
+.fb.on{color:var(--text);}
+.fb.on::after,.fb:hover::after{transform:scaleX(1);}
+.fcount{font-size:.585rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);white-space:nowrap;}
+
+/* ═══════════ The shelf ═══════════ */
+.shelf{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));
+  gap:clamp(2.6rem,4.4vw,4.6rem) clamp(1.2rem,2vw,2.4rem);}
+.item{grid-column:span 2;display:flex;flex-direction:column;
+  transition:opacity .7s var(--ease);}
+.item:nth-child(4){grid-column:2 / span 2;}
+.item:nth-child(5){grid-column:4 / span 2;}
+.item[hidden]{display:none;}
+/* Filtering breaks the centred trailing pair, so the offsets stand down. */
+.shelf.filtered .item,
+.shelf.filtered .item:nth-child(4),
+.shelf.filtered .item:nth-child(5){grid-column:span 2;}
+.item .plate{aspect-ratio:5/7;}
+/* .plate's flat/worn swap is written against .color on the homepage. */
+.item .plate:hover .flat{opacity:0;}
+.item .plate:hover .worn{opacity:1;transform:scale(1.05);}
+.item:hover .color-rule{width:100%;}
+/* The edition mark reads as a caption pressed into the cloth, not a sticker. */
+.tag{position:absolute;z-index:3;left:0;right:0;bottom:0;padding:2.6rem 1.1rem .95rem;
+  font-size:.5rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:rgba(250,249,246,.9);
+  background:linear-gradient(to top,rgba(8,17,22,.5) 0%,rgba(8,17,22,.16) 46%,rgba(8,17,22,0) 100%);
+  opacity:0;transform:translateY(6px);transition:opacity .6s var(--ease),transform .7s var(--ease);}
+.item .plate:hover .tag{opacity:1;transform:none;}
+.item-b{display:flex;flex-direction:column;flex:1;padding-top:1.35rem;}
+.item-t{display:flex;align-items:baseline;gap:.85rem;}
+.item-t .n{font-family:var(--serif);font-feature-settings:'onum' 1;font-size:.95rem;color:var(--brass);}
+.item-t .nm{font-family:var(--serif);font-size:clamp(1.12rem,1.45vw,1.42rem);color:var(--text);letter-spacing:-.008em;}
+.item-s{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;
+  font-size:.585rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);}
+.item-s b{font-family:var(--serif);font-feature-settings:'onum' 1;font-weight:400;
+  font-size:1.05rem;letter-spacing:.04em;text-transform:none;color:var(--text);}
+.item-x{margin:.95rem 0 0;font-size:.82rem;line-height:1.7;color:var(--whisper);}
+.sizes{display:flex;align-items:center;gap:.5rem;margin:1.4rem 0 1.2rem;}
+.sizes .sz-l{margin-right:.35rem;font-size:.55rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);}
+.sz{width:36px;height:36px;display:inline-flex;align-items:center;justify-content:center;border-radius:1px;
+  border:1px solid var(--hair);font-size:.62rem;font-weight:500;letter-spacing:.1em;color:var(--body);
+  transition:border-color .45s var(--ease),color .45s var(--ease),background .45s var(--ease);}
+.sz:hover{border-color:var(--brass);color:var(--text);}
+.sz.on{background:var(--navy);border-color:var(--navy);color:var(--white);}
+.add{position:relative;margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  width:100%;padding:.95rem 0 .85rem;border-top:1px solid var(--hair-soft);
+  font-size:.6rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--text);
+  transition:color .5s var(--ease),border-color .6s var(--ease);}
+.add i{width:18px;height:1px;background:currentColor;opacity:.5;transition:width .6s var(--ease),opacity .5s var(--ease);}
+.add:hover{color:var(--navy);border-top-color:var(--brass);}
+.add:hover i{width:34px;opacity:1;}
+.add.done{color:var(--brass);}
+
+/* ═══════════ Fit & size chart ═══════════ */
+.fit{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(2rem,5vw,5.5rem);align-items:start;}
+.fit-copy p + p{margin-top:1.15rem;}
+.chart{width:100%;border-collapse:collapse;}
+.chart caption{text-align:left;padding-bottom:1.1rem;
+  font-size:.585rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);}
+.chart th,.chart td{padding:1.05rem .6rem;text-align:left;border-bottom:1px solid var(--hair-soft);}
+.chart thead th{font-family:var(--sans);font-size:.565rem;font-weight:500;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--muted);padding-top:0;}
+.chart tbody th{font-family:var(--serif);font-size:1.24rem;font-weight:400;color:var(--text);width:22%;}
+.chart td{font-family:var(--serif);font-feature-settings:'onum' 1;font-size:1.08rem;color:var(--body);letter-spacing:.03em;}
+.chart tbody tr{transition:background .5s var(--ease);}
+.chart tbody tr:hover{background:rgba(166,141,101,.07);}
+.chart-note{margin-top:1.4rem;font-size:.8rem;line-height:1.75;color:var(--muted);max-width:52ch;}
+
+/* ═══════════ FAQ ═══════════ */
+.faq{border-top:1px solid var(--hair-soft);}
+.faq details{border-bottom:1px solid var(--hair-soft);}
+.faq summary{list-style:none;cursor:pointer;display:flex;align-items:baseline;justify-content:space-between;gap:2rem;
+  padding:1.5rem 0;font-family:var(--serif);font-size:clamp(1.12rem,1.45vw,1.38rem);color:var(--text);
+  letter-spacing:-.008em;transition:color .45s var(--ease);}
+.faq summary::-webkit-details-marker{display:none;}
+.faq summary::after{content:'';flex:0 0 auto;width:11px;height:11px;margin-top:.45rem;
+  border-right:1px solid var(--brass);border-bottom:1px solid var(--brass);
+  transform:rotate(45deg);transition:transform .5s var(--ease);}
+.faq details[open] summary::after{transform:rotate(-135deg);}
+.faq summary:hover{color:var(--navy);}
+.faq details p{padding:0 0 1.7rem;max-width:64ch;font-size:.9rem;line-height:1.8;color:var(--whisper);}
+
+/* ═══════════ Collections — five chapters ═══════════ */
+.chap{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));
+  gap:clamp(1.6rem,3vw,3.5rem);align-items:center;}
+.chap + .chap{margin-top:clamp(4.5rem,9vw,10rem);}
+.chap-media{grid-column:1 / span 7;position:relative;}
+.chap-copy{grid-column:9 / span 4;}
+.chap.rev .chap-media{grid-column:6 / span 7;}
+.chap.rev .chap-copy{grid-column:1 / span 4;grid-row:1;}
+.chap figure{overflow:hidden;background:var(--plate);}
+.chap figure img{width:100%;height:clamp(360px,50vw,700px);object-fit:cover;
+  transition:transform 2.4s var(--ease);}
+.chap:hover figure img{transform:scale(1.035);}
+.chap-n{position:absolute;z-index:2;top:-.7rem;left:-.4rem;
+  font-family:var(--serif);font-feature-settings:'onum' 1;font-size:clamp(2.6rem,5vw,4.6rem);
+  line-height:1;color:var(--brass);opacity:.5;user-select:none;}
+.chap-copy h2{font-size:clamp(1.95rem,3.2vw,2.9rem);margin-bottom:1.2rem;}
+.chap-stand{font-family:var(--serif);font-weight:300;font-size:clamp(1.14rem,1.5vw,1.4rem);
+  line-height:1.5;color:var(--text);letter-spacing:-.008em;margin-bottom:1.5rem;}
+.chap-copy .lead + .lead{margin-top:1rem;}
+.chap-sw{display:flex;align-items:center;gap:.85rem;margin:1.9rem 0 1.7rem;
+  padding-top:1.3rem;border-top:1px solid var(--hair-soft);
+  font-size:.585rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);}
+.chap-sw i{display:block;width:26px;height:3px;background:var(--c,var(--brass));}
+
+/* ═══════════ Shared closing ═══════════ */
+.closer{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:clamp(1.8rem,5vw,5rem);align-items:center;}
+.closer h2{margin-bottom:1.3rem;}
+.closer .btn{margin-top:2rem;}
+
+/* ═══════════ Responsive ═══════════ */
+@media (max-width:1180px){
+  .chap-media,.chap.rev .chap-media{grid-column:1 / span 6;}
+  .chap-copy,.chap.rev .chap-copy{grid-column:8 / span 5;}
+  .chap.rev .chap-copy{grid-row:1;}
+}
+@media (max-width:900px){
+  .ph-row{grid-template-columns:1fr;gap:1.8rem;align-items:start;}
+  .ph-side{padding-bottom:0;}
+  .shelf{grid-template-columns:repeat(4,minmax(0,1fr));}
+  .item,.item:nth-child(4),.item:nth-child(5){grid-column:span 2;}
+  .fit{grid-template-columns:1fr;gap:2.4rem;}
+  .chap{grid-template-columns:1fr;gap:1.7rem;}
+  .chap-media,.chap.rev .chap-media{grid-column:1 / -1;grid-row:1;}
+  .chap-copy,.chap.rev .chap-copy{grid-column:1 / -1;grid-row:2;}
+  .chap figure img{height:clamp(300px,64vw,520px);}
+  .closer{grid-template-columns:1fr;gap:2rem;justify-items:start;}
+}
+@media (max-width:600px){
+  .shelf{grid-template-columns:1fr;gap:3.2rem;}
+  .item,.item:nth-child(4),.item:nth-child(5){grid-column:1 / -1;}
+  .fbar-wrap{gap:1rem;}
+  .fbar{gap:1rem;}
+  .band img{height:clamp(240px,62vw,360px);}
+}
+
+/* ═══════════ Gallery strip ═══════════ */
+.gal{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(4px,.5vw,9px);}
+.gal figure{position:relative;overflow:hidden;background:var(--plate);aspect-ratio:1/1;}
+.gal img{width:100%;height:100%;object-fit:cover;transition:transform 2.1s var(--ease);}
+.gal figure:hover img{transform:scale(1.06);}
+.gal figcaption{position:absolute;left:0;right:0;bottom:0;padding:2.4rem .95rem .85rem;
+  font-size:.5rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:rgba(250,249,246,.92);
+  background:linear-gradient(to top,rgba(8,17,22,.62) 0%,rgba(8,17,22,0) 100%);
+  opacity:0;transform:translateY(6px);transition:opacity .55s var(--ease),transform .65s var(--ease);}
+.gal figure:hover figcaption{opacity:1;transform:none;}
+
+/* ═══════════ Chapter nav — sticky, under the header ═══════════ */
+.cnav{position:sticky;top:71px;z-index:40;
+  background:rgba(242,239,232,.94);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+  border-top:1px solid var(--hair-soft);border-bottom:1px solid var(--hair-soft);
+  margin-bottom:clamp(3rem,6vw,6.5rem);}
+.cnav-in{max-width:var(--max);margin:0 auto;padding:.95rem var(--pad);
+  display:flex;align-items:center;gap:clamp(.9rem,2.2vw,2.4rem);
+  overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;}
+.cnav-in::-webkit-scrollbar{display:none;}
+.cn{position:relative;display:inline-flex;align-items:baseline;gap:.6rem;padding:.35rem 0;white-space:nowrap;
+  font-size:.575rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);
+  transition:color .5s var(--ease);}
+.cn em{font-family:var(--serif);font-feature-settings:'onum' 1;font-style:normal;
+  font-size:.85rem;letter-spacing:.05em;color:var(--brass);}
+.cn::after{content:'';position:absolute;left:0;right:0;bottom:-.36rem;height:1px;background:var(--brass);
+  transform:scaleX(0);transform-origin:left;transition:transform .6s var(--ease);}
+.cn:hover,.cn.on{color:var(--text);}
+.cn:hover::after,.cn.on::after{transform:scaleX(1);}
+
+/* ═══════════ Chapter inset ═══════════ */
+.chap-inset{position:absolute;z-index:2;width:31%;bottom:-6%;overflow:hidden;
+  border:9px solid var(--limestone);background:var(--limestone);}
+.chap:not(.rev) .chap-inset{right:-5%;}
+.chap.rev .chap-inset{left:-5%;}
+.chap-inset img{width:100%;aspect-ratio:1/1;object-fit:cover;transition:transform 2.2s var(--ease);}
+.chap:hover .chap-inset img{transform:scale(1.05);}
+.chap-rule{display:block;height:2px;width:44px;background:var(--c,var(--brass));
+  margin:0 0 1.5rem;transition:width 1.1s var(--ease);}
+.chap:hover .chap-rule{width:100%;}
+
+@media (max-width:900px){
+  .gal{grid-template-columns:repeat(2,minmax(0,1fr));}
+  .chap-inset{position:static;width:46%;margin:-3.4rem 0 0 auto;border-width:8px;}
+  .chap.rev .chap-inset{margin:-3.4rem auto 0 0;}
+  .cnav{top:64px;}
+}
+
+/* A breath halfway down, so five alternating bands do not read as a pattern. */
+.chap-break{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);
+  align-items:center;gap:clamp(1.5rem,3.5vw,3.5rem);
+  margin:clamp(4.5rem,9vw,10rem) 0;}
+.chap-break-l{display:block;height:1px;background:var(--hair-soft);}
+.chap-break p{font-family:var(--serif);font-weight:300;color:var(--text);text-align:center;
+  font-size:clamp(1.15rem,1.9vw,1.62rem);line-height:1.5;letter-spacing:-.01em;max-width:30ch;}
+@media (max-width:700px){
+  .chap-break{grid-template-columns:1fr;gap:1.2rem;justify-items:center;}
+  .chap-break-l{width:56px;}
 }
 </style>
 </head>
-<body>
+<body class="inner">
 
-<noscript><style>.reveal{opacity:1 !important;transform:none !important;} #preloader{display:none !important;}</style></noscript>
-
-<div id="preloader"><img src="assets/turtle-logo.png" alt="" /></div>
-<div id="cursor-glow"></div>
-
-<div class="announcement-bar" role="status">
-  <span>Complimentary U.S. shipping</span><i></i><span class="announcement-extra">Easy exchanges within 30 days</span>
-</div>
-
-<!-- ============ HEADER ============ -->
-<header id="site-header">
-  <div class="container nav-row">
-    <a href="index.html" class="brand">
-      <img src="assets/turtle-logo.png" alt="Turtles by Finley Jade emblem" />
-      <span class="brand-text">
-        <span class="kicker">Turtles by</span>
-        <span class="name">Finley Jade</span>
-      </span>
-    </a>
-    <nav class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="#products" class="is-current">Shop Polos</a>
-      <a href="index.html#collections">Colorways</a>
-      <a href="#fit">Fit &amp; Sizing</a>
-      <a href="#faq">FAQ</a>
+<!-- ═══════════ HEADER ═══════════ -->
+<header class="hdr" id="hdr">
+  <div class="hdr-in">
+    <nav class="nav l">
+      <a href="shop.html">Shop</a>
+      <a href="collections.html">The Collections</a>
+      <a href="index.html#heritage">Our Story</a>
+      <a href="index.html#journal">Journal</a>
     </nav>
-    <div class="nav-cta">
-      <a href="#products" class="btn btn-primary">Shop the Polo</a>
-      <button class="cart-button" id="cart-button" type="button" aria-label="Open shopping bag">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 8h14l-1 12H6L5 8z"/><path d="M9 9V6a3 3 0 016 0v3"/></svg>
-        <span class="cart-label">Bag</span><span class="cart-count" id="cart-count">0</span>
-      </button>
-      <button class="burger" id="burger-btn" aria-label="Open menu">
-        <span></span><span></span><span></span>
-      </button>
+
+    <a class="mark" href="index.html" aria-label="Collections by Finley Jade, home">
+      <img src="assets/brand/mark.png" alt="" />
+      <span class="wm"><i>Collections by</i><b>Finley Jade</b></span>
+    </a>
+
+    <div class="nav r">
+      <button type="button" class="s-toggle" id="searchToggle">Search</button>
+      <a href="shop.html">Bag (0)</a>
+      <button type="button" class="burger" id="menuToggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
     </div>
   </div>
 </header>
 
-<div id="mobile-panel">
-  <button class="close-btn" id="close-panel-btn" aria-label="Close menu">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4l16 16M20 4L4 20"/></svg>
-  </button>
-  <a href="index.html">Home</a>
-  <a href="#products">Shop Polos</a>
-  <a href="index.html#collections">Colorways</a>
-  <a href="#fit">Fit &amp; Sizing</a>
-  <a href="#faq">FAQ</a>
-</div>
-
-<!-- ============ SHOP HEADER (breadcrumb) ============ -->
-<section class="shop-header" id="top">
-  <div class="container shop-header-row">
-    <div>
-      <nav class="breadcrumb reveal" aria-label="Breadcrumb">
-        <ol>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="index.html#collection">Shop Polos</a></li>
-          <li aria-current="page">Long Run Polo</li>
-        </ol>
-      </nav>
-      <h1 class="reveal reveal-delay-1">The Long Run Polo</h1>
-    </div>
-    <span class="shop-header-badge reveal reveal-delay-2"><i></i>5 Colorways &middot; $148</span>
+<div class="ovl" id="menuOvl" role="dialog" aria-modal="true" aria-label="Menu">
+  <div class="ovl-top">
+    <span class="mark"><img src="assets/brand/mark.png" alt="" style="width:22px;" />
+      <span class="wm"><i>Collections by</i><b>Finley Jade</b></span></span>
+    <button type="button" class="ovl-x" data-close>Close</button>
   </div>
-</section>
-
-<!-- ============ SHOP TOOLBAR ============ -->
-<div class="shop-toolbar">
-  <div class="container">
-    <div class="shop-toolbar-card reveal">
-      <div class="shop-toolbar-row">
-        <div class="filter-group">
-          <span class="filter-group-label">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 6h16M7 12h10M10 18h4"/></svg>
-            Refine
-          </span>
-          <div class="filter-pills-scroll">
-            <div class="filter-pills" id="filter-pills" role="group" aria-label="Filter by colorway">
-              <button type="button" class="filter-pill active" data-filter="all"><i style="background:conic-gradient(#385B73,#E6E0D4,#5DBDB0,#99B2D8,#212634)"></i>All colorways</button>
-              <button type="button" class="filter-pill" data-filter="deep-blue"><i style="background:#385B73"></i>Deep Blue</button>
-              <button type="button" class="filter-pill" data-filter="sand"><i style="background:#E6E0D4"></i>Sand</button>
-              <button type="button" class="filter-pill" data-filter="aqua-mint"><i style="background:#5DBDB0"></i>Aqua Mint</button>
-              <button type="button" class="filter-pill" data-filter="sea-blue"><i style="background:#99B2D8"></i>Sea Blue</button>
-              <button type="button" class="filter-pill" data-filter="deep-navy"><i style="background:#212634"></i>Deep Navy</button>
-            </div>
-          </div>
-        </div>
-        <div class="toolbar-divider"></div>
-        <div class="toolbar-right">
-          <button type="button" class="reset-filter" id="reset-filter">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4l16 16M20 4L4 20"/></svg>
-            Clear filter
-          </button>
-          <span class="result-count">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a4 4 0 018 0v2"/></svg>
-            <span id="result-count-text">5 colorways shown</span>
-          </span>
-          <div class="sort-wrap">
-            <label for="sort-select">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 5v14M4 8l3-3 3 3M17 19V5M14 16l3 3 3-3"/></svg>
-              Sort
-            </label>
-            <select class="sort-select" id="sort-select">
-              <option value="featured">Featured</option>
-              <option value="az">Name, A–Z</option>
-              <option value="za">Name, Z–A</option>
-            </select>
-          </div>
-        </div>
-      </div>
+  <div class="ovl-body">
+    <nav class="ovl-links">
+      <a href="shop.html">Shop<em>01</em></a>
+      <a href="collections.html">The Collections<em>02</em></a>
+      <a href="index.html#heritage">Our Story<em>03</em></a>
+      <a href="index.html#journal">Journal<em>04</em></a>
+    </nav>
+    <div class="ovl-meta">
+      <a href="shop.html">Bag (0)</a>
+      <a href="mailto:hello@turtlesbyfinleyjade.com">Contact</a>
+      <a href="#" rel="noopener">Instagram</a>
     </div>
   </div>
 </div>
 
-<!-- ============ PRODUCT GRID ============ -->
-<section class="section--sage section-pad" id="products">
-  <canvas class="particle-canvas" id="products-particles"></canvas>
-  <div class="container">
-    <div class="product-grid" id="product-grid">
-      <div class="product-card reveal" data-filter="deep-blue" data-name="Deep Blue">
-        <div class="product-card-photo">
-          <span class="product-card-badge">Limited — 200</span>
-          <img src="assets/products/deep-blue.jpg" alt="Deep Blue Long Run Polo with embroidered sea turtle logo on left chest" loading="lazy" />
-        </div>
-        <div class="product-card-info">
-          <div class="product-card-name-row"><span class="product-card-swatch" style="background:#385B73"></span><span class="product-card-name">The Long Run Polo</span></div>
-          <p class="product-card-sub">Deep Blue &middot; Returning Tide</p>
-          <div class="product-card-sizes" role="group" aria-label="Select Deep Blue size"><span>Size</span><button type="button">S</button><button type="button">M</button><button type="button">L</button><button type="button">XL</button></div>
-          <div class="product-card-meta"><span>Embroidered crest</span><i></i><span>Classic fit</span></div>
-          <div class="product-card-row">
-            <span class="product-card-price">$148</span>
-            <button class="product-card-add" data-name="The Long Run Polo" data-colorway="Deep Blue" data-price="$148">Add to bag <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>
-          </div>
-        </div>
-      </div>
-
-      <div class="product-card reveal reveal-delay-1" data-filter="sand" data-name="Sand">
-        <div class="product-card-photo">
-          <span class="product-card-badge">Limited — 200</span>
-          <img src="assets/products/sand.jpg" alt="Sand Long Run Polo with embroidered sea turtle logo on left chest" loading="lazy" />
-        </div>
-        <div class="product-card-info">
-          <div class="product-card-name-row"><span class="product-card-swatch" style="background:#E6E0D4"></span><span class="product-card-name">The Long Run Polo</span></div>
-          <p class="product-card-sub">Sand &middot; Long Weekend</p>
-          <div class="product-card-sizes" role="group" aria-label="Select Sand size"><span>Size</span><button type="button">S</button><button type="button">M</button><button type="button">L</button><button type="button">XL</button></div>
-          <div class="product-card-meta"><span>Embroidered crest</span><i></i><span>Classic fit</span></div>
-          <div class="product-card-row">
-            <span class="product-card-price">$148</span>
-            <button class="product-card-add" data-name="The Long Run Polo" data-colorway="Sand" data-price="$148">Add to bag <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>
-          </div>
-        </div>
-      </div>
-
-      <div class="product-card reveal reveal-delay-2" data-filter="aqua-mint" data-name="Aqua Mint">
-        <div class="product-card-photo">
-          <span class="product-card-badge">Limited — 200</span>
-          <img src="assets/products/aqua-mint.jpg" alt="Aqua Mint Long Run Polo with embroidered sea turtle logo on left chest" loading="lazy" />
-        </div>
-        <div class="product-card-info">
-          <div class="product-card-name-row"><span class="product-card-swatch" style="background:#5DBDB0"></span><span class="product-card-name">The Long Run Polo</span></div>
-          <p class="product-card-sub">Aqua Mint &middot; Home Waters</p>
-          <div class="product-card-sizes" role="group" aria-label="Select Aqua Mint size"><span>Size</span><button type="button">S</button><button type="button">M</button><button type="button">L</button><button type="button">XL</button></div>
-          <div class="product-card-meta"><span>Embroidered crest</span><i></i><span>Classic fit</span></div>
-          <div class="product-card-row">
-            <span class="product-card-price">$148</span>
-            <button class="product-card-add" data-name="The Long Run Polo" data-colorway="Aqua Mint" data-price="$148">Add to bag <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>
-          </div>
-        </div>
-      </div>
-
-      <div class="product-card reveal" data-filter="sea-blue" data-name="Sea Blue">
-        <div class="product-card-photo">
-          <span class="product-card-badge">Limited — 200</span>
-          <img src="assets/products/sea-blue.jpg" alt="Sea Blue Long Run Polo with embroidered sea turtle logo on left chest" loading="lazy" />
-        </div>
-        <div class="product-card-info">
-          <div class="product-card-name-row"><span class="product-card-swatch" style="background:#99B2D8"></span><span class="product-card-name">The Long Run Polo</span></div>
-          <p class="product-card-sub">Sea Blue &middot; First Light</p>
-          <div class="product-card-sizes" role="group" aria-label="Select Sea Blue size"><span>Size</span><button type="button">S</button><button type="button">M</button><button type="button">L</button><button type="button">XL</button></div>
-          <div class="product-card-meta"><span>Embroidered crest</span><i></i><span>Classic fit</span></div>
-          <div class="product-card-row">
-            <span class="product-card-price">$148</span>
-            <button class="product-card-add" data-name="The Long Run Polo" data-colorway="Sea Blue" data-price="$148">Add to bag <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>
-          </div>
-        </div>
-      </div>
-
-      <div class="product-card reveal reveal-delay-1" data-filter="deep-navy" data-name="Deep Navy">
-        <div class="product-card-photo">
-          <span class="product-card-badge">Limited — 200</span>
-          <img src="assets/products/deep-navy.jpg" alt="Deep Navy Long Run Polo with embroidered sea turtle logo on left chest" loading="lazy" />
-        </div>
-        <div class="product-card-info">
-          <div class="product-card-name-row"><span class="product-card-swatch" style="background:#212634"></span><span class="product-card-name">The Long Run Polo</span></div>
-          <p class="product-card-sub">Deep Navy &middot; Deep Current</p>
-          <div class="product-card-sizes" role="group" aria-label="Select Deep Navy size"><span>Size</span><button type="button">S</button><button type="button">M</button><button type="button">L</button><button type="button">XL</button></div>
-          <div class="product-card-meta"><span>Embroidered crest</span><i></i><span>Classic fit</span></div>
-          <div class="product-card-row">
-            <span class="product-card-price">$148</span>
-            <button class="product-card-add" data-name="The Long Run Polo" data-colorway="Deep Navy" data-price="$148">Add to bag <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>
-          </div>
-        </div>
-      </div>
-
+<div class="ovl" id="searchOvl" role="dialog" aria-modal="true" aria-label="Search">
+  <div class="ovl-top">
+    <span class="mark"><img src="assets/brand/mark.png" alt="" style="width:22px;" />
+      <span class="wm"><i>Collections by</i><b>Finley Jade</b></span></span>
+    <button type="button" class="ovl-x" data-close>Close</button>
+  </div>
+  <div class="ovl-body">
+    <form class="sf" action="shop.html" method="get" role="search">
+      <input type="search" name="q" id="searchInput" placeholder="Search" aria-label="Search" />
+      <button type="submit" class="ovl-x">Enter</button>
+    </form>
+    <div class="sg">
+      <a href="shop.html">The Long Run Polo</a>
+      <a href="collections.html">The Collections</a>
+      <a href="index.html#heritage">Our Story</a>
+      <a href="index.html#journal">Journal</a>
+      <a href="shop.html">Shop All</a>
     </div>
+  </div>
+</div>
 
-    <div class="commerce-perks" aria-label="Shopping benefits">
-      <div class="commerce-perk">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M3 7h12v10H3zM15 10h3l3 3v4h-6z"/><circle cx="7" cy="19" r="1.5"/><circle cx="18" cy="19" r="1.5"/></svg>
-        <div><strong>Complimentary shipping</strong><span>On every polo order</span></div>
-      </div>
-      <div class="commerce-perk">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M4 8h12a4 4 0 010 8H8"/><path d="M8 4L4 8l4 4"/></svg>
-        <div><strong>Easy exchanges</strong><span>Within 30 days</span></div>
-      </div>
-      <div class="commerce-perk">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 12l3 3 5-6"/></svg>
-        <div><strong>Secure checkout</strong><span>Protected payment</span></div>
+<main>
+
+<!-- ═══════════ PAGE HEAD ═══════════ -->
+<section class="ph limestone" id="top">
+  <div class="wrap">
+    <nav class="crumb up" aria-label="Breadcrumb">
+      <a href="index.html">Home</a><i></i><span aria-current="page">The Long Run Polo</span>
+    </nav>
+    <div class="ph-row">
+      <h1 class="up d1">The Long <br class="lb" />Run Polo.</h1>
+      <div class="ph-side">
+        <p class="lead up d2">One polo, cut to move from water to clubhouse to dinner without needing a change. Five signature colors, each carrying the turtle of its year.</p>
+        <div class="ph-facts up d3">
+          <span>Price <b>$148</b></span>
+          <span>Sizes <b>S&ndash;XL</b></span>
+          <span>Edition <b>No. 001&ndash;200</b></span>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ FIT & SIZING ============ -->
-<section class="section--sage section-pad" id="fit">
-  <div class="container fit-layout">
-    <div class="fit-copy reveal">
-      <div class="section-head">
-        <span class="eyebrow"><span class="dot"></span>Fit &amp; Sizing</span>
-        <h2>Find your size, once.</h2>
+<figure class="band rv">
+  <img src="assets/editorial/shop-campaign.jpg" alt="The Long Run Polo worn at the cliff&rsquo;s edge at sunset" />
+</figure>
+
+<!-- ═══════════ 01 · THE SHELF ═══════════ -->
+<section class="sec limestone" id="products">
+  <div class="wrap">
+    <div class="rail"><span class="n">01</span><span class="label">The Collection</span></div>
+
+    <div class="fbar-wrap up">
+      <div class="fbar" role="group" aria-label="Filter by color" id="fbar">
+        <button type="button" class="fb on" data-f="all">All Colors</button>
+        <button type="button" class="fb" data-f="sand"><i style="--c:#C9BC9E"></i>Sand</button>
+        <button type="button" class="fb" data-f="navy"><i style="--c:#252A3D"></i>Navy</button>
+        <button type="button" class="fb" data-f="sea-blue"><i style="--c:#8FA3C4"></i>Sea Blue</button>
+        <button type="button" class="fb" data-f="deep-blue"><i style="--c:#375770"></i>Deep Blue</button>
+        <button type="button" class="fb" data-f="sea-glass"><i style="--c:#5FC0B4"></i>Sea Glass</button>
       </div>
-      <p>The Long Run Polo is cut in a classic tailored fit — comfortable through the chest and shoulders, with a clean, relaxed line through the waist. True to size for most builds; size up if you prefer a looser resort drape.</p>
-      <p>Every measurement below is taken with the garment laid flat, then doubled. If you fall between two sizes, we recommend sizing up for a breezier fit on warm coastal days.</p>
-      <div class="fit-panel">
-        <div class="fit-panel-head"><strong>Available sizes</strong><a href="#faq">Still unsure?</a></div>
-        <div class="fit-sizes"><span>S</span><span>M</span><span>L</span><span>XL</span></div>
-      </div>
+      <span class="fcount" id="fcount">Five colors</span>
     </div>
-    <div class="fit-chart reveal reveal-delay-1">
-      <div class="size-chart-wrap">
-        <table class="size-chart">
+
+    <div class="shelf" id="shelf">
+      <article class="item up" id="sand" data-color="sand">
+        <a class="plate" href="collections.html#sand" aria-label="Long Weekend &mdash; Sand">
+          <span class="tag">2026 Turtle &middot; No. 001&ndash;200</span>
+          <img class="flat" src="assets/products/tiles/sand.jpg" alt="The Long Run Polo in Sand" loading="lazy" />
+          <img class="worn" src="assets/editorial/worn-sand.jpg" alt="The Long Run Polo in Sand, worn on the coast" loading="lazy" />
+        </a>
+        <div class="item-b">
+          <div class="item-t"><span class="n">01</span><span class="nm">Long Weekend</span></div>
+          <span class="color-rule" style="--c:#C9BC9E"></span>
+          <div class="item-s"><span>Sand</span><b>$148</b></div>
+          <p class="item-x">Warm and sun-bleached &mdash; the colour of a Friday that runs into Monday.</p>
+          <div class="sizes" role="group" aria-label="Select a size in Sand">
+            <span class="sz-l">Size</span><button type="button" class="sz">S</button><button type="button" class="sz">M</button><button type="button" class="sz">L</button><button type="button" class="sz">XL</button>
+          </div>
+          <button type="button" class="add" data-name="The Long Run Polo" data-colorway="Sand">Add to Bag<i></i></button>
+        </div>
+      </article>
+      <article class="item up d1" id="navy" data-color="navy">
+        <a class="plate" href="collections.html#navy" aria-label="Returning Tide &mdash; Navy">
+          <span class="tag">2026 Turtle &middot; No. 001&ndash;200</span>
+          <img class="flat" src="assets/products/tiles/deep-navy.jpg" alt="The Long Run Polo in Navy" loading="lazy" />
+          <img class="worn" src="assets/editorial/worn-navy.jpg" alt="The Long Run Polo in Navy, worn on the coast" loading="lazy" />
+        </a>
+        <div class="item-b">
+          <div class="item-t"><span class="n">02</span><span class="nm">Returning Tide</span></div>
+          <span class="color-rule" style="--c:#252A3D"></span>
+          <div class="item-s"><span>Navy</span><b>$148</b></div>
+          <p class="item-x">Deep and dependable. The one that comes back into rotation every season.</p>
+          <div class="sizes" role="group" aria-label="Select a size in Navy">
+            <span class="sz-l">Size</span><button type="button" class="sz">S</button><button type="button" class="sz">M</button><button type="button" class="sz">L</button><button type="button" class="sz">XL</button>
+          </div>
+          <button type="button" class="add" data-name="The Long Run Polo" data-colorway="Navy">Add to Bag<i></i></button>
+        </div>
+      </article>
+      <article class="item up d2" id="sea-blue" data-color="sea-blue">
+        <a class="plate" href="collections.html#sea-blue" aria-label="First Light &mdash; Sea Blue">
+          <span class="tag">2026 Turtle &middot; No. 001&ndash;200</span>
+          <img class="flat" src="assets/products/tiles/sea-blue.jpg" alt="The Long Run Polo in Sea Blue" loading="lazy" />
+          <img class="worn" src="assets/editorial/worn-seablue.jpg" alt="The Long Run Polo in Sea Blue, worn on the coast" loading="lazy" />
+        </a>
+        <div class="item-b">
+          <div class="item-t"><span class="n">03</span><span class="nm">First Light</span></div>
+          <span class="color-rule" style="--c:#8FA3C4"></span>
+          <div class="item-s"><span>Sea Blue</span><b>$148</b></div>
+          <p class="item-x">Pale as the hour before the sun clears the headland.</p>
+          <div class="sizes" role="group" aria-label="Select a size in Sea Blue">
+            <span class="sz-l">Size</span><button type="button" class="sz">S</button><button type="button" class="sz">M</button><button type="button" class="sz">L</button><button type="button" class="sz">XL</button>
+          </div>
+          <button type="button" class="add" data-name="The Long Run Polo" data-colorway="Sea Blue">Add to Bag<i></i></button>
+        </div>
+      </article>
+      <article class="item up d3" id="deep-blue" data-color="deep-blue">
+        <a class="plate" href="collections.html#deep-blue" aria-label="The Passage &mdash; Deep Blue">
+          <span class="tag">2026 Turtle &middot; No. 001&ndash;200</span>
+          <img class="flat" src="assets/products/tiles/deep-blue.jpg" alt="The Long Run Polo in Deep Blue" loading="lazy" />
+          <img class="worn" src="assets/editorial/worn-deepblue.jpg" alt="The Long Run Polo in Deep Blue, worn on the coast" loading="lazy" />
+        </a>
+        <div class="item-b">
+          <div class="item-t"><span class="n">04</span><span class="nm">The Passage</span></div>
+          <span class="color-rule" style="--c:#375770"></span>
+          <div class="item-s"><span>Deep Blue</span><b>$148</b></div>
+          <p class="item-x">The colour of open water, halfway across.</p>
+          <div class="sizes" role="group" aria-label="Select a size in Deep Blue">
+            <span class="sz-l">Size</span><button type="button" class="sz">S</button><button type="button" class="sz">M</button><button type="button" class="sz">L</button><button type="button" class="sz">XL</button>
+          </div>
+          <button type="button" class="add" data-name="The Long Run Polo" data-colorway="Deep Blue">Add to Bag<i></i></button>
+        </div>
+      </article>
+      <article class="item up d4" id="sea-glass" data-color="sea-glass">
+        <a class="plate" href="collections.html#sea-glass" aria-label="Home Waters &mdash; Sea Glass">
+          <span class="tag">2026 Turtle &middot; No. 001&ndash;200</span>
+          <img class="flat" src="assets/products/tiles/aqua-mint.jpg" alt="The Long Run Polo in Sea Glass" loading="lazy" />
+          <img class="worn" src="assets/editorial/worn-seaglass.jpg" alt="The Long Run Polo in Sea Glass, worn on the coast" loading="lazy" />
+        </a>
+        <div class="item-b">
+          <div class="item-t"><span class="n">05</span><span class="nm">Home Waters</span></div>
+          <span class="color-rule" style="--c:#5FC0B4"></span>
+          <div class="item-s"><span>Sea Glass</span><b>$148</b></div>
+          <p class="item-x">Soft green, worn smooth. The shade of the water closest to home.</p>
+          <div class="sizes" role="group" aria-label="Select a size in Sea Glass">
+            <span class="sz-l">Size</span><button type="button" class="sz">S</button><button type="button" class="sz">M</button><button type="button" class="sz">L</button><button type="button" class="sz">XL</button>
+          </div>
+          <button type="button" class="add" data-name="The Long Run Polo" data-colorway="Sea Glass">Add to Bag<i></i></button>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ 02 · EDITORIAL MOMENT ═══════════ -->
+<section class="moment" id="worn">
+  <div class="moment-bg" data-parallax>
+    <img src="assets/editorial/worn-cliffs.jpg" alt="The Long Run Polo worn at the cliff&rsquo;s edge in late light" loading="lazy" />
+  </div>
+  <span class="moment-frame"></span>
+  <span class="moment-n">02</span>
+  <p class="moment-l">One polo. Every hour of the day</p>
+</section>
+
+<!-- ═══════════ 03 · FIT & SPECIFICATIONS ═══════════ -->
+<section class="sec parchment" id="fit">
+  <span id="fit-guide" aria-hidden="true"></span>
+  <div class="wrap">
+    <div class="rail"><span class="n">03</span><span class="label">Fit &amp; Sizing</span></div>
+
+    <div class="fit">
+      <div class="fit-copy">
+        <h2 class="up">Find your <br class="lb" />size once.</h2>
+        <p class="lead up d1" style="margin-top:1.7rem;">The Long Run is cut in a classic tailored fit &mdash; easy through the chest and shoulders, with a clean line through the waist. True to size for most builds.</p>
+        <p class="lead up d2">Every measurement is taken with the garment laid flat, then doubled. If you fall between two sizes, take the larger for a breezier drape on warm days.</p>
+        <div class="up d3" style="margin-top:2.2rem;"><a class="tl" href="#faq">Still unsure? Read the questions<i></i></a></div>
+      </div>
+
+      <div class="fit-chart up d1">
+        <table class="chart">
           <caption>Body measurements, in inches</caption>
           <thead>
-            <tr><th>Size</th><th>Chest</th><th>Length</th><th>Sleeve</th></tr>
+            <tr><th scope="col">Size</th><th scope="col">Chest</th><th scope="col">Length</th><th scope="col">Sleeve</th></tr>
           </thead>
           <tbody>
             <tr><th scope="row">S</th><td>40</td><td>27.5</td><td>8.25</td></tr>
@@ -790,436 +1049,402 @@ footer{background:var(--black);padding:5rem 0 2rem;color:rgba(247,237,208,.7);}
             <tr><th scope="row">XL</th><td>46</td><td>30.5</td><td>9</td></tr>
           </tbody>
         </table>
+        <p class="chart-note">Measurements are approximate and may vary slightly between runs. For a true-to-size fit, compare the chest measurement to a polo you already wear well.</p>
       </div>
-      <p class="size-chart-note">Measurements are approximate and may vary slightly by colorway run. For a true-to-size fit, compare the chest measurement above to a well-fitting polo you already own.</p>
+    </div>
+
+    <span id="product-details" aria-hidden="true"></span>
+    <div class="detail" id="specifications">
+      <div class="detail-head up">
+        <span class="label">Specifications</span>
+        <p class="detail-note">For those who like to know exactly what they are buying.</p>
+      </div>
+      <div class="detail-cols">
+        <dl class="spec up">
+          <div class="spec-row">
+            <span class="n">01</span>
+            <div><dt>Fabric</dt><dd>Double-knit piqu&eacute; &mdash; 88% polyester, 12% elastane. Moisture-wicking with four-way stretch, so it breathes on the water and keeps its shape through the season.</dd></div>
+          </div>
+          <div class="spec-row">
+            <span class="n">02</span>
+            <div><dt>Fit</dt><dd>Classic tailored fit. Easy through the chest, clean through the waist. Sizes S&ndash;XL. Between sizes, take the larger.</dd></div>
+          </div>
+          <div class="spec-row">
+            <span class="n">03</span>
+            <div><dt>Details</dt><dd>Three-button placket with mother-of-pearl buttons, structured ribbed collar and cuffs, side vents, and the turtle embroidered at the left chest.</dd></div>
+          </div>
+        </dl>
+
+        <dl class="spec up d1">
+          <div class="spec-row">
+            <span class="n">04</span>
+            <div><dt>Edition</dt><dd>A new turtle each year, individually numbered to two hundred. Created for that moment in time and never repeated &mdash; while signature colors endure, with new shades introduced along the way.</dd></div>
+          </div>
+          <div class="spec-row">
+            <span class="n">05</span>
+            <div><dt>Care</dt><dd>Machine wash cold with like colours. Hang to dry. No ironing required.</dd></div>
+          </div>
+          <div class="spec-row">
+            <span class="n">06</span>
+            <div><dt>Shipping &amp; Returns</dt><dd>Complimentary shipping worldwide. Thirty days to return anything unworn, with the edition tag attached.</dd></div>
+          </div>
+        </dl>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ============ SHOP FAQ ============ -->
-<section class="section--light section-pad" id="faq">
-  <div class="container shop-faq-grid">
-    <div class="section-head reveal">
-      <span class="eyebrow"><span class="dot"></span>Before you order</span>
-      <h2>Everything you need to know.</h2>
-      <p>Fit, delivery, exchanges, and care — answered simply.</p>
-      <a href="#products" class="btn btn-ghost" style="margin-top:1.5rem;border-color:rgba(19,34,52,.28);">Back to Shop <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+<!-- ═══════════ 04 · WORN ON EVERY COAST ═══════════ -->
+<section class="sec limestone" id="gallery">
+  <div class="wrap">
+    <div class="rail"><span class="n">04</span><span class="label">Worn on Every Coast</span></div>
+    <div class="ed-head">
+      <h2 class="up">From Newport <br class="lb" />to Portofino.</h2>
+      <p class="lead up d1">The Long Run as it is actually worn &mdash; sent in by the men wearing it.</p>
     </div>
-    <div class="shop-faq-list reveal reveal-delay-1">
+    <div class="gal">
+      <figure class="rv">
+        <img src="assets/gallery/golden-hour.jpg" alt="Golden hour, bare feet" loading="lazy" />
+        <figcaption>Golden hour, bare feet</figcaption>
+      </figure>
+      <figure class="rv">
+        <img src="assets/gallery/at-the-helm.jpg" alt="At the helm, deep navy" loading="lazy" />
+        <figcaption>At the helm, deep navy</figcaption>
+      </figure>
+      <figure class="rv">
+        <img src="assets/gallery/end-of-dock.jpg" alt="End of the dock" loading="lazy" />
+        <figcaption>End of the dock</figcaption>
+      </figure>
+      <figure class="rv">
+        <img src="assets/gallery/back-nine.jpg" alt="Last light, back nine" loading="lazy" />
+        <figcaption>Last light, back nine</figcaption>
+      </figure>
+      <figure class="rv">
+        <img src="assets/gallery/pool-sea.jpg" alt="Where the pool meets the sea" loading="lazy" />
+        <figcaption>Where the pool meets the sea</figcaption>
+      </figure>
+      <figure class="rv">
+        <img src="assets/gallery/salt-air.jpg" alt="Sand polo, salt air" loading="lazy" />
+        <figcaption>Sand polo, salt air</figcaption>
+      </figure>
+      <figure class="rv">
+        <img src="assets/gallery/twilight-toast.jpg" alt="Twilight toast, string lights" loading="lazy" />
+        <figcaption>Twilight toast, string lights</figcaption>
+      </figure>
+      <figure class="rv">
+        <img src="assets/gallery/cliffs-edge.jpg" alt="Cliff&rsquo;s edge, wide open" loading="lazy" />
+        <figcaption>Cliff&rsquo;s edge, wide open</figcaption>
+      </figure>
+    </div>
+
+    <div class="notes-rule" style="margin-top:clamp(3.2rem,5.4vw,5.4rem);"></div>
+    <div class="notes">
+      <figure class="note up">
+        <span class="note-mark">&ldquo;</span>
+        <blockquote>The first polo I&rsquo;ve owned that looks as good at dinner as it did at noon.</blockquote>
+        <figcaption>James Whitfield<br />Newport</figcaption>
+      </figure>
+      <figure class="note up d1">
+        <span class="note-mark">&ldquo;</span>
+        <blockquote>Three summers in and the collar still stands the way it did the first morning.</blockquote>
+        <figcaption>Marcus Bell<br />Charleston</figcaption>
+      </figure>
+      <figure class="note up d2">
+        <span class="note-mark">&ldquo;</span>
+        <blockquote>I bought one, then quietly bought the rest of the edition for my brothers.</blockquote>
+        <figcaption>David Okonkwo<br />London</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ 05 · BEFORE YOU ORDER ═══════════ -->
+<section class="sec parchment" id="faq">
+  <span id="shop-faq" aria-hidden="true"></span>
+  <div class="wrap">
+    <div class="rail"><span class="n">05</span><span class="label">Before You Order</span></div>
+    <div class="ed-head">
+      <h2 class="up">Everything you <br class="lb" />need to know.</h2>
+      <p class="lead up d1">Fit, delivery, exchanges and care &mdash; answered plainly.</p>
+    </div>
+
+    <div class="faq up">
       <details open>
         <summary>How does the Long Run Polo fit?</summary>
-        <p>It has a classic tailored fit: comfortable through the chest and shoulders with a clean, relaxed line through the waist. Choose your usual polo size; size up if you prefer a looser resort fit. See the size chart above for exact measurements.</p>
+        <p>A classic tailored fit &mdash; easy through the chest and shoulders, clean through the waist. Take your usual polo size; between two sizes, take the larger for a looser resort drape. Exact measurements are in the chart above.</p>
       </details>
       <details>
         <summary>When will my order arrive?</summary>
-        <p>Orders are prepared within one to two business days. Standard delivery typically arrives within three to five business days after dispatch, with tracking provided by email.</p>
+        <p>Orders are prepared within one to two business days. Standard delivery usually arrives three to five business days after dispatch, with tracking sent by email.</p>
       </details>
       <details>
-        <summary>Do you ship outside the U.S.?</summary>
-        <p>At the moment we ship within the United States only, with complimentary shipping on every order. International delivery is on our roadmap — join the Clubhouse below to hear first when it opens.</p>
+        <summary>Do you ship outside the United States?</summary>
+        <p>Complimentary shipping worldwide. Duties and local taxes, where they apply, are settled at delivery.</p>
       </details>
       <details>
-        <summary>Can I exchange the size?</summary>
-        <p>Yes. Unworn polos with their original tags may be exchanged within 30 days. The limited edition number remains tied to the original garment and cannot be reserved during an exchange.</p>
+        <summary>Can I exchange a size?</summary>
+        <p>Yes. Anything unworn may be exchanged within thirty days, with the edition tag still attached. The edition number stays with the original garment.</p>
       </details>
       <details>
-        <summary>How should I care for the piqué?</summary>
-        <p>Machine wash cold with similar colors, reshape the collar while damp, and lay flat or tumble dry low. Avoid bleach and high heat to protect the fabric and embroidered crest.</p>
+        <summary>How should I care for it?</summary>
+        <p>Machine wash cold with like colours, reshape the collar while damp, then hang or tumble dry low. No bleach, no high heat &mdash; both are hard on the cloth and on the embroidery.</p>
       </details>
       <details>
-        <summary>What happens when a colorway sells out?</summary>
-        <p>Each colorway is a closed run of 200 — once it sells through, it will not be restocked. New colorways are announced through the Clubhouse before they appear on the shop.</p>
+        <summary>What happens when a turtle edition closes?</summary>
+        <p>Each year&rsquo;s turtle is made once, in an individually numbered edition of two hundred, and is not drawn again. Signature colours carry forward, and new shades are introduced along the way &mdash; so a colour you love will still be here next year, wearing a different turtle.</p>
       </details>
+    </div>
+
+    <div class="closer up" style="margin-top:clamp(3rem,5.4vw,5.4rem);padding-top:clamp(2.4rem,3.6vw,3.4rem);border-top:1px solid var(--hair-soft);">
+      <div>
+        <h2>The colors have <br class="lb" />names of their own.</h2>
+        <p class="lead">Five collections, each named for a moment on the coast &mdash; and each one a way of wearing the same polo.</p>
+        <a class="btn ghost" href="collections.html"><s>Read the Collections</s></a>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ============ EXPLORE MORE ============ -->
-<section class="section--darker" style="padding:3.4rem 0;">
-  <div class="container">
-    <div class="explore-links reveal">
-      <a href="index.html#heritage">Read Our Story</a>
-      <a href="index.html#collections">The Collections</a>
-      <a href="index.html#gallery">Gallery</a>
-      <a href="index.html#reviews">Reviews</a>
+<!-- ═══════════ 10 · NEWSLETTER + 11 · FOOTER ═══════════ -->
+<section class="sec midnight close" id="clubhouse" style="padding-bottom:0;">
+  <div class="wrap">
+    <div class="rail"><span class="n">—</span><span class="label">The List</span></div>
+    <div class="news">
+      <div>
+        <h2 class="up">From the Water</h2>
+        <p class="lead up d1">Occasional notes on new editions, places worth visiting and life along the coast.</p>
+      </div>
+      <div class="up d2">
+        <form class="nf" id="newsForm">
+          <input type="email" name="email" required placeholder="Email address" aria-label="Email address" />
+          <button type="submit">Join<i></i></button>
+        </form>
+        <p class="nf-note" id="newsNote">Thank you — you&rsquo;re on the list.</p>
+      </div>
     </div>
-  </div>
-</section>
 
-<!-- ============ CLUBHOUSE ============ -->
-<section class="clubhouse" id="clubhouse">
-  <canvas class="particle-canvas" id="clubhouse-particles"></canvas>
-  <img class="clubhouse-watermark" src="assets/turtle-logo.png" alt="" />
-  <div class="container" style="position:relative;z-index:2;">
-    <span class="eyebrow"><span class="dot"></span>The Clubhouse</span>
-    <h2>Join the Clubhouse.</h2>
-    <p class="lead">Early access to new drops, members-only colorways, and the occasional invitation somewhere worth dressing up for.</p>
-    <form class="club-form" id="club-form">
-      <input type="email" placeholder="you@email.com" required aria-label="Email address" />
-      <button type="submit" class="btn btn-primary">Request Invitation</button>
-    </form>
-    <div class="club-success" id="club-success">You're on the list — welcome aboard.</div>
-    <p class="fine-print">No spam — just tide charts and new arrivals.</p>
-  </div>
-</section>
+    <div class="f-div"><i></i></div>
 
-<!-- ============ FOOTER ============ -->
-<footer>
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <a href="index.html" class="brand">
-          <img src="assets/turtle-logo.png" alt="Turtles by Finley Jade emblem" style="width:34px;" />
-          <span class="brand-text">
-            <span class="kicker">Turtles by</span>
-            <span class="name">Finley Jade</span>
-          </span>
+    <div class="f-top">
+      <div>
+        <a class="mark" href="index.html" aria-label="Collections by Finley Jade, home">
+          <img src="assets/brand/mark.png" alt="" style="width:27px;" />
+          <span class="wm"><i>Collections by</i><b>Finley Jade</b></span>
         </a>
-        <p>A premium coastal lifestyle house — high-end men's resort wear and polos inspired by family, the ocean, and timeless vacation elegance.</p>
-        <p style="margin-top:-.6rem;"><a href="mailto:hello@turtlesbyfinleyjade.com" style="font-size:.85rem;opacity:.8;border-bottom:1px solid rgba(247,237,208,.25);padding-bottom:2px;">hello@turtlesbyfinleyjade.com</a></p>
-        <div class="socials">
-          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
-          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 4h-2a4 4 0 00-4 4v3H6v3h3v6h3v-6h3l1-3h-4V8a1 1 0 011-1h3z"/></svg></a>
-          <a href="#" aria-label="Pinterest"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 20l3-11m-3 6c-2 0-4-2-4-5a7 7 0 1114 0c0 4-2 7-5 7-1.5 0-2.5-1-2-3"/></svg></a>
+        <p class="f-note">Coastal classics inspired by family, the sea, and the places worth returning to.</p>
+      </div>
+      <div class="f-cols">
+        <div class="f-col">
+          <h4>Shop</h4>
+          <a href="shop.html">The Long Run Polo</a>
+          <a href="collections.html">The Collections</a>
+          <a href="shop.html">Shop All</a>
+        </div>
+        <div class="f-col">
+          <h4>House</h4>
+          <a href="index.html#heritage">Our Story</a>
+          <a href="index.html#journal">Journal</a>
+          <a href="mailto:hello@turtlesbyfinleyjade.com">Contact</a>
+        </div>
+        <div class="f-col">
+          <h4>Information</h4>
+          <a href="#clubhouse">Shipping &amp; Returns</a>
+          <a href="#clubhouse">Privacy</a>
+          <a href="#" rel="noopener">Instagram</a>
         </div>
       </div>
-      <div class="footer-col">
-        <h5>Shop</h5>
-        <ul>
-          <li><a href="#products">The Long Run Polo</a></li>
-          <li><a href="#products">Deep Blue</a></li>
-          <li><a href="#products">Sand</a></li>
-          <li><a href="#products">Aqua Mint</a></li>
-          <li><a href="#products">Sea Blue</a></li>
-          <li><a href="#products">Deep Navy</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h5>Explore</h5>
-        <ul>
-          <li><a href="index.html#heritage">Heritage</a></li>
-          <li><a href="index.html#lifestyle">Lifestyle</a></li>
-          <li><a href="index.html#collections">The Collections</a></li>
-          <li><a href="index.html#gallery">Gallery</a></li>
-          <li><a href="index.html#reviews">Reviews</a></li>
-          <li><a href="#clubhouse">Clubhouse</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h5>Support</h5>
-        <ul>
-          <li><a href="#fit">Size Guide</a></li>
-          <li><a href="#faq">Care Guide</a></li>
-          <li><a href="#faq">FAQ</a></li>
-          <li><a href="mailto:hello@turtlesbyfinleyjade.com">Contact</a></li>
-        </ul>
-      </div>
     </div>
-    <div class="footer-bottom">
-      <span>&copy; 2026 Turtles by Finley Jade. All rights reserved.</span>
-      <div class="chip-strip">
-        <i style="background:#050505"></i><i style="background:#111f2e"></i><i style="background:#24406b"></i><i style="background:#8a7d4d"></i><i style="background:#b3a370"></i><i style="background:#f7edd0"></i>
-      </div>
+
+    <div class="f-bot">
+      <span>Collections by Finley Jade — Washington, D.C.</span>
+      <span>Est. 2026</span>
     </div>
   </div>
-</footer>
+  <div class="f-sig" aria-hidden="true">Collections by Finley Jade</div>
+</section>
 
-<div id="toast"><span class="toast-dot"></span><span id="toast-text"></span></div>
+</main>
 
-<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js" defer></script>
 <script>
-document.addEventListener('DOMContentLoaded', function () {
-  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+(function () {
+  'use strict';
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* Preloader */
-  var pre = document.getElementById('preloader');
-  window.addEventListener('load', function () {
-    setTimeout(function () { pre.classList.add('done'); }, 350);
-  });
-  setTimeout(function () { pre.classList.add('done'); }, 1800);
-
-  /* Header scroll state */
-  var header = document.getElementById('site-header');
-  function onScroll () {
-    if (window.scrollY > 40) header.classList.add('scrolled');
-    else header.classList.remove('scrolled');
+  /* Header */
+  var hdr = document.getElementById('hdr'), hero = document.getElementById('top'), lastY = window.scrollY;
+  function onScroll() {
+    var y = window.scrollY, t = hero ? Math.min(hero.offsetHeight - 140, 170) : 130;
+    hdr.classList.toggle('solid', y > t);
+    if (y > t + 220 && y > lastY + 6) hdr.classList.add('up');
+    else if (y < lastY - 6 || y <= t) hdr.classList.remove('up');
+    lastY = y;
   }
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
-  /* Mobile nav */
-  var burger = document.getElementById('burger-btn');
-  var panel = document.getElementById('mobile-panel');
-  var closeBtn = document.getElementById('close-panel-btn');
-  function openPanel () { panel.classList.add('open'); document.body.style.overflow = 'hidden'; }
-  function closePanel () { panel.classList.remove('open'); document.body.style.overflow = ''; }
-  burger.addEventListener('click', openPanel);
-  closeBtn.addEventListener('click', closePanel);
-  panel.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', closePanel); });
+  /* Overlays */
+  var menu = document.getElementById('menuOvl'), search = document.getElementById('searchOvl');
+  var mBtn = document.getElementById('menuToggle'), sBtn = document.getElementById('searchToggle');
+  function open(el) {
+    el.classList.add('open'); document.body.style.overflow = 'hidden';
+    if (el === search) setTimeout(function () { document.getElementById('searchInput').focus(); }, 350);
+    if (el === menu) mBtn.setAttribute('aria-expanded', 'true');
+  }
+  function closeAll() {
+    menu.classList.remove('open'); search.classList.remove('open');
+    document.body.style.overflow = ''; mBtn.setAttribute('aria-expanded', 'false');
+  }
+  mBtn.addEventListener('click', function () { menu.classList.contains('open') ? closeAll() : open(menu); });
+  sBtn.addEventListener('click', function () { open(search); });
+  Array.prototype.forEach.call(document.querySelectorAll('[data-close]'), function (b) { b.addEventListener('click', closeAll); });
+  Array.prototype.forEach.call(document.querySelectorAll('.ovl a'), function (a) { a.addEventListener('click', closeAll); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeAll(); });
 
-  /* Scroll reveal */
-  var revealEls = document.querySelectorAll('.reveal');
+  /* Reveals */
+  var items = document.querySelectorAll('.up, .rv, .ln-wrap, .rail');
+  function revealAll() { Array.prototype.forEach.call(items, function (el) { el.classList.add('in'); }); }
   if ('IntersectionObserver' in window) {
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          io.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
-    revealEls.forEach(function (el) { io.observe(el); });
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.05, rootMargin: '260px 0px 260px 0px' });
+    Array.prototype.forEach.call(items, function (el) { io.observe(el); });
+    /* watchdog: screenshot tools and print render the whole page without scrolling */
+    setTimeout(revealAll, 4500);
+    window.addEventListener('beforeprint', revealAll);
   } else {
-    revealEls.forEach(function (el) { el.classList.add('is-visible'); });
+    revealAll();
   }
+  window.requestAnimationFrame(function () {
+    setTimeout(function () {
+      Array.prototype.forEach.call(document.querySelectorAll('.hero .up, .hero .ln-wrap'), function (el) { el.classList.add('in'); });
+    }, 130);
+  });
 
-  /* Cursor glow */
-  var glow = document.getElementById('cursor-glow');
-  if (glow && !reduceMotion) {
-    var mx = window.innerWidth / 2, my = window.innerHeight / 2, cx = mx, cy = my;
-    window.addEventListener('mousemove', function (e) { mx = e.clientX; my = e.clientY; });
-    function tick () {
-      cx += (mx - cx) * 0.08;
-      cy += (my - cy) * 0.08;
-      glow.style.transform = 'translate(' + cx + 'px,' + cy + 'px) translate(-50%,-50%)';
-      requestAnimationFrame(tick);
-    }
-    tick();
-  }
-
-  /* 3D tilt for product cards */
-  var canTilt = !reduceMotion && window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-  function attachTilt (els, maxDeg, lift) {
-    els.forEach(function (el) {
-      el.addEventListener('mousemove', function (e) {
-        var r = el.getBoundingClientRect();
-        var px = (e.clientX - r.left) / r.width - 0.5;
-        var py = (e.clientY - r.top) / r.height - 0.5;
-        el.style.transform =
-          'perspective(1000px) rotateY(' + (px * maxDeg) + 'deg) rotateX(' + (py * -maxDeg) + 'deg) translateY(-' + lift + 'px)';
+  /* Parallax */
+  var px = document.querySelectorAll('[data-parallax]');
+  if (px.length && !reduce) {
+    var tick = false;
+    function move() {
+      Array.prototype.forEach.call(px, function (el) {
+        var r = el.parentElement.getBoundingClientRect();
+        if (r.bottom < 0 || r.top > window.innerHeight) return;
+        var p = (r.top + r.height / 2 - window.innerHeight / 2) / window.innerHeight;
+        el.style.transform = 'translate3d(0,' + (p * -7).toFixed(2) + '%,0)';
       });
-      el.addEventListener('mouseleave', function () {
-        el.style.transform = '';
+      tick = false;
+    }
+    window.addEventListener('scroll', function () { if (!tick) { tick = true; requestAnimationFrame(move); } }, { passive: true });
+    move();
+  }
+
+  /* Swipe progress */
+  Array.prototype.forEach.call(document.querySelectorAll('[data-swipe]'), function (track) {
+    var hint = track.parentElement.querySelector('[data-hint]');
+    if (!hint) return;
+    var bar = hint.querySelector('i');
+    function update() {
+      var s = track.scrollWidth - track.clientWidth;
+      if (s < 12) { hint.hidden = true; return; }
+      hint.hidden = false;
+      bar.style.transform = 'translateX(' + ((track.scrollLeft / s) * 257).toFixed(2) + '%)';
+    }
+    track.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  });
+
+  /* Once the page is up, stop deferring images: guarantees full-page
+     screenshots, print and non-scrolling views get every photograph. */
+  function loadAll() {
+    Array.prototype.forEach.call(document.querySelectorAll('img[loading="lazy"]'), function (img) {
+      img.loading = 'eager';
+    });
+  }
+  if (document.readyState === 'complete') setTimeout(loadAll, 600);
+  else window.addEventListener('load', function () { setTimeout(loadAll, 600); });
+  window.addEventListener('beforeprint', loadAll);
+
+  /* Newsletter */
+  var f = document.getElementById('newsForm'), n = document.getElementById('newsNote');
+  if (f) f.addEventListener('submit', function (e) { e.preventDefault(); f.reset(); n.style.opacity = '1'; });
+})();
+</script>
+<script>
+(function () {
+  'use strict';
+
+  /* Colorway filter — hides cards, keeps the grid's centred last row honest. */
+  var shelf = document.getElementById('shelf');
+  var bar   = document.getElementById('fbar');
+  var count = document.getElementById('fcount');
+  if (shelf && bar) {
+    var items = Array.prototype.slice.call(shelf.querySelectorAll('.item'));
+    var words = ['No', 'One', 'Two', 'Three', 'Four', 'Five'];
+    bar.addEventListener('click', function (e) {
+      var b = e.target.closest('.fb');
+      if (!b) return;
+      var f = b.dataset.f, shown = 0;
+      Array.prototype.forEach.call(bar.querySelectorAll('.fb'), function (x) {
+        x.classList.toggle('on', x === b);
       });
-    });
-  }
-  if (canTilt) attachTilt(document.querySelectorAll('.product-card'), 6, 5);
-
-  /* Toast */
-  var toast = document.getElementById('toast');
-  var toastText = document.getElementById('toast-text');
-  var toastTimer = null;
-  function showToast (html) {
-    toastText.innerHTML = html;
-    toast.classList.add('show');
-    clearTimeout(toastTimer);
-    toastTimer = setTimeout(function () { toast.classList.remove('show'); }, 3200);
-  }
-
-  /* Size selection + cart */
-  var cartCount = 0;
-  var cartCountEl = document.getElementById('cart-count');
-  var cartButton = document.getElementById('cart-button');
-
-  document.querySelectorAll('.product-card-sizes').forEach(function (group) {
-    group.querySelectorAll('button:not(:disabled)').forEach(function (sizeBtn) {
-      sizeBtn.setAttribute('aria-pressed', 'false');
-      sizeBtn.addEventListener('click', function () {
-        group.querySelectorAll('button').forEach(function (item) {
-          item.classList.remove('active');
-          item.setAttribute('aria-pressed', 'false');
-        });
-        sizeBtn.classList.add('active');
-        sizeBtn.setAttribute('aria-pressed', 'true');
+      items.forEach(function (it) {
+        var hit = (f === 'all' || it.dataset.color === f);
+        it.hidden = !hit;
+        if (hit) shown++;
       });
-    });
-  });
-
-  document.querySelectorAll('.product-card-add').forEach(function (btn) {
-    if (btn.id === 'notify-btn') return;
-    btn.addEventListener('click', function () {
-      var card = btn.closest('.product-card');
-      var selectedSize = card.querySelector('.product-card-sizes button.active');
-      var colorway = btn.getAttribute('data-colorway');
-      var price = btn.getAttribute('data-price');
-      if (!selectedSize) {
-        showToast('<strong>Choose a size</strong> for the ' + colorway + ' polo first.');
-        return;
-      }
-      cartCount += 1;
-      cartCountEl.textContent = cartCount;
-      cartButton.setAttribute('aria-label', 'Open shopping bag, ' + cartCount + ' item' + (cartCount === 1 ? '' : 's'));
-      showToast('Added to bag — <strong>' + colorway + '</strong>, size ' + selectedSize.textContent + ' (' + price + ')');
-    });
-  });
-
-  var notifyBtn = document.getElementById('notify-btn');
-  if (notifyBtn) {
-    notifyBtn.addEventListener('click', function () {
-      showToast('<strong>You\'re on the list</strong> — we\'ll email you the moment the next colorway drops.');
+      /* Only re-centre the trailing pair when the full set is on screen. */
+      shelf.classList.toggle('filtered', f !== 'all');
+      count.textContent = words[shown] + (shown === 1 ? ' color' : ' colors');
     });
   }
 
-  cartButton.addEventListener('click', function () {
-    showToast(cartCount ? 'Your bag has <strong>' + cartCount + ' item' + (cartCount === 1 ? '' : 's') + '</strong>.' : 'Your bag is currently empty.');
-  });
-
-  /* Clubhouse form */
-  var form = document.getElementById('club-form');
-  var success = document.getElementById('club-success');
-  if (form) {
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      success.classList.add('show');
-      form.reset();
-    });
-  }
-
-  /* Shop toolbar: filter by colorway */
-  var grid = document.getElementById('product-grid');
-  var comingSoonCard = grid.querySelector('.product-card.is-soon');
-  var resultCountText = document.getElementById('result-count-text');
-  var resetFilterBtn = document.getElementById('reset-filter');
-  var pills = document.querySelectorAll('.filter-pill');
-  function applyFilter (f) {
-    pills.forEach(function (p) { p.classList.toggle('active', p.getAttribute('data-filter') === f); });
-    var cards = grid.querySelectorAll('.product-card[data-filter]');
-    var visible = 0;
-    cards.forEach(function (c) {
-      var show = f === 'all' || c.getAttribute('data-filter') === f;
-      c.style.display = show ? '' : 'none';
-      if (show) visible++;
-    });
-    resultCountText.textContent = visible + (visible === 1 ? ' colorway shown' : ' colorways shown');
-    resetFilterBtn.classList.toggle('show', f !== 'all');
-  }
-  pills.forEach(function (pill) {
-    pill.addEventListener('click', function () { applyFilter(pill.getAttribute('data-filter')); });
-  });
-  resetFilterBtn.addEventListener('click', function () { applyFilter('all'); });
-
-  /* Shop toolbar: sort */
-  var sortSelect = document.getElementById('sort-select');
-  var originalOrder = Array.prototype.slice.call(grid.querySelectorAll('.product-card[data-filter]'));
-  sortSelect.addEventListener('change', function () {
-    var cards = Array.prototype.slice.call(grid.querySelectorAll('.product-card[data-filter]'));
-    var val = sortSelect.value;
-    if (val === 'az') {
-      cards.sort(function (a, b) { return a.getAttribute('data-name').localeCompare(b.getAttribute('data-name')); });
-    } else if (val === 'za') {
-      cards.sort(function (a, b) { return b.getAttribute('data-name').localeCompare(a.getAttribute('data-name')); });
-    } else {
-      cards = originalOrder.slice();
-    }
-    cards.forEach(function (c) { grid.insertBefore(c, comingSoonCard); });
-  });
-
-  /* Ambient 3D particle field (Three.js) */
-  function createParticleField (canvas, container, opts) {
-    if (!canvas || !container || typeof THREE === 'undefined' || reduceMotion) return;
-    var renderer;
-    try {
-      renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
-    } catch (e) { return; }
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
-    var scene = new THREE.Scene();
-    var camera = new THREE.PerspectiveCamera(50, 1, 1, 1000);
-    camera.position.z = 60;
-
-    function resize () {
-      var w = container.clientWidth, h = container.clientHeight;
-      if (!w || !h) return;
-      renderer.setSize(w, h, false);
-      camera.aspect = w / h;
-      camera.updateProjectionMatrix();
-    }
-
-    var count = opts.count || 200;
-    var positions = new Float32Array(count * 3);
-    var colorsArr = new Float32Array(count * 3);
-    var palette = opts.colors.map(function (c) { return new THREE.Color(c); });
-    for (var i = 0; i < count; i++) {
-      positions[i * 3] = (Math.random() - 0.5) * 150;
-      positions[i * 3 + 1] = (Math.random() - 0.5) * 90;
-      positions[i * 3 + 2] = (Math.random() - 0.5) * 100;
-      var c = palette[i % palette.length];
-      colorsArr[i * 3] = c.r; colorsArr[i * 3 + 1] = c.g; colorsArr[i * 3 + 2] = c.b;
-    }
-    var geo = new THREE.BufferGeometry();
-    geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-    geo.setAttribute('color', new THREE.BufferAttribute(colorsArr, 3));
-
-    var spriteCanvas = document.createElement('canvas');
-    spriteCanvas.width = 64; spriteCanvas.height = 64;
-    var ctx = spriteCanvas.getContext('2d');
-    var grad = ctx.createRadialGradient(32, 32, 0, 32, 32, 32);
-    grad.addColorStop(0, 'rgba(255,255,255,1)');
-    grad.addColorStop(1, 'rgba(255,255,255,0)');
-    ctx.fillStyle = grad;
-    ctx.fillRect(0, 0, 64, 64);
-    var spriteTex = new THREE.CanvasTexture(spriteCanvas);
-
-    var mat = new THREE.PointsMaterial({
-      size: opts.size || 2.4,
-      map: spriteTex,
-      vertexColors: true,
-      transparent: true,
-      opacity: opts.opacity || 0.55,
-      depthWrite: false,
-      blending: THREE.AdditiveBlending
-    });
-    var points = new THREE.Points(geo, mat);
-    scene.add(points);
-
-    resize();
-    window.addEventListener('resize', resize);
-
-    var mx = 0, my = 0;
-    container.addEventListener('mousemove', function (e) {
-      var r = container.getBoundingClientRect();
-      mx = (e.clientX - r.left) / r.width - 0.5;
-      my = (e.clientY - r.top) / r.height - 0.5;
-    });
-
-    var running = true, raf = null;
-    function tick () {
-      if (!running) return;
-      points.rotation.y += 0.0009;
-      points.rotation.x += 0.00025;
-      camera.position.x += (mx * 14 - camera.position.x) * 0.03;
-      camera.position.y += (-my * 9 - camera.position.y) * 0.03;
-      camera.lookAt(0, 0, 0);
-      renderer.render(scene, camera);
-      raf = requestAnimationFrame(tick);
-    }
-    tick();
-
-    if ('IntersectionObserver' in window) {
-      var io = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            if (!running) { running = true; tick(); }
-          } else {
-            running = false;
-            if (raf) cancelAnimationFrame(raf);
-          }
-        });
-      }, { threshold: 0.05 });
-      io.observe(container);
+  /* A colorway deep link (shop.html#navy) arrives pre-filtered. */
+  if (bar) {
+    var want = (location.hash || '').replace('#', '');
+    var target = want && bar.querySelector('.fb[data-f="' + CSS.escape(want) + '"]');
+    if (target) {
+      target.click();
+      setTimeout(function () {
+        var card = document.getElementById(want);
+        if (card) window.scrollTo({ top: card.getBoundingClientRect().top + window.scrollY - 150, behavior: 'auto' });
+      }, 80);
     }
   }
 
-  createParticleField(
-    document.getElementById('products-particles'),
-    document.getElementById('products'),
-    { colors: [0x8a7d4d, 0xb3a370, 0x24406b, 0x111f2e], count: 220, size: 2.5, opacity: 0.4 }
-  );
-  createParticleField(
-    document.getElementById('clubhouse-particles'),
-    document.getElementById('clubhouse'),
-    { colors: [0xd9c98d, 0xb3a370, 0xf7edd0], count: 150, size: 2.1, opacity: 0.4 }
-  );
-});
+  /* One size selected per card. */
+  document.addEventListener('click', function (e) {
+    var z = e.target.closest('.sz');
+    if (!z) return;
+    Array.prototype.forEach.call(z.parentElement.querySelectorAll('.sz'), function (o) {
+      o.classList.toggle('on', o === z);
+    });
+  });
+
+  /* Add to bag — front-end only; wire to the cart when there is one. */
+  var bagLinks = Array.prototype.filter.call(
+    document.querySelectorAll('.nav.r a'), function (a) { return /Bag/.test(a.textContent); });
+  var bag = 0;
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest('.add');
+    if (!b) return;
+    var card = b.closest('.item');
+    var size = card.querySelector('.sz.on');
+    if (!size) {
+      var first = card.querySelector('.sz');
+      if (first) first.classList.add('on');
+      size = first;
+    }
+    bag++;
+    bagLinks.forEach(function (a) { a.textContent = 'Bag (' + bag + ')'; });
+    var was = b.firstChild.nodeValue;
+    b.classList.add('done');
+    b.firstChild.nodeValue = 'Added \u2014 ' + b.dataset.colorway + ', ' + size.textContent;
+    setTimeout(function () {
+      b.classList.remove('done');
+      b.firstChild.nodeValue = was;
+    }, 2200);
+  });
+})();
 </script>
 </body>
 </html>

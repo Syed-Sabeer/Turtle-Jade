@@ -1,0 +1,1225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Shop the Long Run Polo — Turtles by Finley Jade</title>
+<meta name="description" content="Shop the Long Run Polo from Turtles by Finley Jade — five coastal colorways, individually numbered, embroidered sea turtle crest. Free U.S. shipping." />
+<link rel="icon" type="image/png" href="assets/favicon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,400..600&family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+<style>
+/* ============ TOKENS ============ */
+:root{
+  --ink:#0a1420;
+  --navy:#111f2e;
+  --navy-soft:#17293c;
+  --navy-softer:#1c3049;
+  --steel:#24406b;
+  --lagoon:#d9c98d;
+  --lagoon-deep:#8a7d4d;
+  --gold:#b3a370;
+  --gold-bright:#d9c98d;
+  --gold-dim:#8a7d4d;
+  --shell:#f7edd0;
+  --paper:#fbf6e8;
+  --paper-soft:#f3ead2;
+  --sage-cream:#eef1e4;
+  --sage-cream-soft:#e6ecdc;
+  --ink-text:#3a3428;
+  --black:#050505;
+
+  --font-display:'Fraunces', 'Iowan Old Style', Georgia, serif;
+  --font-body:'Manrope', -apple-system, 'Segoe UI', sans-serif;
+  --font-mono:'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace;
+
+  --container:1240px;
+  --pad:clamp(1.5rem, 5vw, 4rem);
+  --section-y:clamp(5rem, 10vw, 9rem);
+
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--navy);
+  color:var(--shell);
+  font-family:var(--font-body);
+  font-size:16px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:600;text-wrap:balance;letter-spacing:-0.01em;}
+button{font-family:inherit;cursor:pointer;}
+:focus-visible{outline:2px solid var(--lagoon-deep);outline-offset:3px;}
+.container{max-width:var(--container);margin:0 auto;padding-left:var(--pad);padding-right:var(--pad);}
+
+.eyebrow{
+  font-family:var(--font-mono);
+  font-size:.72rem;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--gold-bright);
+  display:inline-flex;
+  align-items:center;
+  gap:.6em;
+}
+.section--light .eyebrow,.section--sage .eyebrow{color:var(--gold-dim);}
+.eyebrow .dot{width:5px;height:5px;border-radius:50%;background:var(--lagoon);display:inline-block;}
+.section--light .eyebrow .dot,.section--sage .eyebrow .dot{background:var(--lagoon-deep);}
+
+.facet{
+  clip-path:polygon(26px 0,100% 0,100% calc(100% - 26px),calc(100% - 26px) 100%,0 100%,0 26px);
+}
+
+.btn{
+  font-family:var(--font-mono);
+  font-size:.78rem;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  padding:1rem 1.9rem;
+  border-radius:999px;
+  display:inline-flex;
+  align-items:center;
+  gap:.6rem;
+  border:1px solid transparent;
+  transition:transform .35s var(--ease), box-shadow .35s var(--ease), background .35s var(--ease), border-color .35s var(--ease);
+  white-space:nowrap;
+  background:none;
+}
+.btn:hover{transform:translateY(-2px);}
+.btn-primary{
+  background:linear-gradient(135deg, var(--lagoon), var(--lagoon-deep));
+  color:var(--ink);
+  box-shadow:0 8px 30px -8px rgba(217,201,141,.55);
+}
+.btn-primary:hover{box-shadow:0 14px 34px -8px rgba(217,201,141,.75);}
+.btn-ghost{
+  border-color:rgba(247,237,208,.35);
+  color:var(--shell);
+  background:rgba(247,237,208,.03);
+}
+.btn-ghost:hover{border-color:var(--gold-bright);background:rgba(247,237,208,.08);}
+.section--light .btn-ghost,.section--sage .btn-ghost{border-color:rgba(19,34,52,.28);color:var(--navy);background:rgba(19,34,52,.02);}
+.section--light .btn-ghost:hover,.section--sage .btn-ghost:hover{border-color:var(--gold-dim);background:rgba(19,34,52,.06);}
+.btn svg{width:14px;height:14px;transition:transform .3s var(--ease);}
+.btn:hover svg{transform:translateX(3px);}
+
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease), transform .9s var(--ease);}
+.reveal.is-visible{opacity:1;transform:translateY(0);}
+.reveal-delay-1{transition-delay:.1s;}
+.reveal-delay-2{transition-delay:.2s;}
+.reveal-delay-3{transition-delay:.3s;}
+
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important; scroll-behavior:auto !important;}
+  .reveal{opacity:1;transform:none;}
+}
+
+/* ============ PRELOADER ============ */
+#preloader{
+  position:fixed;inset:0;z-index:999;background:var(--paper);
+  display:flex;align-items:center;justify-content:center;
+  transition:opacity .6s var(--ease), visibility .6s var(--ease);
+}
+#preloader.done{opacity:0;visibility:hidden;pointer-events:none;}
+#preloader img{width:64px;height:auto;filter:drop-shadow(0 0 20px rgba(217,201,141,.5));animation:pulseFade 1.4s ease-in-out infinite;}
+@keyframes pulseFade{0%,100%{opacity:.5;transform:scale(.94);}50%{opacity:1;transform:scale(1.02);}}
+
+/* ============ CURSOR GLOW ============ */
+#cursor-glow{
+  position:fixed;top:0;left:0;width:520px;height:520px;border-radius:50%;
+  background:radial-gradient(circle, rgba(217,201,141,.14), rgba(217,201,141,0) 65%);
+  transform:translate(-50%,-50%);pointer-events:none;z-index:2;
+  will-change:transform;transition:opacity .4s ease;
+}
+@media (hover:none), (pointer:coarse){ #cursor-glow{display:none;} }
+
+/* ============ HEADER ============ */
+.announcement-bar{
+  position:fixed;top:0;left:0;right:0;height:30px;z-index:120;display:flex;align-items:center;justify-content:center;gap:1rem;
+  background:var(--navy);border-bottom:1px solid rgba(179,163,112,.2);color:rgba(247,237,208,.8);
+  font-family:var(--font-mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;
+}
+.announcement-bar i{width:3px;height:3px;border-radius:50%;background:var(--lagoon);}
+header{
+  position:fixed;top:30px;left:0;right:0;z-index:100;
+  padding:1.3rem 0;
+  transition:background .4s var(--ease), padding .4s var(--ease), backdrop-filter .4s var(--ease), border-color .4s var(--ease);
+  background:rgba(251,246,232,.9);backdrop-filter:blur(14px) saturate(130%);
+  border-bottom:1px solid rgba(179,163,112,.22);box-shadow:0 12px 34px -28px rgba(17,31,46,.22);
+}
+header.scrolled{
+  background:rgba(251,246,232,.97);
+  backdrop-filter:blur(16px) saturate(140%);
+  padding:.85rem 0;
+  border-color:rgba(179,163,112,.28);
+}
+.nav-row{display:flex;align-items:center;justify-content:space-between;gap:2rem;}
+.brand{display:flex;align-items:center;gap:.7rem;}
+.brand img{width:38px;height:auto;filter:drop-shadow(0 2px 6px rgba(17,31,46,.22));}
+.brand-text{display:flex;flex-direction:column;line-height:1.1;}
+.brand-text .kicker{font-family:var(--font-mono);font-size:.6rem;letter-spacing:.22em;color:var(--gold-dim);text-transform:uppercase;}
+.brand-text .name{font-family:var(--font-display);font-size:1.28rem;font-style:italic;font-weight:500;color:var(--navy);}
+
+.nav-links{display:flex;gap:2.2rem;align-items:center;}
+.nav-links a{
+  font-family:var(--font-mono);font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--navy);opacity:.78;position:relative;padding:.3rem 0;transition:opacity .3s;
+}
+.nav-links a::after{
+  content:'';position:absolute;left:0;bottom:-2px;width:0;height:1px;background:var(--gold-dim);
+  transition:width .35s var(--ease);
+}
+.nav-links a:hover{opacity:1;}
+.nav-links a:hover::after{width:100%;}
+.nav-links a.is-current{opacity:1;}
+.nav-links a.is-current::after{width:100%;background:var(--lagoon-deep);}
+
+.nav-cta{display:flex;align-items:center;gap:1.2rem;}
+.nav-cta .btn-primary{padding:.75rem 1.4rem;font-size:.7rem;}
+.cart-button{
+  min-width:46px;height:42px;padding:0 .75rem;border-radius:999px;border:1px solid rgba(17,31,46,.18);
+  background:rgba(17,31,46,.03);color:var(--navy);display:flex;align-items:center;justify-content:center;gap:.5rem;
+  font-family:var(--font-mono);font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;transition:background .3s,border-color .3s;
+}
+.cart-button:hover{background:rgba(17,31,46,.07);border-color:var(--gold-dim);}
+.cart-button svg{width:16px;height:16px;}
+.cart-count{display:grid;place-items:center;min-width:18px;height:18px;padding:0 4px;border-radius:999px;background:var(--lagoon);color:var(--ink);font-size:.56rem;}
+.burger{
+  display:none;width:42px;height:42px;border-radius:50%;border:1px solid rgba(17,31,46,.16);
+  background:none;align-items:center;justify-content:center;flex-direction:column;gap:5px;
+}
+.burger span{width:18px;height:1.5px;background:var(--navy);display:block;transition:transform .3s, opacity .3s;}
+
+#mobile-panel{
+  position:fixed;inset:0;background:var(--paper);z-index:150;
+  display:flex;flex-direction:column;justify-content:center;align-items:center;gap:2.2rem;
+  transform:translateY(-100%);transition:transform .5s var(--ease);
+}
+#mobile-panel.open{transform:translateY(0);}
+#mobile-panel a{font-family:var(--font-display);font-size:1.9rem;color:var(--navy);}
+#mobile-panel .close-btn{position:absolute;top:1.6rem;right:1.6rem;width:44px;height:44px;border-radius:50%;border:1px solid rgba(17,31,46,.2);background:none;color:var(--navy);display:flex;align-items:center;justify-content:center;}
+
+/* ============ SECTION BASE ============ */
+section{position:relative;scroll-margin-top:84px;}
+.section--dark{background:var(--navy);color:var(--shell);}
+.section--darker{background:var(--ink);color:var(--shell);}
+.section--light{background:var(--paper);color:var(--ink-text);}
+.section--sage{background:linear-gradient(180deg, var(--sage-cream) 0%, var(--sage-cream-soft) 100%);color:var(--ink-text);}
+.section-pad{padding:var(--section-y) 0;}
+.section-head{max-width:640px;margin-bottom:3.4rem;}
+.section-head h2{font-size:clamp(2rem,3.6vw,3rem);margin-top:1rem;}
+.section--dark .section-head h2, .section--darker .section-head h2{color:var(--shell);}
+.section--light .section-head h2,.section--sage .section-head h2{color:var(--navy);}
+.section-head p{margin-top:1.1rem;font-size:1.05rem;line-height:1.7;opacity:.85;max-width:520px;}
+
+/* ============ SHOP HEADER (breadcrumb) ============ */
+.shop-header{
+  position:relative;padding:10.5rem 0 3.5rem;
+  background:linear-gradient(175deg, var(--ink) 0%, var(--navy) 130%);
+  border-bottom:1px solid rgba(179,163,112,.16);overflow:hidden;
+}
+.shop-header::before{
+  content:'';position:absolute;inset:0;opacity:.3;pointer-events:none;
+  background-image:radial-gradient(rgba(247,237,208,.06) 1px, transparent 1px);
+  background-size:24px 24px;
+  mask-image:radial-gradient(ellipse 50% 100% at 0% 0%, black, transparent 78%);
+}
+.shop-header::after{
+  content:'';position:absolute;width:380px;height:380px;right:-140px;top:-190px;border-radius:50%;pointer-events:none;
+  background:radial-gradient(circle, rgba(217,201,141,.18), transparent 68%);
+}
+.breadcrumb{
+  position:relative;z-index:2;display:flex;align-items:center;gap:.75rem;margin-bottom:1.15rem;
+  font-family:var(--font-mono);font-size:.58rem;letter-spacing:.09em;text-transform:uppercase;color:rgba(247,237,208,.48);
+}
+.breadcrumb::before{content:'';width:24px;height:1px;background:linear-gradient(90deg,var(--lagoon),var(--gold));flex:none;}
+.breadcrumb ol{list-style:none;display:flex;align-items:center;gap:.65rem;min-width:0;}
+.breadcrumb li{display:flex;align-items:center;white-space:nowrap;}
+.breadcrumb li+li::before{content:'›';margin-right:.65rem;color:rgba(217,201,141,.5);font-size:.75rem;line-height:1;}
+.breadcrumb a{color:rgba(247,237,208,.64);transition:color .25s;}
+.breadcrumb a:hover{color:var(--shell);}
+.breadcrumb [aria-current="page"]{color:var(--gold-bright);}
+.shop-header-row{
+  position:relative;z-index:2;display:flex;align-items:flex-end;justify-content:space-between;gap:1.6rem;flex-wrap:wrap;
+}
+.shop-header-row h1{
+  position:relative;font-size:clamp(1.65rem,2.8vw,2.15rem);color:var(--shell);padding-bottom:.85rem;
+}
+.shop-header-row h1::after{
+  content:'';position:absolute;left:0;bottom:0;width:44px;height:2px;border-radius:2px;
+  background:linear-gradient(90deg,var(--lagoon),var(--gold-bright));
+}
+.shop-header-badge{
+  display:inline-flex;align-items:center;gap:.5rem;margin-bottom:.1rem;
+  font-family:var(--font-mono);font-size:.66rem;letter-spacing:.06em;text-transform:uppercase;color:var(--gold-bright);
+  border:1px solid rgba(179,163,112,.35);background:rgba(247,237,208,.04);padding:.55rem 1rem;border-radius:999px;white-space:nowrap;
+}
+.shop-header-badge i{width:5px;height:5px;border-radius:50%;background:var(--lagoon);display:inline-block;flex:none;}
+
+/* ============ SHOP TOOLBAR ============ */
+.shop-toolbar{position:relative;z-index:6;margin-top:-2.9rem;}
+.shop-toolbar-card{
+  position:relative;background:var(--paper);border:1px solid rgba(179,163,112,.3);border-radius:18px;overflow:hidden;
+  box-shadow:0 34px 64px -30px rgba(0,0,0,.55);
+  padding:1.6rem 1.8rem;color:var(--ink-text);
+}
+.shop-toolbar-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--lagoon),var(--gold-bright),var(--lagoon-deep));
+}
+.shop-toolbar-row{display:flex;align-items:center;justify-content:space-between;gap:1.6rem;flex-wrap:wrap;}
+.filter-group{display:flex;align-items:center;gap:1.2rem;min-width:0;flex:1 1 440px;}
+.filter-group-label{
+  display:flex;align-items:center;gap:.5rem;flex:none;
+  font-family:var(--font-mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-dim);
+  white-space:nowrap;padding-right:1.1rem;border-right:1px solid rgba(19,34,52,.12);
+}
+.filter-group-label svg{width:14px;height:14px;stroke:var(--gold-dim);}
+.filter-pills-scroll{flex:1 1 0;width:0;overflow-x:auto;min-width:0;scrollbar-width:none;-ms-overflow-style:none;}
+.filter-pills-scroll::-webkit-scrollbar{display:none;}
+.filter-pills{display:flex;gap:.6rem;padding:.25rem .1rem;}
+.filter-pill{
+  position:relative;display:inline-flex;align-items:center;gap:.6rem;padding:.55rem 1.1rem .55rem .65rem;border-radius:999px;
+  border:1px solid rgba(19,34,52,.14);background:#fffdf8;color:var(--navy);white-space:nowrap;
+  font-family:var(--font-mono);font-size:.65rem;letter-spacing:.04em;text-transform:uppercase;
+  transition:border-color .3s var(--ease),background .3s var(--ease),color .3s var(--ease),transform .3s var(--ease),box-shadow .3s var(--ease);
+}
+.filter-pill i{width:15px;height:15px;border-radius:50%;flex:none;display:inline-block;box-shadow:0 0 0 1px rgba(19,34,52,.18), inset 0 0 0 1.5px rgba(255,255,255,.6);}
+.filter-pill:hover{border-color:var(--gold-dim);transform:translateY(-2px);box-shadow:0 12px 20px -12px rgba(19,34,52,.4);}
+.filter-pill.active{background:var(--navy);border-color:var(--navy);color:var(--shell);box-shadow:0 14px 24px -12px rgba(17,31,46,.6);}
+.filter-pill.active i{box-shadow:0 0 0 2px var(--navy), 0 0 0 3.5px var(--gold-bright);}
+.toolbar-divider{width:1px;align-self:stretch;background:rgba(19,34,52,.12);flex:none;}
+.toolbar-right{display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap;flex:none;}
+.result-count{
+  display:inline-flex;align-items:center;gap:.45rem;padding:.48rem .9rem;border-radius:999px;white-space:nowrap;
+  background:rgba(217,201,141,.09);border:1px solid rgba(217,201,141,.16);color:var(--lagoon-deep);
+  font-family:var(--font-mono);font-size:.64rem;letter-spacing:.04em;text-transform:uppercase;
+}
+.result-count svg{width:11px;height:11px;stroke:currentColor;flex:none;}
+.reset-filter{
+  display:none;align-items:center;gap:.35rem;
+  font-family:var(--font-mono);font-size:.62rem;letter-spacing:.05em;text-transform:uppercase;color:var(--gold-dim);
+  white-space:nowrap;transition:color .3s,opacity .3s;
+}
+.reset-filter svg{width:11px;height:11px;stroke:currentColor;}
+.reset-filter.show{display:inline-flex;}
+.reset-filter:hover{color:var(--lagoon-deep);}
+.sort-wrap{position:relative;display:flex;align-items:center;gap:.6rem;flex:none;padding-left:1.2rem;border-left:1px solid rgba(19,34,52,.12);}
+.sort-wrap label{
+  display:flex;align-items:center;gap:.4rem;
+  font-family:var(--font-mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-dim);white-space:nowrap;
+}
+.sort-wrap label svg{width:12px;height:12px;stroke:var(--gold-dim);}
+.sort-select{
+  appearance:none;-webkit-appearance:none;background:#fffdf8;border:1px solid rgba(19,34,52,.16);
+  border-radius:999px;padding:.5rem 2.2rem .5rem 1.1rem;color:var(--navy);font-family:var(--font-mono);font-size:.65rem;
+  letter-spacing:.04em;text-transform:uppercase;cursor:pointer;transition:border-color .3s,box-shadow .3s;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2324406b' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right .8rem center;background-size:13px;
+}
+.sort-select:hover{border-color:var(--gold-dim);box-shadow:0 8px 16px -12px rgba(19,34,52,.4);}
+.sort-select:focus-visible{outline:2px solid var(--lagoon-deep);outline-offset:2px;}
+
+/* ============ PRODUCT GRID (shared with homepage) ============ */
+#products{position:relative;overflow:hidden;isolation:isolate;}
+#products::before{
+  content:'';position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(circle at 8% 18%,rgba(217,201,141,.12),transparent 30%),
+    radial-gradient(circle at 92% 74%,rgba(179,163,112,.09),transparent 28%),
+    linear-gradient(180deg,rgba(255,255,255,.018),transparent 22%);
+}
+.particle-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;opacity:.85;}
+.product-grid{position:relative;z-index:2;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.3rem;}
+.product-card{
+  position:relative;background:var(--paper);color:var(--navy);
+  border:1px solid rgba(179,163,112,.28);border-radius:3px;overflow:hidden;
+  box-shadow:0 24px 46px -28px rgba(17,31,46,.28);
+  transition:transform .35s var(--ease), box-shadow .4s var(--ease), border-color .35s var(--ease), opacity .3s var(--ease);
+  transform-style:preserve-3d;
+}
+.product-card:hover{border-color:rgba(217,201,141,.8);box-shadow:0 38px 70px -30px rgba(138,125,77,.4);}
+.product-card-photo{
+  position:relative;aspect-ratio:4/3;overflow:hidden;
+  background:linear-gradient(150deg,#fffdf7 0%,var(--paper-soft) 100%);
+  display:flex;align-items:center;justify-content:center;padding:1rem;
+}
+.product-card-photo::after{content:'';position:absolute;inset:auto 1rem 0;height:1px;background:linear-gradient(90deg,transparent,rgba(17,31,46,.15),transparent);}
+.product-card-photo img{width:100%;height:100%;object-fit:contain;display:block;transition:transform .65s var(--ease);}
+.product-card:hover .product-card-photo img{transform:scale(1.055);}
+.product-card-badge{
+  position:absolute;top:10px;left:10px;z-index:2;
+  font-family:var(--font-mono);font-size:.5rem;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--shell);background:rgba(17,31,46,.94);border:1px solid rgba(179,163,112,.55);padding:.34rem .55rem;border-radius:999px;
+}
+.product-card-info{padding:1.2rem 1.25rem 1.35rem;}
+.product-card-name-row{display:flex;align-items:center;gap:.6rem;margin-bottom:.35rem;}
+.product-card-swatch{width:11px;height:11px;border-radius:50%;border:1px solid rgba(17,31,46,.2);box-shadow:0 0 0 3px rgba(17,31,46,.045);flex:none;}
+.product-card-name{font-family:var(--font-display);font-style:italic;font-size:1.05rem;color:var(--navy);}
+.product-card-sub{font-family:var(--font-mono);font-size:.56rem;letter-spacing:.06em;text-transform:uppercase;color:rgba(17,31,46,.55);margin-bottom:.8rem;line-height:1.5;}
+.product-card-meta{display:flex;align-items:center;gap:.4rem;padding-top:.7rem;border-top:1px solid rgba(17,31,46,.1);font-family:var(--font-mono);font-size:.5rem;letter-spacing:.025em;text-transform:uppercase;color:rgba(17,31,46,.5);flex-wrap:wrap;}
+.product-card-meta i{width:3px;height:3px;border-radius:50%;background:var(--lagoon);}
+.product-card-sizes{display:flex;align-items:center;gap:.32rem;margin-top:.75rem;}
+.product-card-sizes>span{margin-right:auto;font-family:var(--font-mono);font-size:.5rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(17,31,46,.52);}
+.product-card-sizes button{width:27px;height:26px;border:1px solid rgba(17,31,46,.16);border-radius:2px;background:transparent;color:var(--navy);font-family:var(--font-mono);font-size:.52rem;transition:background .2s,color .2s,border-color .2s;}
+.product-card-sizes button:hover,.product-card-sizes button.active{background:var(--navy);border-color:var(--navy);color:var(--shell);}
+.product-card-sizes button:disabled{opacity:.35;cursor:not-allowed;}
+.product-card-row{display:flex;align-items:center;justify-content:space-between;gap:.5rem;margin-top:.9rem;}
+.product-card-price{font-family:var(--font-display);font-size:1.08rem;color:var(--navy);font-weight:600;}
+.product-card-add{
+  display:inline-flex;align-items:center;gap:.5rem;font-family:var(--font-mono);font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;
+  padding:.55rem .75rem;border-radius:999px;background:var(--navy);color:var(--shell);border:1px solid var(--navy);cursor:pointer;
+  transition:background .3s var(--ease),color .3s var(--ease),transform .3s var(--ease),border-color .3s var(--ease);
+}
+.product-card-add svg{width:12px;height:12px;transition:transform .3s var(--ease);}
+.product-card-add:hover{background:var(--lagoon-deep);border-color:var(--lagoon-deep);color:var(--shell);transform:translateY(-1px);}
+.product-card-add:hover svg{transform:translateX(2px);}
+
+/* coming soon variant */
+.product-card.is-soon{border-style:dashed;}
+.product-card.is-soon .product-card-photo img{filter:grayscale(.7) brightness(.75);transition:filter .5s var(--ease), transform .65s var(--ease);}
+.product-card.is-soon:hover .product-card-photo img{filter:grayscale(.35) brightness(.9);}
+.product-card.is-soon .product-card-badge{background:rgba(179,163,112,.92);color:var(--ink);}
+.product-card.is-soon .product-card-add{background:transparent;border-color:var(--navy);color:var(--navy);}
+.product-card.is-soon .product-card-add:hover{background:var(--navy);color:var(--shell);}
+
+.commerce-perks{position:relative;z-index:2;display:grid;grid-template-columns:repeat(3,1fr);margin-top:3.2rem;border:1px solid rgba(179,163,112,.28);background:rgba(17,31,46,.02);}
+.commerce-perk{display:flex;align-items:center;justify-content:center;gap:.85rem;padding:1.1rem 1rem;border-right:1px solid rgba(179,163,112,.2);}
+.commerce-perk:last-child{border-right:0;}
+.commerce-perk svg{width:20px;height:20px;stroke:var(--lagoon-deep);flex:none;}
+.commerce-perk strong{display:block;font-family:var(--font-mono);font-size:.62rem;letter-spacing:.07em;text-transform:uppercase;color:var(--navy);}
+.commerce-perk span{display:block;margin-top:.15rem;font-size:.7rem;color:rgba(17,31,46,.5);}
+
+/* ============ FIT & SIZING ============ */
+.fit-layout{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(2.5rem,6vw,5.5rem);align-items:start;}
+.fit-copy p{line-height:1.85;opacity:.82;margin-bottom:1.2rem;max-width:460px;}
+.fit-panel{background:rgba(251,246,232,.55);border:1px solid rgba(17,31,46,.12);padding:1.1rem 1.2rem;margin-top:1.6rem;}
+.fit-panel-head{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:.9rem;}
+.fit-panel-head strong{font-family:var(--font-mono);font-size:.64rem;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);}
+.fit-panel-head a{font-family:var(--font-mono);font-size:.56rem;letter-spacing:.06em;text-transform:uppercase;color:var(--lagoon-deep);border-bottom:1px solid currentColor;}
+.fit-sizes{display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem;}
+.fit-sizes span{padding:.6rem;text-align:center;border:1px solid rgba(17,31,46,.14);font-family:var(--font-mono);font-size:.62rem;color:var(--navy);background:var(--paper);transition:border-color .25s,background .25s;}
+.fit-sizes span:hover{border-color:var(--lagoon-deep);background:#fffdf7;}
+.size-chart-wrap{overflow-x:auto;border:1px solid rgba(17,31,46,.14);background:rgba(251,246,232,.55);}
+table.size-chart{width:100%;border-collapse:collapse;min-width:460px;}
+table.size-chart caption{
+  text-align:left;padding:1rem 1.2rem 0;font-family:var(--font-mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-dim);
+}
+table.size-chart th,table.size-chart td{padding:.85rem 1.2rem;text-align:left;font-size:.85rem;}
+table.size-chart thead th{
+  font-family:var(--font-mono);font-size:.62rem;letter-spacing:.07em;text-transform:uppercase;color:var(--navy);
+  border-bottom:1px solid rgba(17,31,46,.18);
+}
+table.size-chart tbody td{border-bottom:1px solid rgba(17,31,46,.1);color:var(--ink-text);}
+table.size-chart tbody tr:last-child td{border-bottom:0;}
+table.size-chart tbody th{
+  font-family:var(--font-display);font-style:italic;font-size:1rem;color:var(--navy);border-bottom:1px solid rgba(17,31,46,.1);font-weight:600;
+}
+.size-chart-note{margin-top:1rem;font-size:.78rem;opacity:.6;line-height:1.6;max-width:460px;}
+
+/* ============ SHOP FAQ ============ */
+.shop-faq-grid{display:grid;grid-template-columns:minmax(240px,.72fr) minmax(0,1.28fr);gap:clamp(3rem,8vw,8rem);align-items:start;}
+.shop-faq-grid .section-head{margin-bottom:0;position:sticky;top:150px;}
+.shop-faq-list{border-top:1px solid rgba(17,31,46,.16);}
+.shop-faq-list details{border-bottom:1px solid rgba(17,31,46,.16);}
+.shop-faq-list summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.35rem 0;color:var(--navy);font-family:var(--font-display);font-size:1.08rem;cursor:pointer;}
+.shop-faq-list summary::-webkit-details-marker{display:none;}
+.shop-faq-list summary::after{content:'+';display:grid;place-items:center;width:28px;height:28px;border:1px solid rgba(17,31,46,.18);border-radius:50%;font-family:var(--font-mono);font-size:.8rem;color:var(--lagoon-deep);transition:transform .3s var(--ease);flex:none;}
+.shop-faq-list details[open] summary::after{transform:rotate(45deg);}
+.shop-faq-list details p{padding:0 3rem 1.35rem 0;max-width:620px;font-size:.9rem;line-height:1.75;opacity:.72;}
+
+/* ============ EXPLORE MORE ============ */
+.explore-links{display:flex;flex-wrap:wrap;justify-content:center;gap:1.4rem 2.4rem;position:relative;z-index:2;}
+.explore-links a{font-family:var(--font-mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(247,237,208,.65);border-bottom:1px solid rgba(247,237,208,.3);padding-bottom:3px;transition:opacity .3s;}
+.explore-links a:hover{opacity:.7;}
+
+/* ============ CLUBHOUSE ============ */
+.clubhouse{
+  position:relative;text-align:center;padding:var(--section-y) 0;
+  background:radial-gradient(ellipse 60% 60% at 50% 0%, rgba(217,201,141,.14), transparent 65%), var(--ink);
+  overflow:hidden;
+}
+.clubhouse-watermark{
+  position:absolute;top:50%;left:50%;width:900px;transform:translate(-50%,-50%);opacity:.05;pointer-events:none;
+}
+.clubhouse .eyebrow{justify-content:center;margin-bottom:1.4rem;}
+.clubhouse h2{font-size:clamp(2.1rem,4vw,3.2rem);max-width:700px;margin:0 auto 1.1rem;color:var(--shell);}
+.clubhouse p.lead{max-width:520px;margin:0 auto 2.6rem;opacity:.78;font-size:1.02rem;}
+.club-form{display:flex;justify-content:center;gap:.8rem;flex-wrap:wrap;max-width:520px;margin:0 auto;}
+.club-form input{
+  flex:1;min-width:220px;background:rgba(247,237,208,.06);border:1px solid rgba(247,237,208,.22);
+  padding:1rem 1.3rem;border-radius:999px;color:var(--shell);font-family:var(--font-body);font-size:.92rem;
+}
+.club-form input::placeholder{color:rgba(247,237,208,.45);}
+.club-form input:focus{outline:none;border-color:var(--gold-bright);}
+.club-form button{border:none;}
+.fine-print{margin-top:1.3rem;font-family:var(--font-mono);font-size:.7rem;letter-spacing:.06em;color:rgba(247,237,208,.4);}
+.club-success{margin-top:1.3rem;font-family:var(--font-mono);font-size:.78rem;letter-spacing:.05em;color:var(--lagoon);display:none;}
+.club-success.show{display:block;}
+
+/* ============ TOAST ============ */
+#toast{
+  position:fixed;bottom:28px;left:50%;z-index:400;
+  display:flex;align-items:center;gap:.7rem;max-width:min(90vw,400px);
+  background:var(--ink);color:var(--shell);border:1px solid rgba(179,163,112,.4);
+  padding:1rem 1.5rem;border-radius:14px;box-shadow:0 20px 40px -15px rgba(0,0,0,.55);
+  font-family:var(--font-body);font-size:.85rem;line-height:1.4;
+  opacity:0;pointer-events:none;transform:translate(-50%,16px);
+  transition:opacity .4s var(--ease), transform .4s var(--ease);
+}
+#toast.show{opacity:1;transform:translate(-50%,0);}
+#toast .toast-dot{width:8px;height:8px;border-radius:50%;background:var(--lagoon);flex:none;}
+#toast strong{color:var(--gold-bright);font-weight:600;}
+
+/* ============ FOOTER ============ */
+footer{background:var(--black);padding:5rem 0 2rem;color:rgba(247,237,208,.7);}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3.5rem;}
+.footer-brand .brand{margin-bottom:1rem;}
+.footer-brand p{max-width:280px;font-size:.9rem;line-height:1.7;opacity:.7;margin-bottom:1.4rem;}
+.socials{display:flex;gap:.8rem;}
+.socials a{width:38px;height:38px;border-radius:50%;border:1px solid rgba(247,237,208,.2);display:flex;align-items:center;justify-content:center;transition:border-color .3s,background .3s;}
+.socials a:hover{border-color:var(--gold-bright);background:rgba(247,237,208,.06);}
+.socials svg{width:16px;height:16px;stroke:var(--shell);}
+.footer-col h5{font-family:var(--font-mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-bright);margin-bottom:1.3rem;}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:.8rem;}
+.footer-col a{font-size:.9rem;opacity:.75;transition:opacity .3s,padding-left .3s;}
+.footer-col a:hover{opacity:1;padding-left:4px;}
+.footer-bottom{
+  border-top:1px solid rgba(247,237,208,.12);padding-top:1.8rem;display:flex;justify-content:space-between;
+  align-items:center;flex-wrap:wrap;gap:1rem;font-family:var(--font-mono);font-size:.7rem;letter-spacing:.04em;opacity:.5;
+}
+.chip-strip{display:flex;gap:.4rem;align-items:center;}
+.chip-strip i{width:12px;height:12px;display:inline-block;border-radius:2px;border:1px solid rgba(247,237,208,.22);}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width:980px){
+  .nav-links{display:none;}
+  .nav-cta .btn-primary{display:none;}
+  .burger{display:flex;}
+  .product-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+  .fit-layout{grid-template-columns:1fr;}
+  .shop-faq-grid{grid-template-columns:1fr;}
+  .shop-faq-grid .section-head{position:static;}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:2.4rem;}
+  .shop-toolbar-row{flex-direction:column;align-items:stretch;}
+  .filter-group{flex:1 1 auto;}
+  .filter-group-label{border-right:0;padding-right:0;}
+  .toolbar-divider{display:none;}
+  .toolbar-right{width:100%;justify-content:space-between;}
+  .sort-wrap{border-left:0;padding-left:0;}
+}
+@media (max-width:640px){
+  .announcement-bar{font-size:.48rem;gap:.55rem;letter-spacing:.06em;}
+  .announcement-bar .announcement-extra{display:none;}
+  .cart-button{padding:0 .55rem;min-width:42px;}
+  .cart-label{display:none;}
+  .product-grid{grid-template-columns:1fr;gap:1.15rem;}
+  .commerce-perks{grid-template-columns:1fr;}
+  .commerce-perk{justify-content:flex-start;border-right:0;border-bottom:1px solid rgba(179,163,112,.18);}
+  .commerce-perk:last-child{border-bottom:0;}
+  .fit-sizes{grid-template-columns:repeat(2,1fr);}
+  .footer-grid{grid-template-columns:1fr;gap:2.2rem;}
+  .footer-bottom{flex-direction:column;align-items:flex-start;}
+  .shop-toolbar-card{padding:1.3rem 1.2rem;border-radius:14px;}
+  .filter-pills{gap:.4rem;}
+  .sort-wrap{width:100%;justify-content:space-between;}
+  .sort-select{flex:1;}
+}
+</style>
+</head>
+<body>
+
+<noscript><style>.reveal{opacity:1 !important;transform:none !important;} #preloader{display:none !important;}</style></noscript>
+
+<div id="preloader"><img src="assets/turtle-logo.png" alt="" /></div>
+<div id="cursor-glow"></div>
+
+<div class="announcement-bar" role="status">
+  <span>Complimentary U.S. shipping</span><i></i><span class="announcement-extra">Easy exchanges within 30 days</span>
+</div>
+
+<!-- ============ HEADER ============ -->
+<header id="site-header">
+  <div class="container nav-row">
+    <a href="index.html" class="brand">
+      <img src="assets/turtle-logo.png" alt="Turtles by Finley Jade emblem" />
+      <span class="brand-text">
+        <span class="kicker">Turtles by</span>
+        <span class="name">Finley Jade</span>
+      </span>
+    </a>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="#products" class="is-current">Shop Polos</a>
+      <a href="index.html#collections">Colorways</a>
+      <a href="#fit">Fit &amp; Sizing</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="#products" class="btn btn-primary">Shop the Polo</a>
+      <button class="cart-button" id="cart-button" type="button" aria-label="Open shopping bag">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 8h14l-1 12H6L5 8z"/><path d="M9 9V6a3 3 0 016 0v3"/></svg>
+        <span class="cart-label">Bag</span><span class="cart-count" id="cart-count">0</span>
+      </button>
+      <button class="burger" id="burger-btn" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div id="mobile-panel">
+  <button class="close-btn" id="close-panel-btn" aria-label="Close menu">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4l16 16M20 4L4 20"/></svg>
+  </button>
+  <a href="index.html">Home</a>
+  <a href="#products">Shop Polos</a>
+  <a href="index.html#collections">Colorways</a>
+  <a href="#fit">Fit &amp; Sizing</a>
+  <a href="#faq">FAQ</a>
+</div>
+
+<!-- ============ SHOP HEADER (breadcrumb) ============ -->
+<section class="shop-header" id="top">
+  <div class="container shop-header-row">
+    <div>
+      <nav class="breadcrumb reveal" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#collection">Shop Polos</a></li>
+          <li aria-current="page">Long Run Polo</li>
+        </ol>
+      </nav>
+      <h1 class="reveal reveal-delay-1">The Long Run Polo</h1>
+    </div>
+    <span class="shop-header-badge reveal reveal-delay-2"><i></i>5 Colorways &middot; $148</span>
+  </div>
+</section>
+
+<!-- ============ SHOP TOOLBAR ============ -->
+<div class="shop-toolbar">
+  <div class="container">
+    <div class="shop-toolbar-card reveal">
+      <div class="shop-toolbar-row">
+        <div class="filter-group">
+          <span class="filter-group-label">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 6h16M7 12h10M10 18h4"/></svg>
+            Refine
+          </span>
+          <div class="filter-pills-scroll">
+            <div class="filter-pills" id="filter-pills" role="group" aria-label="Filter by colorway">
+              <button type="button" class="filter-pill active" data-filter="all"><i style="background:conic-gradient(#385B73,#E6E0D4,#5DBDB0,#99B2D8,#212634)"></i>All colorways</button>
+              <button type="button" class="filter-pill" data-filter="deep-blue"><i style="background:#385B73"></i>Deep Blue</button>
+              <button type="button" class="filter-pill" data-filter="sand"><i style="background:#E6E0D4"></i>Sand</button>
+              <button type="button" class="filter-pill" data-filter="aqua-mint"><i style="background:#5DBDB0"></i>Aqua Mint</button>
+              <button type="button" class="filter-pill" data-filter="sea-blue"><i style="background:#99B2D8"></i>Sea Blue</button>
+              <button type="button" class="filter-pill" data-filter="deep-navy"><i style="background:#212634"></i>Deep Navy</button>
+            </div>
+          </div>
+        </div>
+        <div class="toolbar-divider"></div>
+        <div class="toolbar-right">
+          <button type="button" class="reset-filter" id="reset-filter">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4l16 16M20 4L4 20"/></svg>
+            Clear filter
+          </button>
+          <span class="result-count">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a4 4 0 018 0v2"/></svg>
+            <span id="result-count-text">5 colorways shown</span>
+          </span>
+          <div class="sort-wrap">
+            <label for="sort-select">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 5v14M4 8l3-3 3 3M17 19V5M14 16l3 3 3-3"/></svg>
+              Sort
+            </label>
+            <select class="sort-select" id="sort-select">
+              <option value="featured">Featured</option>
+              <option value="az">Name, A–Z</option>
+              <option value="za">Name, Z–A</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ PRODUCT GRID ============ -->
+<section class="section--sage section-pad" id="products">
+  <canvas class="particle-canvas" id="products-particles"></canvas>
+  <div class="container">
+    <div class="product-grid" id="product-grid">
+      <div class="product-card reveal" data-filter="deep-blue" data-name="Deep Blue">
+        <div class="product-card-photo">
+          <span class="product-card-badge">Limited — 200</span>
+          <img src="assets/products/deep-blue.jpg" alt="Deep Blue Long Run Polo with embroidered sea turtle logo on left chest" loading="lazy" />
+        </div>
+        <div class="product-card-info">
+          <div class="product-card-name-row"><span class="product-card-swatch" style="background:#385B73"></span><span class="product-card-name">The Long Run Polo</span></div>
+          <p class="product-card-sub">Deep Blue &middot; Returning Tide</p>
+          <div class="product-card-sizes" role="group" aria-label="Select Deep Blue size"><span>Size</span><button type="button">S</button><button type="button">M</button><button type="button">L</button><button type="button">XL</button></div>
+          <div class="product-card-meta"><span>Embroidered crest</span><i></i><span>Classic fit</span></div>
+          <div class="product-card-row">
+            <span class="product-card-price">$148</span>
+            <button class="product-card-add" data-name="The Long Run Polo" data-colorway="Deep Blue" data-price="$148">Add to bag <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal reveal-delay-1" data-filter="sand" data-name="Sand">
+        <div class="product-card-photo">
+          <span class="product-card-badge">Limited — 200</span>
+          <img src="assets/products/sand.jpg" alt="Sand Long Run Polo with embroidered sea turtle logo on left chest" loading="lazy" />
+        </div>
+        <div class="product-card-info">
+          <div class="product-card-name-row"><span class="product-card-swatch" style="background:#E6E0D4"></span><span class="product-card-name">The Long Run Polo</span></div>
+          <p class="product-card-sub">Sand &middot; Long Weekend</p>
+          <div class="product-card-sizes" role="group" aria-label="Select Sand size"><span>Size</span><button type="button">S</button><button type="button">M</button><button type="button">L</button><button type="button">XL</button></div>
+          <div class="product-card-meta"><span>Embroidered crest</span><i></i><span>Classic fit</span></div>
+          <div class="product-card-row">
+            <span class="product-card-price">$148</span>
+            <button class="product-card-add" data-name="The Long Run Polo" data-colorway="Sand" data-price="$148">Add to bag <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal reveal-delay-2" data-filter="aqua-mint" data-name="Aqua Mint">
+        <div class="product-card-photo">
+          <span class="product-card-badge">Limited — 200</span>
+          <img src="assets/products/aqua-mint.jpg" alt="Aqua Mint Long Run Polo with embroidered sea turtle logo on left chest" loading="lazy" />
+        </div>
+        <div class="product-card-info">
+          <div class="product-card-name-row"><span class="product-card-swatch" style="background:#5DBDB0"></span><span class="product-card-name">The Long Run Polo</span></div>
+          <p class="product-card-sub">Aqua Mint &middot; Home Waters</p>
+          <div class="product-card-sizes" role="group" aria-label="Select Aqua Mint size"><span>Size</span><button type="button">S</button><button type="button">M</button><button type="button">L</button><button type="button">XL</button></div>
+          <div class="product-card-meta"><span>Embroidered crest</span><i></i><span>Classic fit</span></div>
+          <div class="product-card-row">
+            <span class="product-card-price">$148</span>
+            <button class="product-card-add" data-name="The Long Run Polo" data-colorway="Aqua Mint" data-price="$148">Add to bag <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal" data-filter="sea-blue" data-name="Sea Blue">
+        <div class="product-card-photo">
+          <span class="product-card-badge">Limited — 200</span>
+          <img src="assets/products/sea-blue.jpg" alt="Sea Blue Long Run Polo with embroidered sea turtle logo on left chest" loading="lazy" />
+        </div>
+        <div class="product-card-info">
+          <div class="product-card-name-row"><span class="product-card-swatch" style="background:#99B2D8"></span><span class="product-card-name">The Long Run Polo</span></div>
+          <p class="product-card-sub">Sea Blue &middot; First Light</p>
+          <div class="product-card-sizes" role="group" aria-label="Select Sea Blue size"><span>Size</span><button type="button">S</button><button type="button">M</button><button type="button">L</button><button type="button">XL</button></div>
+          <div class="product-card-meta"><span>Embroidered crest</span><i></i><span>Classic fit</span></div>
+          <div class="product-card-row">
+            <span class="product-card-price">$148</span>
+            <button class="product-card-add" data-name="The Long Run Polo" data-colorway="Sea Blue" data-price="$148">Add to bag <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card reveal reveal-delay-1" data-filter="deep-navy" data-name="Deep Navy">
+        <div class="product-card-photo">
+          <span class="product-card-badge">Limited — 200</span>
+          <img src="assets/products/deep-navy.jpg" alt="Deep Navy Long Run Polo with embroidered sea turtle logo on left chest" loading="lazy" />
+        </div>
+        <div class="product-card-info">
+          <div class="product-card-name-row"><span class="product-card-swatch" style="background:#212634"></span><span class="product-card-name">The Long Run Polo</span></div>
+          <p class="product-card-sub">Deep Navy &middot; Deep Current</p>
+          <div class="product-card-sizes" role="group" aria-label="Select Deep Navy size"><span>Size</span><button type="button">S</button><button type="button">M</button><button type="button">L</button><button type="button">XL</button></div>
+          <div class="product-card-meta"><span>Embroidered crest</span><i></i><span>Classic fit</span></div>
+          <div class="product-card-row">
+            <span class="product-card-price">$148</span>
+            <button class="product-card-add" data-name="The Long Run Polo" data-colorway="Deep Navy" data-price="$148">Add to bag <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="commerce-perks" aria-label="Shopping benefits">
+      <div class="commerce-perk">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M3 7h12v10H3zM15 10h3l3 3v4h-6z"/><circle cx="7" cy="19" r="1.5"/><circle cx="18" cy="19" r="1.5"/></svg>
+        <div><strong>Complimentary shipping</strong><span>On every polo order</span></div>
+      </div>
+      <div class="commerce-perk">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M4 8h12a4 4 0 010 8H8"/><path d="M8 4L4 8l4 4"/></svg>
+        <div><strong>Easy exchanges</strong><span>Within 30 days</span></div>
+      </div>
+      <div class="commerce-perk">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 12l3 3 5-6"/></svg>
+        <div><strong>Secure checkout</strong><span>Protected payment</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FIT & SIZING ============ -->
+<section class="section--sage section-pad" id="fit">
+  <div class="container fit-layout">
+    <div class="fit-copy reveal">
+      <div class="section-head">
+        <span class="eyebrow"><span class="dot"></span>Fit &amp; Sizing</span>
+        <h2>Find your size, once.</h2>
+      </div>
+      <p>The Long Run Polo is cut in a classic tailored fit — comfortable through the chest and shoulders, with a clean, relaxed line through the waist. True to size for most builds; size up if you prefer a looser resort drape.</p>
+      <p>Every measurement below is taken with the garment laid flat, then doubled. If you fall between two sizes, we recommend sizing up for a breezier fit on warm coastal days.</p>
+      <div class="fit-panel">
+        <div class="fit-panel-head"><strong>Available sizes</strong><a href="#faq">Still unsure?</a></div>
+        <div class="fit-sizes"><span>S</span><span>M</span><span>L</span><span>XL</span></div>
+      </div>
+    </div>
+    <div class="fit-chart reveal reveal-delay-1">
+      <div class="size-chart-wrap">
+        <table class="size-chart">
+          <caption>Body measurements, in inches</caption>
+          <thead>
+            <tr><th>Size</th><th>Chest</th><th>Length</th><th>Sleeve</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">S</th><td>40</td><td>27.5</td><td>8.25</td></tr>
+            <tr><th scope="row">M</th><td>42</td><td>28.5</td><td>8.5</td></tr>
+            <tr><th scope="row">L</th><td>44</td><td>29.5</td><td>8.75</td></tr>
+            <tr><th scope="row">XL</th><td>46</td><td>30.5</td><td>9</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="size-chart-note">Measurements are approximate and may vary slightly by colorway run. For a true-to-size fit, compare the chest measurement above to a well-fitting polo you already own.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SHOP FAQ ============ -->
+<section class="section--light section-pad" id="faq">
+  <div class="container shop-faq-grid">
+    <div class="section-head reveal">
+      <span class="eyebrow"><span class="dot"></span>Before you order</span>
+      <h2>Everything you need to know.</h2>
+      <p>Fit, delivery, exchanges, and care — answered simply.</p>
+      <a href="#products" class="btn btn-ghost" style="margin-top:1.5rem;border-color:rgba(19,34,52,.28);">Back to Shop <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+    <div class="shop-faq-list reveal reveal-delay-1">
+      <details open>
+        <summary>How does the Long Run Polo fit?</summary>
+        <p>It has a classic tailored fit: comfortable through the chest and shoulders with a clean, relaxed line through the waist. Choose your usual polo size; size up if you prefer a looser resort fit. See the size chart above for exact measurements.</p>
+      </details>
+      <details>
+        <summary>When will my order arrive?</summary>
+        <p>Orders are prepared within one to two business days. Standard delivery typically arrives within three to five business days after dispatch, with tracking provided by email.</p>
+      </details>
+      <details>
+        <summary>Do you ship outside the U.S.?</summary>
+        <p>At the moment we ship within the United States only, with complimentary shipping on every order. International delivery is on our roadmap — join the Clubhouse below to hear first when it opens.</p>
+      </details>
+      <details>
+        <summary>Can I exchange the size?</summary>
+        <p>Yes. Unworn polos with their original tags may be exchanged within 30 days. The limited edition number remains tied to the original garment and cannot be reserved during an exchange.</p>
+      </details>
+      <details>
+        <summary>How should I care for the piqué?</summary>
+        <p>Machine wash cold with similar colors, reshape the collar while damp, and lay flat or tumble dry low. Avoid bleach and high heat to protect the fabric and embroidered crest.</p>
+      </details>
+      <details>
+        <summary>What happens when a colorway sells out?</summary>
+        <p>Each colorway is a closed run of 200 — once it sells through, it will not be restocked. New colorways are announced through the Clubhouse before they appear on the shop.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EXPLORE MORE ============ -->
+<section class="section--darker" style="padding:3.4rem 0;">
+  <div class="container">
+    <div class="explore-links reveal">
+      <a href="index.html#heritage">Read Our Story</a>
+      <a href="index.html#collections">The Collections</a>
+      <a href="index.html#gallery">Gallery</a>
+      <a href="index.html#reviews">Reviews</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CLUBHOUSE ============ -->
+<section class="clubhouse" id="clubhouse">
+  <canvas class="particle-canvas" id="clubhouse-particles"></canvas>
+  <img class="clubhouse-watermark" src="assets/turtle-logo.png" alt="" />
+  <div class="container" style="position:relative;z-index:2;">
+    <span class="eyebrow"><span class="dot"></span>The Clubhouse</span>
+    <h2>Join the Clubhouse.</h2>
+    <p class="lead">Early access to new drops, members-only colorways, and the occasional invitation somewhere worth dressing up for.</p>
+    <form class="club-form" id="club-form">
+      <input type="email" placeholder="you@email.com" required aria-label="Email address" />
+      <button type="submit" class="btn btn-primary">Request Invitation</button>
+    </form>
+    <div class="club-success" id="club-success">You're on the list — welcome aboard.</div>
+    <p class="fine-print">No spam — just tide charts and new arrivals.</p>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="brand">
+          <img src="assets/turtle-logo.png" alt="Turtles by Finley Jade emblem" style="width:34px;" />
+          <span class="brand-text">
+            <span class="kicker">Turtles by</span>
+            <span class="name">Finley Jade</span>
+          </span>
+        </a>
+        <p>A premium coastal lifestyle house — high-end men's resort wear and polos inspired by family, the ocean, and timeless vacation elegance.</p>
+        <p style="margin-top:-.6rem;"><a href="mailto:hello@turtlesbyfinleyjade.com" style="font-size:.85rem;opacity:.8;border-bottom:1px solid rgba(247,237,208,.25);padding-bottom:2px;">hello@turtlesbyfinleyjade.com</a></p>
+        <div class="socials">
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 4h-2a4 4 0 00-4 4v3H6v3h3v6h3v-6h3l1-3h-4V8a1 1 0 011-1h3z"/></svg></a>
+          <a href="#" aria-label="Pinterest"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 20l3-11m-3 6c-2 0-4-2-4-5a7 7 0 1114 0c0 4-2 7-5 7-1.5 0-2.5-1-2-3"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Shop</h5>
+        <ul>
+          <li><a href="#products">The Long Run Polo</a></li>
+          <li><a href="#products">Deep Blue</a></li>
+          <li><a href="#products">Sand</a></li>
+          <li><a href="#products">Aqua Mint</a></li>
+          <li><a href="#products">Sea Blue</a></li>
+          <li><a href="#products">Deep Navy</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Explore</h5>
+        <ul>
+          <li><a href="index.html#heritage">Heritage</a></li>
+          <li><a href="index.html#lifestyle">Lifestyle</a></li>
+          <li><a href="index.html#collections">The Collections</a></li>
+          <li><a href="index.html#gallery">Gallery</a></li>
+          <li><a href="index.html#reviews">Reviews</a></li>
+          <li><a href="#clubhouse">Clubhouse</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Support</h5>
+        <ul>
+          <li><a href="#fit">Size Guide</a></li>
+          <li><a href="#faq">Care Guide</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="mailto:hello@turtlesbyfinleyjade.com">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Turtles by Finley Jade. All rights reserved.</span>
+      <div class="chip-strip">
+        <i style="background:#050505"></i><i style="background:#111f2e"></i><i style="background:#24406b"></i><i style="background:#8a7d4d"></i><i style="background:#b3a370"></i><i style="background:#f7edd0"></i>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div id="toast"><span class="toast-dot"></span><span id="toast-text"></span></div>
+
+<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* Preloader */
+  var pre = document.getElementById('preloader');
+  window.addEventListener('load', function () {
+    setTimeout(function () { pre.classList.add('done'); }, 350);
+  });
+  setTimeout(function () { pre.classList.add('done'); }, 1800);
+
+  /* Header scroll state */
+  var header = document.getElementById('site-header');
+  function onScroll () {
+    if (window.scrollY > 40) header.classList.add('scrolled');
+    else header.classList.remove('scrolled');
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  /* Mobile nav */
+  var burger = document.getElementById('burger-btn');
+  var panel = document.getElementById('mobile-panel');
+  var closeBtn = document.getElementById('close-panel-btn');
+  function openPanel () { panel.classList.add('open'); document.body.style.overflow = 'hidden'; }
+  function closePanel () { panel.classList.remove('open'); document.body.style.overflow = ''; }
+  burger.addEventListener('click', openPanel);
+  closeBtn.addEventListener('click', closePanel);
+  panel.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', closePanel); });
+
+  /* Scroll reveal */
+  var revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+    revealEls.forEach(function (el) { io.observe(el); });
+  } else {
+    revealEls.forEach(function (el) { el.classList.add('is-visible'); });
+  }
+
+  /* Cursor glow */
+  var glow = document.getElementById('cursor-glow');
+  if (glow && !reduceMotion) {
+    var mx = window.innerWidth / 2, my = window.innerHeight / 2, cx = mx, cy = my;
+    window.addEventListener('mousemove', function (e) { mx = e.clientX; my = e.clientY; });
+    function tick () {
+      cx += (mx - cx) * 0.08;
+      cy += (my - cy) * 0.08;
+      glow.style.transform = 'translate(' + cx + 'px,' + cy + 'px) translate(-50%,-50%)';
+      requestAnimationFrame(tick);
+    }
+    tick();
+  }
+
+  /* 3D tilt for product cards */
+  var canTilt = !reduceMotion && window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  function attachTilt (els, maxDeg, lift) {
+    els.forEach(function (el) {
+      el.addEventListener('mousemove', function (e) {
+        var r = el.getBoundingClientRect();
+        var px = (e.clientX - r.left) / r.width - 0.5;
+        var py = (e.clientY - r.top) / r.height - 0.5;
+        el.style.transform =
+          'perspective(1000px) rotateY(' + (px * maxDeg) + 'deg) rotateX(' + (py * -maxDeg) + 'deg) translateY(-' + lift + 'px)';
+      });
+      el.addEventListener('mouseleave', function () {
+        el.style.transform = '';
+      });
+    });
+  }
+  if (canTilt) attachTilt(document.querySelectorAll('.product-card'), 6, 5);
+
+  /* Toast */
+  var toast = document.getElementById('toast');
+  var toastText = document.getElementById('toast-text');
+  var toastTimer = null;
+  function showToast (html) {
+    toastText.innerHTML = html;
+    toast.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { toast.classList.remove('show'); }, 3200);
+  }
+
+  /* Size selection + cart */
+  var cartCount = 0;
+  var cartCountEl = document.getElementById('cart-count');
+  var cartButton = document.getElementById('cart-button');
+
+  document.querySelectorAll('.product-card-sizes').forEach(function (group) {
+    group.querySelectorAll('button:not(:disabled)').forEach(function (sizeBtn) {
+      sizeBtn.setAttribute('aria-pressed', 'false');
+      sizeBtn.addEventListener('click', function () {
+        group.querySelectorAll('button').forEach(function (item) {
+          item.classList.remove('active');
+          item.setAttribute('aria-pressed', 'false');
+        });
+        sizeBtn.classList.add('active');
+        sizeBtn.setAttribute('aria-pressed', 'true');
+      });
+    });
+  });
+
+  document.querySelectorAll('.product-card-add').forEach(function (btn) {
+    if (btn.id === 'notify-btn') return;
+    btn.addEventListener('click', function () {
+      var card = btn.closest('.product-card');
+      var selectedSize = card.querySelector('.product-card-sizes button.active');
+      var colorway = btn.getAttribute('data-colorway');
+      var price = btn.getAttribute('data-price');
+      if (!selectedSize) {
+        showToast('<strong>Choose a size</strong> for the ' + colorway + ' polo first.');
+        return;
+      }
+      cartCount += 1;
+      cartCountEl.textContent = cartCount;
+      cartButton.setAttribute('aria-label', 'Open shopping bag, ' + cartCount + ' item' + (cartCount === 1 ? '' : 's'));
+      showToast('Added to bag — <strong>' + colorway + '</strong>, size ' + selectedSize.textContent + ' (' + price + ')');
+    });
+  });
+
+  var notifyBtn = document.getElementById('notify-btn');
+  if (notifyBtn) {
+    notifyBtn.addEventListener('click', function () {
+      showToast('<strong>You\'re on the list</strong> — we\'ll email you the moment the next colorway drops.');
+    });
+  }
+
+  cartButton.addEventListener('click', function () {
+    showToast(cartCount ? 'Your bag has <strong>' + cartCount + ' item' + (cartCount === 1 ? '' : 's') + '</strong>.' : 'Your bag is currently empty.');
+  });
+
+  /* Clubhouse form */
+  var form = document.getElementById('club-form');
+  var success = document.getElementById('club-success');
+  if (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      success.classList.add('show');
+      form.reset();
+    });
+  }
+
+  /* Shop toolbar: filter by colorway */
+  var grid = document.getElementById('product-grid');
+  var comingSoonCard = grid.querySelector('.product-card.is-soon');
+  var resultCountText = document.getElementById('result-count-text');
+  var resetFilterBtn = document.getElementById('reset-filter');
+  var pills = document.querySelectorAll('.filter-pill');
+  function applyFilter (f) {
+    pills.forEach(function (p) { p.classList.toggle('active', p.getAttribute('data-filter') === f); });
+    var cards = grid.querySelectorAll('.product-card[data-filter]');
+    var visible = 0;
+    cards.forEach(function (c) {
+      var show = f === 'all' || c.getAttribute('data-filter') === f;
+      c.style.display = show ? '' : 'none';
+      if (show) visible++;
+    });
+    resultCountText.textContent = visible + (visible === 1 ? ' colorway shown' : ' colorways shown');
+    resetFilterBtn.classList.toggle('show', f !== 'all');
+  }
+  pills.forEach(function (pill) {
+    pill.addEventListener('click', function () { applyFilter(pill.getAttribute('data-filter')); });
+  });
+  resetFilterBtn.addEventListener('click', function () { applyFilter('all'); });
+
+  /* Shop toolbar: sort */
+  var sortSelect = document.getElementById('sort-select');
+  var originalOrder = Array.prototype.slice.call(grid.querySelectorAll('.product-card[data-filter]'));
+  sortSelect.addEventListener('change', function () {
+    var cards = Array.prototype.slice.call(grid.querySelectorAll('.product-card[data-filter]'));
+    var val = sortSelect.value;
+    if (val === 'az') {
+      cards.sort(function (a, b) { return a.getAttribute('data-name').localeCompare(b.getAttribute('data-name')); });
+    } else if (val === 'za') {
+      cards.sort(function (a, b) { return b.getAttribute('data-name').localeCompare(a.getAttribute('data-name')); });
+    } else {
+      cards = originalOrder.slice();
+    }
+    cards.forEach(function (c) { grid.insertBefore(c, comingSoonCard); });
+  });
+
+  /* Ambient 3D particle field (Three.js) */
+  function createParticleField (canvas, container, opts) {
+    if (!canvas || !container || typeof THREE === 'undefined' || reduceMotion) return;
+    var renderer;
+    try {
+      renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+    } catch (e) { return; }
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+    var scene = new THREE.Scene();
+    var camera = new THREE.PerspectiveCamera(50, 1, 1, 1000);
+    camera.position.z = 60;
+
+    function resize () {
+      var w = container.clientWidth, h = container.clientHeight;
+      if (!w || !h) return;
+      renderer.setSize(w, h, false);
+      camera.aspect = w / h;
+      camera.updateProjectionMatrix();
+    }
+
+    var count = opts.count || 200;
+    var positions = new Float32Array(count * 3);
+    var colorsArr = new Float32Array(count * 3);
+    var palette = opts.colors.map(function (c) { return new THREE.Color(c); });
+    for (var i = 0; i < count; i++) {
+      positions[i * 3] = (Math.random() - 0.5) * 150;
+      positions[i * 3 + 1] = (Math.random() - 0.5) * 90;
+      positions[i * 3 + 2] = (Math.random() - 0.5) * 100;
+      var c = palette[i % palette.length];
+      colorsArr[i * 3] = c.r; colorsArr[i * 3 + 1] = c.g; colorsArr[i * 3 + 2] = c.b;
+    }
+    var geo = new THREE.BufferGeometry();
+    geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    geo.setAttribute('color', new THREE.BufferAttribute(colorsArr, 3));
+
+    var spriteCanvas = document.createElement('canvas');
+    spriteCanvas.width = 64; spriteCanvas.height = 64;
+    var ctx = spriteCanvas.getContext('2d');
+    var grad = ctx.createRadialGradient(32, 32, 0, 32, 32, 32);
+    grad.addColorStop(0, 'rgba(255,255,255,1)');
+    grad.addColorStop(1, 'rgba(255,255,255,0)');
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, 64, 64);
+    var spriteTex = new THREE.CanvasTexture(spriteCanvas);
+
+    var mat = new THREE.PointsMaterial({
+      size: opts.size || 2.4,
+      map: spriteTex,
+      vertexColors: true,
+      transparent: true,
+      opacity: opts.opacity || 0.55,
+      depthWrite: false,
+      blending: THREE.AdditiveBlending
+    });
+    var points = new THREE.Points(geo, mat);
+    scene.add(points);
+
+    resize();
+    window.addEventListener('resize', resize);
+
+    var mx = 0, my = 0;
+    container.addEventListener('mousemove', function (e) {
+      var r = container.getBoundingClientRect();
+      mx = (e.clientX - r.left) / r.width - 0.5;
+      my = (e.clientY - r.top) / r.height - 0.5;
+    });
+
+    var running = true, raf = null;
+    function tick () {
+      if (!running) return;
+      points.rotation.y += 0.0009;
+      points.rotation.x += 0.00025;
+      camera.position.x += (mx * 14 - camera.position.x) * 0.03;
+      camera.position.y += (-my * 9 - camera.position.y) * 0.03;
+      camera.lookAt(0, 0, 0);
+      renderer.render(scene, camera);
+      raf = requestAnimationFrame(tick);
+    }
+    tick();
+
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            if (!running) { running = true; tick(); }
+          } else {
+            running = false;
+            if (raf) cancelAnimationFrame(raf);
+          }
+        });
+      }, { threshold: 0.05 });
+      io.observe(container);
+    }
+  }
+
+  createParticleField(
+    document.getElementById('products-particles'),
+    document.getElementById('products'),
+    { colors: [0x8a7d4d, 0xb3a370, 0x24406b, 0x111f2e], count: 220, size: 2.5, opacity: 0.4 }
+  );
+  createParticleField(
+    document.getElementById('clubhouse-particles'),
+    document.getElementById('clubhouse'),
+    { colors: [0xd9c98d, 0xb3a370, 0xf7edd0], count: 150, size: 2.1, opacity: 0.4 }
+  );
+});
+</script>
+</body>
+</html>

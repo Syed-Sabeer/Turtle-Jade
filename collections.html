@@ -4,10 +4,10 @@
 <meta charset="UTF-8" />
 <script>document.documentElement.className+=" js";</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Collections by Finley Jade</title>
-<meta name="description" content="Collections by Finley Jade. Coastal classics inspired by family, the sea, and the places worth returning to. The Long Run Polo, carrying a new limited-edition turtle each year." />
+<title>The Collections — Collections by Finley Jade</title>
+<meta name="description" content="Five collections named for the moments and waters that shape a coastal life: The Long Weekend, The Returning Tide, First Light, The Passage and Home Waters." />
 <link rel="icon" type="image/png" href="assets/brand/favicon.png" />
-<link rel="preload" as="image" href="assets/editorial/hero.jpg" fetchpriority="high" />
+<link rel="preload" as="image" href="assets/collections/long-weekend.jpg" fetchpriority="high" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet" />
@@ -567,9 +567,257 @@ p{color:var(--body);text-wrap:pretty;}
   .f-bot{flex-direction:column;gap:.5rem;}
   .f-sig{font-size:1.6rem;letter-spacing:.1em;}
 }
+
+/* ═══════════════════════════════════════════════════════════
+   INNER PAGES — page head, shelf, chapters
+   ═══════════════════════════════════════════════════════════ */
+
+/* The homepage header floats white over the hero. Inner pages have no hero,
+   so it is solid from the first pixel; scrolling only shrinks it. */
+.inner .hdr{
+  background:rgba(242,239,232,.95);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);
+  color:var(--ink);border-bottom-color:rgba(23,33,39,.10);
+}
+.inner .hdr .mark img{width:27px;}
+.inner .hdr.solid .mark img{width:26px;}
+.inner .hdr .wm i{color:var(--brass);opacity:1;}
+
+/* ═══════════ Page head ═══════════ */
+.ph{padding-top:calc(var(--hdr) + clamp(2.8rem,6vw,5.4rem));padding-bottom:clamp(2rem,3.6vw,3.6rem);}
+.crumb{display:flex;align-items:center;gap:.9rem;margin-bottom:clamp(1.7rem,3vw,2.8rem);
+  font-size:.585rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);}
+.crumb a{transition:color .45s var(--ease);}
+.crumb a:hover{color:var(--brass);}
+.crumb i{display:block;width:15px;height:1px;background:currentColor;opacity:.45;}
+.crumb span[aria-current]{color:var(--text);}
+.ph-row{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr);gap:clamp(1.5rem,4vw,4rem);align-items:end;}
+.ph h1{font-size:clamp(2.8rem,6.4vw,6rem);}
+.ph-side{padding-bottom:.6rem;}
+.ph-side .lead{margin-bottom:1.5rem;}
+.ph-facts{display:flex;flex-wrap:wrap;gap:.6rem 1.4rem;
+  font-size:.585rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);}
+.ph-facts b{font-family:var(--serif);font-feature-settings:'onum' 1;font-weight:400;
+  font-size:.95rem;letter-spacing:.05em;text-transform:none;color:var(--text);}
+
+/* ═══════════ Full-bleed campaign band ═══════════ */
+.band{overflow:hidden;background:var(--plate);}
+.band img{width:100%;height:clamp(300px,46vw,620px);object-fit:cover;object-position:center 38%;}
+
+/* ═══════════ Colorway filter — a rail, not a toolbar ═══════════ */
+.fbar-wrap{display:flex;align-items:baseline;justify-content:space-between;gap:1.5rem 2.5rem;flex-wrap:wrap;
+  padding-bottom:1.3rem;border-bottom:1px solid var(--hair-soft);margin-bottom:clamp(2.4rem,4vw,4rem);}
+.fbar{display:flex;align-items:center;gap:clamp(1.1rem,2vw,2.2rem);flex-wrap:wrap;}
+.fb{position:relative;display:inline-flex;align-items:center;gap:.6rem;padding:.2rem 0 .55rem;
+  font-size:.6rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);
+  transition:color .5s var(--ease);}
+.fb i{display:block;width:9px;height:9px;border-radius:50%;background:var(--c,var(--brass));
+  box-shadow:inset 0 0 0 1px rgba(23,33,39,.16);}
+.fb::after{content:'';position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--brass);
+  transform:scaleX(0);transform-origin:left;transition:transform .7s var(--ease);}
+.fb:hover{color:var(--text);}
+.fb.on{color:var(--text);}
+.fb.on::after,.fb:hover::after{transform:scaleX(1);}
+.fcount{font-size:.585rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);white-space:nowrap;}
+
+/* ═══════════ The shelf ═══════════ */
+.shelf{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));
+  gap:clamp(2.6rem,4.4vw,4.6rem) clamp(1.2rem,2vw,2.4rem);}
+.item{grid-column:span 2;display:flex;flex-direction:column;
+  transition:opacity .7s var(--ease);}
+.item:nth-child(4){grid-column:2 / span 2;}
+.item:nth-child(5){grid-column:4 / span 2;}
+.item[hidden]{display:none;}
+/* Filtering breaks the centred trailing pair, so the offsets stand down. */
+.shelf.filtered .item,
+.shelf.filtered .item:nth-child(4),
+.shelf.filtered .item:nth-child(5){grid-column:span 2;}
+.item .plate{aspect-ratio:5/7;}
+/* .plate's flat/worn swap is written against .color on the homepage. */
+.item .plate:hover .flat{opacity:0;}
+.item .plate:hover .worn{opacity:1;transform:scale(1.05);}
+.item:hover .color-rule{width:100%;}
+/* The edition mark reads as a caption pressed into the cloth, not a sticker. */
+.tag{position:absolute;z-index:3;left:0;right:0;bottom:0;padding:2.6rem 1.1rem .95rem;
+  font-size:.5rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:rgba(250,249,246,.9);
+  background:linear-gradient(to top,rgba(8,17,22,.5) 0%,rgba(8,17,22,.16) 46%,rgba(8,17,22,0) 100%);
+  opacity:0;transform:translateY(6px);transition:opacity .6s var(--ease),transform .7s var(--ease);}
+.item .plate:hover .tag{opacity:1;transform:none;}
+.item-b{display:flex;flex-direction:column;flex:1;padding-top:1.35rem;}
+.item-t{display:flex;align-items:baseline;gap:.85rem;}
+.item-t .n{font-family:var(--serif);font-feature-settings:'onum' 1;font-size:.95rem;color:var(--brass);}
+.item-t .nm{font-family:var(--serif);font-size:clamp(1.12rem,1.45vw,1.42rem);color:var(--text);letter-spacing:-.008em;}
+.item-s{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;
+  font-size:.585rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);}
+.item-s b{font-family:var(--serif);font-feature-settings:'onum' 1;font-weight:400;
+  font-size:1.05rem;letter-spacing:.04em;text-transform:none;color:var(--text);}
+.item-x{margin:.95rem 0 0;font-size:.82rem;line-height:1.7;color:var(--whisper);}
+.sizes{display:flex;align-items:center;gap:.5rem;margin:1.4rem 0 1.2rem;}
+.sizes .sz-l{margin-right:.35rem;font-size:.55rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);}
+.sz{width:36px;height:36px;display:inline-flex;align-items:center;justify-content:center;border-radius:1px;
+  border:1px solid var(--hair);font-size:.62rem;font-weight:500;letter-spacing:.1em;color:var(--body);
+  transition:border-color .45s var(--ease),color .45s var(--ease),background .45s var(--ease);}
+.sz:hover{border-color:var(--brass);color:var(--text);}
+.sz.on{background:var(--navy);border-color:var(--navy);color:var(--white);}
+.add{position:relative;margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  width:100%;padding:.95rem 0 .85rem;border-top:1px solid var(--hair-soft);
+  font-size:.6rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--text);
+  transition:color .5s var(--ease),border-color .6s var(--ease);}
+.add i{width:18px;height:1px;background:currentColor;opacity:.5;transition:width .6s var(--ease),opacity .5s var(--ease);}
+.add:hover{color:var(--navy);border-top-color:var(--brass);}
+.add:hover i{width:34px;opacity:1;}
+.add.done{color:var(--brass);}
+
+/* ═══════════ Fit & size chart ═══════════ */
+.fit{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(2rem,5vw,5.5rem);align-items:start;}
+.fit-copy p + p{margin-top:1.15rem;}
+.chart{width:100%;border-collapse:collapse;}
+.chart caption{text-align:left;padding-bottom:1.1rem;
+  font-size:.585rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);}
+.chart th,.chart td{padding:1.05rem .6rem;text-align:left;border-bottom:1px solid var(--hair-soft);}
+.chart thead th{font-family:var(--sans);font-size:.565rem;font-weight:500;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--muted);padding-top:0;}
+.chart tbody th{font-family:var(--serif);font-size:1.24rem;font-weight:400;color:var(--text);width:22%;}
+.chart td{font-family:var(--serif);font-feature-settings:'onum' 1;font-size:1.08rem;color:var(--body);letter-spacing:.03em;}
+.chart tbody tr{transition:background .5s var(--ease);}
+.chart tbody tr:hover{background:rgba(166,141,101,.07);}
+.chart-note{margin-top:1.4rem;font-size:.8rem;line-height:1.75;color:var(--muted);max-width:52ch;}
+
+/* ═══════════ FAQ ═══════════ */
+.faq{border-top:1px solid var(--hair-soft);}
+.faq details{border-bottom:1px solid var(--hair-soft);}
+.faq summary{list-style:none;cursor:pointer;display:flex;align-items:baseline;justify-content:space-between;gap:2rem;
+  padding:1.5rem 0;font-family:var(--serif);font-size:clamp(1.12rem,1.45vw,1.38rem);color:var(--text);
+  letter-spacing:-.008em;transition:color .45s var(--ease);}
+.faq summary::-webkit-details-marker{display:none;}
+.faq summary::after{content:'';flex:0 0 auto;width:11px;height:11px;margin-top:.45rem;
+  border-right:1px solid var(--brass);border-bottom:1px solid var(--brass);
+  transform:rotate(45deg);transition:transform .5s var(--ease);}
+.faq details[open] summary::after{transform:rotate(-135deg);}
+.faq summary:hover{color:var(--navy);}
+.faq details p{padding:0 0 1.7rem;max-width:64ch;font-size:.9rem;line-height:1.8;color:var(--whisper);}
+
+/* ═══════════ Collections — five chapters ═══════════ */
+.chap{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));
+  gap:clamp(1.6rem,3vw,3.5rem);align-items:center;}
+.chap + .chap{margin-top:clamp(4.5rem,9vw,10rem);}
+.chap-media{grid-column:1 / span 7;position:relative;}
+.chap-copy{grid-column:9 / span 4;}
+.chap.rev .chap-media{grid-column:6 / span 7;}
+.chap.rev .chap-copy{grid-column:1 / span 4;grid-row:1;}
+.chap figure{overflow:hidden;background:var(--plate);}
+.chap figure img{width:100%;height:clamp(360px,50vw,700px);object-fit:cover;
+  transition:transform 2.4s var(--ease);}
+.chap:hover figure img{transform:scale(1.035);}
+.chap-n{position:absolute;z-index:2;top:-.7rem;left:-.4rem;
+  font-family:var(--serif);font-feature-settings:'onum' 1;font-size:clamp(2.6rem,5vw,4.6rem);
+  line-height:1;color:var(--brass);opacity:.5;user-select:none;}
+.chap-copy h2{font-size:clamp(1.95rem,3.2vw,2.9rem);margin-bottom:1.2rem;}
+.chap-stand{font-family:var(--serif);font-weight:300;font-size:clamp(1.14rem,1.5vw,1.4rem);
+  line-height:1.5;color:var(--text);letter-spacing:-.008em;margin-bottom:1.5rem;}
+.chap-copy .lead + .lead{margin-top:1rem;}
+.chap-sw{display:flex;align-items:center;gap:.85rem;margin:1.9rem 0 1.7rem;
+  padding-top:1.3rem;border-top:1px solid var(--hair-soft);
+  font-size:.585rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);}
+.chap-sw i{display:block;width:26px;height:3px;background:var(--c,var(--brass));}
+
+/* ═══════════ Shared closing ═══════════ */
+.closer{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:clamp(1.8rem,5vw,5rem);align-items:center;}
+.closer h2{margin-bottom:1.3rem;}
+.closer .btn{margin-top:2rem;}
+
+/* ═══════════ Responsive ═══════════ */
+@media (max-width:1180px){
+  .chap-media,.chap.rev .chap-media{grid-column:1 / span 6;}
+  .chap-copy,.chap.rev .chap-copy{grid-column:8 / span 5;}
+  .chap.rev .chap-copy{grid-row:1;}
+}
+@media (max-width:900px){
+  .ph-row{grid-template-columns:1fr;gap:1.8rem;align-items:start;}
+  .ph-side{padding-bottom:0;}
+  .shelf{grid-template-columns:repeat(4,minmax(0,1fr));}
+  .item,.item:nth-child(4),.item:nth-child(5){grid-column:span 2;}
+  .fit{grid-template-columns:1fr;gap:2.4rem;}
+  .chap{grid-template-columns:1fr;gap:1.7rem;}
+  .chap-media,.chap.rev .chap-media{grid-column:1 / -1;grid-row:1;}
+  .chap-copy,.chap.rev .chap-copy{grid-column:1 / -1;grid-row:2;}
+  .chap figure img{height:clamp(300px,64vw,520px);}
+  .closer{grid-template-columns:1fr;gap:2rem;justify-items:start;}
+}
+@media (max-width:600px){
+  .shelf{grid-template-columns:1fr;gap:3.2rem;}
+  .item,.item:nth-child(4),.item:nth-child(5){grid-column:1 / -1;}
+  .fbar-wrap{gap:1rem;}
+  .fbar{gap:1rem;}
+  .band img{height:clamp(240px,62vw,360px);}
+}
+
+/* ═══════════ Gallery strip ═══════════ */
+.gal{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(4px,.5vw,9px);}
+.gal figure{position:relative;overflow:hidden;background:var(--plate);aspect-ratio:1/1;}
+.gal img{width:100%;height:100%;object-fit:cover;transition:transform 2.1s var(--ease);}
+.gal figure:hover img{transform:scale(1.06);}
+.gal figcaption{position:absolute;left:0;right:0;bottom:0;padding:2.4rem .95rem .85rem;
+  font-size:.5rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:rgba(250,249,246,.92);
+  background:linear-gradient(to top,rgba(8,17,22,.62) 0%,rgba(8,17,22,0) 100%);
+  opacity:0;transform:translateY(6px);transition:opacity .55s var(--ease),transform .65s var(--ease);}
+.gal figure:hover figcaption{opacity:1;transform:none;}
+
+/* ═══════════ Chapter nav — sticky, under the header ═══════════ */
+.cnav{position:sticky;top:71px;z-index:40;
+  margin:clamp(2.4rem,4.4vw,4.4rem) 0 clamp(3rem,6vw,6.5rem);
+  background:rgba(242,239,232,.94);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+  border-top:1px solid var(--hair-soft);border-bottom:1px solid var(--hair-soft);
+  transition:top .7s var(--ease);}
+/* The header retracts on scroll-down; without this the bar would hold its
+   offset and leave a 71px window of content sliding underneath it. */
+.hdr.up ~ main .cnav{top:0;}
+.cnav-in{max-width:var(--max);margin:0 auto;padding:.95rem var(--pad);
+  display:flex;align-items:center;gap:clamp(.9rem,2.2vw,2.4rem);
+  overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;}
+.cnav-in::-webkit-scrollbar{display:none;}
+.cn{position:relative;display:inline-flex;align-items:baseline;gap:.6rem;padding:.35rem 0;white-space:nowrap;
+  font-size:.575rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);
+  transition:color .5s var(--ease);}
+.cn em{font-family:var(--serif);font-feature-settings:'onum' 1;font-style:normal;
+  font-size:.85rem;letter-spacing:.05em;color:var(--brass);}
+.cn::after{content:'';position:absolute;left:0;right:0;bottom:-.36rem;height:1px;background:var(--brass);
+  transform:scaleX(0);transform-origin:left;transition:transform .6s var(--ease);}
+.cn:hover,.cn.on{color:var(--text);}
+.cn:hover::after,.cn.on::after{transform:scaleX(1);}
+
+/* ═══════════ Chapter inset ═══════════ */
+.chap-inset{position:absolute;z-index:2;width:31%;bottom:-6%;overflow:hidden;
+  border:9px solid var(--limestone);background:var(--limestone);}
+.chap:not(.rev) .chap-inset{right:-5%;}
+.chap.rev .chap-inset{left:-5%;}
+.chap-inset img{width:100%;aspect-ratio:1/1;object-fit:cover;transition:transform 2.2s var(--ease);}
+.chap:hover .chap-inset img{transform:scale(1.05);}
+.chap-rule{display:block;height:2px;width:44px;background:var(--c,var(--brass));
+  margin:0 0 1.5rem;transition:width 1.1s var(--ease);}
+.chap:hover .chap-rule{width:100%;}
+
+@media (max-width:900px){
+  .gal{grid-template-columns:repeat(2,minmax(0,1fr));}
+  .chap-inset{position:static;width:46%;margin:-3.4rem 0 0 auto;border-width:8px;}
+  .chap.rev .chap-inset{margin:-3.4rem auto 0 0;}
+  .cnav{top:64px;}
+  .hdr.up ~ main .cnav{top:0;}
+}
+
+/* A breath halfway down, so five alternating bands do not read as a pattern. */
+.chap-break{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);
+  align-items:center;gap:clamp(1.5rem,3.5vw,3.5rem);
+  margin:clamp(4.5rem,9vw,10rem) 0;}
+.chap-break-l{display:block;height:1px;background:var(--hair-soft);}
+.chap-break p{font-family:var(--serif);font-weight:300;color:var(--text);text-align:center;
+  font-size:clamp(1.15rem,1.9vw,1.62rem);line-height:1.5;letter-spacing:-.01em;max-width:30ch;}
+@media (max-width:700px){
+  .chap-break{grid-template-columns:1fr;gap:1.2rem;justify-items:center;}
+  .chap-break-l{width:56px;}
+}
 </style>
 </head>
-<body>
+<body class="inner">
 
 <!-- ═══════════ HEADER ═══════════ -->
 <header class="hdr" id="hdr">
@@ -577,11 +825,11 @@ p{color:var(--body);text-wrap:pretty;}
     <nav class="nav l">
       <a href="shop.html">Shop</a>
       <a href="collections.html">The Collections</a>
-      <a href="#heritage">Our Story</a>
-      <a href="#journal">Journal</a>
+      <a href="index.html#heritage">Our Story</a>
+      <a href="index.html#journal">Journal</a>
     </nav>
 
-    <a class="mark" href="#top" aria-label="Collections by Finley Jade, home">
+    <a class="mark" href="index.html" aria-label="Collections by Finley Jade, home">
       <img src="assets/brand/mark.png" alt="" />
       <span class="wm"><i>Collections by</i><b>Finley Jade</b></span>
     </a>
@@ -604,8 +852,8 @@ p{color:var(--body);text-wrap:pretty;}
     <nav class="ovl-links">
       <a href="shop.html">Shop<em>01</em></a>
       <a href="collections.html">The Collections<em>02</em></a>
-      <a href="#heritage">Our Story<em>03</em></a>
-      <a href="#journal">Journal<em>04</em></a>
+      <a href="index.html#heritage">Our Story<em>03</em></a>
+      <a href="index.html#journal">Journal<em>04</em></a>
     </nav>
     <div class="ovl-meta">
       <a href="shop.html">Bag (0)</a>
@@ -629,8 +877,8 @@ p{color:var(--body);text-wrap:pretty;}
     <div class="sg">
       <a href="shop.html">The Long Run Polo</a>
       <a href="collections.html">The Collections</a>
-      <a href="#heritage">Our Story</a>
-      <a href="#journal">Journal</a>
+      <a href="index.html#heritage">Our Story</a>
+      <a href="index.html#journal">Journal</a>
       <a href="shop.html">Shop All</a>
     </div>
   </div>
@@ -638,142 +886,152 @@ p{color:var(--body);text-wrap:pretty;}
 
 <main>
 
-<!-- ═══════════ 01 · HERO ═══════════ -->
-<section class="hero" id="top">
-  <div class="hero-bg">
-    <!--
-      CINEMATIC HERO VIDEO — 8–15 second seamless loop.
-      Drop the file at assets/hero.mp4 and swap the <img> below for:
-
-      <video autoplay muted loop playsinline poster="assets/editorial/hero.jpg">
-        <source src="assets/hero.mp4" type="video/mp4" />
-      </video>
-    -->
-    <img src="assets/editorial/hero.jpg" alt="A man at the wheel of a sailing yacht in late-afternoon light off the Italian coast" fetchpriority="high" />
-  </div>
-  <div class="hero-veil"></div>
-  <span class="hero-rail">The First Edition</span>
-
-  <div class="hero-in">
-    <div class="hero-copy">
-      <span class="label up">Collections by Finley Jade</span>
-      <h1 class="ln-wrap">
-        <span class="ln"><span>Made for the</span></span>
-        <span class="ln"><span>Long Run.</span></span>
-      </h1>
-      <p class="up d3">Coastal classics inspired by family, the sea, and the places worth returning to.</p>
-      <div class="hero-act up d4">
-        <a class="btn" href="#collections"><s>Discover the Collection</s></a>
-        <a class="tl" href="#heritage">Our Story<i></i></a>
-      </div>
-    </div>
-  </div>
-
-  <div class="hero-foot up d5">
-    <span class="cue"><i></i>Scroll</span>
-    <span class="m2">The Long Run — First Edition</span>
-    <span class="m3">Edition No. 001–200</span>
-  </div>
-</section>
-
-<!-- ═══════════ 02 · INTRODUCTION TO THE POLO ═══════════ -->
-<section class="sec limestone" id="the-long-run">
+<!-- ═══════════ PAGE HEAD ═══════════ -->
+<section class="ph limestone" id="top">
   <div class="wrap">
-    <div class="rail"><span class="n">02</span><span class="label">The Long Run</span></div>
-
-    <div class="grid intro">
-      <div class="intro-copy">
-        <h2 class="up">One polo. Made <br class="lb" />to go everywhere.</h2>
-        <p class="serif-lead up d1">Soft, breathable and quietly structured, The Long Run was designed to move from water to clubhouse to dinner without needing a change.</p>
-        <p class="lead up d2">It is one polo, cut with the ease of resort wear and the patience of something built to be kept &mdash; and it carries the turtle of its year, drawn once and never repeated.</p>
-        <div class="up d3"><a class="btn" href="#collections"><s>Discover the Long Run</s></a></div>
-        <a class="tl up d4 intro-jump" href="#specifications">Specifications<i></i></a>
-
-      </div>
-
-      <div class="intro-media">
-        <span class="intro-rail"><b>Liguria — Late afternoon</b><em>No. 001–200</em></span>
-        <figure class="big rv"><img src="assets/editorial/intro-main.jpg" alt="A man stepping from a yacht onto the dock at a quiet marina" loading="lazy" /></figure>
-        <figure class="intro-inset rv"><img src="assets/editorial/intro-detail.jpg" alt="Close detail of the placket and buttons on the Long Run Polo" loading="lazy" /></figure>
-        <p class="caption intro-cap up">The Long Run Polo — Liguria, late afternoon</p>
+    <nav class="crumb up" aria-label="Breadcrumb">
+      <a href="index.html">Home</a><i></i><span aria-current="page">The Collections</span>
+    </nav>
+    <div class="ph-row">
+      <h1 class="up d1">Five names for <br class="lb" />the same idea.</h1>
+      <div class="ph-side">
+        <p class="lead up d2">Each collection is a chapter of one thought &mdash; pieces made for the long run, named for the moments and the waters that shape a coastal life.</p>
+        <div class="ph-facts up d3">
+          <span>Collections <b>Five</b></span>
+          <span>Silhouette <b>One</b></span>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════ 03 · THE FIVE COLORS ═══════════ -->
-<section class="sec parchment" id="collections">
+<figure class="band rv">
+  <img src="assets/hero-cove.jpg" alt="A sheltered cove at the turn of the afternoon" />
+</figure>
+
+<!-- ═══════════ THE FIVE CHAPTERS ═══════════ -->
+<section class="sec limestone" id="chapters">
   <div class="wrap">
-    <div class="rail"><span class="n">03</span><span class="label">The First Edition</span></div>
-    <div class="ed-head">
-      <h2 class="up">Five colors. <br class="lb" />One silhouette.</h2>
-      <p class="lead up d1">Five signature colors built around a single silhouette &mdash; each one carrying the turtle of its year.</p>
+    <div class="rail"><span class="n">01</span><span class="label">The Collections</span></div>
+    <div class="ed-head" style="margin-bottom:0;">
+      <h2 class="up">One polo. <br class="lb" />Five ways to wear it.</h2>
+      <p class="lead up d1">The silhouette never changes. What changes is the colour, the hour it was named for, and the turtle it carries that year.</p>
     </div>
   </div>
 
-  <div class="bleed">
-    <div class="colors swipe" data-swipe>
-      <a class="color up" href="shop.html">
-        <span class="plate">
-          <img class="flat" src="assets/products/tiles/sand.jpg" alt="The Long Run Polo in Sand" loading="lazy" />
-          <img class="worn" src="assets/editorial/worn-sand.jpg" alt="The Long Run Polo in Sand, worn on the shoreline" loading="lazy" />
-        </span>
-        <span class="color-b">
-          <span class="color-t"><span class="n">01</span><span class="nm">Long Weekend</span></span>
-          <span class="color-rule" style="--c:#C9BC9E"></span>
-          <span class="color-s">Sand<span class="color-v">View Color</span></span>
-        </span>
-      </a>
-      <a class="color up d1" href="shop.html">
-        <span class="plate">
-          <img class="flat" src="assets/products/tiles/deep-navy.jpg" alt="The Long Run Polo in Navy" loading="lazy" />
-          <img class="worn" src="assets/editorial/worn-navy.jpg" alt="The Long Run Polo in Navy, worn at the helm" loading="lazy" />
-        </span>
-        <span class="color-b">
-          <span class="color-t"><span class="n">02</span><span class="nm">Returning Tide</span></span>
-          <span class="color-rule" style="--c:#252A3D"></span>
-          <span class="color-s">Navy<span class="color-v">View Color</span></span>
-        </span>
-      </a>
-      <a class="color up d2" href="shop.html">
-        <span class="plate">
-          <img class="flat" src="assets/products/tiles/sea-blue.jpg" alt="The Long Run Polo in Sea Blue" loading="lazy" />
-          <img class="worn" src="assets/editorial/worn-seablue.jpg" alt="The Long Run Polo worn at the end of the dock" loading="lazy" />
-        </span>
-        <span class="color-b">
-          <span class="color-t"><span class="n">03</span><span class="nm">First Light</span></span>
-          <span class="color-rule" style="--c:#8FA3C4"></span>
-          <span class="color-s">Sea Blue<span class="color-v">View Color</span></span>
-        </span>
-      </a>
-      <a class="color up d3" href="shop.html">
-        <span class="plate">
-          <img class="flat" src="assets/products/tiles/deep-blue.jpg" alt="The Long Run Polo in Deep Blue" loading="lazy" />
-          <img class="worn" src="assets/editorial/worn-deepblue.jpg" alt="The Long Run Polo in Deep Blue, worn at last light" loading="lazy" />
-        </span>
-        <span class="color-b">
-          <span class="color-t"><span class="n">04</span><span class="nm">The Passage</span></span>
-          <span class="color-rule" style="--c:#375770"></span>
-          <span class="color-s">Deep Blue<span class="color-v">View Color</span></span>
-        </span>
-      </a>
-      <a class="color up d4" href="shop.html">
-        <span class="plate">
-          <img class="flat" src="assets/products/tiles/aqua-mint.jpg" alt="The Long Run Polo in Sea Glass" loading="lazy" />
-          <img class="worn" src="assets/editorial/worn-seaglass.jpg" alt="The Long Run Polo in Sea Glass, worn by the water" loading="lazy" />
-        </span>
-        <span class="color-b">
-          <span class="color-t"><span class="n">05</span><span class="nm">Home Waters</span></span>
-          <span class="color-rule" style="--c:#5FC0B4"></span>
-          <span class="color-s">Sea Glass<span class="color-v">View Color</span></span>
-        </span>
-      </a>
+  <!-- Chapter index. A direct child of the section so its sticky range ends
+       with the chapters, rather than following into the next section. -->
+  <nav class="cnav" aria-label="Collections">
+    <div class="cnav-in" id="cnav">
+      <a class="cn" href="#sand"><em>01</em>The Long Weekend</a>
+      <a class="cn" href="#navy"><em>02</em>The Returning Tide</a>
+      <a class="cn" href="#sea-blue"><em>03</em>First Light</a>
+      <a class="cn" href="#deep-blue"><em>04</em>The Passage</a>
+      <a class="cn" href="#sea-glass"><em>05</em>Home Waters</a>
     </div>
-    <div class="hint" data-hint hidden><i></i></div>
-  </div>
+  </nav>
 
   <div class="wrap">
-    <div class="prov up">
+
+      <article class="chap" id="sand">
+        <div class="chap-media">
+          <span class="chap-n" aria-hidden="true">01</span>
+          <figure class="rv"><img src="assets/collections/long-weekend.jpg" alt="The Long Weekend &mdash; The Long Run Polo in Sand" loading="lazy" /></figure>
+          <figure class="chap-inset rv"><img src="assets/editorial/worn-sand.jpg" alt="The Long Run Polo in Sand, worn" loading="lazy" /></figure>
+        </div>
+        <div class="chap-copy">
+          <span class="label up">01 &mdash; Collection</span>
+          <h2 class="up d1" style="margin-top:1.1rem;">The Long Weekend</h2>
+          <span class="chap-rule up d1" style="--c:#C9BC9E"></span>
+          <p class="chap-stand up d1">Friday to Monday, made easy.</p>
+          <p class="lead up d2">The long weekend is the stretch of days that feels like a small holiday &mdash; the kind where time slows down and the only agenda is the tide.</p>
+          <p class="lead up d2">These are pieces built for that ease: considered enough for a dinner that runs late, relaxed enough for a morning that doesn&rsquo;t start in a hurry. Made to be reached for from Friday to Monday, and long after.</p>
+          <div class="chap-sw up d3"><i style="--c:#C9BC9E"></i>Sand</div>
+          <a class="tl up d3" href="shop.html#sand">Shop Sand<i></i></a>
+        </div>
+      </article>
+      <article class="chap rev" id="navy">
+        <div class="chap-media">
+          <span class="chap-n" aria-hidden="true">02</span>
+          <figure class="rv"><img src="assets/collections/returning-tide.jpg" alt="The Returning Tide &mdash; The Long Run Polo in Navy" loading="lazy" /></figure>
+          <figure class="chap-inset rv"><img src="assets/editorial/worn-navy.jpg" alt="The Long Run Polo in Navy, worn" loading="lazy" /></figure>
+        </div>
+        <div class="chap-copy">
+          <span class="label up">02 &mdash; Collection</span>
+          <h2 class="up d1" style="margin-top:1.1rem;">The Returning Tide</h2>
+          <span class="chap-rule up d1" style="--c:#252A3D"></span>
+          <p class="chap-stand up d1">What goes out always comes back.</p>
+          <p class="lead up d2">The tide always returns. So do the things worth keeping &mdash; the people, the places, the garments that earn their place over the years.</p>
+          <p class="lead up d2">The Returning Tide is for the pieces that come back into rotation season after season and never fall out of favour. Quiet, dependable, made to endure.</p>
+          <div class="chap-sw up d3"><i style="--c:#252A3D"></i>Navy</div>
+          <a class="tl up d3" href="shop.html#navy">Shop Navy<i></i></a>
+        </div>
+      </article>
+      <article class="chap" id="sea-blue">
+        <div class="chap-media">
+          <span class="chap-n" aria-hidden="true">03</span>
+          <figure class="rv"><img src="assets/collections/first-light.jpg" alt="First Light &mdash; The Long Run Polo in Sea Blue" loading="lazy" /></figure>
+          <figure class="chap-inset rv"><img src="assets/editorial/worn-seablue.jpg" alt="The Long Run Polo in Sea Blue, worn" loading="lazy" /></figure>
+        </div>
+        <div class="chap-copy">
+          <span class="label up">03 &mdash; Collection</span>
+          <h2 class="up d1" style="margin-top:1.1rem;">First Light</h2>
+          <span class="chap-rule up d1" style="--c:#8FA3C4"></span>
+          <p class="chap-stand up d1">For the early hours on the water.</p>
+          <p class="lead up d2">First light is the quietest, most honest part of the day &mdash; when the water is still and the world hasn&rsquo;t caught up yet.</p>
+          <p class="lead up d2">First Light is built for those hours: light, breathable and unfussy. Pieces that move with you from the first cast to the first coffee.</p>
+          <div class="chap-sw up d3"><i style="--c:#8FA3C4"></i>Sea Blue</div>
+          <a class="tl up d3" href="shop.html#sea-blue">Shop Sea Blue<i></i></a>
+        </div>
+      </article>
+
+      <div class="chap-break up">
+        <span class="chap-break-l"></span>
+        <p>Five names. One silhouette. The turtle is what tells you the year.</p>
+        <span class="chap-break-l"></span>
+      </div>
+      <article class="chap rev" id="deep-blue">
+        <div class="chap-media">
+          <span class="chap-n" aria-hidden="true">04</span>
+          <figure class="rv"><img src="assets/collections/passage.jpg" alt="The Passage &mdash; The Long Run Polo in Deep Blue" loading="lazy" /></figure>
+          <figure class="chap-inset rv"><img src="assets/editorial/worn-deepblue.jpg" alt="The Long Run Polo in Deep Blue, worn" loading="lazy" /></figure>
+        </div>
+        <div class="chap-copy">
+          <span class="label up">04 &mdash; Collection</span>
+          <h2 class="up d1" style="margin-top:1.1rem;">The Passage</h2>
+          <span class="chap-rule up d1" style="--c:#375770"></span>
+          <p class="chap-stand up d1">For the journeys in between.</p>
+          <p class="lead up d2">Every passage is the space between where you were and where you are going &mdash; the crossings, the flights, the long quiet stretches of open water.</p>
+          <p class="lead up d2">The Passage is made for the in-between: garments that travel well, wrinkle little, and look considered on either side of the journey.</p>
+          <div class="chap-sw up d3"><i style="--c:#375770"></i>Deep Blue</div>
+          <a class="tl up d3" href="shop.html#deep-blue">Shop Deep Blue<i></i></a>
+        </div>
+      </article>
+      <article class="chap" id="sea-glass">
+        <div class="chap-media">
+          <span class="chap-n" aria-hidden="true">05</span>
+          <figure class="rv"><img src="assets/collections/home-waters.jpg" alt="Home Waters &mdash; The Long Run Polo in Sea Glass" loading="lazy" /></figure>
+          <figure class="chap-inset rv"><img src="assets/editorial/worn-seaglass.jpg" alt="The Long Run Polo in Sea Glass, worn" loading="lazy" /></figure>
+        </div>
+        <div class="chap-copy">
+          <span class="label up">05 &mdash; Collection</span>
+          <h2 class="up d1" style="margin-top:1.1rem;">Home Waters</h2>
+          <span class="chap-rule up d1" style="--c:#5FC0B4"></span>
+          <p class="chap-stand up d1">The places we return to.</p>
+          <p class="lead up d2">Home waters are the shores you know best &mdash; the familiar bays, the local docks, the coastline that feels like it belongs to you.</p>
+          <p class="lead up d2">Home Waters honours the idea of return: pieces rooted in place, made for the days spent closest to home and the people you share them with.</p>
+          <div class="chap-sw up d3"><i style="--c:#5FC0B4"></i>Sea Glass</div>
+          <a class="tl up d3" href="shop.html#sea-glass">Shop Sea Glass<i></i></a>
+        </div>
+      </article>
+  </div>
+</section>
+
+<!-- ═══════════ THE TURTLE CHANGES ═══════════ -->
+<section class="sec parchment" id="edition">
+  <div class="wrap">
+    <div class="rail"><span class="n">02</span><span class="label">The Edition</span></div>
+    <div class="prov up" style="margin-top:0;padding-top:0;border-top:0;">
       <div class="prov-copy">
         <p class="prov-lead">Each year, a new generation of sea turtles begins its journey.</p>
         <p>In that same spirit, Turtles by Finley Jade introduces a new limited-edition turtle each year &mdash; created for that moment in time and never repeated. Signature colors may endure, with new shades introduced thoughtfully along the way.</p>
@@ -784,250 +1042,19 @@ p{color:var(--body);text-wrap:pretty;}
         <defs><path id="sealArc" d="M100,100 m-72,0 a72,72 0 1,1 144,0 a72,72 0 1,1 -144,0" /></defs>
         <circle cx="100" cy="100" r="93" fill="none" stroke="currentColor" stroke-width="1.1" opacity=".8" />
         <circle cx="100" cy="100" r="58" fill="none" stroke="currentColor" stroke-width=".8" opacity=".55" />
-        <text class="arc"><textPath href="#sealArc" startOffset="1.5%">COLLECTIONS BY FINLEY JADE · FIRST EDITION ·</textPath></text>
+        <text class="arc"><textPath href="#sealArc" startOffset="1.5%">COLLECTIONS BY FINLEY JADE &middot; FIRST EDITION &middot;</textPath></text>
         <text class="ctr" x="100" y="94" font-size="16" opacity=".85">No.</text>
-        <text class="ctr" x="100" y="121" font-size="23">001–200</text>
+        <text class="ctr" x="100" y="121" font-size="23">001&ndash;200</text>
       </svg>
-      <span class="ed">Edition No. 001–200</span>
+      <span class="ed">Edition No. 001&ndash;200</span>
       </div>
     </div>
-  </div>
-</section>
 
-<!-- ═══════════ 04 · EDITORIAL LIFESTYLE MOMENT ═══════════ -->
-<section class="moment" id="lifestyle">
-  <div class="moment-bg" data-parallax>
-    <img src="assets/editorial/moment.jpg" alt="A man walking the shoreline toward the harbour in late-afternoon light" loading="lazy" />
-  </div>
-  <span class="moment-frame"></span>
-  <span class="moment-n">04</span>
-  <p class="moment-l">From first light to last table</p>
-</section>
-
-<!-- ═══════════ 05 · CRAFT ═══════════ -->
-<section class="sec parchment" id="craft">
-  <div class="wrap">
-    <div class="rail"><span class="n">05</span><span class="label">The Making</span></div>
-    <div class="ed-head">
-      <h2 class="up">The details are <br class="lb" />the difference.</h2>
-      <p class="lead up d1">Four decisions you feel before you notice them.</p>
-    </div>
-
-    <div class="craft">
-      <article class="craft-i up">
-        <figure class="rv"><img src="assets/editorial/craft-collar.jpg" alt="Close detail of the collar roll and topstitching" loading="lazy" /></figure>
-        <div class="body">
-          <span class="craft-c"><span class="n">01</span><h3>The Collar</h3></span>
-          <p>Structured to hold its shape from first wear to last call.</p>
-        </div>
-      </article>
-      <article class="craft-i up">
-        <figure class="rv"><img src="assets/editorial/craft-fabric.jpg" alt="Close detail of the piqué fabric and shoulder seam" loading="lazy" /></figure>
-        <div class="body">
-          <span class="craft-c"><span class="n">02</span><h3>The Fabric</h3></span>
-          <p>Soft to the hand, cool in the sun, with enough weight to fall properly.</p>
-        </div>
-      </article>
-      <article class="craft-i up">
-        <figure class="rv"><img src="assets/editorial/craft-turtle.jpg" alt="Close detail of the embroidered turtle at the chest" loading="lazy" /></figure>
-        <div class="body">
-          <span class="craft-c"><span class="n">03</span><h3>The Turtle</h3></span>
-          <p>Embroidered with restraint. A mark, not a billboard.</p>
-        </div>
-      </article>
-      <article class="craft-i up">
-        <figure class="rv"><img src="assets/editorial/craft-fit.jpg" alt="Close detail of the polo worn, showing the line through the body" loading="lazy" /></figure>
-        <div class="body">
-          <span class="craft-c"><span class="n">04</span><h3>The Fit</h3></span>
-          <p>Tailored through the body, easy through the shoulders. Nothing to think about.</p>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════ 06 · FAMILY / OCEAN / TIME ═══════════ -->
-<section class="sec parchment" id="philosophy">
-  <div class="wrap">
-    <div class="rail"><span class="n">06</span><span class="label">Philosophy</span></div>
-    <div class="pillars">
-      <article class="pillar up">
-        <div class="pillar-head">
-          <span class="n">01</span>
-          <h3>Family</h3>
-        </div>
-        <figure class="rv"><img src="assets/editorial/pillar-family.jpg" alt="A folded polo and a notebook left on a dock chair at first light" loading="lazy" /></figure>
-        <p>The reason we began. The reason we hope it lasts.</p>
-      </article>
-      <article class="pillar up">
-        <div class="pillar-head">
-          <span class="n">02</span>
-          <h3>Ocean</h3>
-        </div>
-        <figure class="rv"><img src="assets/editorial/pillar-ocean.jpg" alt="Still water at dawn" loading="lazy" /></figure>
-        <p>A reminder that the best things move at their own pace.</p>
-      </article>
-      <article class="pillar up">
-        <div class="pillar-head">
-          <span class="n">03</span>
-          <h3>Time</h3>
-        </div>
-        <figure class="rv"><img src="assets/editorial/pillar-time.jpg" alt="A wake trailing behind a boat at the end of the day" loading="lazy" /></figure>
-        <p>True style is never rushed. It is earned.</p>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════ 07 · THE FINLEY STORY ═══════════ -->
-<section class="sec limestone" id="heritage">
-  <div class="wrap">
-    <div class="rail"><span class="n">07</span><span class="label">The Beginning</span></div>
-    <div class="grid story">
-      <div class="story-media">
-        <figure class="rv"><img src="assets/editorial/story-main.jpg" alt="A wooden jetty reaching into a sheltered bay in the late afternoon" loading="lazy" /></figure>
-        <figure class="story-inset rv"><img src="assets/editorial/story-inset.jpg" alt="The tide returning over dark sand at dusk" loading="lazy" /></figure>
-      </div>
-      <div class="story-copy">
-        <h2 class="up">For Finley.</h2>
-        <p class="serif-lead up d1">Finley Jade began with a daughter who sees the world with wonder and a father who wanted to build something she could someday call her own.</p>
-        <p class="lead up d2">Named for her, the house is rooted in family, inspired by the patience of the sea and created with a belief that the things worth keeping should be made to last.</p>
-        <div class="up d3"><a class="btn ghost" href="#philosophy"><s>Our Story</s></a></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════ 08 · THE COLLECTION ═══════════ -->
-<section class="sec limestone" id="collection">
-  <span id="shop-faq" aria-hidden="true"></span>
-  <span id="fit-guide" aria-hidden="true"></span>
-  <div class="wrap">
-    <div class="rail"><span class="n">08</span><span class="label">The Collection</span></div>
-    <div class="shop-head">
-      <h2 class="up">The Long Run</h2>
-      <a class="tl up d1" href="shop.html">View All<i></i></a>
-    </div>
-  </div>
-
-  <figure class="campaign rv">
-    <img src="assets/editorial/shop-campaign.jpg" alt="The Long Run Polo worn at the cliff&rsquo;s edge at sunset" loading="lazy" />
-  </figure>
-
-  <div class="wrap">
-    <div class="shop-line up">
+    <div class="closer up" style="margin-top:clamp(3.4rem,6vw,6rem);padding-top:clamp(2.4rem,3.6vw,3.4rem);border-top:1px solid var(--hair-soft);">
       <div>
-        <p class="serif-lead">One silhouette. Five colors. <br class="lb" />This year&rsquo;s turtle.</p>
-        <p class="shop-spec">The Long Run Polo &middot; Sizes S&ndash;XL &middot; $148</p>
-      </div>
-      <a class="btn" href="shop.html"><s>Shop the Long Run</s></a>
-    </div>
-
-    <span id="product-details" aria-hidden="true"></span>
-    <div class="detail" id="specifications">
-      <div class="detail-head up">
-        <span class="label">Specifications</span>
-        <p class="detail-note">For those who like to know exactly what they are buying.</p>
-      </div>
-
-      <div class="detail-cols">
-        <dl class="spec up">
-          <div class="spec-row">
-            <span class="n">01</span>
-            <div><dt>Fabric</dt><dd>Double-knit pique&#769; &mdash; 88% polyester, 12% elastane. Moisture-wicking with four-way stretch, so it breathes on the water and keeps its shape through the season.</dd></div>
-          </div>
-          <div class="spec-row">
-            <span class="n">02</span>
-            <div><dt>Fit</dt><dd>Classic tailored fit. Easy through the chest, clean through the waist. Sizes S&ndash;XL. Between sizes, take the larger.</dd></div>
-          </div>
-          <div class="spec-row">
-            <span class="n">03</span>
-            <div><dt>Details</dt><dd>Three-button placket with mother-of-pearl buttons, structured ribbed collar and cuffs, side vents, and the turtle embroidered at the left chest.</dd></div>
-          </div>
-        </dl>
-
-        <dl class="spec up d1">
-          <div class="spec-row">
-            <span class="n">04</span>
-            <div><dt>Edition</dt><dd>A new turtle each year, individually numbered to two hundred. Created for that moment in time and never repeated &mdash; while signature colors endure, with new shades introduced along the way.</dd></div>
-          </div>
-          <div class="spec-row">
-            <span class="n">05</span>
-            <div><dt>Care</dt><dd>Machine wash cold with like colours. Hang to dry. No ironing required.</dd></div>
-          </div>
-          <div class="spec-row">
-            <span class="n">06</span>
-            <div><dt>Shipping &amp; Returns</dt><dd>Complimentary shipping worldwide. Thirty days to return anything unworn, with the edition tag attached.</dd></div>
-          </div>
-        </dl>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════ NOTES ═══════════ -->
-<section class="sec limestone" id="reviews" style="padding-top:clamp(3rem,5vw,5rem);padding-bottom:clamp(3rem,5vw,5rem);">
-  <div class="wrap">
-    <div class="notes-rule"></div>
-    <div class="notes">
-      <figure class="note up">
-        <span class="note-mark">&ldquo;</span>
-        <blockquote>The first polo I&rsquo;ve owned that looks as good at dinner as it did at noon.</blockquote>
-        <figcaption>James Whitfield<br />Newport</figcaption>
-      </figure>
-      <figure class="note up d1">
-        <span class="note-mark">&ldquo;</span>
-        <blockquote>Three summers in and the collar still stands the way it did the first morning.</blockquote>
-        <figcaption>Marcus Bell<br />Charleston</figcaption>
-      </figure>
-      <figure class="note up d2">
-        <span class="note-mark">&ldquo;</span>
-        <blockquote>I bought one, then quietly bought the rest of the edition for my brothers.</blockquote>
-        <figcaption>David Okonkwo<br />London</figcaption>
-      </figure>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════ 09 · JOURNAL ═══════════ -->
-<section class="sec limestone" id="journal">
-  <span id="gallery" aria-hidden="true"></span>
-  <div class="wrap">
-    <div class="rail"><span class="n">09</span><span class="label">Journal</span></div>
-    <div class="jr-head">
-      <h2 class="up">Postcards</h2>
-      <a class="tl up d1" href="#journal">Read the Journal<i></i></a>
-    </div>
-
-    <div class="grid posts">
-      <a class="post post-lead up" href="#journal">
-        <figure class="rv"><img src="assets/editorial/journal-portofino.jpg" alt="A sheltered cove with a yacht at anchor" loading="lazy" /></figure>
-        <div class="post-b">
-            <span class="post-meta"><span class="n">01</span><span class="label">Travel</span></span>
-            <h3>48 Hours in Portofino</h3>
-            <p class="post-stand">Where to eat, when to swim, and the corner table worth asking for.</p>
-            <span class="post-read">Read<i></i></span>
-          </div>
-      </a>
-      <div class="post-side">
-        <a class="post up d1" href="#journal">
-          <figure class="rv"><img src="assets/editorial/journal-lunch.jpg" alt="A table set outdoors above the water" loading="lazy" /></figure>
-          <div class="post-b">
-            <span class="post-meta"><span class="n">02</span><span class="label">Culture</span></span>
-            <h3>The Ritual of the Long Lunch</h3>
-            <p class="post-stand">Why the best afternoons begin at two and end when they end.</p>
-            <span class="post-read">Read<i></i></span>
-          </div>
-        </a>
-        <a class="post up d2" href="#journal">
-          <figure class="rv"><img src="assets/editorial/journal-collar.jpg" alt="Close detail of a polo collar" loading="lazy" /></figure>
-          <div class="post-b">
-            <span class="post-meta"><span class="n">03</span><span class="label">The Making</span></span>
-            <h3>Why We Still Love a Proper Collar</h3>
-            <p class="post-stand">The one detail that decides whether a polo reads as considered.</p>
-            <span class="post-read">Read<i></i></span>
-          </div>
-        </a>
+        <h2>Choose your <br class="lb" />water.</h2>
+        <p class="lead">The Long Run Polo &middot; Sizes S&ndash;XL &middot; $148</p>
+        <a class="btn" href="shop.html"><s>Shop the Long Run</s></a>
       </div>
     </div>
   </div>
@@ -1036,7 +1063,7 @@ p{color:var(--body);text-wrap:pretty;}
 <!-- ═══════════ 10 · NEWSLETTER + 11 · FOOTER ═══════════ -->
 <section class="sec midnight close" id="clubhouse" style="padding-bottom:0;">
   <div class="wrap">
-    <div class="rail"><span class="n">10</span><span class="label">The List</span></div>
+    <div class="rail"><span class="n">—</span><span class="label">The List</span></div>
     <div class="news">
       <div>
         <h2 class="up">From the Water</h2>
@@ -1055,7 +1082,7 @@ p{color:var(--body);text-wrap:pretty;}
 
     <div class="f-top">
       <div>
-        <a class="mark" href="#top" aria-label="Collections by Finley Jade, home">
+        <a class="mark" href="index.html" aria-label="Collections by Finley Jade, home">
           <img src="assets/brand/mark.png" alt="" style="width:27px;" />
           <span class="wm"><i>Collections by</i><b>Finley Jade</b></span>
         </a>
@@ -1070,8 +1097,8 @@ p{color:var(--body);text-wrap:pretty;}
         </div>
         <div class="f-col">
           <h4>House</h4>
-          <a href="#heritage">Our Story</a>
-          <a href="#journal">Journal</a>
+          <a href="index.html#heritage">Our Story</a>
+          <a href="index.html#journal">Journal</a>
           <a href="mailto:hello@turtlesbyfinleyjade.com">Contact</a>
         </div>
         <div class="f-col">
@@ -1195,6 +1222,56 @@ p{color:var(--body);text-wrap:pretty;}
   /* Newsletter */
   var f = document.getElementById('newsForm'), n = document.getElementById('newsNote');
   if (f) f.addEventListener('submit', function (e) { e.preventDefault(); f.reset(); n.style.opacity = '1'; });
+})();
+</script>
+<script>
+(function () {
+  'use strict';
+  /* Chapter nav marks whichever collection owns the middle of the screen.
+     Deliberately not an IntersectionObserver: a chapter is taller than the
+     viewport, so "which one is centred" is the question, not "is it visible". */
+  var nav = document.getElementById('cnav');
+  if (!nav) return;
+  var links = Array.prototype.slice.call(nav.querySelectorAll('.cn'));
+  var chaps = links.map(function (a) {
+    return document.getElementById(a.getAttribute('href').slice(1));
+  });
+  var last = 0;
+  function mark() {
+    /* Viewport coordinates throughout: offsetTop is relative to the nearest
+       positioned ancestor (the section), which is not the document. */
+    var mid = window.innerHeight / 2, best = -1, dist = Infinity;
+    chaps.forEach(function (c, i) {
+      if (!c) return;
+      var r = c.getBoundingClientRect();
+      var d = (mid >= r.top && mid <= r.bottom)
+        ? 0 : Math.min(Math.abs(mid - r.top), Math.abs(mid - r.bottom));
+      if (d < dist) { dist = d; best = i; }
+    });
+    links.forEach(function (a, i) { a.classList.toggle('on', i === best && dist < window.innerHeight); });
+  }
+  /* Throttled on a clock, not on requestAnimationFrame: rAF is paused in a
+     background tab, and a gate left armed there never reopens. mark() is five
+     getBoundingClientRect calls, so this is cheap enough to run outright. */
+  window.addEventListener('scroll', function () {
+    var t = Date.now();
+    if (t - last < 90) return;
+    last = t;
+    mark();
+  }, { passive: true });
+  window.addEventListener('resize', mark);
+  mark();
+
+  /* Keep the active chapter in view inside the scrolling nav on narrow screens. */
+  var strip = document.getElementById('cnav');
+  var lastOn = null;
+  setInterval(function () {
+    var on = nav.querySelector('.cn.on');
+    if (on && on !== lastOn && strip.scrollWidth > strip.clientWidth) {
+      lastOn = on;
+      strip.scrollTo({ left: on.offsetLeft - strip.clientWidth / 2 + on.offsetWidth / 2, behavior: 'smooth' });
+    }
+  }, 400);
 })();
 </script>
 </body>
